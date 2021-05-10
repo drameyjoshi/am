@@ -48,7 +48,7 @@ the same complex number. The multi-valuedness of the argument has many
 interesting consequences to the nature of functions of complex variables. The
 modulus of a complex number $z = x + iy$ is denoted by $\abs{z}$ and the
 argument by $\Arg{z}$. The value of $\theta$ in the range $[0, 2\pi)$ is called
-the \emph{principle value} of the argument. (An equivalent convention is to let
+the \emph{principal value} of the argument. (An equivalent convention is to let
 it be in the range $(-\pi, \pi]$).
 
 We know the Taylor series expansions of the real functions $\sin$ and $\cos$,
@@ -65,10 +65,10 @@ as $z = (x, y) = x + iy = r\exp(i\theta)$. The last representation simplifies
 many calculations and has some immediate interesting consequences. First of all
 $e^{i\pi} = -1$ so that $\log(-1) = i\pi$. Logarithms of negative numbers are
 imaginary. They not only exist but they are multi-valued. $\log(-1) = i\pi + 
-2\pi in$ for $n \in \soi$. Since $e^{2\pi i + 2\pi im} = 1$, it is easy to see 
+2\pi in$ for $n \in \soi$. Since $e^{2\pi im} = 1$, it is easy to see 
 that 
 \[
-1^{1/n} = \exp\left(i\frac{2\pi}{n} + i\frac{2\pi m}{n}\right).
+1^{1/n} = \exp\left(i\frac{2\pi m}{n}\right).
 \]
 If we let $m$ range from $0$ to $n - 1$ we get $n$ different roots of unity.
 
@@ -154,3 +154,16 @@ If $(x_1, y_1)$ and $(x_2, y_2)$ were 2-dimensional vectors then the real part
 of $(z_1, z_2)$ is their dot product and the imaginary part is the magnitude of
 the cross product. This idea is exploited to develop the exterior algebra and
 differential forms.
+
+\subsection{Problems and examples}
+\begin{enumerate}
+\item Let $K$ denote the complex conjugation operator. Consider $K(c_1z_1 + 
+c_2z_2)$, where $c_1, c_2 \in \soc$. Then $K(c_1z_1 + c_2z_2) = \bar{c}_1K(z_1)
++ \bar{c}_2K(z_2)$. $K$ is \emph{not} a linear operator.
+
+\item Consider the sum
+\[
+\sum_{n=0}^N e^{in\theta} = \frac{1.(e^{iN\theta} - 1)}{e^{i\theta} - 1}
+= \frac{(e^{iN\theta} - 1)(e^{-i\theta} - 1)}{2 - 2\sin\theta}
+\]
+\end{enumerate}
