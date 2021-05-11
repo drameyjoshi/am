@@ -159,11 +159,170 @@ differential forms.
 \begin{enumerate}
 \item Let $K$ denote the complex conjugation operator. Consider $K(c_1z_1 + 
 c_2z_2)$, where $c_1, c_2 \in \soc$. Then $K(c_1z_1 + c_2z_2) = \bar{c}_1K(z_1)
-+ \bar{c}_2K(z_2)$. $K$ is \emph{not} a linear operator.
++ \bar{c}_2K(z_2)$. $K$ is \emph{not} a linear operator \cite{aw}.
 
-\item Consider the sum
+\item Consider the sum \cite{aw}
+\begin{eqnarray*}
+\sum_{n=0}^N e^{in\theta} &=& \frac{1.(e^{iN\theta} - 1)}{e^{i\theta} - 1} \\
+ &=& \frac{cos(N\theta)+i\sin(N\theta)-1}{\cos(\theta) + i\sin(\theta) - 1} \\
+ &=& \frac{2i\sin(N\theta/2)\cos(N\theta/2) - 2\sin^2(N\theta/2)}
+     {2i\sin(\theta/2)\cos(\theta/2) - 2\sin^2(\theta/2)} \\
+ &=& \frac{\sin{N\theta/2}}{\sin(\theta/2)}
+     \frac{i\cos(N\theta/2)-\sin(N\theta/2)}{i\cos(\theta/2)-\sin(\theta/2)} \\
+ &=& \frac{\sin{(N\theta/2i)}}{\sin(\theta/2)}
+     \exp\left(\frac{N-1}{2}\theta\right) \\
+ &=& \frac{\sin{(N\theta/2)}}{\sin(\theta/2)}\left(
+     \cos\left(\frac{N-1}{2}\theta\right)+i\sin\left(\frac{N-1}{2}\theta\right)
+     \right)
+\end{eqnarray*}
+from which we readily conclude that
+\begin{eqnarray}
+\sum_{n=0}^{N-1}\cos(n\theta) &=& \frac{\sin{(N\theta/2)}}{\sin(\theta/2)}
+                                  \cos\left(\frac{N-1}{2}\theta\right)  
+                                  \label{c1s3e12} \\
+\sum_{n=0}^{N-1}\sin(n\theta) &=& \frac{\sin{(N\theta/2)}}{\sin(\theta/2)}
+                                  \sin\left(\frac{N-1}{2}\theta\right).
+								  \label{c1s3e13}
+\end{eqnarray}
+These identities would have been much harder to prove without the use of 
+Euler's relation.
+
+\item Deriving formulae for sine and cosine of multiple angles using 
+trigonometry alone can be quite tedious \cite{aw}. However, using Euler 
+relation,
+\begin{equation}\label{c1s3e14}
+e^{in\theta} = \cos(n\theta) + i\sin(n\theta)
+\end{equation}
+and 
 \[
-\sum_{n=0}^N e^{in\theta} = \frac{1.(e^{iN\theta} - 1)}{e^{i\theta} - 1}
-= \frac{(e^{iN\theta} - 1)(e^{-i\theta} - 1)}{2 - 2\sin\theta}
+e^{in\theta} = \left(e^{i\theta}\right)^n = \sum_{j=0}^n\binom{n}{j}\cos^j
+(\theta)\sin^{n-j}(\theta)i^{n-j}
 \]
+We can expand the binomial sum as
+\begin{eqnarray}
+e^{in\theta} &=& 
+\left(\cos^n(\theta)-\binom{n}{2}\cos^{n-2}(\theta)\sin^2(\theta)+\ldots\right) 
+ + \nonumber \\
+ & &i\left(n\cos^{n-1}(\theta)\sin(\theta)-\binom{n}{3}\cos^{n-3}(\theta)
+  \sin^3(\theta) + \ldots\right)  \nonumber \\
+ \label{c1s3e15}
+\end{eqnarray}
+Equating the real and imaginary parts of equations \eqref{c1s3e14} and 
+\eqref{c1s3e15} gives the necessary results.
+
+\item Consider the sum \cite{aw}
+\begin{eqnarray*}
+\sum_{n=0}^\infty p^ne^{inx} &=&
+ \lim_{N \rightarrow \infty}\sum_{n=0}^{N-1}p^n e^{inx} \\
+ &=& \lim_{N \rightarrow \infty}\frac{p^Ne^{iNx}-1}{pe^{ix}-1} \\
+ &=& \lim_{N \rightarrow \infty}\frac{(p^Ne^{iNx}-1)(pe^{-ix}-1)}
+                                     {p^2 - 2p\cos(x) + 1}.
+\end{eqnarray*}
+Equating the real and imaginary parts we get
+\begin{eqnarray}
+\sum_{n=0}^\infty p^n\cos(nx) &=& \frac{1 - p\cos(x)}{p^2 - 2p\cos(x) + 1} 
+\label{c1s3e16} \\
+\sum_{n=0}^\infty p^n\sin(nx) &=& \frac{p\sin(x)}{p^2 - 2p\cos(x) + 1} 
+\label{c1s3e17} 
+\end{eqnarray}
+
+\item Complex circular and hyperbolic functions are defined in a manner 
+analogous to their real counterparts \cite{aw}. If $z \in \soc$,
+\begin{eqnarray}
+\cos(z) &=& \frac{e^{iz} + e^{-iz}}{2} \label{c1s3e18} \\
+\sin(z) &=& \frac{e^{iz} - e^{-iz}}{2i} \label{c1s3e19} \\
+\cosh(z) &=& \frac{e^{z} + e^{-z}}{2} \label{c1s3e20} \\
+\sinh(z) &=& \frac{e^{z} + e^{-z}}{2} \label{c1s3e21}
+\end{eqnarray}
+from which is it evident that
+\begin{eqnarray}
+\cos(z) &=& \cosh(iz) \label{c1s3e22} \\
+\sin(z) &=& -i\sinh(iz) \label{c1s3e23} \\
+\cosh(z) &=& \cos(iz) \label{c1s3e24} \\
+\sinh(z) &=& -i\sin(iz). \label{c1s3e25}
+\end{eqnarray}
+Since 
+\[
+2\cos(z) = e^{iz} + e^{-iz} = e^{-y}(\cos(x) + i\sin(x)) + e^{y}
+(\cos(x) - i\sin(x))
+\]
+we have
+\begin{equation}\label{c1s3e26}
+\cos(z) = \cos(x)\cosh(y) - i\sin(x)\sinh(y).
+\end{equation}
+Thus, $\abs{\cos(z)}^2 = \cos^2(x)\cosh^2(y) + \sin^2(x)\sinh^2(y)$. It is
+unbounded as $y \rightarrow \pm\infty$. Thus, unlike their real counterparts,
+the complex circular functions do not have a bounded magnitude. We can also
+conclude that
+\begin{equation}\label{c1s3e27}
+\abs{\cos(z)} \ge \abs{\cos(x)}.
+\end{equation}
+
+\item Analogous to \eqref{c1s3e26} we can also show that
+\begin{equation}\label{c1s3e28}
+\sin(z) = \sin(x)\cosh(y) + i\cos(x)\sinh(y).
+\end{equation}
+so that
+\begin{eqnarray*}
+\sin^2(z) + \cos^2(z) &=& 
+ \sin^2(x)\cosh^2(y) + 2i\sin(x)\cos(x)\sinh(y)\cosh(y) \\
+ & & - \cos^2(x)\sinh^2(y) + \\
+ & & \cos^2(x)\cosh^2(y) - 2i\sin(x)\cos(x)\sinh(y)\cosh(y)- \\
+ & & \sin^2(x)\sinh^2(y) \\
+ &=& \cosh^2(y) - \sinh^2(y)
+\end{eqnarray*}
+or
+\begin{equation}\label{c1s3e29}
+\sin^2(z) + \cos^2(z) = 1
+\end{equation}
+is true even in the complex domain. Similarly,
+\begin{equation}\label{c1s3e30}
+\cosh^2(z) - \sinh^2(z) = 1.
+\end{equation}
+
+\item The inverses of the circular and the hyperbolic functions can be written 
+in terms of the logarithm \cite{aw}. If $w = \arcsin(z)$ then $z = \sin(w),
+\cos(w) = \pm\sqrt{1 - z^2}$ and
+\[
+e^{iw} = \pm\sqrt{1 - z^2} + iz
+\]
+or
+\[
+iw = \log(iz \pm\sqrt{1 - z^2})
+\]
+or
+\begin{equation}\label{c1s3e31}
+\arcsin(z) = -i\log(iz \pm\sqrt{1 - z^2})
+\end{equation}
+Similarly, we can show that
+\begin{equation}\label{c1s3e32}
+\arccos(z) = -i\log(z \pm \sqrt{z^2 - 1}).
+\end{equation}
+Now, if $z = \tan(w), \sec^2(w) = (1 + z^2)$ or
+\[
+\cos(w) = \frac{1}{\sqrt{1 + z^2}}
+\]
+and
+\[
+\sin(w) = \frac{z}{\sqrt{1 + z^2}}
+\]
+so that
+\[
+e^{iw} = \frac{1 + iz}{\sqrt{1 + z^2}} = \sqrt{\frac{1 + iz}{1 - iz}}
+\]
+or
+\[
+iw = \frac{1}{2}\log\left(\frac{1 + iz}{1 - iz}\right).
+\]
+Finally, we get
+\begin{equation}\label{c1s3e33}
+w = \arctan(z) = \frac{i}{2}\log\left(\frac{i + z}{i - z}\right).
+\end{equation}
+The analogous relations for hyperbolic functions are
+\begin{eqnarray}
+\arcsinh(z) &=& \log(z + \sqrt{z^2 + 1}) \label{c1s3e34} \\
+\arccosh(z) &=& \log(z + \sqrt{z^2 - 1}) \label{c1s3e35} \\
+\arctanh(z) &=& \frac{1}{2}\log\left(\frac{1+z}{1-z}\right) \label{c1s3e36} 
+\end{eqnarray}
+
 \end{enumerate}
