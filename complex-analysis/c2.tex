@@ -1,0 +1,193 @@
+\chapter{Continuity and Differentiability}\label{c2}
+\section{Elementary topological properties}\label{c2s1}
+The modulus of the complex numbers provides a natural way to measure distance
+between them. If $z_1$ and $z_2$ are two complex numbers then $d(z_1, z_2)
+= \abs{z_1 - z_2}$ has all the properties of a metric. In fact, this metric is
+identical to the Euclidean metric of the space $\sor^2$. Therefore the two 
+spaces are topologically identical. In particular, the Heine-Borel theorem that
+guarantees the compactness of a closed and bounded subset of $\soc$ holds good.
+
+For sake of completeness, we will mention the definitions of limits and 
+continuity in $\soc$.
+
+\begin{defn}\label{c2s1d1}
+Let $f: A \rightarrow B$ where $A, B \subset \soc$. Then, for $z_0 \in A$,
+\[
+\lim_{z \rightarrow z_0}f(z) = L
+\]
+if for any $\epsilon > 0$ we can find a $\delta > 0$ such that $0 < \abs{z-z_0}
+< \delta \Rightarrow \abs{f(z) - L} < \epsilon$.
+\end{defn}
+\begin{rem}
+The limit of a function at $z_0$ does not require that the function be defined 
+at that point.
+\end{rem}
+
+\begin{defn}\label{c2s1d2}
+Let $f: A \rightarrow B$ where $A, B \subset \soc$. $f$ is said to be
+continuous at $z_0 \in A$ if for any $\epsilon > 0$ we can find $\delta > 0$
+such that $\abs{z - z_0} \le \delta \Rightarrow \abs{f(z) - f(z_0)} \le 
+\epsilon$.
+\end{defn}
+\begin{rem}
+The continuity of a function at $z_0$ requires that the function be defined at
+that point.
+\end{rem}
+
+\section{Differentiability}\label{c2s2}
+If $f: A \rightarrow B$ with $A, B \subset \sor$ and $x_0 \in A$ then $f$
+is differentiable at $x_0$ if the limit 
+\[
+\lim_{x \rightarrow x_0}\frac{f(x) - f(x_0)}{x - x_0}
+\]
+exists and is unique. The uniqueness of limit means that the left and right
+handed limits are identical. We can extend this definition to the case when
+$A, B \in \soc$. However, the condition of uniqueness now requires that we
+get the same limit irrespective of the direction in which we approach $z_0$
+from its neighbourhood. Let us assume that $f: A \rightarrow B$ with $A, B
+\subset \soc$ is differentiable at $z_0 \in A$. Therefore, the limit
+\[
+\lim_{z \rightarrow z_0} \frac{f(z) - f(z_0)}{z - z_0}
+\]
+exists and is unique. In particular, we get the same limit when we approach
+$z_0$ along the real and the imaginary axes. Let us first write
+\[
+f(z) = u(x, y) + iv(x, y),
+\]
+where $u, v: A \rightarrow B$ and $A, B$ are considered subsets of $\sor^2$.
+When we approach $z_0$ along the real axis, the limit is
+\[
+\lim_{x \rightarrow x_0} \frac{u(x,y_0)+iv(x,y_0) - u(x_0,y_0)-iv(x_0,y_0)}
+{x-x_0} = u_x + iv_x.
+\]
+If, on the other hand, we approach $z_0$ along the imaginary axis, the limit
+is
+\[
+\lim_{y \rightarrow y_0} \frac{u(x_0,y)+iv(x_0,y) - u(x_0,y_0)-iv(x_0,y_0)}
+{i(y-y_0)} = -iu_y + v_y.
+\]
+The derivatives are evaluated at the point $(x_0, y_0)$. Since the two limits 
+are equal, we have
+\begin{eqnarray}
+u_x &=& v_y \label{c2s2e1} \\
+u_y &=& -v_x.\label{c2s2e2}
+\end{eqnarray}
+These equations are called the \emph{Cauchy-Riemann} conditions. We have
+shown that
+\begin{thm}\label{c2s2t1}
+If $f:A \rightarrow B$, $A, B \subset \soc$ is differentiable at $z_0 = x_0 + 
+iy_0$ and if $f(x, y) = u(x, y) + iv(x, y)$ then the functions $u$ and $v$
+satisfy the Cauchy-Riemann conditions.
+\end{thm}
+
+We will next prove that the Cauchy-Riemann conditions are also sufficient for
+a function to be differentiable. That is,
+\begin{thm}\label{c2s2t2}
+Let $f:A \rightarrow B$, $A, B \subset \soc$, $f(z) = u(x, y) + iv(x, y)$. If
+the functions $u$ and $v$ satisfy the Cauchy-Riemann conditions at the point
+$z_0 = x_0 + iy_0$ in $A$ then $f$ is differentiable at $z_0$ if the partial
+derivatives $u_x, u_y, v_x, v_y$ are also continuous at $(x_0, y_0)$.
+\end{thm}
+\begin{proof}
+Since the partial derivatives of $u$ and $v$ are continuous at $(x_0, y_0)$
+we can find $\epsilon_1, \epsilon_2, \epsilon_3, \epsilon_4 > 0$ such that
+\begin{eqnarray*}
+u(x_0 + \delta x, y_0 + \delta y) &=& u(x_0, y_0) + u_x\delta x + u_y\delta_y + 
+  \epsilon_1 \delta x + \epsilon_2 \delta y \\
+v(x_0 + \delta x, y_0 + \delta y) &=& v(x_0, y_0) + v_x\delta x + v_y\delta y + 
+  \epsilon_3 \delta x + \epsilon_4 \delta y
+\end{eqnarray*}
+Now,
+\[
+f(z_0 + \delta z) = u(x_0 + \delta x, y_0 + \delta y) + 
+                   iv(x_0 + \delta x, y_0 + \delta y)
+\]
+or
+\begin{eqnarray*}
+f(z_0+\delta z) &=& u(x_0,y_0) + iv(x_0,y_0) + (u_x+iv_x)\delta x + 
+     (-iu_y+v_y)i\delta y + \\
+& &  (\epsilon_1 + i\epsilon_3)\delta x + (-i\epsilon_2 + \epsilon_4)i\delta y
+\end{eqnarray*}
+or
+\begin{eqnarray*}
+f(z_0+\delta z)-f(z_0) &=& (u_x+iv_x)\delta x + (-iu_y+v_y)i\delta y + \\
+& &  (\epsilon_1 + i\epsilon_3)\delta x + (-i\epsilon_2 + \epsilon_4)i\delta y.
+\end{eqnarray*}
+Using Cauchy-Riemann conditions, this equation becomes
+\begin{eqnarray*}
+f(z_0+\delta z)-f(z_0) &=& (u_x+iv_x)\delta z + \\ 
+& &  (\epsilon_1 + i\epsilon_3)\delta x + (-i\epsilon_2 + \epsilon_4)i\delta y.
+\end{eqnarray*}
+from which we get
+\[
+\abs{\frac{f(z_0+\delta z)-f(z_0)}{\delta z}-(u_x+iv_x)} = 
+\abs{(\epsilon_1 + i\epsilon_3) \frac{\delta x}{\delta z} + 
+(-i\epsilon_2 + \epsilon_4)\frac{i\delta y}{\delta z}}
+\]
+Since $\abs{\delta x/\delta z} \le 1$ and $\abs{\delta y/\delta z} \le 1$, we
+have
+\[
+\abs{\frac{f(z_0+\delta z)-f(z_0)}{\delta z}-(u_x+iv_x)} \le
+\abs{(\epsilon_1 + i\epsilon_3)} + \abs{(-i\epsilon_2 + \epsilon_4)}
+\]
+Thus, the derivative of $f$ at $z_0$ exists and is $u_x + iv_x$.
+\end{proof}
+
+\begin{defn}\label{c2s2d1}
+A function $f:A \rightarrow B$, $A, B \subset \soc$ is said to be analytic at
+$z_0 \in A$ if it is differentiable at $A$. 
+\end{defn}
+
+In the context of real functions, analyticity at a point $x_0$ means that the
+function can be written as a power series in the neighbourhood of $x_0$. Thus,
+the function has all derivatives at $x_0$. We defined a complex function to
+be analytic based on the existence of just the first derivative. This is not
+incorrect because we will show in the next chapter that when a complex function
+differentiable once is differentiable any number of times. Anticipating this
+result, we can assume that all partial derivatives of $u$ and $v$ exist.
+Differentiating \eqref{c2s2e1} with respect to $x$ and \eqref{c2s2e2} with
+respect to $y$ and adding the result we get
+\begin{equation}\label{c2s2e3}
+u_{xx} + u_{yy} = 0.
+\end{equation}
+Similarly, by differentiating \eqref{c2s2e1} with respect to $y$, \eqref{c2s2e2}
+with respect to $x$ and adding the results we get
+\begin{equation}\label{c2s2e4}
+v_{xx} + v_{yy} = 0.
+\end{equation}
+Thus, the real and imaginary parts of an analytic complex function satisfy
+Laplace's equation. Solutions of Laplace's equations are called \emph{harmonic
+functions}. Therefore we say that the real and imaginary part of an analytic
+function are harmonic functions.
+
+The nature of an extremum of a function $u$ of two variables is determined by 
+the value of the Hessian 
+\[
+\begin{vmatrix} u_{xx} & u_{xy} \\ u_{yx} & u_{yy} \end{vmatrix}
+\]
+at the critical point. If $u$ is a harmonic function then the value of
+this determinant is $-(u_{xx})^2 - (u_{xy})^2 < 0$. Therefore we have,
+\begin{thm}\label{c2s2t3}
+The real and imaginary parts of an analytic complex function cannot have a 
+maximum or a minimum in the domain of analyticity. They can at most have a 
+saddle point.
+\end{thm}
+
+\begin{rem}
+Theorem \ref{c2s2t3} is a consequence of the harmonic nature of the real and
+imaginary part. Harmonic functions in any number of dimensions do not have
+a maximum or a minumum in the domain in which they satisfy Laplace's equation.
+\end{rem}
+
+Another consequence of the Cauchy-Riemann conditions is 
+\[
+u_xv_x + u_yv_y = 0.
+\]
+In terms of gradients, we can write this as
+\begin{equation}\label{c2s2e5}
+\grad u \cdot \grad v = 0.
+\end{equation}
+Since the gradient at a point is normal to the level surface at the point,
+\eqref{c2s2e5} implies that the level surfaces of the real and imaginary parts
+of an analytic complex function are normal to each other.
+
