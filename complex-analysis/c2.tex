@@ -200,3 +200,53 @@ streamlines of the flow. A representation of two dimensional potentials as
 one of the components of an analytic function will be used later on to solve
 boundary value problems.
 
+\section{Problems and examples}\label{c2s3}
+\begin{enumerate}
+\item Let $f_1(z) = u(x, y) + iv(x, y)$ and $f_2(z) = u(x, y) - iv(x, y)$ be
+differentiable in a region $R$. Then, applying Cauchy-Riemann conditions
+to $f_1$ we have
+\begin{eqnarray*}
+u_x &=& v_y \\
+u_y &=& -v_x.
+\end{eqnarray*}
+Applying them to $f_2$ gives
+\begin{eqnarray*}
+u_x &=& -v_y \\
+u_y &=& v_x.
+\end{eqnarray*}
+The four equations will be true only if all partial derivatives are zero.
+Therefore, $f_1(z) = \bar{f}_2(z)$ must be a constant. \cite{aw}
+
+\item Let $f(z) = u(x, y) + iv(x, y)$ be analytic. Then $\bar{f}(\bar{z}) =
+u(x, -y) - iv(x, -y)$. We examine the Cauchy-Riemann conditions for $\bar{f}(
+\bar{z})$,
+\[
+u_x = (-v)_{(-y)} = -(-v)_y = v_y
+\]
+and
+\[
+u_{(-y)} = -u_y = -(-v)_x = v_x.
+\] 
+Both these equations are true because $f$ is analytic \cite{aw}.
+
+\item Let $f(z) = u(x, y) + iv(x, y)$ be analytic. Then
+\[
+\frac{df}{d\bar{z}} = 0
+\]
+unless $f$ is a constant \cite{aw}. Thus, an analytic function 
+depends on $z = x + iy$. It is not an arbitrary function of $x$ and $y$.
+\[
+\frac{df}{d\bar{z}} = \frac{df}{dz}\frac{dz}{d\bar{z}} = \frac{df}{dz}\left(
+\frac{dx}{d\bar{z}} + i\frac{dy}{d\bar{z}}\right).
+\]
+As
+\begin{eqnarray*}
+x &=& \frac{z + \bar{z}}{2} \\
+y &=& \frac{z - \bar{z}}{2i} 
+\end{eqnarray*}
+we get
+\[
+\frac{df}{d\bar{z}} = \frac{df}{dz}\left(\frac{1}{2} + i\frac{-1}{2i}\right)
+= 0.
+\]
+\end{enumerate}
