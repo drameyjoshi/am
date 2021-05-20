@@ -1,0 +1,88 @@
+\chapter{Conformal Transformations}\label{c3}
+\section{Complex functions as mappings}\label{c3s1}
+A complex function of complex variable maps a point on the complex plane to 
+another point on the complex plane. A curve $C$ in the domain is transformed
+to a curve $C^\prime$ in the range. Likewise, the point of intersection of
+curves $C_1$ and $C_2$ in the domain is mapped to the point of intersection of
+the images $C_1^\prime$ and $C_2^\prime$. Let $\nu$ be the angle between $C_1$
+and $C_2$ at the point of their intersection. Let $\nu^\prime$ be the angle
+between their images $C_1^\prime$ and $C_2^\prime$ at the point of their 
+intersection. A mapping $z^\prime(z)$ is said to be \emph{angle-preserving} if
+$\nu = \nu^\prime$.
+
+Angle-preserving mappings are also called \emph{conformal} mappings.
+
+\begin{thm}\label{c3s1t1}
+If $D$ is the domain of the mapping $z^\prime(z) = u(x,y) + iv(x,y)$ and if
+for all points $z \in D$,
+\[
+\frac{dz^\prime}{dz} \ne 0
+\]
+then the mapping $z^\prime$ is angle-preserving.
+\end{thm}
+\begin{proof}
+Let $z_0$ be the point of intersections of two curves $C_1$ and $C_2$ in the
+$z$-plane. Under the transformation $z^\prime$, the two curves are mapped to
+$C_1^\prime$ and $C_2^\prime$ on the $z^\prime$ plane. Let them intersect at
+$z_0^\prime$.
+
+Let $z_1$ be an arbitrary point on $C_1$ and $z_1^\prime$ be its map on 
+$C_1^\prime$. Let
+\begin{eqnarray*}
+z_1 - z_0 &=& r_1e^{i\theta} \\
+z_1^\prime - z_0^\prime &=& r_1^\prime e^{i\theta^\prime} 
+\end{eqnarray*}
+so that
+\[
+\frac{z_1^\prime - z_0^\prime}{z_1 - z_0} = 
+\frac{r^\prime}{r}e^{i(\theta^\prime- \theta)}
+\]
+As $z \rightarrow z_0$, the line $z - z_0$ tends to the tangent to the curve
+$C_1$ at $z_0$. The angle $\theta$ then tends to $\alpha$ the angle made by
+the tangent to $C_1$ with the real axis. Likewise, the angle $\theta^\prime
+\rightarrow \alpha^\prime$ the angle made by the tangent to $C_1^\prime$ at
+$z_0^\prime$. We can then write
+\[
+\frac{dz^\prime}{dz} = \abs{\frac{dz^\prime}{dz}}e^{i(\alpha^\prime - \alpha)}
+\]
+By hypothesis, this derivative is not zero and hence its magnitude has a 
+non-zero value, say $d$. Thus,
+\[
+\frac{dz^\prime}{dz} = de^{i(\alpha^\prime - \alpha)}.
+\]
+If we carry out the same analysis for the pair $C_2$ and $C_2^\prime$ then we
+get
+\[
+\frac{dz^\prime}{dz} = de^{i(\beta^\prime - \beta)},
+\]
+where $\beta$ and $\beta^\prime$ are angles made by tangent to the curves
+$C_2$ and $C_2^\prime$ at $z_0$ and $z_0^\prime$. As the derivative of a
+function is unique, we have
+\[
+\alpha^\prime - \alpha = \beta^\prime - \beta \Rightarrow \alpha - \beta = 
+\beta^\prime - \alpha^\prime.
+\] 
+The result follows from the fact that $\nu = \abs{\alpha - \beta}$ and 
+$\nu^\prime = \abs{\alpha^\prime - \beta^\prime}$.
+\end{proof}
+
+Consider the problem of integration of a complex function $f$ along a countour
+$C$ whose parametric equation is $z = z(t)$. Let the contour $C$ be limited
+by values $t_1$ and $t_2$ of the parameter $t$. Let
+\[
+I = \int_C f(z)dz
+\]
+and let $z^\prime$ be a conformal transformation in a domain $D$ in which the
+coutour $C$ lies. Therefore,
+\[
+\frac{dz^\prime}{dz} \ne 0
+\]
+throughout $D$ and hence
+\[
+\int_C f(z)dz = \int_{C^\prime}f(z(z^\prime))\frac{dz}{dz^\prime}dz^\prime.
+\]
+Such a transformation of the integral is permitted only if one can write the
+inverse function $z(z^\prime)$ and when $dz/dz^\prime$ exist. Their existence
+is guaranteed by the conformal nature of $z^\prime$.
+
+\section{Application of conformal mappings}\label{c3s2}
