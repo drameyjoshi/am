@@ -1,0 +1,93 @@
+\chapter{Integration - 1}\label{c4}
+\section{The definition}\label{c4s1}
+It is easy to extend the definition of the Riemann integral of a real-valued
+function of a single variable to the complex-valued function of a single
+complex variable. Unlike the case of a single real variable in which there
+is a single path to reach a point $b$ from a point $a$, two points in a complex
+plane can be joined with an infinitely many curves. Therefore, when we define
+an integral of a complex-valued function $f$ between two points $z_a$ and
+$z_b$ we must specify the curve along which the integral is taken. Let us assume
+that $C$ is a regular curve, that is, it can be expressed by the parametric
+equation $x = x(t)$ and $y = y(t)$. The points $z_a$ and $z_b$ are characterized
+with the values $t_a$ and $t_b$ of the parameter. We want to define
+\begin{equation}\label{c4s1e1}
+I = \int_C f(z)dz.
+\end{equation}
+Divide the curve $C$ into a mesh $z_0 = z_a, z_1, \ldots, z_n = z_b$. If $\xi_k$
+is a point on the segment joining $z_{k-1}$ and $z_k$, consider the sum
+\begin{equation}\label{c4s1e2}
+S_n = \sum_{k=1}^n f(\xi_k)(z_{k} - z_{k-1}).
+\end{equation}
+If 
+\[
+\lim_{n \rightarrow \infty}S_n
+\]
+exists then it is defined as the integral in \eqref{c4s1e1}. Writing
+$f(\xi_k) = u(\xi_k) + iv(\xi_k)$ and $z_k = x_k + iy_k$,
+\begin{eqnarray*}
+S_n &=& \sum_{k=1}^n u(\xi_k)(x_k - x_{k-1}) - v(\xi_k)(y_k - y_{k-1}) + \\
+ & & i\sum_{k=1}^n u(\xi_k)(y_k - y_{k-1}) + v(\xi_k)(x_k - x_{k-1}).
+\end{eqnarray*}
+The points $\xi_k$ can always be written as the pair $\eta_k, \zeta_k$ so that
+\begin{eqnarray}
+S_n &=& \sum_{k=1}^n u(\eta_k, \zeta_k)(x_k - x_{k-1}) - v(\eta_k, \zeta_k)
+(y_k - y_{k-1}) + \nonumber \\
+ & & i\sum_{k=1}^n u(\eta_k, \zeta_k)(y_k - y_{k-1}) + v(\eta_k, \zeta_k)
+     (x_k - x_{k-1}).\label{c4s1e3}
+\end{eqnarray}
+In the limit $n \rightarrow \infty$,
+\begin{equation}\label{c4s1e4}
+I = \int_{(x_a,y_a)}^{(x_b,y_b)}u(x,y)dx - v(x,y)dy + 
+i\int_{(x_a,y_a)}^{(x_b,y_b)}u(x,y)dy + v(x,y)dx.
+\end{equation}
+Thus, the integral of a complex-valued function can be expressed in terms of
+four real-valued integrals. One can express all of these in terms of the
+parameter $t$ as
+\begin{eqnarray}\label{c4s1e5}
+I &=& \int_{t_a}^{t_b}\left[
+u(x(t), y(t))\frac{dx}{dt} - v(x(t),y(t))\frac{dy}{dt}\right]dt \nonumber \\
+ & &i\int_{t_a}^{t_b}\left[u(x(t),y(t))\frac{dy}{dt} + v(x(t),y(t))\frac{dx}{dt}
+     \right]dt
+\end{eqnarray}
+or
+\begin{eqnarray}\label{c4s1e6}
+I &=& \int_{t_a}^{t_b}\left(u(x(t),y(t)) + iv(x(t),y(t))\right)\frac{dx}{dt}dt
++ \nonumber \\
+ & & i\int_{t_a}^{t_b}\left(u(x(t),y(t)) + iv(x(t),y(t))\right)\frac{dy}{dt}dt
+\end{eqnarray}
+or
+\begin{equation}\label{c4s1e7}
+I = \int_{t_a}^{t_b}f(z(t))\frac{dz}{dt}dt.
+\end{equation}
+If we can find a function $g$ such that
+\begin{equation}\label{c4s1e8}
+f(z) = \frac{dg}{dz}
+\end{equation}
+then
+\begin{equation}\label{c4s1e9}
+\int_C f(z)dz = g(z(t_b)) - g(z(t_a)).
+\end{equation}
+Equation \eqref{c4s1e9} is the fundamental theorem of calculus for complex-
+valued functions of complex variables \cite{dk}.
+
+An immediate consequence of the Riemann integral of $f$ is
+\begin{thm}[Darboux inequality]\label{c4s1t1}
+\[
+\abs{\int_C f(z)dz} \le \max\abs{f} L,
+\]
+where $L$ is the length of the curve $C$ and the maximum is taken over all
+points on $C$.
+\end{thm}
+\begin{proof}
+From equation \eqref{c4s1e2},
+\[
+\int_C f(z)dz = \lim_{n \rightarrow \infty}\sum_{k=1}^n f(\xi_k)(z_k - z_{k-1})
+\]
+so that
+\begin{eqnarray*}
+\abs{\int_C f(z)dz} &\le&
+\abs{\lim_{n \rightarrow \infty}\sum_{k=1}^n f(\xi_k)(z_k - z_{k-1})} \\
+ &\le& \max\abs{f}\abs{\lim_{n \rightarrow \infty}\sum_{k=1}^n(z_k - z_{k-1})}
+= \max\abs{f}L.
+\end{eqnarray*}
+\end{proof}

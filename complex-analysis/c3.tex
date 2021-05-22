@@ -1,4 +1,4 @@
-\chapter{Conformal Transformations}\label{c3}
+\chapter{Conformal Mappings - 1}\label{c3}
 \section{Complex functions as mappings}\label{c3s1}
 A complex function of complex variable maps a point on the complex plane to 
 another point on the complex plane. A curve $C$ in the domain is transformed
@@ -85,4 +85,36 @@ Such a transformation of the integral is permitted only if one can write the
 inverse function $z(z^\prime)$ and when $dz/dz^\prime$ exist. Their existence
 is guaranteed by the conformal nature of $z^\prime$.
 
-\section{Application of conformal mappings}\label{c3s2}
+Consider a curve whose parametric representation is $(x(t), y(t))$, $t$ 
+being a parameter. If $z(t) = x(t) + iy(t)$ then the variable $z$ represents
+a curve in the complex plane. If $x$ and $y$ are also differentiable functions
+of $t$ then
+\[
+\frac{dz}{dt} = \frac{dx}{dt} + i\frac{dy}{dt}.
+\]
+If $f$ is an analytic function in the domain $D$ then for the range of the
+parameter $t$ lying in the domain, if $w(z) = f(z)$ then $w(t) = f(z(t))$ and
+\[
+\frac{dw}{dt} = f^\prime(z_0)\frac{dz}{dt}
+\]
+and hence
+\begin{equation}\label{c3s1e1}
+\arg(w^\prime) = \arg(f^\prime) + \arg(z^\prime).
+\end{equation}
+Now, $z^\prime(t_0)$ is the tangent to the curve at $t_0$, $w^\prime(t_0)$ is
+the tangent to the image of the curve at $t_0$. The argument of these complex
+quantities is the angle they make with the positive real axis. The difference 
+between the angles made by the curve and its image under $f$ is quantity
+$\arg(f^\prime)$. If $z_1(t)$ is another curve and $w_1$ is its image under
+the same function then
+\begin{equation}\label{c3s1e2}
+\arg(w_1^\prime) = \arg(f^\prime) + \arg(z_1^\prime).
+\end{equation}
+From equations \eqref{c3s1e1} and \eqref{c3s1e2},
+\begin{equation}\label{c3s1e3}
+\arg(w^\prime) - \arg(w_1^\prime) = \arg(z^\prime) - \arg(z_1^\prime).
+\end{equation}
+This is another proof of theorem \ref{c3s1t1} \cite{ablowitz2003complex}.
+
+
+
