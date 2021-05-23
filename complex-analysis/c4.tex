@@ -91,3 +91,172 @@ so that
 = \max\abs{f}L.
 \end{eqnarray*}
 \end{proof}
+
+From equation \eqref{c4s1e9} it appears that the value of the integral of a
+complex-valued function along a curve $C$ depends only on the end points and
+is therefore unique. But this is not always true. Several complex functions 
+are multi-valued and the value of the primitive $g$ of the integral $f$ 
+depends on the contour. However, if there are two curves $C_1$ and $C_2$ such
+that they have the same end points and $f$ is analytic on the curves and in the
+region bounded by the curves then the problem of multi-valuedness does not 
+arise and the rhs of \eqref{c4s1e9} is unique. We will prove this statement as
+\begin{thm}(Cauchy-Goursat)\label{c4s1t2}
+Let $C$ be a piecewise, regular, closed curve in the complex plane and let a
+function $f:\soc \rightarrow \soc$ be analytic on and within C. Then
+\[
+\oint_C f(z)dz = 0.
+\]
+\end{thm}
+\begin{proof}
+We first show that this statement is true if $f(z) = z^n$, $n \ge 0$. For this
+choice of $f$,
+\[
+\oint_C z^n dz = \frac{1}{n+1} z^{n+1}\big|_{t_a}^{t_b},
+\]
+where $t_b$ is the value of the parameter when the curve closes on itself at
+the initial point. Since both values of the parameter corresponding to the
+same value of $z$ and therefore of $z^{n+1}$, the value of the integral is $0$.
+Thus,
+\begin{equation}\label{c4s1e10}
+\oint_C z^n dz = 0.
+\end{equation}
+Define the function $g$ as
+\begin{equation}\label{c4s1e11}
+g(z, z_0) = f(z) - f(z_0) - (z - z_0)(Df)(z_0).
+\end{equation}
+The function $g$ is the remainder of the Taylor series of $f$ beyond the
+linear term. Let the set of points on $C$ and in the interior of $C$ be denoted
+by $A$. We divide $A$ into a a mesh of subsets $A_1, \ldots, A_n$ such that
+\begin{equation}\label{c4s1e12}
+A = \bigcup_{j=1}^n A_j
+\end{equation}
+such that for all $z, z_0 \in A_j$ and a fixed $\epsilon > 0$, there exists
+$\delta_j(\epsilon) > 0$ such that
+\begin{equation}\label{c4s1e13}
+\abs{z - z_0} < \delta_j(\epsilon) \Rightarrow \abs{g(z, z_0)} < \epsilon
+\abs{z - z_0}.
+\end{equation}
+Thus, in each $A_j$ the function $g(z, z_0)$ can be made as close to zero as
+needed so that $f(z)$ can be approximated as the linear function
+\[
+f(z_0) + (z - z_0)(Df)(z_0).
+\]
+Since $f$ is analytic on and inside $C$, it is differentiable at all points
+in the region $A$ and therefore such an approximation is always valid in a
+small enough neighbourhood of every point $z_0 \in A$. If the neighbourhoods
+are chosen to be squares $B_j$ of sides $l_j$ then the maximum distance
+between any two points of $B_j$ is $\sqrt{2}l_j$ and hence we have
+\begin{equation}\label{c4s1e14}
+z, z_0 \in B_j \Rightarrow \abs{g(z,z_0)} < \epsilon \cdot \sqrt{2}l_j.
+\end{equation}
+We choose $A_j = B_j \cap A$. We can also write the integral
+\[
+\oint_C f(z)dz = \sum_{j=1}^n \oint_{C_j}f(z)dz,
+\]
+where $C_j$ is the boundary of $A_j$. This equation is justified because along
+all the edges of $A_j$ in the interior of the curve $C$, the integration is
+carried out in one direction along one of $C_j$ and the opposite direction
+along the neighbouring $C_k$. The only surviving contributions come from the
+boundaries of $A_j$ which lie on $C$. Using equation \eqref{c4s1e11} in the
+previous equation we get
+\begin{equation}\label{c4s1e15}
+\oint_C f(z)dz = \sum_{j=1}^n \oint_{C_j}\left(g(z,z_0) + f(z_0) + (z - z_0)
+(Df)(z_0)\right)dz.
+\end{equation}
+From equation \eqref{c4s1e10},
+\[
+\oint_{C_j}f(z_0)dz = f(z_0)\oint_{C_j}dz = 0
+\]
+and
+\[
+\oint_{C_j}(z - z_0)(Df)(z_0)dz = (Df)(z_0)\oint_{C_j}zdz - (Df)(z_0)(z_0)
+\oint_{C_j}dz = 0 + 0.
+\]
+so that \eqref{c4s1e15} becomes
+\begin{equation}\label{c4s1e16}
+\oint_C f(z)dz = \sum_{j=1}^n \oint_{C_j}g(z,z_0)dz.
+\end{equation}
+Using Darboux inequality of theorem \ref{c4s1t1}
+\[
+\abs{\oint_{C_j} g(z,z_0)dz} \le \max{\abs{g(z,z_0)}}(4l_j) < \epsilon \cdot
+4\sqrt{2}l_j^2.
+\]
+so that
+\[
+\abs{\oint_C f(z)dz} < 4\sqrt{2}\epsilon \sum_{j=1}^n l_j^2
+\]
+If the curve $C$ can be enclosed in a square of length $L$ then
+\[
+\sum_{j=1}^n l_j^2 < L^2
+\] 
+so that
+\[
+\abs{\oint_C f(z)dz} < 4\sqrt{2}\epsilon L^2.
+\]
+Thus, the lhs can be made as small as possible so that
+\[
+\oint_C f(z)dz = 0.
+\]
+\end{proof}
+
+An immediate consequence of Cauchy-Goursat theorem is
+\begin{thm}(Cauchy integral formula)\label{c4s1t3}
+Let $f:\soc \rightarrow \soc$ be analytic in a simply-connected open subset
+$U$ of the complex plane. If a curve $C$ lies entirely in $U$ then
+\begin{equation}\label{c4s1e17}
+\frac{1}{2\pi i}\oint_C \frac{f(z)}{z - z_0}dz = \begin{cases}
+f(z_0) & \text{ if $z_0$ is in the interior of $C$} \\
+0      & \text{ if $z_0$ is in the exterior of $C$}
+\end{cases}
+\end{equation}
+\end{thm}
+\begin{proof}
+Let $z_0$ be a point in the interior of the curve $C$. Draw a circle $C_0$ of 
+radius $r$ around it. Join $C_0$ with $C$ by two closely spaced lines $L_1$ and
+$L_2$ so that the $C, L_0, C_0, L_1$ form a closed curve in which the function
+\[
+\frac{f(z)}{z - z_0}
+\]
+is analytic and
+\[
+\oint_{C + L_0 + C_0 + L_1}\frac{f(z)}{z - z_0}dz = 0.
+\]
+If $L_0$ and $L_1$ are very close to each other then
+\[
+\int_{L_0} \frac{f(z)}{z - z_0}dz = 
+-\int_{L_1} \frac{f(z)}{z - z_0}dz
+\]
+so that
+\[
+\oint_{C + C_0}\frac{f(z)}{z - z_0}dz = 0.
+\]
+or
+\[
+\oint_C \frac{f(z)}{z - z_0}dz = -\oint_{C_0}\frac{f(z)}{z - z_0}dz.
+\]
+Choose $R$ so small that
+\[
+f(z) = f(z_0) + (z - z_0)(Df)(z_0)
+\]
+on $C_0$ and
+\[
+\oint_C \frac{f(z)}{z - z_0}dz = -f(z_0)\oint_{C_0}\frac{dz}{z - z_0} -
+ (Df)(z_0)\oint_{C_0}dz.
+\]
+On $C_0$, $z - z_0 = Re^{i\theta}$ so that $dz = iRe^{i\theta}d\theta$ and
+\[
+\oint_C \frac{f(z)}{z - z_0}dz = -if(z_0)\int_{2\pi}^0 d\theta - iR(Df)(z_0)
+\int_{2\pi}^0 e^{i\theta}d\theta.
+\]
+The limits of the $\theta$-integral are from $2\pi$ to $0$ because we traverse
+$C$ anti-clockwise and hence $C$ clock-wise. Thus,
+\[
+\frac{1}{2\pi i}\oint_C \frac{f(z)}{z - z_0}dz = f(z_0).
+\]
+If $z_0$ is outside $C$ then the integrand
+\[
+\frac{f(z)}{z - z_0}
+\]
+is analytic on $C$ and inside it so that the integral is zero by Cauchy-Goursat
+theorem \ref{c4s1e2}.
+\end{proof}
