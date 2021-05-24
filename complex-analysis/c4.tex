@@ -260,3 +260,72 @@ If $z_0$ is outside $C$ then the integrand
 is analytic on $C$ and inside it so that the integral is zero by Cauchy-Goursat
 theorem \ref{c4s1e2}.
 \end{proof}
+
+Equation \eqref{c4s1e17} is of the form
+\begin{equation}\label{c4s1e18}
+f(z_0) = \int K(z, z_0)f(z)fz
+\end{equation}
+with
+\[
+K(z, z_0) = \frac{1}{z - z_0}.
+\]
+The value of the function $f$ at $z_0$ is expressed as an integral of a product
+of terms, one of which is $f$ and the other is a function that depends on both
+$z$ and $z_0$. Such a representation is called an integral representation of 
+the function and $K$ is called the \emph{kernel} of the representation.
+
+There is another notable observation about Cauchy integral formula of 
+\eqref{c4s1e17}. The value of $f$ at $z_0$ is determined by the value of $f$
+on a closed contour. The boundary conditions alone determine the values of the
+function at all points inside the boundary. This is possible only because the
+real and imaginary parts of $f$ individually satisfy Laplace's equation. We do
+not have such a situation happening in the case of functions of real variable 
+unless we also know the differential equation satisfied by the function.
+
+We will now consider derivatives of functions having an integral representation.
+\begin{thm}\label{c4s1t4}
+Let $C$ be a piecewise regular curve of finite length, $g: \soc\rightarrow\soc$
+be continuous on $C$ and $f:\soc\rightarrow\soc$ be defined as
+\[
+f(z) = \frac{1}{2\pi i}\int_C \frac{g(w)}{w - z}dw.
+\]
+Then $f$ is analytic at any point $z$ not on $C$.
+\end{thm}
+\begin{proof}
+\[
+f(z + \delta z) = \frac{1}{2\pi i}\int_C \frac{g(w)}{w - z - \delta z}dw.
+\]
+so that
+\[
+f(z + \delta z) - f(z) = \frac{1}{2\pi i}\int_C g(w)\frac{\delta z}{(w - z)^2
+- (w - z)\delta z}dw
+\]
+and
+\[
+\frac{f(z+\delta z) - f(z)}{\delta z} = \frac{1}{2\pi i}
+\int_C \frac{g(w)}{(w - z)^2 - (w - z)\delta z}dw.
+\]
+Taking the limit $\delta z \rightarrow 0$, one gets
+\[
+Df = \frac{1}{2\pi i}\int_C \frac{g(w)}{(w - z)^2}dw.
+\]
+Thus, $f$ is analytic at all points $z$ not on $C$.
+\end{proof}
+
+\begin{cor}\label{c4s1c1}
+The function $f$ defined in theorem \eqref{c4s1t4} has all derivatives.
+\end{cor}
+\begin{proof}
+One can easily prove by induction that
+\[
+D^nf = \frac{1}{2\pi i}\int_C \frac{g(w)dw}{(w - z)^{n+1}}.
+\]
+\end{proof}
+
+\begin{cor}\label{c4s1c2}
+All derivatives of analytic function are themselves analytic.
+\end{cor}
+\begin{proof}
+Choose $g = f$ in theorem \ref{c4s1t4} and corollary \ref{c4s1c1}.
+\end{proof}
+
