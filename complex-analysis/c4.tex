@@ -263,7 +263,7 @@ theorem \ref{c4s1e2}.
 
 Equation \eqref{c4s1e17} is of the form
 \begin{equation}\label{c4s1e18}
-f(z_0) = \int K(z, z_0)f(z)fz
+f(z_0) = \int K(z, z_0)f(z)dz
 \end{equation}
 with
 \[
@@ -317,9 +317,9 @@ The function $f$ defined in theorem \eqref{c4s1t4} has all derivatives.
 \end{cor}
 \begin{proof}
 One can easily prove by induction that
-\[
-D^nf = \frac{1}{2\pi i}\int_C \frac{g(w)dw}{(w - z)^{n+1}}.
-\]
+\begin{equation}\label{c4s1e19}
+D^nf = \frac{n!}{2\pi i}\int_C \frac{g(w)dw}{(w - z)^{n+1}}.
+\end{equation}
 \end{proof}
 
 \begin{cor}\label{c4s1c2}
@@ -328,4 +328,70 @@ All derivatives of analytic function are themselves analytic.
 \begin{proof}
 Choose $g = f$ in theorem \ref{c4s1t4} and corollary \ref{c4s1c1}.
 \end{proof}
+
+The kernel of the integral representation of theorem \ref{c4s1t1} and
+corollary \ref{c4s1c1} is
+\begin{equation}\label{c4s1e20}
+K(w, z) = \frac{1}{2\pi i}\frac{1}{w - z}
+\end{equation}
+and if $D$ denotes the differentiation with respect to $z$, one can write
+\[
+D^nf = \int_C D^n K(z, w) g(w)dw.
+\]
+We will next prove that the above expression is true not just for the kernel of
+equation \eqref{c4s1e20}.
+
+\begin{thm}\label{c4s1t5}
+Let
+\[
+f(z) = \int_C K(z, w)g(w)dw
+\]
+be an integral representation of a function $f: U \rightarrow \soc$, $U$
+being an open connected subset of $\soc$. If $K(z, w)$ is an analytic function 
+of $z$ for every point $w$ on $C$ and $z \in U$ and $g$ is a continuous function
+then
+\[
+Df = \int_C D_zK(z, w)g(w)dw.
+\]
+\end{thm}
+\begin{proof}
+Since $K$ is an analytic function of $z$, one can use Cauchy integral formula
+to write
+\[
+K(z, w) = \frac{1}{2\pi i}\int_C \frac{K(v, w)}{v - z}dv.
+\]
+so that the integral representation of $f$ becomes
+\[
+f(z) = \iint_{C \times C} \frac{K(v, w)g(w)}{v - z}dvdw.
+\]
+Since $g$ is continuous and $K$ is analytic, $Kg$ is a continous function of
+$v$ and $w$. We can, therefore, interchange the order of integration and write
+\[
+f(z) = \int_C \frac{L(v)}{v - z} dv
+\]
+where
+\[
+L(v) = \int_C K(v, w)g(w)dw.
+\]
+By equation \eqref{c4s1e19}
+\[
+Df = \int_C \frac{L(v)}{(v - z)^2} dv = \iint_{C \times C}
+\frac{K(v, w)g(w)}{(v - z)^2} dwdv.
+\]
+Changing the order of integration once more, we get
+\[
+Df = \int_C \left(\int_C \frac{K(v, w)}{(v - w)^2} dv\right)g(w)dw.
+\]
+Equation \eqref{c4s1e19} suggests that the $v$-integral is just the derivative
+of the kernel with respect to $z$.
+\end{proof}
+
+\section{Properties of analytic functions}\label{c4s2}
+Theorem \ref{c2s2t3} stated that the real and imaginary parts of an analytic
+function cannot have a maximum or a minimum in the domain of analyticity. As
+a result, we can readily conclude that the modulus of an analytic function
+cannot have a maximum in the domain of analyticity. There is on more way to
+come to the same conclusion.
+
+
 
