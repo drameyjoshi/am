@@ -393,5 +393,65 @@ a result, we can readily conclude that the modulus of an analytic function
 cannot have a maximum in the domain of analyticity. There is on more way to
 come to the same conclusion.
 
+\begin{thm}\label{c4s2t1}
+The modulus of an analytic function cannot have a local maximum in the region
+of analyticity.
+\end{thm}
+\begin{proof}
+Let $z_0$ be a point in the region of analyticity. Choose $r_0$ such that the
+circle $\Gamma$ defined by $\abs{z - z_0} = r_0$ lies entirely in the region
+of analyticity. By the Cauchy integral formula,
+\[
+f(z_0) = \frac{1}{2\pi i}\int_\Gamma \frac{f(z)}{z - z_0}dz.
+\]
+Using Darboux inequality (\ref{c4s1t1}),
+\[
+\abs{f(z_0)} \le \frac{1}{2\pi}\max\left(\abs{\frac{f(z)}{z - z_0}}\right)
+\times 2\pi r_0 = \max{\abs{f(z)}},
+\]
+where the maximum is taken over the points on $\Gamma$. This proves that the
+modulus of $f$ at any point $z_0$ in the region of analyticity is always less
+than or equal to the modulus of the function on a circle centered at $z_0$
+and with a small enough radius. Thus, $z_0$ cannot be a local maximum of
+$\abs{z_0}$.
+\end{proof}
+
+\begin{rem}
+This theorem is not just a restatement of theorem \ref{c2s2t3}. It makes a 
+strong statement about a real valued function $\abs{f}$ of a complex variable.
+Determining the nature of its critical points using the Hessian determinant is
+a formidable task.
+\end{rem}
+
+\begin{thm}\label{c4s2t2}
+A bounded, entire function is a constant.
+\end{thm}
+\begin{proof}
+A function $f:\soc\rightarrow\soc$ is bounded if there exists $M > 0$ such that 
+$\abs{f} < M$ for all $z \in \soc$. It is entire if it is analytic throughout
+$\soc$. Since $f$ is entire, by theorem \ref{c4s1t4},
+\[
+Df(z) = \frac{1}{2\pi i}\int_C \frac{f(w)}{(w - z)^2}dw,
+\]
+and the function $Df$ is also analytic. Applying Darboux inequality,
+\[
+\abs{Df(z)} \le \frac{1}{2\pi}\max\left(\abs{\frac{f(w)}{(w-z)^2}}\right)L,
+\]
+where $L$ is the length of the curve $C$. If we choose $C$ to be a circle
+of radius $R$ centred at $z$ then $\abs{w - z} = R$ and $L = 2\pi R$ so that
+\[
+\abs{Df(z)} \le \frac{\max{\abs{f(w)}}}{R}.
+\]
+Since $f$ is bounded, there exists $M > 0$ such that $\abs{f(w)} < M$ for
+all $w \in \soc$. Since it is entire, we call allow the circle to be of as 
+large a radius as we wish. Therefore, we have $\abs{Df(z)} = 0 \Rightarrow
+Df(z) = 0$.
+\end{proof}
+
+\begin{rem}
+If a function is bounded and not constant then it must have at least one 
+singularity. If a function does not have a singularity and is not a constant
+then it should be unbounded.
+\end{rem}
 
 
