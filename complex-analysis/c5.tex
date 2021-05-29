@@ -123,9 +123,39 @@ differentiable at $z_0$. We will show that these two definitions are
 equivalent to each other. If a complex-valued function is differentiable once
 it is differentiable any number of times and therefore it can be expressed
 as a Taylor series in the neighbourhood of any point in the region of its
-analyticity. So the equivalence of the two notions is not surprising. 
-Nevertheless we will prove 
-\begin{thm}\label{c5s1e4}
+analyticity. So the equivalence of the two notions is not surprising. In order
+to prove it, we need the lemma
+\begin{lem}\label{c5s1l1}
+A power series is uniformly convergent in the region of its convergence.
+\end{lem}
+\begin{proof}
+Let the series 
+\[
+f(z) = \sum_{n \ge 0} a_n(z - z_0)^n
+\]
+be convergent in the region $|z - z_0| < R$. Choose $r$ such that $\abs{z - 
+z_0} = r < R$. Since the series converges, every term of the series is bounded.
+That is, there exists $M > 0$ such that 
+\[
+\abs{a_n(z - z_0)^n} = \abs{a_n}r^n < M.
+\]
+Now choose $z$ such that $\abs{z - z_0} < r$. Then,
+\[
+\abs{a_n (z - z_0)^n} = \abs{a_n (z - z_0)^n} = 
+\abs{a_n}r^n\abs{\frac{z - z_0}{r}}^n < M\abs{\frac{z - z_0}{r}}^n.
+\]
+Now the series on the extreme rhs converges because $\abs{z - z_0} < r$. 
+Therefore, by Weierstrass M-test,
+\[
+\sum_{n \ge 0} a_n(z -z_0)^n
+\]
+converges uniformly.
+\end{proof}
+
+We will now prove the equivalance of the two notions of analyticity of 
+complex-valued functions. 
+
+\begin{thm}\label{c5s1t4}
 Let $f$ be analytic at all points on and inside a circle $\Gamma$ of a point 
 $z_0 \in \soc$. Then for all points $z$ in the neighbourhood,
 \[
@@ -133,8 +163,11 @@ f(z) = \sum_{n \ge 0} a_n(z - z_0)^n
 \]
 where 
 \[
-a_n=\frac{D^nf(z_0)}{n!}=\frac{1}{2\pi i}\int_\Gamma \frac{f(z)dz}{(z-z_0)^2}.
+a_n=\frac{D^nf(z_0)}{n!}=
+\frac{1}{2\pi i}\int_\Gamma\frac{f(z)dz}{(z-z_0)^{n+1}}.
 \]
+Conversely, if $f$ has a power series representation in a region $U$ then it
+is analytic in $U$.
 \end{thm}
 \begin{proof}
 By Cauchy integral formula, if $z$ is inside $\Gamma$,
@@ -146,7 +179,7 @@ Now $w - z = w - z_0 + z_0 - z = w - z_0 - (z - z_0)$ and
 \frac{1}{w-z} = \frac{1}{w-z_0}\frac{1}{1 - \frac{z - z_0}{w - z_0}}
 \]
 Since $w$ is a point on $\Gamma$ and $z$ in inside it, 
-\begin{equation}\label{c5s1e1}
+\begin{equation}\label{c5s1e2}
 \abs{\frac{z - z_0}{w - z_0}} < 1
 \end{equation}
 so that 
@@ -154,7 +187,7 @@ so that
 \frac{1}{w-z} = \frac{1}{w-z_0}\sum_{k \ge 0}\left(\frac{z-z_0}{w-z_0}\right)^k
 = \sum_{k \ge 0}\frac{(z - z_0)^k}{(w - z_0)^{k+1}}.
 \]
-This series is uniformly convergent in the region defined by \eqref{c5s1e1}.
+This series is uniformly convergent in the region defined by \eqref{c5s1e2}.
 Therefore,
 \[
 f(z) = \frac{1}{2\pi i}\int_\Gamma\sum_{k \ge 0}\frac{f(w)}{(w - z_0)^{k+1}}
@@ -170,10 +203,154 @@ Using equation \eqref{c4s1e19}, we get
 \[
 f(z) = \sum_{k \ge 0}\frac{D^k f(z_0)}{k!}(z - z_0)^k.
 \]
+
+To prove the converse, consider
+\[
+\int_C f(z)dz = \int_C\sum_{n\ge 0} a_n(z - z_0)^n,
+\]
+where $C$ is a closed curve entirely in $U$. Since a power series is uniformly
+convergent in its region of convergence, we can interchange the sum with the
+integral to get
+\[
+\int_C f(z)dz = \sum_{n\ge 0} \int_C a_n(z - z_0)^n = 0
+\]
+because a polynomial is an entire function. The analyticity of $f$ follows 
+from Morera's theorem.
 \end{proof}
 
 \begin{rem}
 The circle $\Gamma$ was chosen in such a manner that $f$ is analytic on and
 within it. Therefore, the radius of convergence of the series representation is
 the distance between $z_0$ and its nearest singularity.
+\end{rem}
+
+Theorem \ref{c5s1t4} considered a function that is analytic at all points on
+and inside a circle $\Gamma$. We now consider a situation when a function is
+analytic in the annular region between two circles $\Gamma_1$ and $\Gamma_2$
+of radii $r_1$ and $r_2$ centred at the point $z_0$. We will show that in
+this case, the function can be expanded as a power series with both positive
+and negative powers.
+
+\begin{thm}\label{c5e1e5}
+Let $f$ be a function which is analytic in the annular region between two
+circles $\Gamma_1$ and $\Gamma_2$, each with centre $z_0$ and radius $r_1$ 
+and $r_1 < r_2$. Then $f$ can be expressed as
+\[
+f(z) = \sum_{n = -\infty}^\infty a_n (z - z_0)^n,
+\]
+at all points in the region of analyticity. The coefficients of the series
+are
+\[
+a_n = \frac{1}{2\pi i}\int_C \frac{f(w)dw}{(w - z_0)^{n+1}}
+\]
+\end{thm}
+\begin{proof}
+Let $z$ be a point in the region of analyticity. Dear a circle $\gamma$ centred
+at $z$ and of a small enough radius that it is entirely between $\Gamma_1$ and
+$\Gamma_2$. Join $\gamma$ with $\Gamma_1$ with two closely spaced lines $L_1$
+and $L_2$. Similarly, join $\gamma$ with $\Gamma_2$ with two closely spaced
+lines $L_3$ and $L_4$. The curve $\Gamma_2, L_2, \gamma_1, L_4, \Gamma_1, L_3,
+\gamma_2, L_1$ form a closed curve $C$ such that the function $f$ is analytic
+in its interior. $\gamma_1$ is the semicircle between the points where $L_2$ 
+and $L_4$ touch $\gamma$. Similarly, $\gamma_2$ is the semicircle between the
+points where $L_3$ and $L_1$ touch $\gamma$.
+
+Since $f$ is analytic in the interior of $C$, so is $f(w)/(w - z)$. Note that
+the point $z$ is not on or inside $C$. Therefore, by Cauchy-Goursat theorem,
+\[
+\int_C \frac{f(w)}{w - z}dw = 0.
+\]
+Now, the integral along $L_1$ cancels with the integral along $L_2$. Similarly,
+the integral along $L_3$ cancels the integral along $L_4$. Therefore,
+\[
+\int_{\Gamma_2}\frac{f(w)}{w - z}dw - \int_\gamma\frac{f(w)}{w - z}dw - 
+\int_{\Gamma_1}\frac{f(w)}{w - z}dw  = 0.
+\]
+The signs of the integrals around $\gamma$ and $\Gamma_1$ are negative because 
+they are traversed clockwise. By Cauchy integral formula the second integral is
+$2\pi if(z)$ so that
+\begin{equation}\label{c5s1e3}
+f(z) = \frac{1}{2\pi i}\int_{\Gamma_2}\frac{f(w)}{w - z}dw - 
+\frac{1}{2\pi i}\int_{\Gamma_1}\frac{f(w)}{w - z}dw.
+\end{equation}
+Write $w - z = w - z_0 - (z - z_0)$. For all points on $\Gamma_2$, $\abs{w-z_0}
+> \abs{z - z_0}$. Therefore, write
+\begin{equation}\label{c5s1e4}
+\frac{1}{w-z} = \frac{1}{w-z_0}\frac{1}{1 - \frac{z - z_0}{w - z_0}} = 
+\frac{1}{w - z_0}\sum_{k \ge 0}\left(\frac{z - z_0}{w - z_0}\right)^k 
+\text{ on } \Gamma_2.
+\end{equation}
+For all points on $\Gamma_1$, $\abs{z - z_0} > \abs{w - z_0}$. Therefore, write
+\begin{equation}\label{c5s1e5}
+\frac{1}{w-z} = -\frac{1}{z-z_0}\frac{1}{1 - \frac{w - z_0}{z - z_0}} = 
+\frac{1}{z - z_0}\sum_{k \ge 0}\left(\frac{w - z_0}{z - z_0}\right)^k 
+\text{ on } \Gamma_1.
+\end{equation}
+Substitute equations \eqref{c5s1e4} and \eqref{c5s1e5} in \eqref{c5s1e3} to get
+\[
+f(z) = \frac{1}{2\pi i}
+\int_{\Gamma_2}\sum_{k \ge 0}\frac{f(w)}{(w-z_0)^{k+1}}(z - z_0)^k dw
++ \frac{1}{2\pi i}
+\int_{\Gamma_1}\sum_{k \ge 0}\frac{f(w)(w - z_0)^k}{(z - z_0)^{k+1}}dw.
+\]
+Uniform convergence of the power series in their region of convergence allows
+us to interchange the sum and the integral so that
+\begin{eqnarray*}
+f(z) &=& \frac{1}{2\pi i} 
+\sum_{k \ge 0}\int_{\Gamma_2}\frac{f(w)}{(w - z_0)^{k+1}}dw (z-z_0)^k + \\
+& & \frac{1}{2\pi i} 
+\sum_{k \ge 0}\int_{\Gamma_1}f(w)(w - z_0)^kdw \frac{1}{(z - z_0)^{k+1}}
+\end{eqnarray*}
+The sum in the second term can be written as
+\begin{eqnarray*}
+f(z) &=& \frac{1}{2\pi i} 
+\sum_{k \ge 0}\int_{\Gamma_2}\frac{f(w)}{(w - z_0)^{k+1}}dw (z-z_0)^k + \\
+ & & \frac{1}{2\pi i}
+\sum_{k \ge 1}\int_{\Gamma_1}f(w)(w - z_0)^{k-1}dw \frac{1}{(z - z_0)^{k}},
+\end{eqnarray*}
+or allowing $k$ to run along the negative integers,
+\begin{eqnarray*}
+f(z) &=& \frac{1}{2\pi i}
+\sum_{k \ge 0}\int_{\Gamma_2}\frac{f(w)}{(w - z_0)^{k+1}}dw (z-z_0)^k + \\
+ & & \frac{1}{2\pi i}
+ \sum_{k=-1}^{-\infty}\int_{\Gamma_1}f(w)(w - z_0)^{-k-1}dw 
+\frac{1}{(z - z_0)^{-k}}.
+\end{eqnarray*}
+We can now combine the two sums as
+\[
+f(z) = \sum_{k=-\infty}^\infty d_k (z - z_0)^k
+\]
+where
+\[
+d_k = \begin{cases}
+\frac{1}{2\pi i}
+\int_{\Gamma_2}\frac{f(w)}{(w - z_0)^{k+1}}dw & \text{ for } k \ge 0 \\
+\frac{1}{2\pi i}
+\int_{\Gamma_1}\frac{f(w)}{(w - z_0)^{k+1}}dw & \text{ for } k < 0 .
+\end{cases}
+\]
+Let $C$ be any arbitrary closed curve in the annular region. By joining it
+with $\Gamma_1$ with two closely spaced lines one can show that
+\[
+\int_{\Gamma_1}\frac{f(w)dw}{(w - z_0)^{k+1}} - 
+\int_C\frac{f(w)dw}{(w - z_0)^{k+1}} = 0
+\]
+or 
+\[
+\int_{\Gamma_1}\frac{f(w)dw}{(w - z_0)^{k+1}} = 
+\int_C\frac{f(w)dw}{(w - z_0)^{k+1}} = 0
+\]
+We can similarly show that
+\[
+\int_{\Gamma_2}\frac{f(w)dw}{(w - z_0)^{k+1}} = 
+\int_C\frac{f(w)dw}{(w - z_0)^{k+1}} = 0.
+\]
+Thus,
+\[
+d_k = \frac{1}{2\pi i}\int_C \frac{f(w)}{(w - z_0)^{k + 1}}dw \;\forall k \in
+\soi.
+\]
+\end{proof}
+\begin{rem}
+The series with both positive and negative powers is called Laurent series.
 \end{rem}
