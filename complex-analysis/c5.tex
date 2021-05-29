@@ -1,0 +1,179 @@
+\chapter{Integration - 2}\label{c5}
+\section{Series of complex-valued functions}\label{c5s1}
+A sequence of functions $\{f_n\}$ is said to converge to a function $f$ if for
+a given $\epsilon > 0$, we can find $n_0 \in \son$ such that for all $n > n_0$,
+$\abs{f(z) - f_n(z)} < \epsilon$. In general, $n_0$ depends on $z$. If it does 
+not then the convergence is said to be \emph{uniform}.
+
+We will first show that an integral and a limit can be interchanged if the 
+convergence of a sequence of functions is uniform.
+\begin{thm}\label{c5s1t1}
+If $\{f_n\} \rightarrow f$ uniformly in a region $U \subset \soc$ then for
+any curve of finite length, entirely in $U$,
+\[
+\lim_{n \rightarrow \infty}\int_C f_n(z) dz = \int_C \lim_{n \rightarrow \infty}
+f_n(z)dz.
+\]
+\end{thm}
+\begin{proof}
+Let $f_n \rightarrow f$ uniformly. Therefore, given an $\epsilon > 0$,
+there exists $n_0 \in \son$ such that
+\[
+\abs{f_n(z) - f(z)} \le \frac{\epsilon}{L}
+\]
+for all $z \in U$ and for all $n > n_0$, $L$ being the length of the curve $C$. 
+Thus,
+\[
+f(z) - \frac{\epsilon}{L} \le f_n(z) \le f(z) + \frac{\epsilon}{L}
+\]
+so that
+\[
+\int_C f(z)dz - \epsilon \le \int_C f(z)dz \le \int_C f(z)dz + \epsilon
+\]
+or
+\[
+\abs{\int_C f_n(z)dz - \int_C f(z)dz} \le \epsilon
+\]
+for all $n_0 \ge N$. Therefore,
+\[
+\lim_{n \rightarrow \infty}\int_C f_n(z)dz = \int_C f(z)dz = 
+\int_C \lim_{n \rightarrow \infty} f_n(z)dz.
+\]
+\end{proof}
+
+\begin{cor}\label{c5s1c1}
+If $f_n \rightarrow f$ and the convergence if uniform then if all $f_n$ are
+analytic then so is $f$.
+\end{cor}
+\begin{proof}
+By theorem \ref{c5s1t1},
+\[
+\int_C f(z)dz = \lim_{n \rightarrow \infty} \int_C f_n(z)dz
+\]
+for any closed curve $C$. Since $f_n$ are analytic, their integral is $0$ so
+that
+\[
+\int_C f(z) dz = 0
+\]
+for any closed curve. Analyticity of $f$ follows from Morera's theorem.
+\end{proof}
+
+We next show that the operations of differentiation and limit can also be
+interchanged if the convergence of a sequence of functions is uniform. To 
+prove it we need another theorem,
+\begin{thm}\label{c5s1t2}
+If $f_n \rightarrow f$ in a region $U \subset \soc$ and if a function $g$ is
+bounded in $U$ then $gf_n \rightarrow gf$ uniformly.
+\end{thm}
+\begin{proof}
+Since $g$ is bounded in $U$, there exists $M > 0$ such that $g(z) < M$ for all
+$z \in U$. Fix $\epsilon > 0$. Then, there exists $n_0 \in \son$ such that
+for all $n > n_0$,
+\[
+\abs{f_n(z) - f(z)} \le \frac{\epsilon}{M} \;\forall z \in U.
+\]
+Therefore,
+\[
+f(z) - \frac{\epsilon}{M} \le f_n(z) \le f(z) + \frac{\epsilon}{M}
+\]
+and 
+\[
+g(z)f(z) - \epsilon \le g(z)f(z) - \frac{\epsilon g(z)}{M} \le g(z)f_n(z) \le
+g(z)f(z) + \frac{\epsilon g(z)}{M} \le g(z)f(z) + \epsilon
+\]
+so that
+\[
+\abs{g(z)f_n(z) - g(z)f(z)} \le \epsilon \;\forall n \ge n_0, \forall z \in U.
+\]
+\end{proof}
+
+\begin{thm}[Weierstrass]\label{c5s1t3}
+If $f_n \rightarrow f$ uniformly in any region $R \subset \soc$ then $Df_n 
+\rightarrow Df$ uniformly in $R$.
+\end{thm}
+\begin{proof}
+Let $z_0$ be an arbitrary point in $R$ and $C$ be a closed curve around
+$z_0$ lying entirely in $R$. Then for all $z$ on $C$, the function
+\[
+\frac{1}{(z - z_0)^2}
+\]
+is bounded. Therefore, by theorem \ref{c5s1t2},
+\[
+\frac{f_n(z)}{(z - z_0)^2} \rightarrow \frac{f(z)}{(z - z_0)^2}
+\]
+uniformly for all $z$ on $C$. By theorem \ref{c5s1t1},
+\[
+\int_C \frac{f_n(z)}{(z - z_0)^2} dz \rightarrow 
+\int_C \frac{f(z)}{(z - z_0)^2} dz
+\]
+From equation \eqref{c4s1e9},
+\[
+D_n f(z_0) \rightarrow Df(z_0).
+\]
+\end{proof}
+
+A real-valued function $f$ is said to be analytic at a point $x_0 \in \sor$ if
+it $f(x)$ can be expressed as a power series
+\[
+f(x) = \sum_{n \ge 0}a_n(x - x_0)^n
+\]
+in a small neighbourhood of $x_0$. On the other hand, we defined a complex-
+valued function $f$ to be analytic at a point $z_0 \in \soc$ if it is 
+differentiable at $z_0$. We will show that these two definitions are 
+equivalent to each other. If a complex-valued function is differentiable once
+it is differentiable any number of times and therefore it can be expressed
+as a Taylor series in the neighbourhood of any point in the region of its
+analyticity. So the equivalence of the two notions is not surprising. 
+Nevertheless we will prove 
+\begin{thm}\label{c5s1e4}
+Let $f$ be analytic at all points on and inside a circle $\Gamma$ of a point 
+$z_0 \in \soc$. Then for all points $z$ in the neighbourhood,
+\[
+f(z) = \sum_{n \ge 0} a_n(z - z_0)^n
+\]
+where 
+\[
+a_n=\frac{D^nf(z_0)}{n!}=\frac{1}{2\pi i}\int_\Gamma \frac{f(z)dz}{(z-z_0)^2}.
+\]
+\end{thm}
+\begin{proof}
+By Cauchy integral formula, if $z$ is inside $\Gamma$,
+\[
+f(z) = \frac{1}{2\pi i}\int_\Gamma \frac{f(w)dw}{w - z}.
+\]
+Now $w - z = w - z_0 + z_0 - z = w - z_0 - (z - z_0)$ and
+\[
+\frac{1}{w-z} = \frac{1}{w-z_0}\frac{1}{1 - \frac{z - z_0}{w - z_0}}
+\]
+Since $w$ is a point on $\Gamma$ and $z$ in inside it, 
+\begin{equation}\label{c5s1e1}
+\abs{\frac{z - z_0}{w - z_0}} < 1
+\end{equation}
+so that 
+\[
+\frac{1}{w-z} = \frac{1}{w-z_0}\sum_{k \ge 0}\left(\frac{z-z_0}{w-z_0}\right)^k
+= \sum_{k \ge 0}\frac{(z - z_0)^k}{(w - z_0)^{k+1}}.
+\]
+This series is uniformly convergent in the region defined by \eqref{c5s1e1}.
+Therefore,
+\[
+f(z) = \frac{1}{2\pi i}\int_\Gamma\sum_{k \ge 0}\frac{f(w)}{(w - z_0)^{k+1}}
+(z - z_0)^k dw.
+\]
+The uniform convergence of the series allows us to interchange the sum and the
+integral to get
+\[
+f(z) = \sum_{k \ge 0}\frac{1}{2\pi i}\int_\Gamma \frac{f(w)dw}{(w-z_0)^{k+1}}
+(z - z_0)^k.
+\]
+Using equation \eqref{c4s1e19}, we get
+\[
+f(z) = \sum_{k \ge 0}\frac{D^k f(z_0)}{k!}(z - z_0)^k.
+\]
+\end{proof}
+
+\begin{rem}
+The circle $\Gamma$ was chosen in such a manner that $f$ is analytic on and
+within it. Therefore, the radius of convergence of the series representation is
+the distance between $z_0$ and its nearest singularity.
+\end{rem}

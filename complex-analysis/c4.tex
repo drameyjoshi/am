@@ -199,6 +199,11 @@ Thus, the lhs can be made as small as possible so that
 \]
 \end{proof}
 
+\begin{rem}
+The converse of Cauchy-Goursat theorem is also true. It is called Morera's 
+theorem and will be proved later in this chapter.
+\end{rem}
+
 An immediate consequence of Cauchy-Goursat theorem is
 \begin{thm}(Cauchy integral formula)\label{c4s1t3}
 Let $f:\soc \rightarrow \soc$ be analytic in a simply-connected open subset
@@ -453,5 +458,49 @@ If a function is bounded and not constant then it must have at least one
 singularity. If a function does not have a singularity and is not a constant
 then it should be unbounded.
 \end{rem}
+
+\begin{thm}[Morera's theorem]\label{c4s2t3}
+If $f:\soc \rightarrow \soc$ is such that 
+\[
+\oint_C f(z) = 0
+\]
+for all closed curves $C$ in a region $U \subset \soc$ then $f$ is analytic
+throughout $U$.
+\end{thm}
+\begin{proof}
+Let $z_0$ be a fixed point in $U$ and $z$ be an arbitrary point. If the integral
+of $f$ over any closed curve in $U$ is zero then
+\[
+\int_{z_0}^z f(z)dz
+\]
+is independent of the path of the integral. Therefore, for a fixed $z_0$, its
+value will depend on $z$ alone. Define,
+\[
+g(z) = \int_{z_0}^z f(z)dz.
+\]
+Then
+\[
+g(z + \delta z) - g(z) = \int_z^{z+\delta z} f(z)dz
+\]
+and
+\[
+\abs{g(z + \delta z) - g(z)} = \abs{\int_z^{z+\delta z}f(z)dz} \le
+\max\abs{f(z)}L,
+\]
+where $L$ is the length of the curve along which the integral is evalated. 
+Let the curve of integration be the straight line joining $z$ and $z + \delta z$
+so that
+\[
+\abs{g(z + \delta z) - g(z)} \le \max\abs{f(z)}\abs{\delta z} \Rightarrow
+\frac{\abs{g(z + \delta z) - g(z)}}{\abs{\delta z}} \le \max\abs{f(z)}.
+\]
+In the limit $\delta z \rightarrow 0$,
+\[
+Dg(z) = f(z).
+\]
+This shows that $g$ is analytic at $z$ and since $z$ was chosen arbitrarily,
+$g$ is analytic throughout $U$. By corollary \ref{c4s1c2} $g$ has all 
+derivatives, in particular the second one, which shows that $f$ is analytic.
+\end{proof}
 
 
