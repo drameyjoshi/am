@@ -354,3 +354,94 @@ d_k = \frac{1}{2\pi i}\int_C \frac{f(w)}{(w - z_0)^{k + 1}}dw \;\forall k \in
 \begin{rem}
 The series with both positive and negative powers is called Laurent series.
 \end{rem}
+
+\section{Zeros and poles}\label{c5s2}
+\begin{defn}\label{c5s2d1}
+An analytic function $f: \soc \rightarrow \soc$ is said to have a zero of
+order $n \ge 0$ at a point $z_0$ if $D^kf(z_0) = 0$ for all $k = 0, \ldots,
+n - 1$ and $D^nf(z_0) \ne 0$.
+\end{defn}
+
+\begin{thm}\label{c5s2t1}
+Zeros of an analytic function are isolated.
+\end{thm}
+\begin{proof}
+Let $z_0$ be an $n$-th order zero of an analytic function $f:\soc \rightarrow
+\soc$. Then
+\[
+f(z) = \sum_{k=n}^\infty a_k(z - z_0)^k = (z - z_0)^n \sum_{k=0}^n b_k(z-z_0)^k
+\]
+where $b_k = a_{n+k}$. If we write 
+\[
+h(z) = \sum_{k=0}^n(z - z_0)^k
+\]
+then $f(z) = (z - z_0)^n h(z)$ and $h$ does not have a zero at $z_0$. Further,
+$h$ is continuous at $z_0$. Therefore, there is a neighbourhood of $z_0$ where
+$h$ is not zero.
+\end{proof}
+
+\begin{defn}\label{c5s2d2}
+A point at which a function $f: \soc \rightarrow \soc$ is not analytic is 
+called a singularity.
+\end{defn}
+
+A function can be singular at a point in a complex plane because of several
+reasons.
+\begin{enumerate}
+\item It fails to be continuous, in which case the singularity is called a 
+\emph{branch} point;
+\item It fails to be differentiable, in which case it is called a \emph{pole}.
+\end{enumerate}
+
+We will first consider a pole. Suppose that a function $f$ has a Laurent
+expansion
+\[
+f(z) = \sum_{k=-n}^\infty a_k (z - z_0)^k.
+\]
+That is, all but a finite number of coefficients with a negative index are zero.
+If $n$ is the lowest negative index for which the coefficient is non-zero then
+$z_0$ is said to be pole of order $n$. A pole of order $1$ is called a simple
+pole. Thus, the Laurent expansion of a function $f$ with a simple pole at 
+$z = z_0$ is
+\[
+f(z) = \frac{a_{-1}}{z - z_0} + a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \cdots.
+\]
+The Laurent expansion of a function $g$ with a pole of order $n$ at a point
+$z - z_0$ is
+\[
+g(z) = \frac{a_{-n}}{(z - z_0)^n} + \cdots \frac{a_{-1}}{z - z_0} + a_0 + 
+a_1(z - z_0) + a_2(z - z_0)^2 + \cdots.
+\]
+
+\begin{defn}\label{c5s2d3}
+A function that is analytic at all points of the complex plane except at 
+isolated poles is called a meromorphic function.
+\end{defn}
+
+A pole of a finite order is said to be a removable singularity. This is because
+a function with a pole of order $n$ at $z = z_0$ can be made analytic at that
+point by multiplying with $(z - z_0)^n$. Functions can have poles of an infinite
+order. For example $\exp(1/z)$. It is singular at the origin and the singularity
+cannot be removed by multiplying it with any finite power of $z$. Such a 
+singularity is called an \emph{essential singularity}.
+
+Poles are isolated singularities. If $z_0$ is a pole of order $n$ the function 
+$f$ then it is a zero of order $n$ of the function $1/f$ and we saw in theorem
+\ref{c5s2t1} that zeros are isolated points.
+
+We will now briefly consider branch points. Consider the function $w = z^{1/2}$
+along a circular contour of radius $r$ around the origin. If $z=r\exp(i\theta)$
+then the point with $\theta = 0$ and $\theta = 2\pi$ are identical in the 
+$z$-plane but their images are different in the $w$ plane. It is as if the same
+point in the domain corresponds to two different points in the range. The 
+relation between $w$ and $z$ ceases to be a function. If we went around a circle
+centred at any other point $z = a$, we will not face this problem. The point $z
+= 0$ is called a branch point of the function $w = z^{1/2}$. It is called a 
+branch point because as we cross the real axis after going around a circle
+centred at it, we end up being on a different `branch' of the function. In order
+to consider the behaviour of the function at infinity, one considers
+how the function with the variable $t = 1/z$ behaves as $t = 0$. The square
+root function becomes $w=t^{-1/2}=r^{-1/2}e^{-i\pi\theta/2}$. We observe that
+going round a circular contour in the $t$-plane around $t = 0$ creates the same
+problem that we observed in the $z$-plane. As a result we say that the function
+has a branch point at infinity as well.
