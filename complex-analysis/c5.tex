@@ -418,13 +418,6 @@ A function that is analytic at all points of the complex plane except at
 isolated poles is called a meromorphic function.
 \end{defn}
 
-A pole of a finite order is said to be a removable singularity. This is because
-a function with a pole of order $n$ at $z = z_0$ can be made analytic at that
-point by multiplying with $(z - z_0)^n$. Functions can have poles of an infinite
-order. For example $\exp(1/z)$. It is singular at the origin and the singularity
-cannot be removed by multiplying it with any finite power of $z$. Such a 
-singularity is called an \emph{essential singularity}.
-
 Poles are isolated singularities. If $z_0$ is a pole of order $n$ the function 
 $f$ then it is a zero of order $n$ of the function $1/f$ and we saw in theorem
 \ref{c5s2t1} that zeros are isolated points.
@@ -445,3 +438,44 @@ root function becomes $w=t^{-1/2}=r^{-1/2}e^{-i\pi\theta/2}$. We observe that
 going round a circular contour in the $t$-plane around $t = 0$ creates the same
 problem that we observed in the $z$-plane. As a result we say that the function
 has a branch point at infinity as well.
+
+Before closing the discussion on singularities, we will examine the nature of 
+essential singularities. They are so severe that in their vicinity the function
+takes all possible values of a complex variable. The entire complex plane can be
+mapped into a small neighbourhood of an essential singularity.
+
+
+\begin{thm}[Weierstrass theorem]\label{c5s2t1}
+If $f$ has an essential singularity at a point $z_0$ then for any $\epsilon > 0$,
+and any complex number $a$, we can find $\delta > 0$ such that $\abs{f(z) - a} <
+\epsilon$ for some point $z$ such that $0 < \abs{z - z_0} < \delta$.
+\end{thm}
+\begin{proof}
+Let, if possible, there be a complex number $a$ such that $\abs{f(z) - a} > 
+\epsilon$ for all points on the punctured disc $0 < \abs{z - z_0} < \delta$.
+Therefore, for all these points,
+\[
+\abs{\frac{1}{f(z) - a}} \le \frac{1}{\epsilon}.
+\]
+Therefore, the function $1/(f(z) - a)$ is analytic at all points on the 
+punctured disc and can be expressed as
+\[
+\frac{1}{f(z) - a} = \sum_{n = k}^\infty c_n(z - a)^n 
+\]
+for some $k \ge 0$. If $k = 0$ then
+\[
+\frac{1}{f(z) - a} = c_0 \ne 0
+\] 
+at $z = a$. Otherwise, if has a zero of order $k$ at the point $z=a$. In any 
+case
+\[
+f(z) - a = \frac{1}{(z - a)^k}\cdot\frac{1}{c_k + c_{k+1}(z-a) + \cdots} = 
+\frac{1}{(z - a)^k}g(z).
+\]
+The function $g$ is analytic at $z = a$ with $g(a) = 1/c_k$. Thus either $f$
+will have a pole of order $k$ or it will be analytic at $z = a$, a contradiction.
+\end{proof}
+
+\begin{rem}
+A function oscillates very wildly in the neighbourhood of an essential singularity.
+\end{rem}
