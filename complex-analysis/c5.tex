@@ -479,3 +479,86 @@ will have a pole of order $k$ or it will be analytic at $z = a$, a contradiction
 \begin{rem}
 A function oscillates very wildly in the neighbourhood of an essential singularity.
 \end{rem}
+
+\section{The calculus of residues}\label{c5s3}
+Cauchy-Goursat theorem assures us that if a function $f$ is analytic inside a simple
+closed curve $C$ then
+\[
+\int_C f(z)dz = 0.
+\]
+What if $f$ is not analytic but has a pole of order $m$ inside $C$. Let $z_0$
+be the pole. Then the function
+\[
+g(z) = (z - z_0)^mf(z)
+\]
+is analytic. Let us write the integral as
+\[
+\int_C f(z)dz = \int_C \frac{g(z)}{(z - z_0)^m}dz.
+\]
+From equation \eqref{c4s1e19}, this integral is
+\begin{equation}\label{c5s3e1}
+\int_C f(z) = \frac{2\pi i}{(m-1)!}D^{m-1}g(z_0) = 
+\frac{2\pi i}{(m-1)!}D^{m-1}((z - z_0)^mf(z))
+\end{equation}
+
+\begin{defn}\label{c5s3d1}
+The quantity
+\[
+\frac{D^{m-1}((z - z_0)^mf(z))}{(m-1)!}
+\]
+is called the residue of $f$ at the pole $z_0$ of order $m$ and is denoted by 
+$\Res(f,z_0)$.
+\end{defn}
+
+Now consider the Laurent expansion of $f$ about $z_0$,
+\[
+f(z) = \sum_{k=-m}^\infty a_k(z - z_0)^k
+\]
+where
+\[
+a_k = \frac{1}{2\pi i}\int_C \frac{f(w)}{(w - z_0)^{k+1}}dw.
+\]
+At $k = -1$
+\begin{equation}\label{c5s3e2}
+a_{-1} = \frac{1}{2\pi i}\int_C f(w)dw.
+\end{equation}
+Comparing equations \eqref{c5s3e1} and \eqref{c5s3e1} we get
+\begin{equation}\label{c5s3e3}
+\int_C f(z)dz = 2\pi i a_{-1} = \Res(f, z_0).
+\end{equation}
+Equation \eqref{c5s3e3} is an alternative definition of residue of a 
+function at a pole $z_0$.
+
+There is yet another way to get the same result. Since the Laurent series
+is uniformly convergent,
+\[
+\int_C f(z)dz = \int_C \sum_{k=-m}^\infty a_k(z - z_0)^k = 
+\int_C a_{-1}\frac{dz}{z - z_0}
+\]
+because the terms with all other powers vanish. The integral over $C$ is identical 
+to that over a circle $\Gamma$ with centre $z_0$ and radius $r$. Thus,
+\[
+\int_C f(z)dz = a_{-1}\int_0^{2\pi}\frac{iRe^{i\theta}}{Re^{i\theta}}d\theta 
+= 2\pi ia_{-1},
+\]
+which is same as equation \eqref{c5s3e3}. Since $2\pi ia_{-1}$ is the only
+term that `remains' when one integrates the function term by term it is called
+the `residue' of $f$ at $z_0$. It is easy to generalise this to the situation
+when we integrate a function $f$ along a contour $C$ which encloses poles
+$z_1, \ldots, z_k$. We then get
+\begin{equation}\label{c5s3e4}
+\int_C f(z)dz = 2\pi i \sum_{j=1}^k \Res(f, z_j).
+\end{equation}
+
+If instead of a pole of order $m$, $z_0$ were an essential singularity then
+in a punctured neighbourhood of $z_0$, we have the Laurent expansion,
+\[
+f(z)dz = \sum_{k=-\infty}^\infty a_k(z - z_0)^k.
+\]
+Once again we can take advantage of the uniform convergence of the series to
+integrate it term by term and conclude that
+\begin{equation}\label{c5s3e5}
+\int_C f(z)dz = 2\pi i a_{-1}.
+\end{equation} 
+Thus the integral is still expressed in terms of a residue but one cannot 
+calculate it using a formula given in definition \ref{c5s3d1}. 
