@@ -561,4 +561,80 @@ integrate it term by term and conclude that
 \int_C f(z)dz = 2\pi i a_{-1}.
 \end{equation} 
 Thus the integral is still expressed in terms of a residue but one cannot 
-calculate it using a formula given in definition \ref{c5s3d1}. 
+calculate it using a formula given in definition \ref{c5s3d1}.
+
+The following lemma is useful while evaluation integrals using residues.
+\begin{lem}\label{c5s3l1}
+Let $\Gamma$ denote a semicircle in the upper half of the complex plane with
+radius $R$ and centre at the origin. Let $f:\soc \rightarrow \soc$ be such that
+$f(z) \rightarrow 0$ uniformly as $\abs{z} \rightarrow \infty$ when $0 \le \arg{z} 
+\le \pi$. Then for $\alpha \ge 0$,
+\[
+\lim_{R \rightarrow \infty}\int_\Gamma e^{i\alpha z}f(z)dz = 0.
+\]
+\end{lem}
+\begin{proof}
+Note that the semi-circle does not include the real axis. Therefore, we find it
+convenient to introduce polar coordinates $z = Re^{i\theta} = R\cos\theta + iR
+\sin\theta$. Thus,
+\[
+I_R = \int_\Gamma e^{i\alpha z}f(z)dz = \int_0^\pi e^{i\alpha R\cos\theta}
+e^{-\alpha R\sin\theta}f(Re^{i\theta})(iR)e^{i\theta}d\theta.
+\]
+Now,
+\[
+\abs{\int_C f(z)dz} \le \int_C\abs{f(z)}dz
+\]
+so that
+\[
+\abs{I_R} \le R\left(
+\int_0^{\pi/2} e^{-\alpha R\sin\theta}\abs{f(Re^{i\theta})}d\theta + 
+\int_{\pi/2}^\pi e^{-\alpha R\sin\theta}\abs{f(Re^{i\theta})}d\theta\right)
+\] 
+In the second integral let $\theta \mapsto \theta - \pi/2$ so that
+\[
+\abs{I_R} \le R\int_0^{\pi/2} e^{-\alpha R\sin\theta}\left(\abs{f(Re^{i\theta})}
++ \abs{f(Re^{i(\theta-\pi/2)})}\right)d\theta.
+\]
+$f \rightarrow 0$ uniformly as $R \rightarrow \infty$. That is, $f$ is a 
+function of $R$ alone. Thus,
+\[
+\abs{I_R} \le R\abs{f(R)} \int_0^{\pi/2} e^{-\alpha R\sin\theta} d\theta.
+\]
+In the interval $[0, \pi/2]$, 
+\[
+\sin\theta \le \frac{2\theta}{\pi}
+\]
+so that 
+\[
+-\alpha R\sin\theta \ge -\alpha R \frac{2\theta}{\pi} \Rightarrow
+e^{-\alpha R\sin\theta} \le e^{-2\alpha R\theta/\pi}
+\]
+and hence
+\begin{eqnarray*}
+\abs{I_R} &\le& R\abs{f(R)} \int_0^{\pi/2} e^{-2\alpha R\sin\theta/\pi} d\theta \\
+&\le& R\abs{f(R)}\frac{\pi}{-2\alpha R} \left[e^{-2\alpha R\sin\theta/\pi}\right]_0^{\pi/2} \\
+&\le& \frac{\pi}{2\alpha}\abs{f(R)}\left(1 - e^{-2\alpha R/\pi}\right).
+\end{eqnarray*}
+Since $\abs{f(R)} \rightarrow 0$ as $R \rightarrow \infty$,
+\[
+\lim_{R \rightarrow \infty}\abs{I_R} = 0.
+\]
+\end{proof}
+
+A few remarks are in order.
+\begin{enumerate}
+\item The lemma is useful only when $\abs{f(z)}$ is a function of $\abs{z}$ alone.
+\item The lemma is applicable for $\alpha < 0$ as well, except that the contour
+should be in the lower half-plane. One should consider the sign of $\alpha$ while
+choosing the contour.
+\end{enumerate}
+
+\section{Problems and examples}\label{c5s4}
+\begin{enumerate}
+\item Evaluate
+\[
+I = \int_0^\infty \frac{x^2dx}{x^2 + 1}{x^2 + 4}.
+\]
+\end{enumerate}
+ 
