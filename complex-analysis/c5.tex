@@ -632,9 +632,84 @@ choosing the contour.
 
 \section{Problems and examples}\label{c5s4}
 \begin{enumerate}
-\item Evaluate
+\item Evaluate \cite{dk}
 \[
-I = \int_0^\infty \frac{x^2dx}{x^2 + 1}{x^2 + 4}.
+I = \int_0^\infty \frac{x^2dx}{(x^2 + 1)(x^2 + 4)}.
+\]
+Clearly,
+\[
+I = \frac{1}{2}\int_{\infty}^\infty \frac{x^2dx}{(x^2 + 1)(x^2 + 4)}.
+\]
+Consider
+\[
+I_C = \frac{1}{2}\int_C \frac{z^2dz}{(z^2 + 1)(z^2 + 4)},
+\]
+where $C$ is a contour comprising of the segment $[-R, R]$ and the semicircle centred
+at the origin and of radius $R$. As $R \rightarrow \infty$, the integrand goes to
+zero and $I_C \rightarrow I$. The integrand has simple poles $i, -i, 2i, -2i$ of which
+only the first and the third are in the interior of $C$. Therefore,
+\[
+I = 2\pi i\left(\Res(f, i) + \Res(f, 2i)\right),
+\]
+where $f$ denotes the integrand. 
+\[
+\Res(f, i) = \lim_{z \rightarrow i}(z - i)f(z) = 
+\lim_{z \rightarrow i}\frac{z^2}{(z+i)(z^2+4)} = \frac{-1}{6i}
+\]
+and
+\[
+\Res(f, 2i) = \lim_{z \rightarrow 2i}(z - 2i)f(z) = 
+\lim_{z \rightarrow 2i}\frac{z^2}{(z^2+1)(z+2i)} = \frac{-4}{(-3)(4i)} = \frac{1}{3i}
+\]
+so that
+\[
+I = \frac{1}{2}\cdot 2\pi i \cdot \left(\frac{-1}{6i} + \frac{1}{3i}\right) = \frac{\pi}{6}.
+\]
+
+\item Evaluate \cite{dk}
+\[
+I = \int_0^{2\pi}\frac{d\theta}{1 + a\sin\theta}, 0 < a^2 \le 1.
+\]
+If $z = e^{i\theta}$ then $dz = ie^{i\theta}d\theta = izd\theta$ and
+\[
+\sin\theta = \frac{z + \bar{z}}{2i} = \frac{1}{2i}\left(z - \frac{1}{z}\right) =
+\frac{1}{2i}\frac{z^2 - 1}{z}
+\]
+so that
+\begin{equation}\label{c5s4e1}
+I = 2\int_C \frac{dz}{az^2+2iz-a},
+\end{equation}
+where $C$ is the unit circle around the origin. The integrand has two simple poles
+\[
+z_1 = -\frac{i}{a}(1 + \sqrt{1 - a^2}), z_2 = -\frac{i}{a}(1 - \sqrt{1 - a^2}).
+\]
+Since $0 < a^2 \le 1$, we also have $a^2 < a$ so that $1 + a^2 - 2a < 1 - a^2$ and
+\[
+1 - a < \sqrt{1 - a^2} \Rightarrow 1 - \sqrt{1 - a^2} < a \Rightarrow
+\frac{1 - \sqrt{1 - a^2}}{a} < 1.
+\]
+Therefore, $z_2$ lies inside $C$.
+
+Since $a^2 < a$, $-2a^2 > -2a$, $1 - 2a^2 > 1 - 2a$ or $1 - a^2 > (1 - a)^2$ so that
+\[
+\sqrt{1 - a^2} > 1 - a > a - 1 \Rightarrow \frac{ 1 + \sqrt{1 - a^2}}{a} > 1
+\]
+so that $z_1$ lies outside $C$. Therefore
+\[
+I = 2\pi i \cdot 2 \cdot \Res(f, z_2),
+\]
+where the additional factor of $2$ comes from \eqref{c5s4e1}. The integrand can be 
+written as 
+\[
+f(z) = \frac{1}{a}\frac{1}{(z-z_1)(z-z_2)}
+\]
+so that the residue is
+\[
+\frac{1}{a}\frac{1}{z_2 - z_1} = \frac{1}{2i\sqrt{1-a^2}}
+\]
+and hence
+\[
+I = \frac{2\pi}{\sqrt{1 - a^2}}.
 \]
 \end{enumerate}
  
