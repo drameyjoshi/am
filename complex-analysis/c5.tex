@@ -711,5 +711,70 @@ and hence
 \[
 I = \frac{2\pi}{\sqrt{1 - a^2}}.
 \]
+
+\item Evaluate 
+\[
+I = \int_0^{2\pi}\exp\left(-\frac{2\cos\theta}{a}\right)
+\cos\left(\theta + \frac{2\sin\theta}{a}\right)d\theta.
+\]
+We observe that
+\begin{eqnarray*}
+I &=& \re\left(\int_0^{2\pi}\exp\left(-\frac{2\cos\theta}{a}\right)
+\exp\left(i\left(\theta + \frac{2\sin\theta}{a}\right)\right)d\theta\right) \\
+ &=& \re\left(\int_0^{2\pi}e^{i\theta}\exp\left(-\frac{2}{a}e^{-i\theta}\right)d\theta\right)
+\end{eqnarray*}
+If $z = e^{i\theta}$ then
+\[
+I = \re\left(-i\int_C\exp\left(-\frac{2}{az}\right) dz \right),
+\]
+where $C$ is the unit circle with centre at the origin. The Laurent expansion of
+the integrand is
+\[
+\exp\left(-\frac{2}{az}\right) = 1 - \frac{2}{az} + \sum_{k \ge 2}\frac{1}{k!}\left(\frac{2}{a}\right)^kz^{-k}
+\]
+so that its residue at the origin is $-2/a$ and hence
+\[
+I = 2\pi i \cdot (-i) \cdot \frac{-2}{a} = -\frac{4\pi}{a}.
+\]
+
+Since
+\[
+\im\left(-i\int_C\exp\left(-\frac{2}{az}\right) dz \right) = 0,
+\]
+we have
+\[
+\int_0^{2\pi}\exp\left(-\frac{2\cos\theta}{a}\right)
+\cos\left(\theta + \frac{2\sin\theta}{a}\right)d\theta = 0.
+\]
+
+\item Evaluate
+\[
+I = \int_0^\infty \frac{\sin x}{x}dx.
+\]
+The integrand is an even function about the origin, therefore,
+\[
+I = \frac{1}{2}\int_{-\infty}^\infty \frac{\sin x}{x}dx =
+\frac{1}{2}\im\left(\int_{-\infty}^\infty \frac{e^{ix}}{x}dx\right).
+\]
+Consider the integral,
+\[
+I_1 = \int_C \frac{e^{iz}}{z}dz,
+\]
+where $C$ is the contour made up of the segment $[-R, R]$ and a semi-circle of
+radius $R$ centred at the origin. The integrand on the semi-circle is
+\[
+\frac{e^{iR\cos\theta}e^{-R\sin\theta}}{iRe^{i\theta}}.
+\]
+As $R \rightarrow \infty$, the integrand tends to zero and the integral is
+effectively along the entire real axis.
+
+The integrand has a singularity at the origin, which lies on the contour $C$.
+Therefore, we cannot use equation \eqref{c5s3e5}.We therefore change $C$ so that
+the segment $[-R, R]$ is replaced with a segment $[-R, -r]$, a semicircle in
+the upper half plane of radius $r$ and centre $0$ and the segment $[r, R]$. We
+will evaluate the integral along the little semi-circle, $\gamma$, of radius $r$.
+\[
+\int_\gamma 
+\]
 \end{enumerate}
  
