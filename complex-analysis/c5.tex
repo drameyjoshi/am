@@ -367,7 +367,7 @@ Zeros of an analytic function are isolated.
 \end{thm}
 \begin{proof}
 Let $z_0$ be an $n$-th order zero of an analytic function $f:\soc \rightarrow
-\soc$. Then
+\soc$ and let $f$ not be identically zero. Then
 \[
 f(z) = \sum_{k=n}^\infty a_k(z - z_0)^k = (z - z_0)^n \sum_{k=0}^n b_k(z-z_0)^k
 \]
@@ -378,6 +378,19 @@ h(z) = \sum_{k=0}^n(z - z_0)^k
 then $f(z) = (z - z_0)^n h(z)$ and $h$ does not have a zero at $z_0$. Further,
 $h$ is continuous at $z_0$. Therefore, there is a neighbourhood of $z_0$ where
 $h$ is not zero.
+\end{proof}
+
+\begin{cor}\label{c5s2c1}
+Let $f:U \rightarrow \soc$ be analytic throughout the open set $U$. If $f=0$
+on a set $V$ and if $V$ has a limit point in $U$ then $f = 0$ identically in
+$U$.
+\end{cor}
+\begin{proof}
+Let $z_0$ be a limit point of $V$ in $U$. Since $U$ is open, there exists
+$\epsilon > 0$ such that $\{z : \abs{z - z_0} < \epsilon\} \in U$. By theorem
+\ref{c5s2t1} if $f$ is analytic then its zeros are isolated. The only way
+an analytic function be zero in $\{z : \abs{z - z_0} < \epsilon\}$ is if it is
+identically zero.
 \end{proof}
 
 \begin{defn}\label{c5s2d2}
@@ -626,11 +639,87 @@ A few remarks are in order.
 \begin{enumerate}
 \item The lemma is useful only when $\abs{f(z)}$ is a function of $\abs{z}$ alone.
 \item The lemma is applicable for $\alpha < 0$ as well, except that the contour
-should be in the lower half-plane. One should consider the sign of $\alpha$ while
+should be in the lower half-plane. We should consider the sign of $\alpha$ while
 choosing the contour.
 \end{enumerate}
 
-\section{Problems and examples}\label{c5s4}
+\section{Cauchy principle value}\label{c5s4}
+Sometimes the integrand has a singularity on the path of integration. In such 
+situations it we deform the path slightly to skirt the singularity. Consider 
+an integral of the form
+\begin{equation}\label{c5s4e1}
+I = \int_{-\infty}^\infty \frac{f(x)}{x - x_0}dx,
+\end{equation}
+where the function $f$ is such that $\abs{f(z)} \rightarrow \infty$ as $\abs{z}
+\rightarrow \infty$. One then considers the integral
+\[
+I_C = \int_C \frac{f(z)}{z - x_0}dz,
+\]
+where the closed contour $C$ consists of the segment $[-R, R]$ and the semi-circle
+of radius $R$ and origin as the centre. However, we cannot apply the residue
+theorem directly because the singularity is on the path of integration. We distort
+the curve $C$ so that the segment $[-R, R]$ is replaced with the segment $[-R,x_0-r]$,
+the semicircle $\gamma$ of radius $r$ and centre $x_0$ and the segment $[x_0+r, R]$.
+The semicircle can either be in the upper half-plane or the lower one. Let us choose
+it to be in the upper half. Now the distorted curve no longer encloses the singularity
+and hence,
+\[
+\int_C f(z) dz = 0
+\]
+so that
+\[
+\int_{-R}^{x_0-r}\frac{f(x)}{x-x_0}dx + \int_\gamma\frac{f(z)}{z-x_0}dz +
+\int_{x_0+r}^R\frac{f(x)}{x-x_0}dx + \int_\Gamma\frac{f(z)}{z-x_0}dz = 0.
+\]
+In the limit $R \rightarrow \infty$, the above equation becomes
+\begin{equation}\label{c5s4e2}
+\int_{-\infty}^{x_0-r}\frac{f(x)}{x-x_0}dx + \int_\gamma\frac{f(z)}{z-x_0}dz +
+\int_{x_0+r}^\infty\frac{f(x)}{x-x_0}dx = 0.
+\end{equation}
+Now take the limit $r \rightarrow 0$. Along the curve $\gamma$, $z = x_0 + 
+re^{i\theta}$ so that $dz = ire^{i\theta}$ and $\theta$ ranges from $\pi$ to
+$0$. Thus,
+\[
+I_\gamma = \int_{-\pi}^0 \frac{f(x_0 + re^{i\theta})}{re^{i\theta}}ire^{i\theta}d\theta
+= -i\int_0^\pi f(x+0 + re^{i\theta})d\theta.
+\]
+In the limit $r \rightarrow 0$, the value of the integrand is $f(x_0)$,
+\[
+I_\gamma = -i\pi f(x_0)
+\]
+and equation \eqref{c5s4e2} becomes
+\[
+\lim_{r\rightarrow 0}\left(\int_{-\infty}^{x_0-r}\frac{f(x)}{x-x_0}dx +
+\int_{x_0+r}^\infty\frac{f(x)}{x-x_0}dx\right) -i\pi f(x_0) = 0
+\]
+or
+\begin{equation}\label{c5s4e3}
+\lim_{r\rightarrow 0}\left(\int_{-\infty}^{x_0-r}\frac{f(x)}{x-x_0}dx +
+\int_{x_0+r}^\infty\frac{f(x)}{x-x_0}dx\right) = i\pi f(x_0).
+\end{equation}
+The expression on the left hand side of \eqref{c5s4e3} is called the \emph{
+Cauchy Principal Value} and is denoted by
+\[
+\fint_{-\infty}^\infty \frac{f(x)}{x-x_0}dx
+\]
+Thus,
+\begin{equation}\label{c5s4e4}
+\fint_{-\infty}^\infty \frac{f(x)}{x-x_0}dx = i\pi f(x_0).
+\end{equation}
+
+If, on the other hand, we had chosen the semi-circle $\gamma$ to be in the
+lower half-plane then the distorted contour would have enclosed the singularity
+and the right hand side of equation \eqref{c5s4e2} would have become $2\pi if(x_0)$.
+The limits of $I_\gamma$ would have been from $\pi$ to $2\pi$ and its value
+would have been $i\pi f(x_0)$. The equation prior to \eqref{c5s4e3} would have
+been
+\[
+\lim_{r\rightarrow 0}\left(\int_{-\infty}^{x_0-r}\frac{f(x)}{x-x_0}dx +
+\int_{x_0+r}^\infty\frac{f(x)}{x-x_0}dx\right) + i\pi f(x_0) = 2\pi if(x_0)
+\]
+and we would have once again got equation \eqref{c5s4e4}.
+
+\section{Problems and examples}\label{c5s5}
 \begin{enumerate}
 \item Evaluate \cite{dk}
 \[
@@ -676,7 +765,7 @@ If $z = e^{i\theta}$ then $dz = ie^{i\theta}d\theta = izd\theta$ and
 \frac{1}{2i}\frac{z^2 - 1}{z}
 \]
 so that
-\begin{equation}\label{c5s4e1}
+\begin{equation}\label{c5s5e1}
 I = 2\int_C \frac{dz}{az^2+2iz-a},
 \end{equation}
 where $C$ is the unit circle around the origin. The integrand has two simple poles
@@ -698,7 +787,7 @@ so that $z_1$ lies outside $C$. Therefore
 \[
 I = 2\pi i \cdot 2 \cdot \Res(f, z_2),
 \]
-where the additional factor of $2$ comes from \eqref{c5s4e1}. The integrand can be 
+where the additional factor of $2$ comes from \eqref{c5s5e1}. The integrand can be 
 written as 
 \[
 f(z) = \frac{1}{a}\frac{1}{(z-z_1)(z-z_2)}
