@@ -1,0 +1,299 @@
+\chapter{Analytic Continuation}\label{c6}
+\section{Beyond Cauchy integral formula}\label{c6s1}
+Cauchy's integral formula (theorem \ref{c4s1t3} tells us that if we are given the
+values of an analytic function $f$ on a closed curve $C$ such that $C$ lies 
+entirely in the open subset $U$ in which $f$ is analytic then one can find the 
+value of $f$ at any point inside $C$. We would now like to consider a more general
+question. If we know the values of $f$ in a set $D$ can we infer the value of $f$
+in a larger set, given that $f$ is analytic in either of them.
+
+\begin{thm}\label{c6s1t1}
+Let $f_1$ and $f_2$ be complex-valued functions analytic on a domain $U \subset \soc$.
+If their values coincide in a set whose limit point lies in $U$ then $f_1 = f_2$ in 
+$U$.
+\end{thm}
+\begin{proof}
+Let $f_1$ and $f_2$ agree on a set $V$ whose limit point lies in $U$. The function 
+$f = f_1 - f_2$ is analytic and has value zero in set $V$. By corollary \ref{c5s1c1}
+$f = 0$ throughout $U$.
+\end{proof}
+
+This theorem assures us that two different analytic functions cannot coincide in a
+neighbourhood. If they differ in a neighbourhood then they differ everywhere else.
+
+When a function is analytic at a point $z_0$ it has a Taylor series expansion
+\begin{equation}\label{c6s1e1}
+f(z) = \sum_{k \ge 0}a_k^0(z - z_0)^k
+\end{equation}
+in a neighbourhood $\abs{z - z_0} < \gamma_0$ of $z_0$. Let $z_1$ be a point in
+this neighbourhood. Equation \eqref{c6s1e1} allows us to compute $f(z_1)$. Since
+the series in \eqref{c6s1e1} is uniformly continuous in the neighbourhood, we can
+differentiate it term by term and get the values $D^k(f)(z_1)$ for all $k \ge 1$.
+This allows us to construct the representation
+\begin{equation}\label{c6s1e2}
+f(z) = \sum_{k \ge 0}a_k^1(z - z_1)^k.
+\end{equation}
+Equation \eqref{c6s1e2} allows us to compute values of $f$ in the neighbourhood
+$\gamma_1$ of $z_1$. The values of $f$ computed using \eqref{c6s1e1} and 
+\eqref{c6s1e2} coincinde in $\gamma_0 \cap \gamma_1$. Therefore, by theorem 
+\ref{c6s1t1} they coincide all throughout. 
+
+We can continue this process all thoughout the region $U$ in which $f$ is analytic.
+It allows us to use the Taylor series representation of an analytic function at
+one point to compute that at another point in the domain of analyticity. It is 
+called \emph{analytic continuation}. Note that one cannot carry out this procedure
+beyond the domain in which $f$ is analytic. One can only use extend a power series
+representation in one neighbourhood to another one in a different neighbourhood.
+
+\section{Examples}\label{c6s2}
+\begin{enumerate}
+\item Consider the functions \cite{spiegel1964schaum}
+\begin{equation}\label{c6s2e1}
+f(z) = \sum_{k=1}^\infty \frac{z^k}{k}.
+\end{equation}
+If $f_k$ denotes its $k$-th term then,
+\[
+\frac{f_{k+1}}{f_k} = \frac{k}{k+1}z
+\]
+and 
+\[
+\abs{\frac{f_{k+1}}{f_k}} < 1 \text{ if } \abs{z} < 1 + \frac{1}{k}
+\]
+for all $k \in \soi^+$. Thus, the series converges for all $z$ with $\abs{z} < 1$.
+Now consider the function
+\begin{equation}\label{c6s2e2}
+g(z) = \frac{\pi i}{4} - \frac{\log 2}{2} + 
+\sum_{k=1}^\infty \frac{1}{k}\left(\frac{z-i}{1-i}\right)^k.
+\end{equation}
+The convergence of the series is unaffected by its first two terms. If $g_k$ denotes 
+the $k$-th term of the sum then,
+\[
+\frac{g_{k+1}}{g_k} = \frac{k}{k+1}\frac{z-i}{1-i}.
+\]
+The series converges if
+\[
+\abs{\frac{g_{k+1}}{g_k}} < 1
+\] 
+that is if
+\[
+\abs{\frac{z-i}{1-i}} < 1 + \frac{1}{k}
+\]
+for all $k \in \soi^+$. If we write $z = x + iy$ then the left hand side is
+\[
+\sqrt{\frac{x^2 + (y - 1)^2}{2}} < 1.
+\]
+That is, the series in \eqref{c6s2e2} converges in the circle with centre $(0, 1)$
+and radius $\sqrt{2}$. In terms of the complex variable, the region of convergence
+is $\abs{z - i} < \sqrt{2}$.
+
+Now consider $g(0)$. From \eqref{c6s2e2},
+\begin{eqnarray*}
+g(0) &=& \frac{\pi i}{4} - \frac{\log 2}{2} + 
+\sum_{k=1}^\infty \frac{1}{k}\left(\frac{-i}{1-i}\right)^k \\
+ &=& \frac{\pi i}{4} - \frac{\log 2}{2} + 
+\sum_{k=1}^\infty \frac{1}{k}\left(\frac{1-i}{2}\right)^k \\
+ &=& \frac{\pi i}{4} - \frac{\log 2}{2} + f\left(\frac{1-i}{2}\right)
+\end{eqnarray*}
+
+We know that $f$ is the Taylor expansion of $-\log(1 - z)$ around the origin and
+\[
+1 - \frac{1 + i}{2} = \frac{1 - i}{2}
+\]
+and that
+\[
+\log\left(\frac{1 + i}{2}\right) = \log\frac{1}{\sqrt{2}} + \frac{i\pi}{4}
+= \frac{i\pi}{4} - \frac{\log 2}{2}.
+\]
+Therefore,
+\[
+g(0) = \log\left(\frac{1 + i}{2}\right) - \log\left(1 - \frac{1 + i}{2}\right) = 0 = f(0).
+\]
+Since the two functions agree at $z = 0$, $g$ is an analytic continuation of $f$.
+
+\item Consider the two series \cite{dk}
+\begin{eqnarray}
+f(z) &=& \sum_{k \ge 0}z^k \label{c6s2e3} \\
+g(z) &=& \sum_{k \ge 0}\left(\frac{2}{3}\right)^{k+1}\left(z + \frac{1}{2}\right)^k.
+\label{c6s3e4}
+\end{eqnarray}
+$f$ converges in $\abs{z} < 1$. If $g_k$ denotes the $k$th term of $g$ then the series
+converges in the region where
+\[
+\abs{\frac{g_{k+1}}{g_k}} < 1
+\]
+that is
+\[
+\frac{2}{3}\abs{z + \frac{1}{2}} < 1 \Rightarrow \abs{z + \frac{1}{2}} < \frac{3}{2}.
+\]
+Thus, $f$ converges on the open unit disc centred at the origin and $g$ converges on
+the open disc of radius $3/2$ and centre $(-1/2, 0)$. The two discs overlap and if the
+two functions are equal at any point in the common region then they are an analytic
+continuation of each other.
+
+We can readily conclude that
+\begin{eqnarray*}
+f\left(\frac{1}{2}\right) &=& 2 \\
+g\left(\frac{1}{2}\right) &=& 2.
+\end{eqnarray*}
+\end{enumerate}
+
+If $f$ and $g$ are analytic functions then they are different algebraic expressions of
+the same function. The origin, traditional view of a function was an algebraic/functional
+expression. The modern view of a function is that of a mapping between two sets. The idea
+of analytic continuation is probably the simplest illustration of the power and generality
+of the modern concept of a function. It allows us to express a function using different
+algebraic forms in different parts of the domain.
+
+\section{Schwarz reflection principle}\label{c6s3}
+In the examples considered in section \ref{c6s2} the functions that were analytic 
+continuation of each other were defined on open sets with non-null intersections. The
+domains of the functions were \emph{not} disjoint. We now relax that requirement.
+
+\begin{prop}\label{c6s3p1}
+Let $f: U \rightarrow \soc$ and $g: V \rightarrow \soc$ be analytic on their domains and 
+let $R$ be the boundary between $U$ and $V$. If $f(z) = g(z)$ on $R$ then $f$ and $g$ are
+analytic continuation of each other and they define a function $h: U \cup V \rightarrow
+\soc$ such that
+\[
+h(z) = \begin{cases} f(z) & \text{ if } z \in U \cup R \\
+g(z) & \text{ if } z \in V \cup R
+\end{cases}
+\]
+\end{prop}
+\begin{proof}
+The open sets $U$ and $V$ has a common boundary $R$. We can construct a closed contour $C$
+in $U + V$ such that a part $C_1$ lies in $U$ and $C_2$ in $V$. We can now construct curves
+$B_1$ and $B_2$, arbitrarily close to $R$ such that the closed curve $C_1 + B_1$ is a closed
+curve in $U$ and $C_2 + B_2$ is a closed curve in $V$. Since $f$ and $g$ are analytic in
+$U$ and $V$,
+\begin{eqnarray*}
+\int_{C_1} f(z)dz + \int_{B_1} f(z)dz &=& 0 \\
+\int_{C_2} g(z)dz + \int_{B_2} g(z)dz &=& 0 
+\end{eqnarray*}
+The curves $B_1$ and $B_2$ are traversed in an opposite sense. Since $f$ and $g$ agree on 
+$R$ and are analytic in $U$ and $V$, they also agree on $B_1$ and $B_2$ which are 
+arbitrarily close to $R$. Therefore,
+\[
+\int_{B_1} f(z)dz = -\int_{B_2} g(z)dz
+\]
+because of the opposite directions along the two curves. Therefore,
+\[
+\int_{C_1} f(z) dz + \int_{C_2} g(z)dz = 0
+\]
+and hence, by Morera's theorem (\ref{c4s2t3}) the function $h$ is analytic on $U \cup V$.
+As a result, $f$ and $g$ are analytic continuation of each other.
+\end{proof}
+
+\begin{prop}\label{c6s3p2}
+If $f$ is analytic in $U$ then $\overline{f(z)} = \bar{f}(\bar{z})$.
+\end{prop}
+\begin{proof}
+Since $f$ is analytic in $U$, for any $z_0 \in U$, we can express
+\[
+f(z) = \sum_{k \ge 0}a_n(z - z_0)^k
+\]
+in the neighbourhood of $z_0$. Therefore,
+\[
+\overline{f(z)} = \sum_{k \ge 0}\bar{a}_n(\bar{z} - \bar{z}_0)^k = \bar{f}(\bar{z}).
+\]
+Since $z_0$ was chosen arbitrarily, this is true for all $U$.
+\end{proof}
+
+\begin{prop}\label{c6s3p3}
+If $f: U \rightarrow \soc$ is analytic in $U$ and if $C$ is a curve entirely in $U$ then
+\[
+\overline{\int_C f(z)dz } = \int_{\overline{C}}\bar{f}(\bar{z})dz.
+\]
+\end{prop}
+\begin{proof}
+We start with the definition of the Riemann integral
+\[
+\int_C f(z)dz = \lim_{n \rightarrow \infty}\sum_{k=1}^n f(\xi_k)(z_k - z_{k-1})
+\]
+where the curve $C$ is divided into a mesh $z_0, z_1, \ldots, z_n$. Then
+\[
+\abs{\int_C f(z)dz} =  \lim_{n \rightarrow \infty}\sum_{k=1}^n \overline{f(\xi_k)}
+\overline{(z_k - z_{k-1})}
+\]
+Since $f$ is analytic, by proposition \ref{c6s3p2}, $\overline{f(\xi_k)} = \bar{f}
+(\bar{\xi}_k)$ and hence,
+\[
+\abs{\int_C f(z)dz} =  \lim_{n \rightarrow \infty}\sum_{k=1}^n \bar{f}(\bar{\xi}_k)
+\overline{(z_k - z_{k-1})} = \int_{\overline{C}} \bar{f}(\bar{z})dz.
+\]
+Note that the grid $\bar{z}_0, \bar{z}_1, \ldots$ is a grid on the curve $\overline{C}$.
+\end{proof}
+
+This proposition allows us to find $g$ given $f$ if $f$ is real-valued on the real axis.
+\begin{thm}[Schwarz reflection principle]\label{c6s3t1}
+Let $f$ be analytic in the open set $U$ whose boundary consists of a portion $R$ of the
+real axis. Then an analytic continuation of $f$ exists on the other side of the real axis
+and is given by $g(z) = \bar{f}(\bar{z})$ on $\bar{U} = \{z \in \soc: \bar{z} \in U\}$.
+\end{thm}
+\begin{proof}
+Construct a curve $C$ in $U$ such that the segment $R$ lies on it. Let $C_1$ be the part
+of $C$ not on the real axis. Since $f$ is analytic in $U$, by Cauchy-Goursat theorem,
+\ref{c4s1t2},
+\[
+\int_C f(z)dz = 0 \Rightarrow \int_{C_1} f(z)dz + \int_R f(x)dx = 0.
+\]
+Define $\bar{U} = \{z \in \soc: z \in U\}$. Define $g: \bar{U} \rightarrow \soc$ as
+\[
+g(z) = \bar{f}(\bar{z}).
+\]
+Then, by proposition \ref{c6s3p3},
+\[
+\int_{\overline{C}}\bar{f}(\bar{z})dz = 0
+\]
+and hence
+\[
+\int_{\bar{C_1}}g(z)dz - \int_R g(x)dx = 0.
+\]
+Clearly $f(x) = g(x)$ on $R$ and hence,
+\[
+\int_C f(z)dz + \int_{\overline{C}} g(z)dz = 0.
+\]
+Hence, the function $h : U \cup \bar{U} \rightarrow \soc$, defined as
+\[
+h(z) = \begin{cases}
+f(z) & \text{ if } z \in U \\
+g(z) & \text{ if } z \in \bar{U}
+\end{cases}
+\]
+is analytic, by proposition \ref{c6s3p1}, throughout $U \cup \bar{U}$. That 
+also makes $f$ and $g$ analytic continuations of each other.
+\end{proof}
+
+\begin{rem}
+Schwarz reflection principles gives the algebraic form of the continued function,
+albeit in the special case when the function is real-valued on the real axis.
+\end{rem}
+
+\begin{rem}
+It is important to have $f$ real-valued on the real axis. Otherwise, $f(z)$
+will not be the same as $g(z) = \bar{f}(\bar{z})$ and the integrals of $f$
+and $g$ on $R$ will not have the same magnitude.
+\end{rem}
+
+\section{Problems}\label{c6s5}
+\begin{enumerate}
+\item Let
+\[
+f(z) = \int_0^\infty t^3 e^{-zt}dt.
+\]
+Show that $f$ is analytic in the half-plane $\abs{z} > 0$. Find a function which is
+its analytic continuation in the left-half plane.
+
+Successively integrating by parts, if $\re{z} > 0$,
+\[
+f(z) = \frac{6}{z^4}.
+\]
+Now, $6/z^4$ is analytic on the entire complex plane, except $z = 0$. Therefore, it
+is the analytic continuation of $f$ in the left-half of the plane.
+
+\item We showed in equation \eqref{c1s3e29} that $\sin^2(z) + \cos^2(z) = 1$ for
+all $z \in \soc$ by writing $z = x + iy$. There is an easier way to show it. Since
+$\sin^2(x) + \cos^2(x) = 1$ for all $x \in \sor$, the analytic function $\sin^2(z)
++ \cos^2(z) - 1 = 0$ on the real line. Therefore, by analytic continuation it is
+zero throughout the complex plane.
+\end{enumerate}
