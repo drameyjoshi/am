@@ -510,14 +510,14 @@ is analytic. Let us write the integral as
 \]
 From equation \eqref{c4s1e19}, this integral is
 \begin{equation}\label{c5s3e1}
-\int_C f(z) = \frac{2\pi i}{(m-1)!}D^{m-1}g(z_0) = 
+\int_C f(z) dz = \frac{2\pi i}{(m-1)!}D^{m-1}g(z_0) = 
 \frac{2\pi i}{(m-1)!}D^{m-1}((z - z_0)^mf(z))
 \end{equation}
 
 \begin{defn}\label{c5s3d1}
 The quantity
 \[
-\frac{D^{m-1}((z - z_0)^mf(z))}{(m-1)!}
+\frac{D^{m-1}((z - z_0)^mf)(z_0)}{(m-1)!}
 \]
 is called the residue of $f$ at the pole $z_0$ of order $m$ and is denoted by 
 $\Res(f,z_0)$.
@@ -719,7 +719,97 @@ been
 \]
 and we would have once again got equation \eqref{c5s4e4}.
 
-\section{Problems and examples}\label{c5s5}
+\section{Mittag-Leffler expansion}\label{c5s5}
+\begin{thm}\label{c5s5t1}
+Let $f: \soc \rightarrow \soc$ be a bounded function such that all its singularities 
+are simple poles within a distance  from the origin. If the poles are ordered as
+$a_1, a_2, \ldots$ according to their absolute value and if $b_1, b_2, \ldots$ 
+are the residues of $f$ at the poles them
+\[
+f(z) = f(0) + \sum_{k \ge 0}b_n\left(\frac{1}{z - a_n} + \frac{1}{a_n}\right).
+\]
+\end{thm}
+\begin{proof}
+Let $z_0$ be a point at which $f$ is analytic. Consider the function
+\[
+g(z) = \frac{f(z)}{z - z_0}.
+\]
+It has simple poles at $z_0, a_1, a_2, \ldots$ and
+\begin{eqnarray*}
+\Res(g, a_k) &=& \lim_{z \rightarrow a_k}(z - a_k)g(z) \\
+ &=& \lim_{z \rightarrow a_k}(z - a_k)\frac{f(z)}{z - z_0} \\
+ &=& \frac{b_k}{a_k - z_0} \\
+\Res(g, z_0) &=& \lim_{z \rightarrow z_0}(z - z_0)\frac{f(z)}{z - z_0} \\
+ &=& f(z_0).
+\end{eqnarray*}
+Let $C$ be a circle of radius $R$ and origin as centre and let $R$ be such that
+all the poles of $g$ are in its interior. Then,
+\begin{equation}\label{c5s5e1}
+\int_C g(z)dz = \int_C\frac{f(z)}{z - z_0}dz
+= 2\pi i\left(\sum_{k \ge 0}\frac{b_k}{a_k - z_0} + f(z_0)\right).
+\end{equation}
+If $f$ is analytic at the origin, choose $z_0 = 0$ so that
+\begin{equation}\label{c5s5e2}
+\int_C\frac{f(z)}{z}dz = 2\pi i\left(\sum_{k \ge 0}\frac{b_k}{a_k} + f(0)\right).
+\end{equation}
+Subtracting \eqref{c5s5e2} from \eqref{c5s5e1},
+\[
+\frac{1}{2\pi i}\left(\int_C\frac{f(z)}{z}dz - \int_C\frac{f(z)}{z - z_0}dz\right) = 
+f(z_0) - f(z) + \sum_{k \ge 0}\left(\frac{b_k}{a_k - z_0} - \frac{b_k}{a_k}\right).
+\]
+Combining the two integrals,
+\[
+\frac{z_0}{2\pi i}\int_C\frac{f(z)}{z(z - z_0)}dz =
+f(z_0) - f(z) + \sum_{k \ge 0}\left(\frac{b_k}{a_k - z_0} - \frac{b_k}{a_k}\right).
+\]
+Since $f$ is bounded there is an $M > 0$ such that $\abs{f(z)} < M$ for all $z \in \soc$.
+If we let $R \rightarrow \infty$, the integrand goes as $M/R^2$ and the integral vanishes
+so that
+\[
+f(z_0) = f(0) + \sum_{k \ge 0}\left(\frac{b_k}{a_k - z_0} - \frac{b_k}{a_k}\right).
+\]
+The theorem follows from the fact that $z_0$ was an arbitrary point at which $f$
+was analytic.
+\end{proof}
+
+Mittag-Leffler expansion allows us to construct series representation of functions.
+As an example, let
+\[
+f(z) = \cot(z) - \frac{1}{z} = \frac{z\cos(z) - \sin(z)}{z\sin(z)}.
+\]
+We first note that $z = 0$ is a removable singularity of $f$ as
+\begin{eqnarray*}
+\lim_{z \rightarrow 0}f(z) 
+ &=& \lim_{r \rightarrow 0}\frac{z\cos(z) - \sin(z)}{z\sin(z)} \\
+ &=& \lim_{r \rightarrow 0}\frac{- z\sin(z)}{\sin(z) + z\cos(z)} \\
+ &=& \lim_{r \rightarrow 0}\frac{-\sin(z) - z\cos(z)}{2\cos(z) - z\sin(z)} \\
+ &=& 0.
+\end{eqnarray*}
+We can, therefore, set $f(0) = 0$.
+
+$f$ has simple pole at $z = k\pi$, for $k \in \soi$. If $k = 0$,
+\[
+\Res(f, 0) = \lim_{z \rightarrow 0} zf(z) = \lim_{z \rightarrow 0} z\cot(z) - 1 = 0.
+\]
+
+If $k \ne 0$,
+\begin{eqnarray*}
+\Res(f, 0) &=& \lim_{z \rightarrow k\pi}(z - k\pi)f(z) \\
+ &=& \lim_{z \rightarrow k\pi}\frac{z - k\pi}{\sin(z)}\frac{z\cos(z) - \sin(z)}{z} \\
+ &=& (-1)^k[(-1)^k - 0] \\
+ &=& 1
+\end{eqnarray*}
+
+Therefore, the Mittag-Leffler expansion of $f$ is
+\[
+f(z) = f(0) + \sum_{k \ge 0}\left(\frac{b_k}{a_k - z_0} - \frac{b_k}{a_k}\right)
+\]
+or
+\[
+\cot(z) = \frac{1}{z} + \sum_{k = -\infty}^\infty\left(\frac{1}{k\pi - z} - \frac{1}{k\pi}\right)
+\]
+
+\section{Problems and examples}\label{c5s6}
 \begin{enumerate}
 \item Evaluate \cite{dk}
 \[
@@ -765,7 +855,7 @@ If $z = e^{i\theta}$ then $dz = ie^{i\theta}d\theta = izd\theta$ and
 \frac{1}{2i}\frac{z^2 - 1}{z}
 \]
 so that
-\begin{equation}\label{c5s5e1}
+\begin{equation}\label{c5s6e1}
 I = 2\int_C \frac{dz}{az^2+2iz-a},
 \end{equation}
 where $C$ is the unit circle around the origin. The integrand has two simple poles
@@ -787,7 +877,7 @@ so that $z_1$ lies outside $C$. Therefore
 \[
 I = 2\pi i \cdot 2 \cdot \Res(f, z_2),
 \]
-where the additional factor of $2$ comes from \eqref{c5s5e1}. The integrand can be 
+where the additional factor of $2$ comes from \eqref{c5s6e1}. The integrand can be 
 written as 
 \[
 f(z) = \frac{1}{a}\frac{1}{(z-z_1)(z-z_2)}
