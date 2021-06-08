@@ -116,5 +116,50 @@ From equations \eqref{c3s1e1} and \eqref{c3s1e2},
 \end{equation}
 This is another proof of theorem \ref{c3s1t1} \cite{ablowitz2003complex}.
 
+\section{Problems and examples}\label{c3s2}
+\begin{enumerate}
+\item Consider the transformation $w = z^{-1}$. It is analytic throughout the
+complex plane except at the origin. If $w = u + iv$ then
+\begin{eqnarray*}
+u &=& \frac{x}{x^2 + y^2} \\
+v &=& -\frac{y}{x^2 + y^2}.
+\end{eqnarray*}
+Consider the line $x = c_1$. It transforms as
+\begin{eqnarray*}
+u &=& \frac{c_1}{c_1^2 + y^2} \\
+v &=& -\frac{y}{c_1^2 + y^2}
+\end{eqnarray*}
+so that
+\[
+\frac{u}{v} = -\frac{c_1}{y} \rightarrow y = -c_1\frac{v}{u}.
+\]
+Substituting for $y$ in the previous pair of equations we get
+\begin{eqnarray*}
+u &=& \frac{c_1 u^2}{c_1^2u^2 + c_1^2v^2} \\
+  &=& \frac{u^2}{c_1u^2 + c_1 v^2} \\
+  &=& c_1u^2 + c_1v^2
+\end{eqnarray*}
+which can be written as
+\[
+\left(u - \frac{1}{2c_1}\right)^2 + v^2 = \frac{1}{4c_1^2}.
+\]
+This is the equation of a circle of radius $1/(2c_1)$ and centre $(1/(2c_1), 0)$.
+The imaginary axis is tangential to it at the origin.
 
+Now consider the line $y = c_2$. It transforms as
+\begin{eqnarray*}
+u &=& \frac{x}{x^2 + c_2^2} \\
+v &=& -\frac{c_2}{x^2 + c_2^2}
+\end{eqnarray*}
+from which we get
+\[
+\frac{u}{v} = -\frac{x}{c_2} \Rightarrow x = -c_2\frac{u}{v}.
+\]
+Substituting for $x$ in the previous pair of equations we get
+\[
+u^2 + \left(v + \frac{1}{2c_2}\right)^2 = \frac{1}{4c_2^2}.
+\]
+This is the equation of a circle with radius $1/(2c_2)$ and centre $(0, -1/(2c_2)$.
+The real axis is tangential to it at the origin.
 
+\end{enumerate}
