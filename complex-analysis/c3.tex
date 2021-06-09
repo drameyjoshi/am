@@ -162,4 +162,28 @@ u^2 + \left(v + \frac{1}{2c_2}\right)^2 = \frac{1}{4c_2^2}.
 This is the equation of a circle with radius $1/(2c_2)$ and centre $(0, -1/(2c_2)$.
 The real axis is tangential to it at the origin.
 
+\item Find a linear transformation that maps the circle $\abs{z - 1} = 1$ to the
+circle $\abs{w - 3i/2} = 2$.
+
+A linear transformation has the form $w = \alpha z + \beta$ where $\alpha, \beta
+\in \soc$. Let $\alpha = ae^{i\theta}$ then
+\[
+w = a\left(e^{i\theta}z - \frac{\beta}{a}\right).
+\]
+Thus, a linear transformation involves,
+\begin{enumerate}
+\item Rotation by an angle $\theta$ followed by
+\item Translation by a displacement $-\beta/a$ followed by
+\item Scaling by a factor of $a$.
+\end{enumerate}
+In this example, there is no rotation. Therefore $\theta = 0$. There is a stretching
+by a factor of $2$. When stretched, the circle $\abs{z - 1} = 1$ becomes $\abs{2z - 2}
+= 2$ so that the translation is $3i/2 - 2$. Therefore, let
+\[
+w = 2z + \frac{3i}{2} - 2
+\]
+so that
+\[
+\abs{w - \frac{3i}{2}} = 2\abs{z - 1} = 2.
+\]
 \end{enumerate}
