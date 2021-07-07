@@ -1,0 +1,101 @@
+\chapter{Mathematical Preliminaries}\label{c1}
+Quantum computation is a mathematical model of computing based on quantum mechanics.
+A thorough understanding of quantum computing needs familiarity with the language of
+mathematics. This chapter will cover all the mathematics we will need in our course.
+\section{Sets}\label{c1s1}
+We will take a naive view of sets as collections of objects. We will not give a 
+definition of a set but rather take it as a concept that we understand. If $A$ is a
+set and an element $x$ is a member of $A$ then we express it as $x \in A$. If $y$
+is not a member of $A$ then we express it as $y \notin A$. A set $B$ is a subset of
+a set $A$ if for all $x \in B, x \in A$. It is written as $B \subset A$. Sets $A$ and
+$B$ are equal if $A \subset B$ and $B \subset A$. Sets are either defined by listing
+all their elements or using the notation
+\[
+A = \{x : P(x) \text{ is true.}\},
+\]
+where $P$ is some property of the elements $x$ that is either true or false. The 
+union of sets $A$ and $B$ is
+defined as
+\begin{equation}\label{c1s1e1}
+A \cup B = \{x : x \in A \text{ or } x \in B\}
+\end{equation}
+and their intersection is defined as
+\begin{equation}\label{c1s1e2}
+A \cap B = \{x : x \in A \text{ and } x \in B\}.
+\end{equation}
+The difference of sets $A$ and $B$ is defined as
+\begin{equation}\label{c1s1e3}
+A - B = \{x : x \in A \text{ and } x \notin B\}.
+\end{equation}
+The symmetric differences of $A$ and $B$ is defined as
+\begin{equation}\label{c1s2e4}
+A \Delta B = (A - B) \cup (B - A).
+\end{equation}
+Often times $A$ is a subset of a bigger set $X$, in which case we define
+the complement of $A$ as
+\begin{equation}\label{c1s2e5}
+A^c = X - A.
+\end{equation}
+A set with no elements is called an empty set and is denoted by $\varnothing$.
+
+Set theory starts off with simple concepts like these and suddenly takes plunge 
+into very deep concepts. Although very interesting, we will stay focused on our
+agenda and will only refer to excellent texts like \cite{halmos1960naive} and
+\cite{lewis1981elements}.
+
+\subsection{Problems}
+$A, B, C$ and $X$ are sets in all the problems in this subsection.
+\begin{enumerate}
+\item If $A = \{1, 3, 4, 5, 9\}, B = \{2, 3, 5, 10\}$ find $A \cup B, A \cap B,
+A - B, B - A, A \Delta B$.
+\item Show that $A \subset A \cup B$ and $A \cap B \subset A$, where $A$ and $B$ are
+sets.
+\item Express the set difference operations $A - B, B - A, A \Delta B$ in terms of
+relational operations of SQL.
+\item Show that $A \Delta B = B \Delta A$.
+\item If $A, B \in X$ show that $(A \cup B)^c = A^c \cap B^c$ and $(A \cap B)^c 
+= A^c \cup B^c$. These relations are called De Morgan's laws.
+\item If $P$ and $Q$ are logical statements, that is they are either true or false, 
+then we say that $P \Rightarrow Q$ if either $Q$ is true or $P$ is false. If $P$ is
+the statement $x \in \varnothing$ and $Q$ is the statement $x \in A$, where $A$ is 
+a set then show that $P \Rightarrow Q$. This proves that an empty set is a subset 
+of any set.
+\item If $A$ has $n$ elements then show that it has $2^n$ subsets.
+\end{enumerate}
+
+\section{Real numbers}\label{c1s2}
+It is possible to begin with set theory and define natural numbers, the integers,
+the rational numbers, the real numbers and the complex numbers. The reader may
+refer to \cite{tao2009analysis} to see how this is done. We will just describe these
+sets informally as
+\begin{eqnarray}
+\son &=& \{1, 2, 3, \ldots\} \label{c1s2e1} \\
+\soi &=& \{\ldots, -2, -1, 0, 1, 2, \ldots\} \label{c1s2e2} \\
+\soq &=& \{m/n : m, n \in \soi, n \ne 0\} \label{c1s2e3} 
+\end{eqnarray}
+$\son$ is the set of natural numbers, $\soi$ that of integers and $\soq$ that of
+rational numbers. The adjective `rational' means that the number is expressed as 
+a ratio of two integers. It is easy to check that $\son \subset \soi \subset \soq$. 
+
+Some authors consider the element $0$ to be in $\son$ but we subscribe to the more 
+traditional view. It can be shown that common numbers like $\sqrt{2}$ do not belong 
+to $\soq$. We therefore need a bigger set which admits numbers like these. The set 
+of real numbers is defined as a union of the set $\soq$ of rational numbers and the 
+set of irrational numbers like $\sqrt{2}, e, \pi$ etc. 
+
+Although it is not at all obvious, one can show that the size of $\son$ is the same
+as the size of $\soi$ and also that of $\soq$. The proof consists in demonstrating
+a one-to-one relation between the elements of the three sets. The set $\sor$ is,
+however, much bigger than these.
+
+\subsection{Problems}
+\begin{enumerate}
+\item Assume that $\sqrt{2}$ is a rational number. That is, write $\sqrt{2} = m/n$,
+where $m, n \in \soi$, $n \ne 0$ and we can cancelled the common factors between $m$
+and $n$. Show that this leads to a contradiction and therefore conclude that $\sqrt{2}$
+is not a rational number \cite{hardy1992mathematician}.
+\end{enumerate}
+
+\section{Complex numbers}\label{c1s3}
+\section{Fields}\label{c1s4}
+\section{Linear spaces}\label{c1s5}
