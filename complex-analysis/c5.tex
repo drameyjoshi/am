@@ -809,6 +809,106 @@ or
 \cot(z) = \frac{1}{z} + \sum_{k = -\infty}^\infty\left(\frac{1}{k\pi - z} - \frac{1}{k\pi}\right)
 \]
 
+We now prove another theorem on meromorphic functions.
+\begin{thm}\label{c5s5t2}
+Let $f$ be meromorphic and $g$ be analytic in an open subset $U$ of $\soc$. Let
+$C$ be a closed contour in $R$ on which $f$ neither has its zeros nor its poles.
+If $f$ has $Z$ zeros $a_1, \ldots, a_Z$ of order $n_1, \ldots, n_Z$ and $P$ 
+poles $b_1, \ldots, b_P$ of order $m_1, \ldots, m_P$ then
+\[
+\frac{1}{2\pi i}\int_C g(z)\frac{f^\prime(z)}{f(z)}dz = 
+\sum_{j=1}^Z n_jg(a_j) - \sum_{j=1}^Pm_j g(b_j).
+\]
+\end{thm}
+\begin{proof}
+Let $z_j$ be either a pole or a zero of $f$ of order $l_j$. Then one can 
+expand $f$ around it as 
+\[
+f(z) = \alpha_0^{(j)}(z - z_j)^{l_j} + \alpha_1^{(j)}(z - z_j)^{l_j+1} + 
+\cdots.
+\]
+If $z_j$ is a zero then $l_j = n_j$ and if it is a pole then $l_j = -m_j$.
+We then have
+\[
+f^\prime(z) = \alpha_0^{(j)}l_j(z - z_j)^{l_j-1} + \alpha_1^{(j)}(l_j+1)
+(z - z_j)^{l_j} + \cdots.
+\]
+We can write $f(z)$ as
+\[
+f(z) = \alpha_0^{(j)}(z-z_0)^{l_j}\left(1 + \frac{\alpha_1^{(j)}}{\alpha_0^{(j)}}
+(z - z_j) + \cdots \right)
+\]
+and hence
+\[
+\frac{f^\prime(z)}{f(z)} = \frac{l_j}{z - z_j} + h_1(z),
+\]
+where $h_1$ is an analytic function. Since $g$ is analytic throughout $R$ one
+can write 
+\[
+g(z) = g(z_j) + (z - z_j)g^\prime(z_j) + \cdots
+\]
+so that
+\[
+g(z)\frac{f^\prime(z)}{f(z)} = \frac{g(z_j)l_j}{z - z_j} + h_2(z),
+\]
+where $h_2$ is another analytic function. If $C_j$ is a curve that encloses
+$z_j$ and no other zero or pole of $f$ then
+\[
+\frac{1}{2\pi i}\int_{C_j}g(z)\frac{f^\prime(z)}{f(z)}dz = g(z_j)l_j.
+\]
+Since $C$ encloses all zeros and poles,
+\[
+\frac{1}{2\pi i}\int_{C}g(z)\frac{f^\prime(z)}{f(z)}dz = \sum g(z_j)l_j
+\]
+where the sum ranges over all zeros and poles. We can split the sum as
+\[
+\sum g(z_j)^l_j = \sum_{j=1}^Z n_jg(a_j) - \sum_{j=1}^P m_jg(b_j)
+\]
+because $l_j = n_j$ is $z_j$ is a zero and $l_j = -m_j$ if it is a pole.
+\end{proof}
+
+This theorem allows us to prove
+\begin{thm}[Fundamental theorem of algebra]\label{c5s5t3}
+Every polynomial of $n$th degree of the form
+\[
+p(z) = z^n + a_{n-1}z^{n-1} + \cdots + a_0
+\]
+can be written as
+\[
+p(z) = \prod_{j=1}^Z(z - z_j)^n_j
+\]
+such that
+\[
+\sum_{j=1}^Z n_j = n
+\]
+where $Z$ is the number of distinct zeros of $p$ and $n_j$ is the order of the
+$j$th zero.
+\end{thm}
+\begin{proof}
+A polynomial is an entire function such that $p \rightarrow \infty$ as $z
+\rightarrow \infty$. Let $C$ be a contour that encloses all zeros of $p$.
+Choose $f = 1$ and $g = p$ in theorem \ref{c5s5t2} so that
+\[
+\frac{1}{2\pi i}\int_C \frac{p^\prime(z)}{p(z)}dz = \sum_{j=1}^Z n_j.
+\]
+Choose $C$ so large that $p(z) \approx z^n$ on it and hence the integral on
+the left hand side is
+\[
+\frac{1}{2\pi i}\int_C \frac{n}{z}dz = n.
+\]
+Thus,
+\[
+\sum_{j=1}^Z n_j = n.
+\]
+If we count a zero of order $n_j$ as $n_j$ zeros then $p$ has $n$ zeros. Each
+of them contributes a factor $(z - z_j)^{n_j}$ to $p$ and hence
+\[
+p(z) = K\prod_{j=1}^Z(z - z_j)^{n_j}
+\]
+where $K$ is a constant. We chose the coefficient of the highest power of $z$
+as $1$ in our definition of $p$. Therefore $K = 1$.
+\end{proof}
+
 \section{Problems and examples}\label{c5s6}
 \begin{enumerate}
 \item Evaluate \cite{dk}
