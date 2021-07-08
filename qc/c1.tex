@@ -63,7 +63,7 @@ of any set.
 \item If $A$ has $n$ elements then show that it has $2^n$ subsets.
 \end{enumerate}
 
-\section{Real numbers}\label{c1s2}
+\section{Numbers}\label{c1s2}
 It is possible to begin with set theory and define natural numbers, the integers,
 the rational numbers, the real numbers and the complex numbers. The reader may
 refer to \cite{tao2009analysis} to see how this is done. We will just describe these
@@ -80,13 +80,24 @@ a ratio of two integers. It is easy to check that $\son \subset \soi \subset \so
 Some authors consider the element $0$ to be in $\son$ but we subscribe to the more 
 traditional view. It can be shown that common numbers like $\sqrt{2}$ do not belong 
 to $\soq$. We therefore need a bigger set which admits numbers like these. The set 
-of real numbers is defined as a union of the set $\soq$ of rational numbers and the 
-set of irrational numbers like $\sqrt{2}, e, \pi$ etc. 
+of real numbers, $\sor$ is defined as a union of the set $\soq$ of rational numbers 
+and the  set of irrational numbers like $\sqrt{2}, e, \pi$ etc.
+
+One can view the introduction of a bigger set of numbers stemming from a desire to 
+solve equations. Thus, the integers were created to that an equation of the type
+$x + a = b$ could be solved when $a > b$. The rational numbers were created to solve
+equations of the type $ax + b = c$ where $a \ne 1$ and the real numbers were created
+so that an equation of the type $x^2 = a$ has a solution for all $a > 0$. The set of
+complex numbers, $\soc$, was created so that equations of the type $x^2 = -a$ have a 
+solution for all $a > 0$. In fact, if $\sor[x]$ is the set of all polynomials in $x$ 
+with real coefficients then, it can be shown that, the polyomials can be solved in terms
+of complex numbers. That is, if $p(x) \in \sor[x]$ then the equation $p(x) = 0$ has
+roots in complex numbers.
 
 Although it is not at all obvious, one can show that the size of $\son$ is the same
 as the size of $\soi$ and also that of $\soq$. The proof consists in demonstrating
 a one-to-one relation between the elements of the three sets. The set $\sor$ is,
-however, much bigger than these.
+however, much bigger than these. $\sor$ and $\soc$, however, have the same size.
 
 \subsection{Problems}
 \begin{enumerate}
@@ -96,6 +107,89 @@ and $n$. Show that this leads to a contradiction and therefore conclude that $\s
 is not a rational number \cite{hardy1992mathematician}.
 \end{enumerate}
 
-\section{Complex numbers}\label{c1s3}
+\section{Properties of complex numbers}\label{c1s3}
+Complex numbers play a significant role in quantum computation. We will review their
+properties in this section. One can consider a complex number $z$ to be an ordered
+pair $(x, y)$ of real numbers. $x$ is called the real part of $z$ and $y$ its imaginary
+part. It is common to write $x = \re(z)$ and $y = \im(z)$. It is convenient to write
+\begin{equation}\label{c1s3e1}
+z = x + iy,
+\end{equation}
+where the number $i = \sqrt{-1}$. Note that $z \in \soc$ while $x, y \in \sor$. If $y=0$
+then $z$ is a real number and if $x = 0$ then $z$ is an imaginary number. The terms
+`real' and `imaginary' are just the names given to the numbers. One should refrain from
+attaching the meaning of the words to them. 
+
+Common arithmetic operations between complex numbers can be defined in terms of similar
+operations between real numbers. If $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$ then
+\begin{enumerate}
+\item $z_1 = z_2$ if and only if $x_1 = x_2$ and $y_1 = y_2$,
+\item $-z1 = -x_1 - iy_1$,
+\item $z_1 \pm z_2 = (x_1 \pm x_2) + i(y_1 \pm y_2)$,
+\item $z_1z_2 = (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1)$,
+\item If $z_2 \ne 0$ then
+\[
+\frac{z_1}{z_2} = \frac{(x_1x_2 + y_1y_2) + i(x_2y_1 - x_1y_2)}{\sqrt{x_2^2 + y_2^2}}.
+\]
+\end{enumerate}
+
+The conjugate of a complex number $z = x + iy$ is defined as
+\begin{equation}\label{c1s3e2}
+z^\ast = x - iy.
+\end{equation}
+
+
+It is easy to check that every complex number corresponds to a point in the plane and
+conversely every point on the plane can be considered to be a complex number. One can
+also check that a complex number can be considered as the `radius vector' of a point
+in a plane and that the sum of complex numbers can be interpreted as a sum of vectors.
+
+A point in a plane can be described either by its Cartesian coordinates $(x, y)$ or
+its planar coordinates $(r, \theta)$ where
+\begin{eqnarray}
+r &=& \sqrt{x^2 + y^2} \label{c1s3e3} \\
+\theta &=& \tan^{-1}\left(\frac{y}{x}\right). \label{c1s3e4}
+\end{eqnarray}
+Given $(x, y)$ one can find $(r, \theta)$ using equations \eqref{c1s3e3} and 
+\eqref{c1s3e4}. If, instead, we were given $(r, \theta)$ then we can get $(x, y)$
+using the equations
+\begin{eqnarray}
+x &=& r\cos\theta \label{c1s3e5} \\
+y &=& r\sin\theta. \label{c1s3e6}
+\end{eqnarray}
+This suggests that one can express a complex number either as 
+\begin{equation}\label{c1s3e7}
+z = x + iy
+\end{equation}
+or 
+\begin{equation}\label{c1s3e8}
+z = r(\cos\theta + i\sin\theta).
+\end{equation}
+Using the Taylor series for $\cos\theta, \sin\theta$ and $e^{i\theta}$ one can 
+show that
+\begin{equation}\label{c1s3e9}
+e^{i\theta} = \cos\theta + i\sin\theta.
+\end{equation}
+Equation \eqref{c1s3e7} is called Euler's formula. From equations \eqref{c1s3e8}
+and \eqref{c1s3e9} one can infer the `polar-form' of complex numbers
+\begin{equation}\label{c1s3e10}
+z = re^{i\theta}.
+\end{equation}
+The number $r \ge 0$ is called its modulus and $\theta$ is called its argument.
+
+\subsection{Problems}
+\begin{enumerate}
+\item If $z = 0$ then show that $\re(z) = 0$ and $\im(z) = 0$.
+\item If $z_1 = 3 + 5i$ and $z_2 = 1 - 2i$, calculate $z_1 + z_2, z_1 - z_2, z_1z_2$
+and $z_1/z_2$.
+\item If $a \in \sor, z = x + iy \in \soc$ then show that $az = ax + iay$ follows from
+the definition of two complex numbers.
+\item Show that $(z_1 \pm z_2)^\ast = z_1^\ast \pm z_2^\ast$.
+\item Show that $zz^\ast \ge 0$ for all $z \in \soc$. 
+\item Show that $e^{i\pi} = -1$ and hence $\ln(-1) = i\pi$. Although logarithms 
+of negative numbers do not exist in the set of real numbers, they do in $\soc$. In
+fact, $\ln(-1)$ has infinitely many values of the form $i\pi + 2i\pi m$, where 
+$m \in \soi$.
+\end{enumerate}
 \section{Fields}\label{c1s4}
 \section{Linear spaces}\label{c1s5}
