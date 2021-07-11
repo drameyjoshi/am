@@ -1,21 +1,22 @@
 \chapter{Mathematical Preliminaries}\label{c1}
-Quantum computation is a mathematical model of computing based on quantum mechanics.
-A thorough understanding of quantum computing needs familiarity with the language of
-mathematics. This chapter will cover all the mathematics we will need in our course.
+Quantum computation is a mathematical model of computing based on quantum 
+mechanics. A thorough understanding of quantum computing needs familiarity with 
+the language of mathematics. This chapter will cover all the mathematics we 
+will need in our course.
+
 \section{Sets}\label{c1s1}
 We will take a naive view of sets as collections of objects. We will not give a 
-definition of a set but rather take it as a concept that we understand. If $A$ is a
-set and an element $x$ is a member of $A$ then we express it as $x \in A$. If $y$
-is not a member of $A$ then we express it as $y \notin A$. A set $B$ is a subset of
-a set $A$ if for all $x \in B, x \in A$. It is written as $B \subset A$. Sets $A$ and
-$B$ are equal if $A \subset B$ and $B \subset A$. Sets are either defined by listing
-all their elements or using the notation
+definition of a set but rather take it as a concept that we understand. If $A$ 
+is a set and an element $x$ is a member of $A$ then we express it as $x \in A$. 
+If $y$ is not a member of $A$ then we express it as $y \notin A$. A set $B$ is 
+a subset of a set $A$ if for all $x \in B, x \in A$. It is written as $B \subset
+ A$. Sets $A$ and $B$ are equal if $A \subset B$ and $B \subset A$. Sets are 
+either defined by listing all their elements or using the notation
 \[
 A = \{x : P(x) \text{ is true.}\},
 \]
-where $P$ is some property of the elements $x$ that is either true or false. The 
-union of sets $A$ and $B$ is
-defined as
+where $P$ is some property of the elements $x$ that is either true or false. 
+The union of sets $A$ and $B$ is defined as
 \begin{equation}\label{c1s1e1}
 A \cup B = \{x : x \in A \text{ or } x \in B\}
 \end{equation}
@@ -48,80 +49,84 @@ $A, B, C$ and $X$ are sets in all the problems in this subsection.
 \begin{enumerate}
 \item If $A = \{1, 3, 4, 5, 9\}, B = \{2, 3, 5, 10\}$ find $A \cup B, A \cap B,
 A - B, B - A, A \Delta B$.
-\item Show that $A \subset A \cup B$ and $A \cap B \subset A$, where $A$ and $B$ are
-sets.
-\item Express the set difference operations $A - B, B - A, A \Delta B$ in terms of
-relational operations of SQL.
+\item Show that $A \subset A \cup B$ and $A \cap B \subset A$, where $A$ and 
+$B$ are sets.
+\item Express the set difference operations $A - B, B - A, A \Delta B$ in terms 
+of relational operations of SQL.
 \item Show that $A \Delta B = B \Delta A$.
 \item If $A, B \in X$ show that $(A \cup B)^c = A^c \cap B^c$ and $(A \cap B)^c 
 = A^c \cup B^c$. These relations are called De Morgan's laws.
-\item If $P$ and $Q$ are logical statements, that is they are either true or false, 
-then we say that $P \Rightarrow Q$ if either $Q$ is true or $P$ is false. If $P$ is
-the statement $x \in \varnothing$ and $Q$ is the statement $x \in A$, where $A$ is 
-a set then show that $P \Rightarrow Q$. This proves that an empty set is a subset 
-of any set.
+\item If $P$ and $Q$ are logical statements, that is they are either true or 
+false, then we say that $P \Rightarrow Q$ if either $Q$ is true or $P$ is false.
+If $P$ is the statement $x \in \varnothing$ and $Q$ is the statement $x \in A$, 
+where $A$ is a set then show that $P \Rightarrow Q$. This proves that an empty 
+set is a subset of any set.
 \item If $A$ has $n$ elements then show that it has $2^n$ subsets.
 \end{enumerate}
 
 \section{Numbers}\label{c1s2}
-It is possible to begin with set theory and define natural numbers, the integers,
-the rational numbers, the real numbers and the complex numbers. The reader may
-refer to \cite{tao2009analysis} to see how this is done. We will just describe these
-sets informally as
+It is possible to begin with set theory and define natural numbers, the 
+integers, the rational numbers, the real numbers and the complex numbers. The 
+reader may refer to \cite{tao2009analysis} to see how this is done. We will 
+just describe these sets informally as
 \begin{eqnarray}
 \son &=& \{1, 2, 3, \ldots\} \label{c1s2e1} \\
 \soi &=& \{\ldots, -2, -1, 0, 1, 2, \ldots\} \label{c1s2e2} \\
 \soq &=& \{m/n : m, n \in \soi, n \ne 0\} \label{c1s2e3} 
 \end{eqnarray}
 $\son$ is the set of natural numbers, $\soi$ that of integers and $\soq$ that of
-rational numbers. The adjective `rational' means that the number is expressed as 
-a ratio of two integers. It is easy to check that $\son \subset \soi \subset \soq$. 
+rational numbers. The adjective `rational' means that the number is expressed as
+a ratio of two integers. It is easy to check that $\son \subset \soi \subset 
+\soq$. 
 
-Some authors consider the element $0$ to be in $\son$ but we subscribe to the more 
-traditional view. It can be shown that common numbers like $\sqrt{2}$ do not belong 
-to $\soq$. We therefore need a bigger set which admits numbers like these. The set 
-of real numbers, $\sor$ is defined as a union of the set $\soq$ of rational numbers 
-and the  set of irrational numbers like $\sqrt{2}, e, \pi$ etc.
+Some authors consider the element $0$ to be in $\son$ but we subscribe to the 
+more traditional view. It can be shown that common numbers like $\sqrt{2}$ do 
+not belong to $\soq$. We therefore need a bigger set which admits numbers like 
+these. The set of real numbers, $\sor$ is defined as a union of the set $\soq$ 
+of rational numbers and the  set of irrational numbers like $\sqrt{2}, e, \pi$ 
+etc.  One can view the introduction of a bigger set of numbers stemming from a 
+desire to solve equations. Thus, the integers were created to that an equation 
+of the type $x + a = b$ could be solved when $a > b$. The rational numbers 
+were created to solve equations of the type $ax + b = c$ where $a \ne 1$ and 
+the real numbers were created so that an equation of the type $x^2 = a$ has a 
+solution for all $a > 0$. The set of complex numbers, $\soc$, was created so 
+that equations of the type $x^2 = -a$ have a solution for all $a > 0$. In fact, 
+if $\sor[x]$ is the set of all polynomials in $x$ with real coefficients then, 
+it can be shown that, the polyomials can be solved in terms of complex numbers. 
+That is, if $p(x) \in \sor[x]$ then the equation $p(x) = 0$ has roots in 
+complex numbers.
 
-One can view the introduction of a bigger set of numbers stemming from a desire to 
-solve equations. Thus, the integers were created to that an equation of the type
-$x + a = b$ could be solved when $a > b$. The rational numbers were created to solve
-equations of the type $ax + b = c$ where $a \ne 1$ and the real numbers were created
-so that an equation of the type $x^2 = a$ has a solution for all $a > 0$. The set of
-complex numbers, $\soc$, was created so that equations of the type $x^2 = -a$ have a 
-solution for all $a > 0$. In fact, if $\sor[x]$ is the set of all polynomials in $x$ 
-with real coefficients then, it can be shown that, the polyomials can be solved in terms
-of complex numbers. That is, if $p(x) \in \sor[x]$ then the equation $p(x) = 0$ has
-roots in complex numbers.
-
-Although it is not at all obvious, one can show that the size of $\son$ is the same
-as the size of $\soi$ and also that of $\soq$. The proof consists in demonstrating
-a one-to-one relation between the elements of the three sets. The set $\sor$ is,
-however, much bigger than these. $\sor$ and $\soc$, however, have the same size.
+Although it is not at all obvious, one can show that the size of $\son$ is the 
+same as the size of $\soi$ and also that of $\soq$. The proof consists in 
+demonstrating a one-to-one relation between the elements of the three sets. 
+The set $\sor$ is, however, much bigger than these. $\sor$ and $\soc$, however, 
+have the same size.
 
 \subsection{Problems}
 \begin{enumerate}
-\item Assume that $\sqrt{2}$ is a rational number. That is, write $\sqrt{2} = m/n$,
-where $m, n \in \soi$, $n \ne 0$ and we can cancelled the common factors between $m$
-and $n$. Show that this leads to a contradiction and therefore conclude that $\sqrt{2}$
-is not a rational number \cite{hardy1992mathematician}.
+\item Assume that $\sqrt{2}$ is a rational number. That is, write $\sqrt{2} = 
+m/n$, where $m, n \in \soi$, $n \ne 0$ and we can cancelled the common factors 
+between $m$ and $n$. Show that this leads to a contradiction and therefore 
+conclude that $\sqrt{2}$ is not a rational number \cite{hardy1992mathematician}.
 \end{enumerate}
 
 \section{Properties of complex numbers}\label{c1s3}
-Complex numbers play a significant role in quantum computation. We will review their
-properties in this section. One can consider a complex number $z$ to be an ordered
-pair $(x, y)$ of real numbers. $x$ is called the real part of $z$ and $y$ its imaginary
-part. It is common to write $x = \re(z)$ and $y = \im(z)$. It is convenient to write
+Complex numbers play a significant role in quantum computation. We will review 
+their properties in this section. One can consider a complex number $z$ to be 
+an ordered pair $(x, y)$ of real numbers. $x$ is called the real part of $z$ 
+and $y$ its imaginary part. It is common to write $x = \re(z)$ and $y = \im(z)$.
+It is convenient to write
 \begin{equation}\label{c1s3e1}
 z = x + iy,
 \end{equation}
-where the number $i = \sqrt{-1}$. Note that $z \in \soc$ while $x, y \in \sor$. If $y=0$
-then $z$ is a real number and if $x = 0$ then $z$ is an imaginary number. The terms
-`real' and `imaginary' are just the names given to the numbers. One should refrain from
-attaching the meaning of the words to them. 
+where the number $i = \sqrt{-1}$. Note that $z \in \soc$ while $x, y \in \sor$. 
+If $y=0$ then $z$ is a real number and if $x = 0$ then $z$ is an imaginary 
+number. The terms `real' and `imaginary' are just the names given to the 
+numbers. One should refrain from attaching the meaning of the words to them. 
 
-Common arithmetic operations between complex numbers can be defined in terms of similar
-operations between real numbers. If $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$ then
+Common arithmetic operations between complex numbers can be defined in terms 
+of similar operations between real numbers. If $z_1 = x_1 + iy_1$ and $z_2 = 
+x_2 + iy_2$ then
 \begin{enumerate}
 \item $z_1 = z_2$ if and only if $x_1 = x_2$ and $y_1 = y_2$,
 \item $-z1 = -x_1 - iy_1$,
@@ -129,7 +134,8 @@ operations between real numbers. If $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$ th
 \item $z_1z_2 = (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1)$,
 \item If $z_2 \ne 0$ then
 \[
-\frac{z_1}{z_2} = \frac{(x_1x_2 + y_1y_2) + i(x_2y_1 - x_1y_2)}{\sqrt{x_2^2 + y_2^2}}.
+\frac{z_1}{z_2} = 
+\frac{(x_1x_2 + y_1y_2) + i(x_2y_1 - x_1y_2)}{\sqrt{x_2^2 + y_2^2}}.
 \]
 \end{enumerate}
 
@@ -139,20 +145,21 @@ z^\ast = x - iy.
 \end{equation}
 
 
-It is easy to check that every complex number corresponds to a point in the plane and
-conversely every point on the plane can be considered to be a complex number. One can
-also check that a complex number can be considered as the `radius vector' of a point
-in a plane and that the sum of complex numbers can be interpreted as a sum of vectors.
+It is easy to check that every complex number corresponds to a point in the 
+plane and conversely every point on the plane can be considered to be a 
+complex number. One can also check that a complex number can be considered as 
+the `radius vector' of a point in a plane and that the sum of complex numbers 
+can be interpreted as a sum of vectors.
 
-A point in a plane can be described either by its Cartesian coordinates $(x, y)$ or
-its planar coordinates $(r, \theta)$ where
+A point in a plane can be described either by its Cartesian coordinates 
+$(x, y)$ or its planar coordinates $(r, \theta)$ where
 \begin{eqnarray}
 r &=& \sqrt{x^2 + y^2} \label{c1s3e3} \\
 \theta &=& \tan^{-1}\left(\frac{y}{x}\right). \label{c1s3e4}
 \end{eqnarray}
 Given $(x, y)$ one can find $(r, \theta)$ using equations \eqref{c1s3e3} and 
-\eqref{c1s3e4}. If, instead, we were given $(r, \theta)$ then we can get $(x, y)$
-using the equations
+\eqref{c1s3e4}. If, instead, we were given $(r, \theta)$ then we can get 
+$(x, y)$ using the equations
 \begin{eqnarray}
 x &=& r\cos\theta \label{c1s3e5} \\
 y &=& r\sin\theta. \label{c1s3e6}
@@ -176,20 +183,258 @@ and \eqref{c1s3e9} one can infer the `polar-form' of complex numbers
 z = re^{i\theta}.
 \end{equation}
 The number $r \ge 0$ is called its modulus and $\theta$ is called its argument.
+It is easy to check that if $\theta$ is the argument of a complex number $z$
+then so is $\theta + 2\pi m$, for any $m \in \soi$. A complex number has an
+infinite number of arguments. A argument satisfying the relation $0 \le \theta
+< 2\pi$ is called the `principal argument'. There is nothing sacred about this
+choice of limits. One can take any range of $2\pi$, for instance $-\pi < \theta
+\le \pi$ can also be chosen as the definition of the principal argument. We will
+stick with the former choice.
+
+One remarkable property of complex numbers is that they do not have an order
+relation. That is, given two complex numbers $z_1$ and $z_2$ there is no
+consistent definition of the relation $<$.
 
 \subsection{Problems}
 \begin{enumerate}
 \item If $z = 0$ then show that $\re(z) = 0$ and $\im(z) = 0$.
-\item If $z_1 = 3 + 5i$ and $z_2 = 1 - 2i$, calculate $z_1 + z_2, z_1 - z_2, z_1z_2$
-and $z_1/z_2$.
-\item If $a \in \sor, z = x + iy \in \soc$ then show that $az = ax + iay$ follows from
+\item If $z_1 = 3 + 5i$ and $z_2 = 1 - 2i$, calculate $z_1 + z_2, z_1 - z_2, 
+z_1z_2$ and $z_1/z_2$.
+\item If $a \in \sor, z = x + iy \in \soc$ then show that $az = ax + iay$ 
+follows from
 the definition of two complex numbers.
 \item Show that $(z_1 \pm z_2)^\ast = z_1^\ast \pm z_2^\ast$.
-\item Show that $zz^\ast \ge 0$ for all $z \in \soc$. 
+\item Show that $zz^\ast \ge 0$ for all $z \in \soc$. Show also that $r^2 = 
+zz^\ast$.
 \item Show that $e^{i\pi} = -1$ and hence $\ln(-1) = i\pi$. Although logarithms 
-of negative numbers do not exist in the set of real numbers, they do in $\soc$. In
-fact, $\ln(-1)$ has infinitely many values of the form $i\pi + 2i\pi m$, where 
+of negative numbers do not exist in the set of real numbers, they do in $\soc$. 
+In fact, $\ln(-1)$ has infinitely many values of the form $i\pi + 2i\pi m$, 
+where 
 $m \in \soi$.
 \end{enumerate}
-\section{Fields}\label{c1s4}
-\section{Linear spaces}\label{c1s5}
+
+\section{Functions and relations}\label{c1s4}
+If $A$ and $B$ are two sets then their cartesian product $A \times B$ is 
+defined as 
+\begin{equation}\label{c1s4e1}
+A \times B = \{(a, b) : a \in A, b \in B\}.
+\end{equation}
+A relation between $A$ and $B$ is any subset of $A \times B$. A subset $f$
+of $A \times B$ is a mapping between $A$ and $B$ if,
+\begin{enumerate}
+\item $(a, b) \in f$ for all $a \in A$ and
+\item $(a, b_1), (a, b_2) \in f$ implies $b_1 = b_2$.
+\end{enumerate}
+In other words, $f$ has an ordered pair \emph{for every} element in $A$ and
+every element of $A$ is paired with exactly one element of $B$. A mapping is
+also called a function, especially when $B$ is the set of numbers.
+
+Let $A = \{1, 2, 3\}$ and $B = \{-2, -1, 0\}$. Then, 
+\[
+A \times B = \{(1, -2), (1, -1), (1, 0), (2, -2), (2, -1), (2, 0),
+                (3, -2), (3, -1), (3, 0)\}.
+\]
+The set $R_1 = \{(1, 0), (2, -2), (1, -1)\}$ is a relation and the set $f_1 = 
+\{(1, -2), (2, -1), (3, 0)\}$ is a mapping. In fact, it is the function $b = 
+f_1(a) = a - 3$.
+
+\subsection{Problems}
+\begin{enumerate}
+\item Consider the set $\son$. A binary relation like $+$ takes two members of
+$\son$ to give another member in $\son$. 
+\begin{enumerate}
+\item Convince yourself that $+$ is a relation between $\son \times \son$ and
+$\son$. Is it a function?
+\item If `$\cdot$' denote the multiplication of two natural numbers, convince 
+yourself that it is also a binary relation. Is it a function?
+\end{enumerate}
+This suggests that we can as well define a binary relation on a set $A$ as a 
+mapping between $A \times A$ and $A$.
+\item Is `$-$' a binary relation on $\son$?
+\item Let $A$ be a set and $\star$ be a binary relation on $A$. That is, 
+$\star$ is a mapping $A \times A \rightarrow A$. It takes any two elements of 
+$A$ and associates them with a unique element in $A$. If $\star(a_1, a_2) = 
+a_3$ then we often write it as $a_1 \star a_2 = a_3$. If $A$ is $\son$ and
+$\star$ is $+$, then convince yourself that $3 + 5 = 8$ can be written as 
+$+(3, 5) = 8$.
+\end{enumerate}
+
+\section{Algebraic structures}\label{c1s5}
+Let $A$ be a set and $\star$ be a binary relation on it. If for any $x, y, z
+\in A$, $x \star (y \star z) = (x \star y) \star z$ then $\star$ is said to be
+an associative operation. In an associative operation the order of carrying out
+an operation does not matter when there are three or more elements being 
+operated upon.
+
+A set $A$ with an associative binary operation $\star$ defined on it is called
+a `semigroup'. The set $\son$ with the operation $+$ is an example of a 
+semigroup. A semigroup is usually denoted by $(A, \star)$.
+
+Given a set $A$ and a binary relation $\star$ on it, an element $e \in A$ is 
+called an identity if $e \star a = a \star e = a$. If $A = \son$ and $\star =
++$ then there is no identity in $\son$. However, if $A = \son \cup \{0\}$ and
+$\star = +$ then for all $x \in A$, $x + 0 = 0 + x = x$.
+
+If $(A, \star)$ is a semigroup which also has an identity element then it is
+called a `monoid'. We just showed that $(\son, +)$ is not a monoid but that
+$(\son \cup \{0\}, +)$ is.
+
+Let $(A, \star)$ is a monoid and if for every $a \in A$ there is an element
+$b \in A$ such that $a \star b = b \star a = e$, where $e$ is the identity then
+$b$ is called the inverse of $a$. If every element of a monoid $(A, \star)$ 
+has an inverse then $(A, \star)$ is called a group. The set $(\son \cup \{0\},
++)$ is a monoid but not a group. However, the set $(\soi, +)$ is a group.
+
+If $(G, \star)$ is a group such that for all $x, y \in G$, $x \star y = 
+y \star x$ then $(G, \star)$ is called an Abelian group. (Named after the 
+Norwegian mathematician Niels Henrik Abel.)
+
+We can also consider sets with two binary operations, conveniently denoted by 
+`$+$' and `$\cdot$'. If $R$ is one such set and if $(R, +)$ is an Abelian
+group, $(R, \cdot)$ is a monoid and
+\begin{eqnarray*}
+x\cdot(y + z) &=& x\cdot y + x \cdot z \\
+(x + y)\cdot z&=& x\cdot z + y \cdot z
+\end{eqnarray*}
+are true for all $x, y, z \in R$ then $(R, +, \cdot)$ is called a `ring'.
+
+A field is also an algebraic structure with two binary operations on it. 
+Formally, a set $F$ with operations `$+$' and `$\cdot$' is a field if
+\begin{enumerate}
+\item $(F, +)$ is an Abelian group with identity $0$,
+\item $(F - \{0\}, \cdot)$ is an Abelian group with identity $1$,
+\item For all $x, y, z \in F$, $x\cdot(y+z) = x\cdot y + x\cdot z$.
+\end{enumerate}
+
+We have barely scratched at the surface of the vast ropic of Algebra. An
+interested reader may refer to a number of excellent books like 
+\cite{herstein2006topics} or \cite{lang2002graduate}. Our immediate purpose
+in defining these algebraic structures is to be able to define linear vector
+spaces, which we cover in the next section.
+
+\subsection{Problems}
+\begin{enumerate}
+\item Show that $\son$ with the binary operation `$\cdot$' is a semigroup.
+\item Show that $1$ is the identity element in $\son$ for the binary operation
+`$\cdot$'. Hence show that $\son$ is also a monoid with the binary operation
+`$\cdot$'.
+\item Show that the set of all $2 \times 2$ matrices is a group under matrix
+addition. Is it also a group under matrix multiplication?
+\item If `$\cdot$' is the usual multiplication of numbers then show that 
+$(\son, \cdot)$ is not a group but $(\soq - \{0\}, \cdot)$ is. Why is $(\soq,
+\cdot)$ not a group?
+\item Let $M$ be the set of all non-singular $2 \times 2$ matrices. (A matrix
+is non-singular if it has an inverse.) Show that $(M, +)$ is an Abelian
+group but that $(M, .)$ is not.
+\item Show that $(\soi, +, \cdot)$ is a ring.
+\item Consider the set $P = \{a_nx^n + \cdots + a_1x + a_0 : n \in \son \cup
+\{0\}, a_i \in \soi, i = 1, \ldots, n\}$. It is the set of all polynomials with
+integer coefficients. Show that $(P, +, \cdot)$ is a ring with additional and
+multiplication of polynomials defined in the usual way.
+\item Verify that $\soq, \sor, \soc$ are all fields with the usual definitions
+of the two operators.
+\end{enumerate}
+
+\section{Linear spaces}\label{c1s6}
+Quantum computation makes heavy use of linear spaces. Unlike the previous
+section in which we introduced a hierarchy of algebraic structures, starting
+from a semigroup and ending with a field, rather formally and without much
+motivation, we will have a slower-paced introduction to linear spaces, also
+called vector spaces.
+
+Most readers may have been first introduced to vectors in elementary physics to
+represent quantities that have a magnitude and a direction. Among all those
+quantities, perhaps the most elementary is the position of a particle in the
+three-dimensional space. Let $\vec{r}_1$ and $\vec{r}_2$ be two vectors. Then
+their addition $\vec{r}_1 + \vec{r}_2$ is a vector and so is $c\vec{r_1}$,
+where $c \in \sor$. These two properties,
+\begin{enumerate}
+\item sum of two vectors is a vector and
+\item a vector multiplied by a vector is also a vector
+\end{enumerate}
+are shared by many things that are not position vectors. For example, the
+sum of two $m \times n$ matrices is another $m \times n$ matrix and a number
+multiplied to an $m \times n$ matrix is also an $m \times n$ matrix. Informally,
+a set $V$ with the properties,
+\begin{enumerate}
+\item $v_1, v_2 \in V \Rightarrow v_1 + v_2 \in V$,
+\item for any $v \in V$ and a number $\alpha$, $\alpha v \in V$,
+\end{enumerate}
+is called a linear vector space or just a vector space or a linear space. The 
+numbers $\alpha$ are considered to be members of a field $F$ and $V$ is then
+called a vector space over $F$. 
+
+Here are some examples of vector spaces.
+\begin{enumerate}
+\item The set $V$ of position vectors is a vector space over the field $\sor$.
+\item The set $M$ of $m \times n$ real matrices is a vector space over the
+field $\sor$.
+\item The set $M$ of $m \times n$ complex matrices is a vector space over the
+field $\soc$.
+\item The set $\soc$ over the field $\sor$.
+\item The set of all real-valued continuous functions over an interval $[a, b]$
+is a vector space over $\sor$. (The set $[a, b] = \{x \in \sor : a \le x \le b
+\}$).
+\end{enumerate}
+The objects in the sets in examples 2 to 5 are not vectors in the sense we 
+first came across in physics. In some sense, they are a generalisation of the 
+vectors in physics. They just share two vital properties with them. When the
+mathematicians speak of vectors they usually mean the objects that form a 
+vector space. As there are many types of objects that form a vector space they
+do not put arrows on top of the letters describing them. We shall follow the
+mathematicans' tradition and not put arrows on top of our vectors unless we 
+describe quantities that have a physical interpretation.
+
+We will now give a formal definition of a vector space over a field. A set
+$V$ is said to be a vector space over a field $F$ if,
+\begin{enumerate}
+\item $(V, +)$ is an Abelian group,
+\item There is an operation $F \times V \rightarrow V$ called scalar 
+multiplication with the following properties
+\begin{enumerate}
+\item For all $\alpha, \beta \in F$, $\alpha(\beta v) = (\alpha\beta)v$,
+\item $1v = v$ and $0v = 0$ for the numbers $1, 0 \in F$,
+\item $\alpha(u + v) = \alpha u + \alpha v$ and 
+\item $(\alpha + \beta)v = \alpha v + \beta v$.
+\end{enumerate}
+\end{enumerate}
+\begin{rem}
+The members of $F$ are called scalars and those of $V$ are called vectors.
+\end{rem}
+\begin{rem}
+The operation of scalar multiplication is not the same as scalar product. The
+former takes a scalar and a vector to produce another vector. The latter takes
+two vectors and results in a scalar.
+\end{rem}
+
+The set $\sor^n$ is a set of $n$-tuples of real numbers. We will represent them
+as columns
+\[
+\begin{bmatrix} x_1 \\ \vdots \\ x_n\end{bmatrix}.
+\]
+To save space, we will sometimes write them as $[x_1, \ldots, x_n]^T$, the 
+${}^T$ denoting the `transpose' operation. The sum of two such $n$-tuples is 
+defined as
+\[
+\begin{bmatrix} x_1 \\ \vdots \\ x_n\end{bmatrix} + 
+\begin{bmatrix} y_1 \\ \vdots \\ y_n\end{bmatrix} =
+\begin{bmatrix} x_1 + y_1 \\ \vdots \\ x_n + y_n\end{bmatrix}.
+\]
+If $\alpha \in \sor$,
+\[
+\alpha\begin{bmatrix} x_1 \\ \vdots \\ x_n\end{bmatrix} 
+=\begin{bmatrix} \alpha x_1 \\ \vdots \\ \alpha x_n\end{bmatrix}.
+\]
+It is easy to check that $\sor^n$ is a vector space over $\sor$. One can
+define $\soc^n$, the addition of its elements and multiplication by a complex 
+number in an analogous way and conclude that $\soc^n$ is a vector space over
+$\soc$.
+
+\subsection{Problems}
+\begin{enumerate}
+\item A subset $U$ of a vector space $V$ is called a subspace if $U$ is itself
+a vector space. Show that $0$ is a member of every subspace.
+\end{enumerate}
+
+
+
