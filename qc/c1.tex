@@ -2,7 +2,10 @@
 Quantum computation is a mathematical model of computing based on quantum 
 mechanics. A thorough understanding of quantum computing needs familiarity with 
 the language of mathematics. This chapter will cover all the mathematics we 
-will need in our course.
+will need in our course. It is not a substitute for a formal course in 
+mathematics and the reader should fill the gaps in it with one such course. This
+chapter emphasizes the ideas and attempts to give you a feel of the subject than
+cover all the technical nuances with full mathematical rigour.
 
 \section{Sets}\label{c1s1}
 We will take a naive view of sets as collections of objects. We will not give a 
@@ -425,15 +428,58 @@ If $\alpha \in \sor$,
 \alpha\begin{bmatrix} x_1 \\ \vdots \\ x_n\end{bmatrix} 
 =\begin{bmatrix} \alpha x_1 \\ \vdots \\ \alpha x_n\end{bmatrix}.
 \]
-It is easy to check that $\sor^n$ is a vector space over $\sor$. One can
-define $\soc^n$, the addition of its elements and multiplication by a complex 
-number in an analogous way and conclude that $\soc^n$ is a vector space over
-$\soc$.
+
+We now introduce the important idea of linear dependence or lack of it. Suppose
+that $v_1, v_2$ are vectors in a vector space $V$ then, by definition, $v = 
+\alpha_1 c_1 + \alpha_2c_2$ is also in $V$. $v$ is said to be a `linear
+combination' of $v_1$ and $v_2$ and the three vectors $v_1, v_2, v$ are said
+to be `linearly dependent'. Note that, one can always write the equation $v =
+\alpha_1v_1 + \alpha_2v_2$ in the equivalent forms
+\begin{eqnarray*}
+\alpha_1 v_1 + \alpha_2 v_2 - v &=& 0 \\
+-\frac{\alpha_1}{\alpha_2}v_1 - \frac{1}{\alpha_2}v &=& v_2 \\
+-\frac{\alpha_2}{\alpha_1}v_2 - \frac{1}{\alpha_1}v &=& v_1.
+\end{eqnarray*}
+This shows that we can express any vector as a linear combination of the other 
+two if they are linearly dependent on each other. If we cannot do it then we
+say that the vectors are `linearly independent'. An equivalent definition of
+linear independence is that if
+\begin{equation}\label{c1s6e1}
+\alpha_1v_1 + \cdots + \alpha_n v_n = 0
+\end{equation}
+if and only if $\alpha_1 = \ldots = \alpha_n = 0$ then the vectors $\{v_1,
+\ldots, v_n\}$ are linearly independent.
+
+The `span' of a set of vectors $\{v_1, \ldots, v_n\}$ is the set of all 
+linear combinations of the vectors. A `basis' of a vector space is the set of
+vectors that is a) linearly independent and b) spans the vector space. The 
+latter phrase means that any vector in the space can be expressed as a linear
+combination of the vectors in the basis. The basis of a vector space is not
+unique but it can be shown that all of them have the same number of elements.
+The number of elements in a basis is called the `dimension' of a vector space.
+A vector space can have finite or infinite dimensions. In this course we shall
+deal almost exclusively with finite dimensional vector spaces. When we mention
+an infinite-dimensional vector space we shall indicate it that way.
 
 \subsection{Problems}
 \begin{enumerate}
 \item A subset $U$ of a vector space $V$ is called a subspace if $U$ is itself
 a vector space. Show that $0$ is a member of every subspace.
+\item Check that $\sor^n$ is a vector space over $\sor$. One can
+define $\soc^n$, the addition of its elements and multiplication by a complex 
+number in an analogous way and conclude that $\soc^n$ is a vector space over
+$\soc$.
+\item Show that if \eqref{c1s6e1} is not true then one can express any one of
+$v_1, \ldots, v_n$ in terms of the rest.
+\item Consider the vectors $e_1 = [1, 0]^T$ and $e_2 = [0, 1]^T$. They represent
+`unit vectors' along the $x$ and the $y$ axes respectively. Show that the span
+of $\{e_1, e_2\}$ is the set of all points in the $xy$-plane.
+\item If you have solved the previous problem, convince yourself that a plane is
+a two-dimensional vector space. Extend the previous problem to three dimensions,
+find the three basis vectors. The idea of dimensions thus matches the one we 
+understand intuitively.
+\item Can you extend the previous problem to $\sor^n$ and conclude that it is
+an $n$-dimensional vector space? What about $\soc^n$? Is it $n$-dimensional?
 \end{enumerate}
 
 
