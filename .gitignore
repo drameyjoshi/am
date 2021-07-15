@@ -159,3 +159,5 @@ dmypy.json
 **.ods
 
 **.synctex.gz
+**.toc
+
