@@ -1,0 +1,104 @@
+\chapter{Linear Vector Spaces in Quantum Mechanics}\label{c2}
+Finite dimensional vector spaces play an important role in quantum computation
+and information. The previous chapter introduced the linear vector spaces over
+fields and their dimensions. In this chapter we will build on those ideas and
+use a notation that is more prevalent in quantum computation.
+
+\section{Dirac notation}\label{c2s1}
+When we introduced vector spaces in the previous chapter we remarked that 
+several objects can be added together and multiplied by numbers and therefore
+are eligible to be called vectors. Because of the wide variety of objects that
+have characteristics of a vector, mathematicians do not use special notation
+to tell vectors from other quantities. On the other hand, physicists 
+differentiate between scalars and vectors by typesetting the latter in bold
+or putting an arrow on the top. However, the arrow notation is suitable only
+for vectors in three dimensions. For the kind of vectors we will encounter
+in quantum mechanics it is more convenient to use the notation developed by
+P.A.M. Dirac.
+
+If $V$ is a vector space over the field $\soc$ then its members are denoted
+by $\ket{v}$. Thus, the defining properties of the vector space are expressed
+as $\ket{v_1} + \ket{v_2} \in V$ and $\alpha\ket{v} \in V$ for all $\ket{v},
+\ket{v_1}, \ket{v_2} \in V$ and $\alpha \in \soc$. The term $\ket{v}$ is read
+as `ket v'. The reason for this unusual name will be clear a little later. In 
+the discussion that follows, we will assume that all our vector spaces are
+defined over the field of complex numbers.
+
+The reader is probably familiar with the `scalar product' of two vectors in
+$\sor^3$. If $\vec{a} = a_x\hat{i} + a_y\hat{j} + a_z\hat{k}$ and $\vec{b} =
+b_x\hat{i} + b_y\hat{j} + b_z\hat{k}$ then their scalar product is $\vec{a}
+\cdot\vec{b} = a_xb_x + a_yb_y + a_zb_z$. As the name suggests, $\vec{a}\cdot
+\vec{b}$ is indeed a scalar. This idea can be extended to general vector spaces.
+If $\ket{v_1}, \ket{v_2} \in V$ then their scalar product is denoted by 
+$(\ket{v_1}, \ket{v_2})$ and it has the following properties,
+\begin{eqnarray}
+(\ket{v_1}, \ket{v_2}) &=& (\ket{v_2}, \ket{v_1})^\ast \label{c2s1e1} \\
+(\ket{v_1}, \alpha\ket{v_2}) &=& \alpha (\ket{v_1}, \ket{v_2}) \label{c2s1e2} 
+\end{eqnarray}
+Equation \eqref{c2s1e2} tells that the inner product of $\ket{v_1}$ and
+$\alpha\ket{v_2}$ is just $\alpha$ times the inner product of $\ket{v_1}$
+and $\ket{v_2}$. In order to find the inner product of $\alpha\ket{v_1}$
+and $\ket{v_2}$, we start with
+\begin{eqnarray}
+(\alpha\ket{v_1}, \ket{v_2}) &=& (\ket{v_2}, \alpha\ket{v_1})^\ast \nonumber \\
+ &=& \left\{\ket{v_2}, \alpha\ket{v_1})\right\}^\ast \nonumber \\
+ &=& \left\{\alpha(\ket{v_2}, \ket{v_1})\right\}^\ast \nonumber \\
+ &=& \alpha^\ast(\ket{v_2}, \ket{v_1})^\ast \nonumber \\
+ &=& \alpha^\ast (\ket{v_1}, \ket{v_2}) \label{c2s1e3}
+\end{eqnarray}
+
+
+A `linear functional' over a vector space $V$ over a field $F$ is a mapping
+$\phi: V \rightarrow F$ such that $\phi(\alpha_1\ket{v_1} + \alpha_2\ket{v_2})
+= \alpha_1\phi_1(\ket{v_1}) + \alpha_2\phi_1(\ket{v_2})$ for all $\ket{v_1},
+\ket{v_2} \in V$ and $\alpha_1, \alpha_2 \in F$. Thus, a functional is a linear
+mapping. It maps every vector in $V$ to a scalar in $F$. There is a close
+connection between linear functionals and inner products. The Riesz representation
+theorem \cite{kreyszig1978introductory} guarantees that for every $\ket{v} \in V$
+there is a linear functional $\phi_v \in V^\dagger$ (the space $V^\dagger$ is
+defined in problem \ref{c2s1p1}) such that for all $\ket{u} \in V$,
+\begin{equation}\label{c2s1e4}
+\phi_v(\ket{u}) = (\ket{v}, \ket{u}).
+\end{equation}
+The functional $\phi_v$ is denoted by $\bra{v}$, read as `bra v', in Dirac 
+notation and equation \eqref{c2s1e4} is written more compactly as
+\begin{equation}\label{c2e1e5}
+\phi_v(\ket{u}) = (\ket{v}, \ket{u}) = \braket{v}{u}.
+\end{equation}
+Thus, the ket $\ket{u}$ is a vector, the bra $\bra{v}$ is a linear functional 
+and the `bra(c)ket' $\braket{v}{u}$ is the action of the linear functional on
+the vector. $\braket{v}{u}$ is a scalar, that is, a complex number.
+
+If $\phi_u$ is the linear functional corresponding to $\ket{u}$ then
+\[
+\phi_u(\ket{v}) = (\ket{u}, \ket{v}) = \braket{u}{v}.
+\]
+But we know that $(\ket{u}, \ket{v}) = (\ket{v}, \ket{u})^\ast$, while the 
+latter, from \eqref{c2e1e5}, is $(\braket{v}{u})^\ast$. Thus, we have the 
+important relation
+\begin{equation}\label{c2e1e6}
+\braket{u}{v} = \braket{v}{u}^\ast.
+\end{equation}
+
+In terms of the bras and the kets we can state Riesz representation theorem
+as `for every $\ket{v}\in V$ there is a linear functional $\bra{v} \in 
+V^\dagger$ such that
+\begin{equation}\label{c2s1e7}
+\bra{v}\left(\ket{v}\right) = (\ket{v}, \ket{u}) = \braket{v}{u}.
+\end{equation}
+Problem \ref{c2s1p3} show that the bra corresponding to $\ket{v_1} + \ket{v_2}$
+is $\bra{v_1} + \bra{v_2}$ and that corresponding to $\alpha\ket{v}$ is 
+$\alpha^\ast\bra{v}$.
+
+
+\subsection{Problems}
+\begin{enumerate}
+\item\label{c2s1p1} Let $V^\dagger$ be the set of all linear functionals of the 
+vector space $V$ over the field F. Show that $V^\dagger$ is also a vector space 
+over the same field. It is called the `dual space' of the space $V$.
+\item Explain why each step leading to equation \eqref{c2s1e3} is correct.  
+\item\label{c2s1p3} Using the argument preceeding equation \eqref{c2s1e7} show that the bra
+corresponding to $\ket{v_1} + \ket{v_2}$ is $\bra{v_1} + \bra{v_2}$. Extend the
+argument to show that the bra corresponding to $\alpha\ket{v}$ is $\alpha^\ast
+\bra{v}$.
+\end{enumerate}
