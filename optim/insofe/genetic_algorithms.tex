@@ -1,0 +1,246 @@
+\documentclass{beamer}
+\usefonttheme[onlymath]{serif}
+\usepackage{graphicx, bm, amsmath}
+\usetheme{Boadilla}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Genetic Algorithms}
+\author{Amey Joshi}
+\date{\today}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Global Search Algorithms}
+\begin{enumerate}
+\item The algorithm you studied previously iterated from an `initial point'
+towards a \emph{local minimum}. 
+\item Newton's method, quasi-Newton methods, gradient descent, conjugate 
+gradient descent all fall in this category.
+\item The require an evaluation of the function to be optimised along with its
+derivative. They compute local minima of differentiable functions.
+\item Global search algorithms aim to find global minima of arbitrary functions.
+\item In general, this is a (very) hard problem. Often times, we do not know 
+when and where to stop iterations of these algorithms. They are frequently used
+to identify `candidate starting points' for the gradient based algorithms.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Nelder-Mead Simplex Algorithm}
+\begin{enumerate}
+\item A simplex is a convex hull of a finite set of points. 
+\item In an $n$-dimensional domain, the Nelder-Mead algorithm starts with a 
+simplex of $n + 1$ points $\bm{x}_1, \ldots, \bm{x}_{n+1}$ such that
+\begin{equation}\label{e1}
+\begin{vmatrix}
+\bm{x}_1 & \ldots & \bm{x}_{n+1} \\
+1 & \ldots & 1
+\end{vmatrix} \ne 0.
+\end{equation}
+\item In 2-dimensions this condition ensures that the points are co-linear, in
+3-dimensions they are not coplanar etc.
+\item We evaluate the objective function at each one of the vertices, drop the 
+vertex where the function has the greatest value and compute the centroid of 
+the remaining points. 
+\item The centroid is used to select a new point to build a new simplex. This
+step is a bit involved and depends on the local properties of $f$.
+\item The algorithm stops if the sample standard deviation of values of $f$
+on the vertices of the simplex falls below a certain threshold.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Simulated annealing}
+\begin{enumerate}
+\item Annealing is the process of heating a metal and cooling it gradually so 
+that the defects in the original polycrystalline material get a chance to 
+correct themselves. The result is a more uniform crystal structure.
+\item The cooling must happen slowly for large crystals to be formed. Rapid
+cooling leads to formation of amorphous, glassy material. Slow cooling allows
+Nature to find a way to get to the minimum energy crystalline state.
+\item At a temperature $T$, a system may have energy $E_i$ with a probability
+\begin{equation}\label{e2}
+p(E_i) = \frac{e^{-E_i/kT}}{Z},
+\end{equation}
+where $Z$ is called the partition function and is defined as
+\begin{equation}\label{e3}
+Z = \sum_{i=1}^n e^{-E_i/kT}.
+\end{equation}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Simulated annealing}
+\begin{enumerate}
+\item $k$ is called the Boltzmann constant and the distribution $p(E_i)$ is 
+called the Boltzmann distribution.
+\item A system can have `high' energies at temperature $T$ albeit with a very 
+low probability. Thus, Nature sometimes allows herself to get into a high energy
+state so that she can eventually descend down a valley to reach a lower energy.
+This is the physics of simulated annealing.
+\item The algorithm mimics the physics. In the initial iterations it explores 
+the search space $\Omega$ more aggressively, occasionally permitting itself to 
+get to a point of `higher energy'. As the iterations progress, the search 
+neighbourhood shrinks gradually.
+\item The stopping criterion is usually the change in the value of the objective
+function.
+\item Quite effective for combinatorial optimisation. Provides a practical 
+solution of the travelling salesman problem.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Particle Swarm Optimisation}
+\begin{enumerate}
+\item Select $d$ points $S = \{\bm{x}_1, \ldots, \bm{x}_d\}$, at random, from the 
+search space $\Omega$. $S$ is called a `swarm' and the points are called 
+`particles'. Their `positions' are $\bm{p}_i = \bm{x}_i$ and they are assigned
+random velocities $\bm{v}_i$. These points are called `particles' in a swarm.
+\item The `personal best' for each particle is $\bm{p}_i = \bm{x}_i$ and the 
+`global best' for the swarm is
+\begin{equation}\label{e4}
+\bm{g} = \argmin_{\bm{x} \in S}f(\bm{x}).
+\end{equation}
+\item For each $i = 1, \ldots, d$, generate random vectors $\bm{r}_i$ and 
+$\bm{s}_i$ such that their components are uniformly distributed in $[0, 1]$.
+Compute the new position and velocity as
+\begin{eqnarray}
+\bm{v}_i &\leftarrow& \omega\bm{v}_i + c_1\bm{r}_i \circ (\bm{p}_i - \bm{x}_i) +
+c_2\bm{s}_i \circ (\bm{g} - \bm{x}_i) \label{e5} \\
+\bm{x}_i &\leftarrow& \bm{x}_i + \bm{v}_i. \label{e6}
+\end{eqnarray}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Particle Swarm Optimisation}
+\begin{enumerate}
+\item Update personal best and global best. If $f(\bm{x}_i) < f(\bm{p}_i)$ then
+replace $\bm{p}_i$ with $\bm{x}_i$. Otherwise leave it untouched. If the new
+global best is smaller than the previous one, update it.
+\item Continue if stopping criteria are not met.
+\item The constants $\omega, c_1, c_2$ are hyper-parameters of the algorithm.
+\item $\omega$ is called the inertial constant. $c_1$ and $c_2$ determine to what 
+extent the particle's next position is influenced by the personal best and global
+best.
+\item Rule of thumb is $\omega$ should be slightly less than $1$ and $c_1, c_2
+\approx 2$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Genetic Algorithms}
+The optimisation problem is
+\begin{equation}\label{e1}
+\text{maximise } f(\bm{x})
+\text{ subject to } \bm{x} \in \Omega \subset \mathbb{R}^n
+\end{equation}
+An outline of the algorithm is:
+\begin{enumerate}
+\item Start with an initial population $P_0$ of points in $\Omega$.
+\item For $k =0, 1, 2, \ldots$, build a population $P_{k+1}$ from $P_k$ such 
+that it has `better individuals'. Two `better individuals' produce two 
+offspring who replace them.
+\item The algorithm stops either after a fixed number of iterations or when the
+$k+1$th generation is not significantly better than the $k$th.
+\end{enumerate}
+Question: What does `better individuals' and `produce offspring' mean for 
+points in the search space $\Omega$?
+\end{frame}
+
+\begin{frame}
+\frametitle{Some terminology}
+\begin{enumerate}
+\item An alphabet $\Sigma$ is a finite set of symbols. A string $s$ over an
+alphabet $\Sigma$ is a sequence of symbols in $\Sigma$. The set of all strings
+over $\Sigma$ is denoted by $\Sigma^\ast$. For example, genes are strings over 
+the alphabet $\{A, T, G, C\}$.
+\item Genetic algorithms use a certain alphabet; the most common being $\Sigma
+= \{0, 1\}$.
+\item By an encoding of points in $\Omega$ we mean a mapping $e:\Omega \mapsto
+\Sigma^\ast$.
+\item Chromosomes in $\Sigma^\ast$ are all strings of a certain fixed length 
+$L$. Question: If $|\Sigma| = m$, how many chromosomes can we have?
+\item To each chromosome there is a value of the objective function. We assume
+that it is a non-negative function.
+\item Every genetic algorithm starts with a choice of $\Sigma, e$ and $L$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{The selection step}
+\begin{enumerate}
+\item The initial population $P_0$ of points in the search space $\Omega$ is 
+selected randomly.
+\item For each $k \ge 0$, we form a mating set $M_k$ from the population $P_k$
+by associating a probability
+\begin{equation}\label{e2}
+p_i = \frac{f(\bm{x}_i)}{F}
+\end{equation}
+where
+\begin{equation}\label{e3}
+F = \sum_{i=1}^{|P_k|} f(\bm{x}_i).
+\end{equation}
+\item Every point $\bm{x}_i \in P_k$ is selected in $M_k$ with probability $p_i$
+and $|M_k| = |P_k|$ using `sampling by replacement' scheme. Two popular 
+algorithms are `roulette wheel' and `tournament' scheme.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{The evolution step}
+\begin{enumerate}
+\item We randomly select two points in $M_k$ and let them mate to produce two
+offspring. One way to produce genetic inheritors is `one-point crossover'. For
+a given pair of points $\bm{x}, \bm{y} \in M_k$ we choose a number $1 \le l \le 
+L$. We retain the first $l$ symbols of $e(\bm{x})$ and borrow the last $L-l$ 
+from $e(\bm{y})$ to create one offspring. The other one is created by taking the
+first $l$ symbols of $e(\bm{y})$ and suffixing them with the last $L-l$ of 
+$e(\bm{x})$.
+\item After the crossover operation we replace the parents in $M_k$ by their 
+off-springs.
+\item The evolution step also has a fixed parameter $p_c \in (0, 1)$ so that 
+only $p_c|M_k|$ pairs are chosen to mate.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{The evolution step}
+\begin{enumerate}
+\item The next step is the random mutation of the offspring's chromosomes. It is
+determined by another fixed parameter $p_m \in (0, 1)$. Only $p_cL$ symbols of 
+the chromosome may undergo random mutation. Usually $p_m$ is a very small 
+number.
+\item Mutation usually plays a relatively smaller part in the evolution.
+\item The set $M_k$ after crossover and mutation is the population $P_{k+1}$.
+\item Sometimes the `best' chromosome from $P_k$ is always a part of $P_{k+1}$,
+a strategy known as \emph{elitism}.
+\item The stopping criterion is 
+\begin{enumerate}
+\item the number of iterations or
+\item the change in the value of the objective function evaluated for the best
+chromosome.
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{A few observations}
+\begin{enumerate}
+\item We need only $f$ and not $\nabla f$ in genetic algorithms.
+\item Randomization plays an important role in the selection and evolution steps.
+\item The computations do not happen on $\bm{x} \in \Omega$ but $e(\bm{x}) \in
+\Sigma^\ast$. Therefore, we are really looking for maximum of the function $f
+\circ e: \Sigma^\ast \mapsto \mathbb{R}^n$.
+\item It is not obvious that the two functions $f$ and $f \circ e$ have the same
+set of extrema.
+\item Real number genetic algorithms are a modification of the genetic 
+algorithms that work directly with points in the search space instead of their 
+encodings. The crossover and mutation steps are defined as operations on points
+in $\mathbb{R}^n$.
+\end{enumerate}
+\end{frame}
+\end{document}
