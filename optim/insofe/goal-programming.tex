@@ -1,0 +1,213 @@
+\documentclass{beamer}
+\usefonttheme[onlymath]{serif}
+\usepackage{graphicx, bm, amsmath}
+\usetheme{Boadilla}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Goal Programming}
+\author{Amey Joshi}
+\date{\today}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Multi-objective optimisation}
+\begin{enumerate}
+\item A multi-objective optimisation problem defined as 
+\begin{equation}\label{e1}
+\min\{f_1(\bm{x}, \bm{y}), \ldots, f_k(\bm{x}, \bm{y})\},
+\end{equation}
+subject to
+\begin{eqnarray}
+g(\bm{x}, \bm{y}) &=& 0 \label{e2} \\
+h(\bm{x}, \bm{y}) &\le& 0 \label{e3}
+\end{eqnarray}
+where $\bm{x} \in \mathbb{R}^n$ is a vector of continuous decision variables and
+$\bm{y} \in \mathbb{R}^m$ is a vector of discrete decision variables. The functions
+$g$ and $h$ map $\mathbb{R}^{n+m}$ to $\mathbb{R}^p$ and $\mathbb{R}^s$.
+\item The objective functions $f_1, \ldots, f_k$ and the constraints $g$ and 
+$h$ are arbitrary.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pareto Optimality}
+\begin{enumerate}
+\item In general, there is no solution $\bm{x}^\ast$ that simultaneously 
+minimises all objective functions $f_1, \ldots, f_k$.
+\item Sometimes the goals may work against each other.
+\item A solution to a multi-objective optimisation problem is Pareto optimal if
+there is no other feasible solution for which one or more objective functions 
+take a lesser value.
+\item You cannot improve an objective function without spoiling the rest.
+\item A feasible solution can be Pareto improved if some objective functions can
+be improved without adversely affecting the others.
+\item A feasible solution is called Pareto dominated if there exists a Pareto
+improvement.
+\item A Pareto front is the locus of all Pareto optimal solutions.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution techniques}
+\begin{enumerate}
+\item The existence of a Pareto front indicates that there is no unique Pareto
+optimal solution to the multi-objective optimisation problem. Often times, a 
+human decision maker decides which solution to select.
+\item There are four ways to solve the problem:
+\begin{itemize}
+\item In \emph{No preference methods} a solution of the vector valued objective
+function $\bm{f}(\bm{x}) = (\bm{f}_1(\bm{x}), \ldots, \bm{f}_k(\bm{x}))^T$ is
+found without the decision maker influencing it.
+\item In \emph{a priori methods} the decision maker indicates his preferences of
+objective functions that must be minimised at a priority.
+\item In \emph{a posteriori methods} the decision maker selects one solution 
+from the Pareto front.
+\item In \emph{interactive methods} the decision maker actively intervenes in
+selecting solutions from the Pareto by deciding which objective functions must
+be prioritised over others.
+\end{itemize}
+\item Goal programming is an example of a priori methods.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Illustration of a goal program - the problem statement}
+\begin{enumerate}
+\item A hotel owner must decide the number of small, medium and large conference
+rooms to be constructed. A small room has an area of $400$ square feet, a medium
+one $750$ and a large one $1050$ square feet. It takes $18000$ dollars to 
+construct a small conference room, $33000$ to construct a medium one and $45150$ 
+to construct a large one. The owner has the following goals
+\begin{enumerate}
+\item Have aroung $5$ small, $10$ medium and $15$ large conference rooms;
+\item The total built up area should be around $25,000$ square feet and
+\item The cost of the project should be around $1 M$ dollars. 
+\end{enumerate}
+\item Notice the phrase ``should be around''.
+\item The decision maker has a rough idea of what he is looking for and wants to 
+know if that is feasible. He wants to examine several ways in which he can 
+achieve his goals.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Illustration of a goal program - the mathematical formulation}
+\begin{enumerate}
+\item Let $x_1, x_2, x_3$ be the number of small, medium and large rooms to be
+constructed. They are our decision variables. 
+\item The first constraint is expressed as
+\begin{eqnarray}
+x_1 + d_1^- - d_1^+ &=& 5 \label{e4} \\
+x_2 + d_2^- - d_2^+ &=& 10 \label{e5} \\
+x_3 + d_3^- - d_3^+ &=& 15 \label{e6}
+\end{eqnarray}
+\item $d_i^-$ and $d_i^+$ are called deviational variables. $d_i^-$ is a measure
+of underachieving the target and $d_i^+$ that of exceeding it.
+\item The second constraint is
+\begin{equation}\label{e7}
+400x_1 + 750 x_2 + 1050x_3 + d_4^- - d_4^+ = 25000.
+\end{equation}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Illustration of a goal program - the mathematical formulation}
+\begin{enumerate}
+\item The third constraint is
+\begin{equation}\label{e8}
+18000x_1 + 33000 x_2 + 45150x_3 + d_5^- - d_5^+ = 1000000.
+\end{equation}
+\item We want to minimize the deviations from the stated goals.
+\item The first candidate for the objective function could be
+\begin{equation}\label{e9}
+D = \sum_{i=1}^5 (d_i^+ + d_i^-).
+\end{equation}
+\item The deviations $d_i^+$ and $d_i^-$ have different units for different 
+constraints. The sum does not make sense. Therefore, we modifiy it to
+\begin{equation}\label{e10}
+D = \sum_{i=1}^5 \frac{d_i^+ + d_i^-}{t_i},
+\end{equation}
+where $t_i$ is the approximate target to be achieved.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Illustration of a goal program - the mathematical formulation}
+\begin{enumerate}
+\item Some goals are more important than others. This aspect is expressed 
+mathematically by assigning weights to the deviations.
+\item Higher weights are assigned to deviations we want to have the least. The
+resulting objective function is
+\begin{equation}\label{e11}
+D = \sum_{i=1}^5 \frac{w_i^+d_i^+ + w_i^-d_i^-}{t_i}.
+\end{equation}
+\item Note that $w_i$ are constants supplied by the decision maker. The 
+remaining constraints are
+\begin{eqnarray}
+x_i &\ge& 0 \label{e12} \\
+d_i^+ &\ge& 0 \label{e13} \\
+d_i^- &\ge& 0 \label{e14}
+\end{eqnarray}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Illustration of a goal program - the mathematical formulation}
+\begin{enumerate}
+\item If a certain deviation is unimportant or irrelevant, we assign it a
+zero weight.
+\item Sometimes we may want to express the limits on certain deviations. For 
+example we do not want the cost overruns to exceed $50000$ dollars. We express 
+it as
+\begin{equation}\label{e15}
+d_5^+ \le 50000.
+\end{equation}
+\item Finally, the decision variables $x_1, x_2, x_3$ must be integers. The
+deviational variables $d_i^+$ and $d_i^-$ should also be integers for the
+first three constraints related to the number of rooms. The remaining ones may
+be permitted to take any real values.
+\item As usual, we try to minimize the number of integer constraints.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: portfolio optimisation}
+\begin{enumerate}
+\item A portfolio consists of and amount $X$ to be invested in $n$ assets. The
+allocation is expressed in terms of weights $w_i$, $i = 1, \ldots, n$ such that
+\begin{equation}\label{e16}
+\sum_{i=1}^n w_iX = X \text{ or } \sum_{i=1}^n w_i = 1.
+\end{equation}
+\item If no short-selling is allowed then $w_i \ge 0$.
+\item Each asset has a certain expected return and volatility.
+\item The goal is to give at least $\mu$ percent return with a volatality at
+most $\sigma$. 
+\item There could be many other constraints like a limit on the number of weight
+in an asset class, the minimum and maximum number of asset classes etc.
+\item The Pareto frontier is called \emph{efficient frontier} in Finance.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: transport of materials}
+\begin{enumerate}
+\item You want to transport $n$ goods from a source to a destination. There
+are several modes of transporting them, each one characterised by a cost 
+per unit and time.
+\item Some of your goods are perishable. 
+\item Some goods are valuable enough that you cannot send all of them by a
+single more.
+\item Each mode of transport is limited by a certain capacity.
+\item There could also be a certain amount of pilferage of goods with each mode.
+\item You want to transport the goods so that
+\begin{itemize}
+\item they reach the destination in the fastest possible way
+\item at the least cost and
+\item with least pilferage.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+\end{document}
