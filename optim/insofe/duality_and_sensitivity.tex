@@ -1,0 +1,232 @@
+\documentclass{beamer}
+\usefonttheme[onlymath]{serif}
+\usepackage{graphicx, bm, amsmath}
+\usetheme{Boadilla}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Duality and Sensitivity Analysis}
+\author{Amey Joshi}
+\date{\today}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Notation and mathematical preliminaries}
+\begin{enumerate}
+\item $\mathbb{R}$ is the set of real numbers. The Cartesian product $\mathbb{R}
+\times \mathbb{R}$ is denoted by $\mathbb{R}^2$ and $\mathbb{R}^n \times 
+\mathbb{R}$ by $\mathbb{R}^{n+1}$ for all non-negative integers $n$.
+\item Members of $\mathbb{R}^n$ are called vectors and they are denoted by bold
+small letters like $\bm{a}, \bm{x}$ etc. In component form $\bm{x} = (x_1, 
+\ldots, x_n)$.
+\item The notation $\bm{x} \ge 0$ means $x_1 \ge 0, \ldots, x_n \ge 0$.
+\item Matrices are denoted by bold capital letters $\bm{A}, \bm{X}$ etc. Their 
+elements are denoted by $a_{ij}, x_{ij}$ etc.
+\item Transposes are denoted by $\bm{x}^T, \bm{A}^T$ etc.
+\item Inner product of $\bm{x}, \bm{y} \in \mathbb{R}^n$ is denoted by 
+$(\bm{x}, \bm{y})$ and defined as $\sum_{i=1}^n x_iy_i$.
+\item Any linear program can be written in the form
+\begin{equation}\label{e1}
+\text{Minimize } (\bm{c}, \bm{x}) \text{ subject to } \bm{A}\bm{x} \ge \bm{b}
+\text{ and } \bm{x} \ge 0.
+\end{equation}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Diet problem - the primal form}
+\begin{enumerate}
+\item We are given the daily needs $b_1, 
+\ldots b_m$ of $m$ nutrients available in $n$ foods. The availability of $i$th
+nutrient in $j$th food is denoted by $a_{ij}$ and the cost of food $i$th food
+is given by $c_1, \ldots, c_n$. If $x_1, \ldots, x_n$ is the quantity of food
+to be consumed daily then we want to
+\begin{equation}\label{e2}
+\text{Minimize } c_1x_1 + \cdots + c_nx_n = (\bm{c}, \bm{x}) \text{ subject to,}
+\end{equation}
+\begin{eqnarray}
+a_{11}x_1 + \cdots + a_{1n}x_n &\ge& b_1 \label{e3} \\
+\vdots & & \vdots \nonumber \\
+a_{m1}x_1 + \cdots + a_{mn}x_n &\ge& b_m \label{e4} \\
+x_1, \ldots, x_n &\ge& 0 \label{e5}
+\end{eqnarray}
+\item Equations \eqref{e3} to \eqref{e5} can be summarised as $\bm{A}\bm{x} \ge
+\bm{b}$ and $\bm{x} \ge 0$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Diet problem - the dual form}
+\begin{enumerate}
+\item The primal form of the diet problem was stated from the buyer's point of
+view. How much of each food type should he buy to meet his nutritional needs?
+\item There is a related problem from the seller's side as well. Let $y_1, 
+\ldots, y_m$ be the prices of nutrients. A buyer needs $b_1, \ldots, b_m$ of 
+them so that the seller's revenue is $y_1b_1 + \cdots + y_mb_m$. The buyer's 
+cost preferences are
+\begin{eqnarray}
+y_1a_{11} + \cdots + y_ma_{m1} &\le& c_1 \label{e6} \\
+\vdots & & \vdots \nonumber \\
+y_ma_{1n} + \cdots + y_ma_{mn} &\le& c_n \label{e7}
+\end{eqnarray}
+\item In matrix form the objective function is $(\bm{y}, \bm{b})$ and the 
+constraints of equations \eqref{e6} to \eqref{e7} are
+\begin{equation}\label{e8}
+\bm{y}^T\bm{A} \le \bm{c}.
+\end{equation}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Diet problem - primal and dual forms}
+\begin{enumerate}
+\item Primal problem is to minimise $(\bm{c}, \bm{x})$ subject to 
+$\bm{A}\bm{x} \ge \bm{b}$ and $\bm{x} \ge 0$.
+\item Dual problem is to maximise $(\bm{y}, \bm{b})$ subject to 
+$\bm{y}^T\bm{A} \le \bm{c}$ and $\bm{y} \ge 0$.
+\item The primal form seeks to minimise total cost as long as the nutritional
+needs are met.
+\item The dual form seeks to maximise the profit as long as the prices do not 
+become unaffordable to the buyer.
+\item The solution of the primal problem is the quantity of food.
+\item The solution of the dual problem is the price of food.
+\item Quantity and price of food are constrained to be non-negative.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{The primal and dual forms}
+\begin{enumerate}
+\item Every linear program has an associated dual program.
+\item The two are not identical but they are closely related to each other.
+They have the same set of parameters $\bm{A}, \bm{b}, \bm{c}$ but their 
+decision variables, objective functions and goals are different. If the primal
+is a minimisation problem then the dual is a maximisation problem.
+\item The Simplex algorithm that solves the primal problem also gives the
+solution to the dual problem.
+\item The dual of the dual problem is the primal problem. Therefore, it is
+sometimes simpler to solve the dual problem instead of the primal one.
+\item The idea of duality is not confined to linear programs. It is applicable 
+to a wide class of optimisation problems. However, it is simplest (and perhaps
+most profitable) in the case of linear programs.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Duals of LPs in other forms}
+\begin{enumerate}
+\item Consider the LP minimising $(\bm{c}, \bm{x})$ subject to $\bm{A}\bm{x} =
+\bm{b}$ and $\bm{x} \ge 0$. The equality constraint can be written as 
+\begin{eqnarray}
+\bm{A}\bm{x} &\ge& \bm{b} \label{e9} \\
+-\bm{A}\bm{x} &\ge& -\bm{b} \label{e10}
+\end{eqnarray}
+which is same as
+\begin{equation}\label{e11}
+\begin{bmatrix}\bm{A} \\ -\bm{A}\end{bmatrix}\bm{x} \ge 
+\begin{bmatrix}\bm{b} \\ -\bm{b}\end{bmatrix}
+\end{equation}
+\item Its dual is to maximise $(\bm{y}, \bm{b}^\prime)$ where $\bm{b}^\prime =
+[\bm{b}\;-\bm{b}]^T$ and $\bm{y} \in \mathbb{R}^{2n}$ if $\bm{x} \in 
+\mathbb{R}^n$. The constraints are
+\begin{equation}\label{e12}
+\bm{y}^T\begin{bmatrix}\bm{A} \\ -\bm{A}\end{bmatrix} \le \bm{c}
+\end{equation}
+and $\bm{y} \ge 0$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mathematical properties of duality - 1}
+\begin{enumerate}
+\item {[Weak duality lemma]} If $\bm{x}$ and $\bm{y}$ are feasible solutions to 
+the primal and dual LPs then $(\bm{c}, \bm{x}) \ge (\bm{y}, \bm{b})$.
+\item It states that cost of a feasible solution of the primal program is at 
+least as large as the `revenue' of a feasible solution. If you get the solution
+of the primal program then you know that the solution of the dual program
+cannot be greater than it. On the other hand, if you find the solution of the
+dual problem then you are guaranteed that the solution of the primal problem
+will not be smaller than it. (By greater and smaller solutions we mean the 
+values of the respective objective functions.)
+\item If one of the problems is unbounded then the other has no feasible 
+solution.
+\item The solution of the primal problem inches towards that of the dual problem
+as they iterate towards the optimal values.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mathematical properties of duality - 2}
+\begin{enumerate}
+\item It can also be shown that if $\bm{x}^\ast$ and $\bm{y}^\ast$ are feasible
+solutions of the primal and the dual theorems such that $(\bm{c}, \bm{x}^\ast) =
+(\bm{y}^\ast, \bm{b})$ then $\bm{x}^\ast$ and $\bm{y}^\ast$ are the optimal 
+solutions of the respective problems.
+\item The converse of the above statement is also true. If the primal problem
+has an optimal value then so does the dual problem. Moreover, their objective
+functions take the same value.
+\item An immediate application of this theorem is to the Simplex algorithm 
+itself. It is computationally cheaper to solve whichever problem has fewer
+constraints. This is true for the straightforward implementation of the Simplex
+algorithm. 
+\item The close relationship between the primal and the dual form also permit an
+easy interpretation of the coefficients of the objective function. They appear 
+in the constraint equations of the dual problem.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sensitivity analysis}
+\begin{enumerate}
+\item Practical optimisation problems emerge from a complicated business setting.
+\item The objective function and the constraints are known only approximately.
+Often times, even their statistical properties are not known.
+\item It is important to understand how good is our solution if our knowledge of
+the problem's parameters is imperfect.
+\item The idea of `stable solutions' is an important concept in applied 
+mathematics with very deep ramifications. A solution is said to be stable if it
+changes only slightly if the parameters of the problem are changed slightly. 
+\item Stable solutions are `useful' and stable solutions are `observed in 
+nature'.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sensitivity analysis}
+\begin{enumerate}
+\item Yet, sensitivity analysis is not confined to stability analysis alone.
+\item Practical optimisation problems involve thousands of decision variable and
+hundreds of constraints. It is important to understand which of these are most
+important.
+\item The most important parameters are those for which a slight change in their
+values results in a solution being sub-optimal or even infeasible. Even a change 
+in the solution is not to be discounted.
+\item A solution to an optimisation problem is often a business plan. For 
+example, it may determine how much of a product must be produced or how should 
+be the schedule of flights. One cannot change these plans just because you
+discoverd a newer solution.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sensitivity analysis}
+\begin{enumerate}
+\item Let us consider situation where we want to carry our sensitivity analysis
+for the all the coefficients of the decision variables in the objective function.
+Suppose further that for each one of them we want to consider a value lower and
+a value higher then the one we started with. 
+\item Each coefficient has $3$ values. If there are $100$ decision variables then
+there are $3^{100}$ possibilities. This is an extremely large number.
+\item One must rely on domain knowledge and a deeper understanding of the problem
+space to identify the variables that are either important or about which our 
+knowledge is shaky. Otherwise, a systematic examination of all variables is 
+possible only in the simplest problems.
+\item Sensitivity analysis is also called `what-if analysis' in Finance. For 
+several optimsation problems in finance the practioners know which one 
+parameters are the most uncertain and `what-if' analysis is restricted to only
+these.
+\end{enumerate}
+\end{frame}
+\end{document}

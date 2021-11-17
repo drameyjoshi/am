@@ -15,6 +15,28 @@
 \begin{frame}
 \frametitle{Multi-objective optimisation}
 \begin{enumerate}
+\item Few business problems are as simple as optimising only one objective 
+function.
+\item Practical problems involve balancing several objectives/goals. Sometimes
+they are mutually antagonistic.
+\item Think of the goals in personal tasks like
+\begin{enumerate}
+\item Buying a house;
+\item Selecting a job offer;
+\item Choosing a life partner.
+\end{enumerate}
+\item Some complex business tasks could be 
+\begin{enumerate}
+\item Setting up an offshore delivery centre;
+\item Choosing a location for a new factory;
+\item Allocating funds to departments.
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Multi-objective optimisation}
+\begin{enumerate}
 \item A multi-objective optimisation problem defined as 
 \begin{equation}\label{e1}
 \min\{f_1(\bm{x}, \bm{y}), \ldots, f_k(\bm{x}, \bm{y})\},
@@ -33,6 +55,30 @@ $h$ are arbitrary.
 \end{frame}
 
 \begin{frame}
+\frametitle{Dominance}
+\begin{enumerate}
+\item In a single-objective optimisation problem, a solution $\bm{x}_1$ is 
+better than $\bm{x}_2$ if $f(\bm{x}_1) \le f(\bm{x}_2)$. There is an easy way 
+to compare one feasible solution with another.
+\item Situation is much different in the case of a multi-objective optimisation
+problem. We compare two feasible solutions by checking if one of them dominates
+the other.
+\item A feasible solution $\bm{x}_1$ dominates another feasible solution 
+$\bm{x}_2$ if
+\begin{enumerate}
+\item $f_i(\bm{x}_1) \le f_i(\bm{x}_2)$ for all $i = 1, \ldots, k$. Thus, 
+$\bm{x}_1$ is no worse than $\bm{x}_2$ in all objective functions and
+\item $f_i(\bm{x}_1) < f_i(\bm{x}_2)$ for at least one $i = 1, \ldots, k$.
+That is, $\bm{x}_1$ is strictly better than $\bm{x}_2$ in at least one 
+objective.
+\end{enumerate}
+\item The relation `dominates' is a bit different than $>$. If $\bm{x}_1$ and
+$\bm{x}_3$ dominate $\bm{x}_2$ we may not be able to tell if $\bm{x}_1$ 
+dominates $\bm{x}_3$ or the other way round.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
 \frametitle{Pareto Optimality}
 \begin{enumerate}
 \item In general, there is no solution $\bm{x}^\ast$ that simultaneously 
@@ -40,8 +86,8 @@ minimises all objective functions $f_1, \ldots, f_k$.
 \item Sometimes the goals may work against each other.
 \item A solution to a multi-objective optimisation problem is Pareto optimal if
 there is no other feasible solution for which one or more objective functions 
-take a lesser value.
-\item You cannot improve an objective function without spoiling the rest.
+take a lesser value. You cannot improve an objective function without spoiling 
+the rest.
 \item A feasible solution can be Pareto improved if some objective functions can
 be improved without adversely affecting the others.
 \item A feasible solution is called Pareto dominated if there exists a Pareto
@@ -59,7 +105,7 @@ human decision maker decides which solution to select.
 \item There are four ways to solve the problem:
 \begin{itemize}
 \item In \emph{No preference methods} a solution of the vector valued objective
-function $\bm{f}(\bm{x}) = (\bm{f}_1(\bm{x}), \ldots, \bm{f}_k(\bm{x}))^T$ is
+function $\bm{f}(\bm{x}) = (f_1(\bm{x}), \ldots, f_k(\bm{x}))^T$ is
 found without the decision maker influencing it.
 \item In \emph{a priori methods} the decision maker indicates his preferences of
 objective functions that must be minimised at a priority.
@@ -70,6 +116,64 @@ selecting solutions from the Pareto by deciding which objective functions must
 be prioritised over others.
 \end{itemize}
 \item Goal programming is an example of a priori methods.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Weighted sum method}
+\begin{enumerate}
+\item One can easily convert a multi-objective program into a single-objective
+one using `scalarisation'.
+\item The multiple objective functions are considered as components of a vector.
+\item They can be converted into a scalar in many ways. Although the most 
+obvious one is to consider the norm it is more convenient to use the weighted
+sum
+\[
+f(\bm{x}) = \sum_{i=1}^k w_if_i(\bm{x}),
+\]
+where $w_1, \ldots, w_k$ are \emph{given} weights. The constraints remain the 
+same.
+\item If the objective functions $f_1, \ldots, f_k$ are linear then so it $f$.
+\item The idea is easy to implement but it is not so easy to prove that the
+solution is Pareto optimal.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{$\epsilon$-constraint method}
+\begin{enumerate}
+\item Identify the most important objective function, say $f_j$, $1\le j\le k$,
+and relegate the rest of them as constraints.
+\item For the other objective functions, set upper limits $\epsilon_1, \ldots, 
+\epsilon_k$ and turn them into constraints
+\begin{eqnarray*}
+f_1(\bm{x}) &\le& \epsilon_1 \\
+\vdots &\le& \vdots \\
+f_k(\bm{x}) &\le& \epsilon_k,
+\end{eqnarray*}
+where the function $f_j$ is excluded.
+\item The new constraints may make the feasible region non-convex.
+\item It is not easy to come up with the `best' values of $\epsilon_i$s. We may
+not get a Pareto optimal solution.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Goal programming}
+\begin{enumerate}
+\item We allow the solution to deviate from the constraints. The deviations
+could be in either directions.
+\item The objective function is to minimise the total deviations.
+\item It is possible to prioritise the goals by assigning weights to them. The
+same weights are assigned to the deviations and when we minimise the aggregate
+deviation we tend to minimise the deviations of the goals with highest weights.
+\item Some deviations are not important or they do not matter as much. We can
+assign a zero weight to their deviations.
+\item Some deviations may be subject to a limit. For example, we may want the
+deviation in cost price to be within a certain limit of the objective.
+\item Deviations in integral decision variables are themselves integers. This 
+makes goal programming an instance of MILP. A greater number of integral 
+variables makes the problem harder to solve.
 \end{enumerate}
 \end{frame}
 
