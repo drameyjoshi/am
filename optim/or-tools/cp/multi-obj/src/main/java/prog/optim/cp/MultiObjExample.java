@@ -11,6 +11,7 @@ import static java.util.Arrays.stream;
 
 import java.util.logging.Logger;
 
+// To prevent date time in logs add the VM argument -Djava.util.logging.SimpleFormatter.format="%4$s: %5$s%n"
 public class MultiObjExample {
 
 	private static void showResults(CpSolver solver, CpModel model, IntVar[] varlist, String[] names) {
