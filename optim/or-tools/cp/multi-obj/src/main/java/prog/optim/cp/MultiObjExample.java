@@ -9,9 +9,9 @@ import com.google.ortools.sat.LinearExprBuilder;
 import com.google.ortools.Loader;
 import static java.util.Arrays.stream;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-// To prevent date time in logs add the VM argument -Djava.util.logging.SimpleFormatter.format="%4$s: %5$s%n"
 public class MultiObjExample {
 
 	private static void showResults(CpSolver solver, CpModel model, IntVar[] varlist, String[] names) {
@@ -81,5 +81,5 @@ public class MultiObjExample {
 		showResults(solver, model, varlist, names);
 	}
 
-	private static Logger logger = Logger.getLogger(MultiObjExample.class.getName());
+	private static Logger logger = LoggerFactory.getLogger(MultiObjExample.class.getName());
 }
