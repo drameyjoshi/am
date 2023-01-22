@@ -30,57 +30,58 @@ public class Clusterer {
 	public static void main(String[] args) {
 		ObjectMapper mapper = new ObjectMapper();
 		Graph<Integer, DefaultEdge> floor = new SimpleGraph<>(DefaultEdge.class);
-		
+
 		try {
-			Map<String, List<?>> map = mapper.readValue(Paths.get(graphFile).toFile(), Map.class);
-			List<Map<?, ?>> cleaningAreas = (List<Map<?, ?>>) map.get("cleaningAreas");
-			for (Map m : cleaningAreas) {
-				int id = (int) m.get("id");				
-				floor.addVertex(id);				
-				List<?> neighbours = (List<?>)m.get("neighbourCleaningAreaIds");
-				for (Object n: neighbours) {					
+			@SuppressWarnings("unchecked")
+			Map<String, List<Map<String, Object>>> map = (Map<String, List<Map<String, Object>>>) mapper
+					.readValue(Paths.get(graphFile).toFile(), Map.class);
+			List<Map<String, Object>> cleaningAreas = map.get("cleaningAreas");
+			for (Map<String, Object> m : cleaningAreas) {
+				int id = (int) m.get("id");
+				floor.addVertex(id);
+				List<?> neighbours = (List<?>) m.get("neighbourCleaningAreaIds");
+				for (Object n : neighbours) {
 					floor.addVertex((int) n);
 					floor.addEdge(id, (int) n);
-				}				
+				}
 			}
 		} catch (StreamReadException e) {
-			// TODO Auto-generated catch block
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		} catch (DatabindException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
-		
+
 		printGraph(floor);
-		DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge> algo = new DenseEdmondsMaximumCardinalityMatching(floor);
+		DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge> algo = new DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge>(
+				floor);
 		MatchingAlgorithm.Matching<Integer, DefaultEdge> matching = algo.getMatching();
 		Set<Integer> tour1 = new TreeSet<>();
 		Set<Integer> tour2 = new TreeSet<>();
-		
+
 		if (matching.isPerfect()) {
 			logger.info("Found a perfect matching");
 			int mSize = matching.getEdges().size();
 			logger.info("There are {} edges in the matching.", mSize);
 			boolean flag = true;
-			for (DefaultEdge e: matching.getEdges()) {
+			for (DefaultEdge e : matching.getEdges()) {
 				if (flag) {
 					tour1.add(floor.getEdgeSource(e));
 					tour1.add(floor.getEdgeTarget(e));
 				} else {
 					tour2.add(floor.getEdgeSource(e));
-					tour2.add(floor.getEdgeTarget(e));					
+					tour2.add(floor.getEdgeTarget(e));
 				}
 				flag = !flag;
 			}
 		}
-		
+
 		logger.info("Cleaning areas in tour 1: {}", tour1.toString());
 		logger.info("Cleaning areas in tour 2: {}", tour2.toString());
 	}
-	
+
 	private static void printGraph(Graph<Integer, DefaultEdge> g) {
 		Iterator<Integer> iter = new DepthFirstIterator<>(g);
 		while (iter.hasNext()) {
@@ -91,5 +92,4 @@ public class Clusterer {
 
 	private static final String graphFile = "graph.json";
 	private static Logger logger = LoggerFactory.getLogger(Clusterer.class.getName());
-	private static final int nTours = 2;
 }
