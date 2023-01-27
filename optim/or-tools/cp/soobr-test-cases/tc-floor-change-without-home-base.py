@@ -1,10 +1,13 @@
-from typing import List
+import common_functions
 
+import numpy as np
+
+from typing import List
 from ortools.sat.python import cp_model
 
 # Input data. Relevant parameters chosen from 'testFloorChangeWithoutHomeBase.json'.
 time_to_clean = [1, 1, 1, 1, 1]
-priority = [80, 80, 80, 80, 80]
+priority = 5 * [80]
 floor_id = [1, 2, 3, 4, 5]
 floor_sort = [0, 1, 2, 1, 2]
 building_id = [1, 1, 1, 2, 2]
@@ -23,6 +26,7 @@ for t in range(n_tours):
     for c in range(n_cleaning_areas):
         x[(t, c)] = model.NewBoolVar(f'x[{t}, {c}]')
 
+## Add constraints.
 # Constraint 1: For any tour, time to clean <= tour max duration.
 for t in range(n_tours):
     time = [x[(t, c)] * time_to_clean[c] for c in range(n_cleaning_areas)]
@@ -32,34 +36,40 @@ for t in range(n_tours):
 for c in range(n_cleaning_areas):
     model.AddAtMostOne([x[(t, c)] for t in range(n_tours)])
 
-# Objective: For each tour, within a building, minimise floor change.
+## Build objective function.
+obj_list = []
+    
+uniq_buildings = set()
+for b in building_id:
+    uniq_buildings.add(b)
+
+# Objective 1: For each tour, within a building, minimise floor change.
 terms = []
-uniq_buildings = (b for b in building_id)
 floor_penalty = 0 # This will be a negative number.
 for t in range(n_tours):        
     for ub in uniq_buildings:
         i = -1
         # Get indices of all floors in this building
-        floor_idx = []
+        cleaning_areas_in_bldg = []
         for b_id in building_id:
             i += 1            
             if ub == b_id:
-                floor_idx.append(i)
+                cleaning_areas_in_bldg.append(i)
 
         for b_id in building_id:
             if ub == b_id:                
-                for j in range(len(floor_idx)):
-                    for k in range(j + 1, len(floor_idx)):
+                for j in range(len(cleaning_areas_in_bldg)):
+                    for k in range(j + 1, len(cleaning_areas_in_bldg)):
                         terms.append((j - k)*x[(t, j)])
                         terms.append((j - k)*x[(t, k)])
                         if floor_penalty > (j - k):
-                            floor_penalty = j - k
+                            floor_penalty = j - k                
                         
-obj_1 = sum(terms)
+obj_list.append(sum(terms))
 
-# Objective: For each tour, minimise building changes.
+# Objective 2: For each tour, minimise building changes.
 terms = []
-bldg_penalty = floor_penalty - 1 # This will be an even more negative number.
+bldg_penalty = floor_penalty - 2 # This will be an even more negative number.
 for t in range(n_tours):
     for j in range(n_cleaning_areas):
         for k in range(j + 1, n_cleaning_areas):
@@ -67,51 +77,42 @@ for t in range(n_tours):
                 terms.append(bldg_penalty * x[(t, j)])
                 terms.append(bldg_penalty * x[(t, k)])
 
-obj_2 = sum(terms)
+obj_list.append(sum(terms))
 
-# Objective: maximise priorities.
-def normalise(priority: List[int]) -> List[int]:
-    freq = {}
-    for p in priority:
-        if p in freq:
-            freq[p] += 1
-        else:
-            freq[p] = 1
+# Objective 3: maximise priorities.
+max_priority = np.max(priority)
+if np.min(priority) < max_priority:
+    normalised_priority = common_functions.normalise(priority)
+    terms = []
+    for t in range(n_tours):
+        for c in range(n_cleaning_areas):
+            terms.append(x[(t, c)] * normalised_priority[c])
 
-    normalised_priority = []
-    for i in range(len(priority)):
-        normalised_priority.append(priority[i]/freq[priority[i]])
+    obj_list.append(sum(terms))
+    max_priority = np.max(normalised_priority)
 
-    return normalised_priority
+# Objective 4: maximise allocations
+factor = 1
+if max_priority > -2 * bldg_penalty:
+    factor = max_priority
+else:
+    factor = -(n_tours + len(uniq_buildings)) * (bldg_penalty + floor_penalty)
 
-normalised_priority = normalise(priority)
-terms = []
+terms = []    
 for t in range(n_tours):
     for c in range(n_cleaning_areas):
-        terms.append(x[(t, c)] * normalised_priority[c])
+        terms.append(factor * x[(t, c)])
 
-obj_3 = sum(terms)
+obj_list.append(sum(terms))
 
-# Objective: maximise allocations
-terms = []
-for t in range(n_tours):
-    for c in range(n_cleaning_areas):
-        terms.append(x[(t, c)])
-
-obj_4 = sum(terms)
-
-model.Maximize(sum([obj_1, obj_2, obj_3, obj_4]))
+## Final objective function.
+model.Maximize(sum(obj_list))
+model.ExportToFile('testFloorChangeWithoutHomeBase.txt')
 
 solver = cp_model.CpSolver()
 status = solver.Solve(model)
 
-found = False
-if status == cp_model.FEASIBLE:
-    print('Found a feasible solution.')
-    found = True
-elif status == cp_model.OPTIMAL:
-    print('Found an optimal solution.')
-    found = True
+found = common_functions.report_status(status)
 
 if found:
     print(f'Total time = {solver.ObjectiveValue()}')
