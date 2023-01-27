@@ -18,12 +18,20 @@ def normalise(priority: List[int]) -> List[int]:
 
 def report_status(status: int) -> None:
     found = False
-    
-    if status == cp_model.FEASIBLE:
-        print('Found a feasible solution.')
-        found = True
-    elif status == cp_model.OPTIMAL:
-        print('Found an optimal solution.')
-        found = True
+   
+    match status:
+        case cp_model.FEASIBLE:
+            print('Found a feasible solution.')
+            found = True
+        case cp_model.OPTIMAL:
+            print('Found an optimal solution.')
+            found = True
+        case cp_model.INFEASIBLE:
+            print('The problem is infeasible.')
+        case cp_model.MODEL_INVALID:
+            print('The model is invalid.')
+        case _:
+            print('Unknown status')
+            
 
     return found
