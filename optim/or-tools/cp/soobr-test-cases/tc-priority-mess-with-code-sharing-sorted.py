@@ -78,8 +78,11 @@ for t in range(n_tours):
                 for j in range(len(cleaning_areas_in_bldg)):
                     for k in range(j + 1, len(cleaning_areas_in_bldg)):
                         p = -np.abs(floor_id[j] - floor_id[k])
-                        terms.append(p*x[(t, j)])
-                        terms.append(p*x[(t, k)])
+                        if p != 0:
+                            print(f'Adding floor change penalty for cleaning areas {j} and {k}')
+                            terms.append(p*x[(t, j)])
+                            terms.append(p*x[(t, k)])
+
                         if floor_penalty > (j - k):
                             floor_penalty = j - k                
                         
