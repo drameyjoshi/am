@@ -17,14 +17,12 @@ import org.jgrapht.traverse.DepthFirstIterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Clusterer {
 
 	public Clusterer() {
-		// TODO Auto-generated constructor stub
+		// Nothing to be done.
 	}
 
 	public static void main(String[] args) {
@@ -33,8 +31,7 @@ public class Clusterer {
 
 		try {
 			@SuppressWarnings("unchecked")
-			Map<String, List<Map<String, Object>>> map = (Map<String, List<Map<String, Object>>>) mapper
-					.readValue(Paths.get(graphFile).toFile(), Map.class);
+			Map<String, List<Map<String, Object>>> map = mapper.readValue(Paths.get(GRAPH_FILE).toFile(), Map.class);
 			List<Map<String, Object>> cleaningAreas = map.get("cleaningAreas");
 			for (Map<String, Object> m : cleaningAreas) {
 				int id = (int) m.get("id");
@@ -45,17 +42,12 @@ public class Clusterer {
 					floor.addEdge(id, (int) n);
 				}
 			}
-		} catch (StreamReadException e) {
-			logger.error(e.getMessage());
-			e.printStackTrace();
-		} catch (DatabindException e) {
-			logger.error(e.getMessage());
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 		}
 
 		printGraph(floor);
-		DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge> algo = new DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge>(
+		DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge> algo = new DenseEdmondsMaximumCardinalityMatching<>(
 				floor);
 		MatchingAlgorithm.Matching<Integer, DefaultEdge> matching = algo.getMatching();
 		Set<Integer> tour1 = new TreeSet<>();
@@ -78,8 +70,8 @@ public class Clusterer {
 			}
 		}
 
-		logger.info("Cleaning areas in tour 1: {}", tour1.toString());
-		logger.info("Cleaning areas in tour 2: {}", tour2.toString());
+		logger.info("Cleaning areas in tour 1: {}", tour1);
+		logger.info("Cleaning areas in tour 2: {}", tour2);
 	}
 
 	private static void printGraph(Graph<Integer, DefaultEdge> g) {
@@ -90,6 +82,6 @@ public class Clusterer {
 		}
 	}
 
-	private static final String graphFile = "graph.json";
-	private static Logger logger = LoggerFactory.getLogger(Clusterer.class.getName());
+	private static final String GRAPH_FILE = "graph.json";
+	private static final Logger logger = LoggerFactory.getLogger(Clusterer.class.getName());
 }
