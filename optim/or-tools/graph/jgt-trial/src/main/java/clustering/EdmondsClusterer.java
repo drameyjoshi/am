@@ -1,10 +1,5 @@
 package clustering;
 
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -12,43 +7,25 @@ import org.jgrapht.Graph;
 import org.jgrapht.alg.interfaces.MatchingAlgorithm;
 import org.jgrapht.alg.matching.DenseEdmondsMaximumCardinalityMatching;
 import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
-import org.jgrapht.traverse.DepthFirstIterator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-public class EdmondsClusterer {
+public class EdmondsClusterer extends Clusterer {
 
 	public EdmondsClusterer() {
 		// Nothing to be done.
 	}
 
 	public static void main(String[] args) {
-		ObjectMapper mapper = new ObjectMapper();
-		Graph<Integer, DefaultEdge> floor = new SimpleGraph<>(DefaultEdge.class);
+		EdmondsClusterer clusterer = new EdmondsClusterer();
+		Graph<Integer, DefaultEdge> floor = clusterer.buildGraph(GRAPH_FILE);
 
-		try {
-			@SuppressWarnings("unchecked")
-			Map<String, List<Map<String, Object>>> map = mapper.readValue(Paths.get(GRAPH_FILE).toFile(), Map.class);
-			List<Map<String, Object>> cleaningAreas = map.get("cleaningAreas");
-			for (Map<String, Object> m : cleaningAreas) {
-				int id = (int) m.get("id");
-				floor.addVertex(id);
-				List<?> neighbours = (List<?>) m.get("neighbourCleaningAreaIds");
-				for (Object n : neighbours) {
-					floor.addVertex((int) n);
-					floor.addEdge(id, (int) n);
-				}
-			}
-		} catch (IOException e) {
-			logger.error(e.getMessage());
-		}
+		clusterer.printGraph(floor);
+		clusterer.cluster(floor);
+	}
 
-		printGraph(floor);
+	@Override
+	protected void cluster(Graph<Integer, DefaultEdge> graph) {
 		DenseEdmondsMaximumCardinalityMatching<Integer, DefaultEdge> algo = new DenseEdmondsMaximumCardinalityMatching<>(
-				floor);
+				graph);
 		MatchingAlgorithm.Matching<Integer, DefaultEdge> matching = algo.getMatching();
 		Set<Integer> tour1 = new TreeSet<>();
 		Set<Integer> tour2 = new TreeSet<>();
@@ -63,11 +40,11 @@ public class EdmondsClusterer {
 		boolean flag = true;
 		for (DefaultEdge e : matching.getEdges()) {
 			if (flag) {
-				tour1.add(floor.getEdgeSource(e));
-				tour1.add(floor.getEdgeTarget(e));
+				tour1.add(graph.getEdgeSource(e));
+				tour1.add(graph.getEdgeTarget(e));
 			} else {
-				tour2.add(floor.getEdgeSource(e));
-				tour2.add(floor.getEdgeTarget(e));
+				tour2.add(graph.getEdgeSource(e));
+				tour2.add(graph.getEdgeTarget(e));
 			}
 			flag = !flag;
 		}
@@ -76,14 +53,13 @@ public class EdmondsClusterer {
 		logger.info("Cleaning areas in tour 2: {}", tour2);
 	}
 
-	private static void printGraph(Graph<Integer, DefaultEdge> g) {
-		Iterator<Integer> iter = new DepthFirstIterator<>(g);
-		while (iter.hasNext()) {
-			int v = iter.next();
-			logger.info("Vertex = {}, neighbours = {}", v, g.edgesOf(v));
+	@Override
+	protected void cluster(Graph<Integer, DefaultEdge> graph, int nClusters) {
+		if (nClusters != 2) {
+			logger.warn("Edmonds Maximal Clusterer can produce only two clusters.");
 		}
+		cluster(graph);
 	}
 
 	private static final String GRAPH_FILE = "graph_2.json";
-	private static final Logger logger = LoggerFactory.getLogger(EdmondsClusterer.class.getName());
 }
