@@ -1,0 +1,118 @@
+{
+	"cleaningAreas": [
+		{
+			"id": 1,
+			"name": "Room 1",
+			"floorId": 1,
+			"shapeCenterX": 400,
+			"shapeCenterY": 322,
+			"neighbourCleaningAreaIds": [
+				2,
+				4
+			]
+		},
+		{
+			"id": 2,
+			"name": "Room 2",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				1,
+				4
+			]
+		},
+		{
+			"id": 3,
+			"name": "Room 3",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				4
+			]
+		},
+		{
+			"id": 4,
+			"name": "Room 4",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				1,
+				2,
+				3,
+				5
+			]
+		},
+		{
+			"id": 5,
+			"name": "Room 5",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				4,
+				6
+			]
+		},
+		{
+			"id": 6,
+			"name": "Room 6",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				5,
+				7,
+				8,
+				9,
+				10
+			]
+		},
+		{
+			"id": 7,
+			"name": "Room 7",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				6,
+				8
+			]
+		},
+		{
+			"id": 8,
+			"name": "Room 8",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				7,
+				9
+			]
+		},
+		{
+			"id": 9,
+			"name": "Room 9",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				8,
+				6
+			]
+		},
+		{
+			"id": 10,
+			"name": "Room 8",
+			"floorId": 1,
+			"shapeCenterX": 500,
+			"shapeCenterY": 600,
+			"neighbourCleaningAreaIds": [
+				6
+			]
+		}
+	]
+}
+
