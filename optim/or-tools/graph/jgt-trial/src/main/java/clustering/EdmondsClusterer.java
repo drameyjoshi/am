@@ -16,10 +16,12 @@ public class EdmondsClusterer extends Clusterer {
 
 	public static void main(String[] args) {
 		EdmondsClusterer clusterer = new EdmondsClusterer();
-		Graph<Integer, DefaultEdge> floor = clusterer.buildGraph(GRAPH_FILE);
-
-		clusterer.printGraph(floor);
-		clusterer.cluster(floor);
+		for (String filename : GRAPHS) {
+			logger.info("Analysing clusters in {}.", filename);
+			Graph<Integer, DefaultEdge> floor = clusterer.buildGraph(filename);
+			clusterer.printGraph(floor);
+			clusterer.cluster(floor, 2);
+		}
 	}
 
 	@Override
@@ -60,6 +62,4 @@ public class EdmondsClusterer extends Clusterer {
 		}
 		cluster(graph);
 	}
-
-	private static final String GRAPH_FILE = "graph_2.json";
 }
