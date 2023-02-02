@@ -55,19 +55,21 @@ public class Clusterer {
 
 		if (matching.isPerfect()) {
 			logger.info("Found a perfect matching");
-			int mSize = matching.getEdges().size();
-			logger.info("There are {} edges in the matching.", mSize);
-			boolean flag = true;
-			for (DefaultEdge e : matching.getEdges()) {
-				if (flag) {
-					tour1.add(floor.getEdgeSource(e));
-					tour1.add(floor.getEdgeTarget(e));
-				} else {
-					tour2.add(floor.getEdgeSource(e));
-					tour2.add(floor.getEdgeTarget(e));
-				}
-				flag = !flag;
+		} else {
+			logger.info("Could not find a perfect matching.");
+		}
+		int mSize = matching.getEdges().size();
+		logger.info("There are {} edges in the matching.", mSize);
+		boolean flag = true;
+		for (DefaultEdge e : matching.getEdges()) {
+			if (flag) {
+				tour1.add(floor.getEdgeSource(e));
+				tour1.add(floor.getEdgeTarget(e));
+			} else {
+				tour2.add(floor.getEdgeSource(e));
+				tour2.add(floor.getEdgeTarget(e));
 			}
+			flag = !flag;
 		}
 
 		logger.info("Cleaning areas in tour 1: {}", tour1);
@@ -82,6 +84,6 @@ public class Clusterer {
 		}
 	}
 
-	private static final String GRAPH_FILE = "graph.json";
+	private static final String GRAPH_FILE = "graph_2.json";
 	private static final Logger logger = LoggerFactory.getLogger(Clusterer.class.getName());
 }
