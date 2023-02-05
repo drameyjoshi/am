@@ -55,7 +55,7 @@ public abstract class Clusterer {
 		}
 		
 		return floor;
-	}
+	}	
 	
 	protected static final Logger logger = LoggerFactory.getLogger(Clusterer.class.getName());
 	protected static final String[] GRAPHS = {"graph_1.json", "graph_2.json"};
