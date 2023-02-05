@@ -39,7 +39,7 @@ public class AJClusterer {
 	}
 
 	protected void cluster(Graph<CleaningArea, DefaultEdge> graph) {
-		int timePerCluster = (int) Math.round(1.1 * totalTime / nClusters);
+		int timePerCluster = (int) Math.round((1 + MARGIN) * totalTime / nClusters);
 		logger.info("Time per cluster = {}", timePerCluster);
 		int clusterId = 1;
 		BreadthFirstIterator<CleaningArea, DefaultEdge> bfs = new BreadthFirstIterator<>(graph);
@@ -66,26 +66,30 @@ public class AJClusterer {
 
 		if (clusterId > nClusters) {
 			logger.info("First pass created {} clusters when {} were needed.", clusterId, nClusters);
-			int[] currentAllocations = new int[nClusters];
+			rebalance(clusterMap, clusterId);
+		}
+	}
 
-			for (int cid = 1; cid <= nClusters; cid++) {
-				List<CleaningArea> cleaningAreasInCluster = clusterMap.get(cid);
-				int clusterAllocation = 0;
-				for (CleaningArea ca : cleaningAreasInCluster) {
-					clusterAllocation += ca.getTimeToClean();
-				}
-				currentAllocations[cid - 1] = clusterAllocation;
+	private void rebalance(Map<Integer, List<CleaningArea>> clusterMap, int lastClusterId) {
+		int[] currentAllocations = new int[nClusters];
+
+		for (int cid = 1; cid <= nClusters; cid++) {
+			List<CleaningArea> cleaningAreasInCluster = clusterMap.get(cid);
+			int clusterAllocation = 0;
+			for (CleaningArea ca : cleaningAreasInCluster) {
+				clusterAllocation += ca.getTimeToClean();
 			}
+			currentAllocations[cid - 1] = clusterAllocation;
+		}
 
-			List<CleaningArea> lastCluster = clusterMap.get(clusterId);
+		List<CleaningArea> lastCluster = clusterMap.get(lastClusterId);
 
-			timePerCluster = (int) Math.round(1.1 * totalTime / nClusters);
-			for (CleaningArea ca : lastCluster) {
-				for (int i = 0; i < nClusters; i++) {
-					if (ca.getTimeToClean() < timePerCluster - currentAllocations[i]) {
-						ca.setClusterId(i + 1);
-						currentAllocations[i] += ca.getTimeToClean();
-					}
+		int timePerCluster = (int) Math.round((1 + MARGIN) * totalTime / nClusters);
+		for (CleaningArea ca : lastCluster) {
+			for (int i = 0; i < nClusters; i++) {
+				if (ca.getTimeToClean() < timePerCluster - currentAllocations[i]) {
+					ca.setClusterId(i + 1);
+					currentAllocations[i] += ca.getTimeToClean();
 				}
 			}
 		}
@@ -137,4 +141,5 @@ public class AJClusterer {
 	private Map<Integer, CleaningArea> cleaningAreas;
 	private static final String[] GRAPHS = { "graph_3.json" };
 	protected static final Logger logger = LoggerFactory.getLogger(AJClusterer.class.getName());
+	private static final double MARGIN = 0.1; // 10%
 }
