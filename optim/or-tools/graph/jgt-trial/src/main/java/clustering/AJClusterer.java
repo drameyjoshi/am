@@ -1,14 +1,21 @@
 package clustering;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.imageio.ImageIO;
+
 import org.jgrapht.Graph;
+import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 import org.jgrapht.traverse.BreadthFirstIterator;
@@ -16,6 +23,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mxgraph.layout.mxCircleLayout;
+import com.mxgraph.layout.mxIGraphLayout;
+import com.mxgraph.model.mxGraphModel;
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.util.mxCellRenderer;
+import com.mxgraph.util.mxConstants;
+import com.mxgraph.util.mxUtils;
 
 public class AJClusterer {
 
@@ -35,6 +49,32 @@ public class AJClusterer {
 			if (logger.isInfoEnabled()) {
 				logger.info("{}", v.showClusterInfo());
 			}
+		}
+		
+		clusterer.exportImage(cleaningGraph, GRAPHS[0]);
+	}
+
+	@SuppressWarnings("deprecation")
+	protected void exportImage(final Graph<CleaningArea, DefaultEdge> cleaningGraph, final String graphJSON) {
+		JGraphXAdapter<CleaningArea, DefaultEdge> ga = new JGraphXAdapter<>(cleaningGraph);
+		mxGraphComponent graphComponent = new mxGraphComponent(ga);
+		mxGraphModel graphModel = (mxGraphModel) graphComponent.getGraph().getModel();
+		Collection<Object> cells = graphModel.getCells().values();
+		ga.getEdgeToCellMap().forEach((edge, cell) -> cell.setValue(null));
+		mxUtils.setCellStyles(graphComponent.getGraph().getModel(),
+				cells.toArray(), mxConstants.STYLE_ENDARROW, mxConstants.NONE);
+		
+		mxIGraphLayout layout = new mxCircleLayout(ga);		
+		layout.execute(ga.getDefaultParent());
+
+		BufferedImage image = mxCellRenderer.createBufferedImage(ga, null, 2, Color.white, true, null);
+		String imgFileName = graphJSON.replace(".json", ".jpg");
+		File imgFile = new File(imgFileName);
+
+		try {
+			ImageIO.write(image, "JPG", imgFile);
+		} catch (IOException e) {
+			logger.error(e.getMessage());
 		}
 	}
 

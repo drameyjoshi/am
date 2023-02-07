@@ -77,6 +77,11 @@ public class CleaningArea {
 
 		return isNeighbour;
 	}
+	
+
+	public String toString() {
+		return String.format("id: %d, time: %d, cluster: %d", id, timeToClean, clusterId);		
+	}
 
 	private int id;
 	private String name;
