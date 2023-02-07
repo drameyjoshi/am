@@ -19,13 +19,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AJClusterer {
 
-	public AJClusterer() {
-		nClusters = 2;
+	public AJClusterer(int nClusters) {
+		this.nClusters = nClusters;
 		cleaningAreas = new HashMap<>();
 	}
 
 	public static void main(String[] args) {
-		AJClusterer clusterer = new AJClusterer();
+		AJClusterer clusterer = new AJClusterer(3);
 		Graph<CleaningArea, DefaultEdge> cleaningGraph = clusterer.createGraph(GRAPHS[0]);
 		clusterer.cluster(cleaningGraph);
 
@@ -50,7 +50,7 @@ public class AJClusterer {
 		List<CleaningArea> clusterList = new LinkedList<>();
 		while (bfs.hasNext()) {
 			CleaningArea v = bfs.next();
-			if (timePerCluster > v.getTimeToClean()) {
+			if (timePerCluster > v.getTimeToClean() && (clusterList.isEmpty() || v.isNeighbourOf(clusterList))) {
 				timePerCluster -= v.getTimeToClean();
 				v.setClusterId(clusterId);
 				clusterList.add(v);
@@ -87,7 +87,8 @@ public class AJClusterer {
 		int timePerCluster = (int) Math.round((1 + MARGIN) * totalTime / nClusters);
 		for (CleaningArea ca : lastCluster) {
 			for (int i = 0; i < nClusters; i++) {
-				if (ca.getTimeToClean() < timePerCluster - currentAllocations[i]) {
+				if (ca.isNeighbourOf(clusterMap.get(i + 1))
+						&& ca.getTimeToClean() < timePerCluster - currentAllocations[i]) {
 					ca.setClusterId(i + 1);
 					currentAllocations[i] += ca.getTimeToClean();
 				}

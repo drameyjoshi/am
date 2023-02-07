@@ -1,11 +1,13 @@
 package clustering;
 
+import java.util.List;
+
 public class CleaningArea {
 
 	public CleaningArea() {
 		// Nothing to be done here.
 	}
-	
+
 	public String showClusterInfo() {
 		return String.format("id = %d, time to clean = %d, cluster = %d", id, timeToClean, clusterId);
 	}
@@ -13,6 +15,7 @@ public class CleaningArea {
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -55,6 +58,24 @@ public class CleaningArea {
 
 	public void setClusterId(int clusterId) {
 		this.clusterId = clusterId;
+	}
+
+	public boolean isNeighbourOf(final List<CleaningArea> cluster) {
+		boolean isNeighbour = false;
+
+		for (CleaningArea ca : cluster) {
+			for (int i = 0; i < neighbours.length; i++) {
+				if (neighbours[i] == ca.getId()) {
+					isNeighbour = true;
+					break;
+				}
+			}
+			if (isNeighbour) {
+				break;
+			}
+		}
+
+		return isNeighbour;
 	}
 
 	private int id;
