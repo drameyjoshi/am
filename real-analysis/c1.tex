@@ -1,0 +1,221 @@
+\chapter{The Natural Numbers}\label{c1}
+We begin with a systematic study of the natural numbers. We will prove their
+properties, familiar to us for a long time, using a set of axioms. We do so
+to learn the art of proving properties from a limited set of axioms. In the 
+case of natural numbers, we know the properties. Therefore it is just a 
+matter of getting the proofs right. Later on, the properties may not be 
+obvious and we will bank on the skills of writing proofs.
+
+\section{Axioms defining natural numbers}\label{c1s1}
+We start with the naive notion of a set and denote the set of natural 
+numbers by $\son$. Members of $\son$ satisfy the following axioms:
+\begin{enumerate}
+\item[(A1)] $0$ is a natural number.
+\item[(A2)] If $n$ is a natural number, so is its successor, denoted by 
+$S(n)$.
+\item[(A3)] $0$ is not a successor of any natural number.
+\item[(A4)] $S(n) = S(m)$ iff $n = m$, for all natural numbers $n$ and $m$.
+\item[(A5)] If $K$ is a set such that $0$ is a member of $K$ and if a 
+natural number $n$ is its member then so is $S(n)$ then $K$ contains all 
+natural numbers.
+\end{enumerate}
+The axiom (A5) is called the principle of mathematical induction.
+
+\section{Addition of natural numbers}\label{c1s2}
+\begin{defn}\label{c1s2d1}
+Let $m$ be a natural number. Then $0 + m := m$ and $S(n) + m := S(n + m)$.
+\end{defn}
+
+We will now prove the familiar properties of addition. We will first show 
+that the order of operations in the definition \ref{c1s2d1} does not matter.
+\begin{prop}\label{c1s2p1}
+$m + 0 = m$ for every natural number.
+\end{prop}
+\begin{proof}
+We will use induction on $m$. Since $0$ is a natural number, from 
+\ref{c1s2d1}, $0 + 0 = 0$. Suppose that $n + 0 = n$. Then $S(n) + 0 = 
+S(n + 0)$ by the definition \ref{c1s2d1}. However, by induction hypothesis, 
+$n + 0 = n$. Therefore, we have $S(n) + 0 = S(n)$.
+\end{proof}
+
+\begin{prop}\label{c1s2p2}
+$n + S(m) = S(n + m)$ for all natural numbers $n$ and $m$.
+\end{prop}
+\begin{proof}
+We will use induction on $n$. For $n = 0$, the lhs is $0 + S(m)$, which
+is $S(m)$ be definition \ref{c1s2d1}. The rhs is $S(0 + m)$ which is $S(m)$
+once again by definition \ref{c1s2d1}. Assume that the hypothesis is true
+for $n$ and consider $S(n) + S(m) = S(n + S(m)) = S(S(n+m))$ by induction
+hypothesis. However, by definition \ref{c1s2d1}, $S(n + m) = S(n) + m$ so
+that $S(n) + S(m) = S(S(n) + m)$, closing the induction.
+\end{proof}
+
+\begin{rem}
+In this proof we cannot induct on $m$. While trying to prove the base case
+we consider $S(n + 0)$. From proposition \ref{c1s2p1}, $n + 0 = n$. 
+Therefore, $S(n + 0) = S(n)$. However, we still have not proved that $S(n)
+= n + 1$.
+\end{rem}
+
+\begin{prop}\label{c1s2p3}
+For any pair $m, n$ of natural numbers $m + n = n + m$.
+\end{prop}
+\begin{proof}
+We fix $n$ and induct on $m$. For the base case of $m = 0$, $m + 0 = m$ by
+proposition \ref{c1s2p1} while $0 + m = m$ be definition of addition. 
+Assume that the hypothesis is true for $m$ and consider $S(m) + n = S(m+n)$
+by definition. By induction hypothesis, $S(m + n) = S(n + m)$, which is $
+n + S(m)$ by proposition \ref{c1s2p2}. Thus, we have $S(m) + n = n + S(m)$,
+closing the induction.
+\end{proof}
+
+\begin{defn}\label{c1s2d2}
+A natural number $n$ is said to be positive iff $n \ne 0$.
+\end{defn}
+
+\begin{prop}\label{c1s2p4}
+If $m$ is a natural number and $n$ is positive then $m + n$ is positive.
+\end{prop}
+\begin{proof}
+Fix $n$ and induct on $m$. When $m = 0$, $m + n = 0 + n = n$, by definition
+\ref{c1s2d1} of addition. $n$ is given to be positive. Therefore, $0 + n$
+is positive.
+
+Assume that the hypothesis is true for $m$ and consider $S(m) + n = S(m + 
+n)$. Thus, $S(m) + n$ is a successor of a natural number. By axiom (A3), 
+$S(m) + n$ is not zero and therefore is positive.
+\end{proof}
+
+\begin{cor}\label{c1s2c1}
+If $a + b = 0$ for natural numbers $a$ and $b$ then $a = 0$ and $b = 0$.
+\end{cor}
+\begin{proof}
+If any one of them were positive then proposition \ref{c1s2p4} guarantees 
+that $a + b$ would be positive.
+\end{proof}
+
+\begin{prop}\label{c1s2p5}
+Let $a$ be a positive number then there exists exactly one natural number 
+$b$ such that $S(b) = a$.
+\end{prop}
+\begin{proof}
+That every positive number can be written as $S(b)$ for some natural number
+$b$ follows from the axioms defining the natural numbers. Let, if possible,
+there be a natural number $c$ such that $S(b) = S(c)$ then axiom (A4)
+assures us that $b = c$.
+\end{proof}
+
+\begin{prop}\label{c1s2p6}
+If $a, b, c$ are natural numbers then $a + (b + c) = (a + b) + c$.
+\end{prop}
+\begin{proof}
+We will fix $a$ and $b$ and induct on $c$. When $c = 0$, $a + (b + 0) = a
++ b$ and $(a + b) + 0 = a + b$. Assume that the hypothesis is true for a 
+$c$ and consider, $a + (b + S(c))$. By proposition \ref{c1s2p2}, $b + S(c)
+= S(b + c)$. Therefore, $a + (b + S(c)) = a + S(b + c) = S(a + (b + c))$. 
+Using the induction hypothesis, $a + (b + S(c)) = S((a + b) + c)$. Using
+proposition \ref{c1s2p2}, $S((a + b) + c) = (a + b) + S(c)$. Thus, we have,
+$a + (b + S(c)) = (a + b) + S(c)$, closing the induction.
+\end{proof}
+
+\begin{prop}\label{c1s2p7}
+If $a + b = a + c$ then $b = c$.
+\end{prop}
+\begin{proof}
+We will fix $b$ and $c$ and induct on $a$. If $a = 0$ then $a + b = a + c
+\Rightarrow 0 + b = 0 + c \Rightarrow b = c$. Assume that the hypothesis is
+true for some natural number $a$ and consider $S(a) + b = S(a) + c 
+\Rightarrow S(a + b) = S(a + c)$. From axiom (A4) we have $a + b = a + c$
+which implies $b = c$, closing the induction.
+\end{proof}
+
+\begin{prop}\label{c1s2p8}
+For any natural number $n$, $S(n)$ is positive.
+\end{prop}
+\begin{proof}
+$0$ is not a successor of any number and all other natural numbers are
+successors of a natural number.
+\end{proof}
+
+From now on we will assume that $0$ is the additive identity in $\son$, 
+addition of natural numbers is a natural number, addition is commutative 
+and associative. The set $\son$ is thus a commutative monoid.
+
+\section{Ordering of natural numbers}\label{c1s3}
+\begin{defn}\label{c1s3d1}
+Let $a, b$ be natural numbers. We say that $a \ge b$ if there exists a 
+natural number $c$ such that $a = b + c$. We say that $a > b$ if $a \ge b$
+and $a \ne b$.
+\end{defn}
+
+\begin{rem}
+$a \ge b$ can also be written as $b \le a$ and $a > b$ can be written as 
+$b < a$.
+\end{rem}
+
+\begin{lem}\label{c1s3l1}
+For all natural numbers $a$, $a \ge a$.
+\end{lem}
+\begin{proof}
+Follows from proposition \ref{c1s2p1} that $a = a + 0$ for all natural
+numbers.
+\end{proof}
+
+\begin{lem}\label{c1s3l2}
+If $a \ge b$ and $b \ge c$ then $a \ge c$.
+\end{lem}
+\begin{proof}
+$a \ge b \Rightarrow \exists m$ such that $a = b + m$. Likewise, there 
+exists a natural number $n$ such that $b = c + n$. Thus $a = (c + n) + m
+= c + (n + m) \Rightarrow a \ge c$.
+\end{proof}
+
+\begin{lem}\label{c1s3l3}
+If $a \ge b$ and $b \ge a$ then $a = b$.
+\end{lem}
+\begin{proof}
+We have natural numbers $m$ and $n$ such that $a = b + m$ and $b = a + n$.
+Combining the two, we have $a = a + (n + m)$. Since $a = a + 0$, by
+proposition \ref{c1s2p1}, we also have $a + 0 = a + (n + m)$. From 
+proposition \ref{c1s2p7} we get $n + m = 0$ and from corollary \ref{c1s2c1}
+we get $m = 0$ and $n = 0$.
+\end{proof}
+
+\begin{lem}\label{c1s3l4}
+$a \ge b$ iff $a + c \ge b + c$.
+\end{lem}
+\begin{proof}
+Assume $a \ge b$ so that there exists a natural number $n$ such that $a = 
+b + n$. Therefore, $a + c = b + n + c \Rightarrow a + c = b + c + n
+\Rightarrow a + c \ge b + c$.
+
+Now assume that $a + c \ge b + c$. Therefore, there exists a natural number
+$n$ such that $a + c = b + c + n \Rightarrow a + c = b + n + c$. Using the
+cancellation law proved by \ref{c1s2p7}, we have $a = b + n \Rightarrow
+a \ge b$.
+\end{proof}
+
+\begin{lem}\label{c1s3l5}
+$a > b$ iff $a \ge S(b)$.
+\end{lem}
+\begin{proof}
+Assume that $a \ge S(b)$ so that there exists a natural number $n$ such 
+that $a = S(b) + n \Rightarrow S(b + n) \Rightarrow b + S(n)$. For any 
+natural number $n$, $S(n)$ is positive. Therefore $a > b$.
+
+Now assume that $a > b$ so that there exists a positive number $n$ such that
+$a = b + n$. Since $n$ is a positive number there exists a natural number
+$m$ such that $n = S(m)$. Therefore, we have $a = b + S(m) = S(b + m) = 
+S(b) + m$ so that $a \ge S(b)$.
+\end{proof}
+
+\begin{lem}\label{c1s3l6}
+$a > b$ iff there exists a positive $n$ such that $a = b + n$.
+\end{lem}
+\begin{proof}
+The 'if' part is just the definition of a positive number. Now assume that
+$a > b$ so that by lemma \ref{c1s3l6}, $a \ge S(b)$ so that there exists 
+a natural number $m$ such that $a \ S(b) + m = S(b + m) = b + S(m)$. For 
+any natural number $m$, $S(m)$ is positive from proposition \ref{c1s2p8}.
+Therefore that $a = b + n$, where $n =S(m)$ is positive.
+\end{proof}
