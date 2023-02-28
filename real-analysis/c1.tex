@@ -219,3 +219,90 @@ a natural number $m$ such that $a \ S(b) + m = S(b + m) = b + S(m)$. For
 any natural number $m$, $S(m)$ is positive from proposition \ref{c1s2p8}.
 Therefore that $a = b + n$, where $n =S(m)$ is positive.
 \end{proof}
+
+\begin{thm}[Law of trichotomy]\label{c1s3t1}
+Let $a$ and $b$ be natural numbers then exactly one of the following is 
+true:
+\begin{enumerate}
+\item $a < b$,
+\item $a = b$ and
+\item $a > b$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+We first show that at least one of these possibilities must be true for 
+any pair $a, b$ of natural numbers. Let us fix $b$ and induct on $a$. If
+$a = 0$ then either $0 = b$ or $0 < b$ for any natural number $b$. Thus, 
+the base case is proved. Assume that the hypothesis holds good for some $a$.
+We will show that it also holds good for $S(a)$. If $a > b$ then there is a
+positive number $m$ such that $a = b + m$ so that $S(a) = S(b + m) = b +
+S(m)$. Since $S(m)$ is a positive number, we have $S(a) > b$. If $a = b$ 
+then $S(a) = S(b) > b$. If $a < b$ then there is a positive number $n$
+such that $a + n = b$. Since $n$ is a positive number it can be written as
+$S(k)$ for some natural number $k$. Thus, $b = a + n = a + S(k) = S(a + k)
+= S(a) + k$ or that $b \ge a4$. This closes the induction.
+
+We will now show that at most one of these possibilities can be true. By
+definition, if $a > b$ then $a \ne b$. Similarly if $b > a$, or if $a < b$,
+then $b \ne a$. If neither are true then it must be the case that $a = b$ 
+because at least one of the possibilities is true.
+\end{proof}
+
+\section{More on mathematical induction}\label{c1s4}
+In this section we prove two more forms of mathematical induction from 
+axiom (A5).
+
+\begin{thm}[Strong principle of induction]\label{c1s4t1}
+Let $m_0$ be a natural number and $P(m)$ be a property pertaining to an
+arbitrary natural number $m$. Suppose that for each $m \ge m_0$ we have 
+the following implication: if $P(m^\op)$ is true for all $m_0 \le m^\op
+< m$ then $P(m)$ is also true. Then $P(m)$ is true for all natural numbers
+$m \ge m_0$.
+\end{thm}
+\begin{proof}
+Let $Q(n)$ be the property that $P(m)$ is true for all $m_0 \le m^\op < n$.
+Then $Q(0)$ is true vacuously. (A statement of the form $A \rightarrow B$, 
+or if $A$ then $B$, is true if $A$ is false or $B$ is true. When $A$ is
+false, $A \rightarrow B$ is said to be true vacuously.)
+
+Let $Q(n)$ be true for an arbitrary natural number $n$. We will show that
+$Q(S(n))$ is also true. If $S(n) < m_0$ then once again the $Q(S(n))$ is
+vacuously true. If $n \ge m_0$ then the truth of $P(m^\prime)$ for $m_0
+\le m^\prime < n$ implies the truth of $P(n)$, which is $Q(S(n))$. 
+Therefore, $Q$ is true for all natural numbers.
+\end{proof}
+
+\begin{thm}[Principle of backward induction]\label{c1s4t2}
+Let $n$ be a natural number and let $P(m)$ be the property pertaining to
+an arbitrary natural number $m$ such that when $P(S(m))$ is true then so is
+$P(m)$. Suppose that $P(n)$ is true. Then $P(m)$ is true for all natural
+numbers $m \le n$.
+\end{thm}
+\begin{proof}
+We will prove the theorem by induction on $n$. $P(n=0)$ is true then clearly
+$P(m)$ is true for all natural numbers $m \le n$. Let the hypothesis be true
+for a particular $n$. 
+
+Let $P(S(n))$ be true. Then $P(n)$ has to be true. By induction hypothesis
+$P(m)$ is true for all $m \le n$. But $P$ is also true for $S(n)$. That is,
+$P$ is now true for all $m \le S(n)$, thus closing the induction.
+\end{proof}
+
+\section{Multiplication of natural numbers}\label{c1s5}
+\begin{defn}\label{c1s5d1}
+Let $m$ be a natural number. Then $0 \times m := 0$ and $S(n) \times m :=
+n \times m + m$.
+\end{defn}
+
+We will now prove the familiar properties of multiplication of natural
+numbers.
+\begin{prop}\label{c1s5p1}
+$m \times 0 = 0$ for every natural number $m$.
+\end{prop}
+\begin{proof}
+We will use induction on $m$. By definition $0 \times 0 := 0$. Thus, the
+base case is proved. Now assume that the hypothesis is true for some 
+natural number $m$ and consider $S(m) \times 0 := (m \times 0) + 0$, which,
+by induction hypothesis is $0 + 0 = 0$.
+\end{proof}
+
