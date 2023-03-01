@@ -306,3 +306,42 @@ natural number $m$ and consider $S(m) \times 0 := (m \times 0) + 0$, which,
 by induction hypothesis is $0 + 0 = 0$.
 \end{proof}
 
+\begin{prop}\label{c1s5p2}
+$n \times S(m) = n \times m + n$ for all natural numbers $n$ and $m$.
+\end{prop}
+\begin{proof}
+We will fix $m$ and use induction on $n$. For the base case, lhs is zero by
+definition \ref{c1s5d1} and rhs is $0 + 0 = 0$. Thus, the base case is proved.
+
+Assume that the hypothesis is true for a certain $n$ and consider $S(n) \times
+S(m) = n \times S(m) + S(m)$ using definition \ref{c1s5d1}. Using induction
+hypothesis, $n \times S(m) = n \times m + n$ so that
+\begin{equation}\label{c1s5e1}
+S(n) \times S(m) = n \times m + n + S(m) = n \times m + S(m) + n
+\end{equation}
+Now, $S(m) + n = S(m + n) = m + S(n)$ so that \eqref{c1s5e1} becomes
+\begin{equation}\label{c1s5e2}
+S(n) \times S(m) = n \times m + m + S(n).
+\end{equation}
+Using definition \eqref{c1s5d1} again, we get
+\begin{equation}\label{c1s5e3}
+S(n) \times S(m) = S(n) \times m + S(n),
+\end{equation}
+closing the induction.
+\end{proof}
+
+\begin{prop}
+$m \times n = n \times m$ for all natural numbers $n$ and $m$.
+\end{prop}
+\begin{proof}
+We will fix $n$ and carry out induction on $m$. The base case follows from 
+definition \ref{c1s5d1} and proposition \ref{c1s5p1}.
+
+Assume that the claim is true for a particular $n$ and consider, $S(n) \times
+m$ which is $n \times m + m$ by definition \ref{c1s5d1}. By induction 
+hypothesis we have
+\begin{equation}\label{c1s5e4}
+S(n) \times m = m \times n + m = m \times S(n),
+\end{equation}
+by proposition \ref{c1s5p2}, thus closing the induction.
+\end{proof}
