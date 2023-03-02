@@ -311,11 +311,12 @@ $n \times S(m) = n \times m + n$ for all natural numbers $n$ and $m$.
 \end{prop}
 \begin{proof}
 We will fix $m$ and use induction on $n$. For the base case, lhs is zero by
-definition \ref{c1s5d1} and rhs is $0 + 0 = 0$. Thus, the base case is proved.
+definition \ref{c1s5d1} and rhs is $0 + 0 = 0$. Thus, the base case is 
+proved.
 
-Assume that the hypothesis is true for a certain $n$ and consider $S(n) \times
-S(m) = n \times S(m) + S(m)$ using definition \ref{c1s5d1}. Using induction
-hypothesis, $n \times S(m) = n \times m + n$ so that
+Assume that the hypothesis is true for a certain $n$ and consider $S(n) 
+\times S(m) = n \times S(m) + S(m)$ using definition \ref{c1s5d1}. Using 
+induction hypothesis, $n \times S(m) = n \times m + n$ so that
 \begin{equation}\label{c1s5e1}
 S(n) \times S(m) = n \times m + n + S(m) = n \times m + S(m) + n
 \end{equation}
@@ -330,18 +331,106 @@ S(n) \times S(m) = S(n) \times m + S(n),
 closing the induction.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{c1s5p3}
 $m \times n = n \times m$ for all natural numbers $n$ and $m$.
 \end{prop}
 \begin{proof}
 We will fix $n$ and carry out induction on $m$. The base case follows from 
 definition \ref{c1s5d1} and proposition \ref{c1s5p1}.
 
-Assume that the claim is true for a particular $n$ and consider, $S(n) \times
-m$ which is $n \times m + m$ by definition \ref{c1s5d1}. By induction 
-hypothesis we have
+Assume that the claim is true for a particular $n$ and consider, $S(n) 
+\times m$ which is $n \times m + m$ by definition \ref{c1s5d1}. By 
+induction hypothesis we have
 \begin{equation}\label{c1s5e4}
 S(n) \times m = m \times n + m = m \times S(n),
 \end{equation}
 by proposition \ref{c1s5p2}, thus closing the induction.
 \end{proof}
+
+\begin{prop}\label{c1s5p4}
+If $n$ and $m$ are natural numbers then $n \times m = 0$ iff $n = 0$ or
+$m = 0$ or both.
+\end{prop}
+\begin{proof}
+The 'if' part follows immediately from the definition \ref{c1s5d1} and
+proposition \ref{c1s5p1}.
+
+In order to prove the 'only if' part, we will fix $mi > 0$ and carry out 
+induction on $n$ with $n = 1$ as the base. Since $1 = S(0)$, $1 \times m
+= 0 \times m + m = 0 + m = m > 0$. Assume that $n \times m > 0$ for a 
+particular $n$ and consider $S(n) \times m = n \times m + m > m > 0$, where
+we used induction hypothesis to conclude that $n \times m > 0$. 
+
+Thus we have shown that if $n, m > 0$ then $n \times m > 0$. The 
+contrapositive of this statement is $n \times m = 0 \Rightarrow n = 0
+\;\lor\; m = 0$.
+\end{proof}
+
+From now on, we will use the convention that $n \times m$ can also be
+written as $nm$.
+
+\begin{prop}\label{c1s5p5}
+If $a, b, c$ are natural numbers then $a(b + c) = ab + ac$.
+\end{prop}
+\begin{proof}
+We fix $b$ and $c$ and use induction on $a$. For the base case $a = 0$, 
+$a(b + c) = 0 \times (b + c) = 0$ and $ab + ac = 0 + 0 = 0$.
+
+Assume that the claim is true for a certain $a$ and consider $S(a) \times
+(b + c) = a \times (b + c) + b + c$ where we used the definition 
+\ref{c1s5d1}. Using the induction hypothesis, we get $S(a) \times (b + c) =
+ab + ac + b + c = ab + b + ac + c = S(a) \times b + S(a) \times c$, where
+we once again used definition $\ref{c1s5d1}$. This closes the induction.
+\end{proof}
+
+\begin{prop}\label{c1s5p6}
+If $a, b, c$ are natural numbers then $a(bc) = (ab)c$.
+\end{prop}
+\begin{proof}
+We fix $b$ and $c$ and use induction on $a$. For the base csae, $a = 0$,
+$a(bc) = 0 \times bc = 0$ and $(ab)c = 0 \times c = 0$.
+
+Assumes that the claim is true for a particular $a$ and consider $S(a)(bc)
+= a(bc) + (bc) = (ab)c + bc$, where we used the induction hypothesis in the
+last step. However, $(ab)c + bc = (ab + b)c = (S(a)b)c$, thus closing the
+induction. We used proposition \ref{c1s5p5} to get the second equation in 
+the chain above.
+\end{proof}
+
+\begin{prop}\label{c1s5p7}
+If $a$ and $b$ are natural numbers such that $a < b$ and $c > 0$ then
+$ac < bc$.
+\end{prop}
+\begin{proof}
+Since $a < b$, there exists a positive number $d$ such that $b = a + d$.
+Therefore, $bc = ac + dc$. Using the contrapositive form of proposition
+\ref{c1s5p4} we conclude that $dc > 0$. Therefore, $bc > ac$.
+\end{proof}
+
+\begin{prop}\label{c1s5p8}
+If $c > 0$ and $ac = bc$ then $a = b$.
+\end{prop}
+\begin{proof}
+By law of trichotomy, theorem \ref{c1s3t1}, either $a < b, b < a$ or $a = 
+b$. If $c > 0$ and $a < b$ then, by proposition \ref{c1s5p7}, $ac < bc$.
+Likewise, if $b < a$ then we conclude that $bc < ac$. 
+\end{proof}
+
+\begin{prop}[Euclidean algorithm]\label{c1s5p9}
+Let $n$ be a natural number and $q$ be positive. Then there exists natural
+numbers $m, r$ such that $0 \le r < q$ and $n = mq + r$.
+\end{prop}
+\begin{proof}
+We fix $q$ and induct on $n$. For the base case of $n = 0$, we can choose
+$m = 0$ and $r = 0$. Clearly, $r < q$ and $0 = 0 \times q + 0$.
+
+Assume that the hypothesis is valid for a certain $n$. Then, $S(n) = n + 1
+= mq + r + 1$. If $r + 1 = q$ then we can write $S(n) = (m + 1)q + 0$ and
+close the induction. If $r + 1 < q$ the induction closes. We claim that
+$r + 1 > q$ is not possible. This is because $r < q \Rightarrow r + 1 < q + 
+1$. Therefore, the maximum value $r + 1$ can take is $q$.
+\end{proof}
+
+\begin{defn}\label{c1s5d2}
+Let $m$ be a natural number then $m^0 := 0$ and $m^{S(n)} = m^n \times m$.
+\end{defn}
