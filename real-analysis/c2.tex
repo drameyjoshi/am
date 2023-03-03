@@ -1,0 +1,40 @@
+\chapter{Set Theory}\label{c2}
+
+Set theory starts off being extremely simple to the point of appearing
+trivial but soon gets very subtle. This chapter introduces axiomatic set
+theory just enough to start a serious study of analysis. 
+
+\section{Axioms of set theory}\label{c2s1}
+We begin with an informal definition of a set as a well-defined, unordered
+collection of objects. The terms 'collection' and 'object' are interpreted
+as they are in common language. We assume that sets satisfy the following
+axioms:
+\begin{enumerate}
+\item[(A1)] Sets too are objects. If $A$ is a set then it also an object.
+In particular, given two sets $A$ and $B$ it is meaningful to ask if $A$
+is a member of $B$.
+\item[(A2)] Two sets $A$ and $B$ are equal iff every element of $A$ is an
+element of $B$ and \emph{vice versa}.
+\item[(A3)] There exists a set $\varnothing$ called the empty set which
+contains no elements. In particular, for every object $x$, $x \notin 
+\varnothing$.
+\end{enumerate}
+
+We now prove a few basic lemmas that follow from these axioms.
+\begin{lem}\label{c2s1l1}
+The empty set is unique.
+\end{lem}
+\begin{proof}
+Let if possible $\varnothing^\op$ be another empty set. Then, for any 
+object $x$, $x \in \varnothing \Leftrightarrow x \in \varnothing^\op$,
+making them equal.
+\end{proof}
+
+\begin{lem}[Single choice]\label{c2s1l2}
+If $A$ is a non-empty set then there exists an object $x$ such that $x \in
+A$.
+\end{lem}
+\begin{proof}
+Assume to the contrary. Then for every object $x$, $x \notin A$, which 
+makes $A$ an empty set.
+\end{proof}
