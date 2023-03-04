@@ -18,6 +18,15 @@ element of $B$ and \emph{vice versa}.
 \item[(A3)] There exists a set $\varnothing$ called the empty set which
 contains no elements. In particular, for every object $x$, $x \notin 
 \varnothing$.
+\item[(A4)] If $x$ is an object then there exists a set $\{x\}$ whose only
+element is $x$. A set with just a single element is called a singleton set. 
+\item[(A5)] If $X$ and $Y$ are sets then there exists a set $X \cup Y$, 
+called the union of $X$ and $Y$, which consists of all the elements which
+belong to $X$ or $Y$. (The word 'or' is always in the inclusive sense.)
+\item[(A6)] If $X$ is a set and if $P(x)$ is a logical proposition for 
+each element $x$ of $X$ then there exists a set $\{x \in A \;|\; P(x)\}$
+whose elements are precisely those elements of $X$ for which $P(x)$ is 
+true.
 \end{enumerate}
 
 We now prove a few basic lemmas that follow from these axioms.
@@ -38,3 +47,258 @@ A$.
 Assume to the contrary. Then for every object $x$, $x \notin A$, which 
 makes $A$ an empty set.
 \end{proof}
+
+\begin{lem}\label{c2s1l3}
+If $x$ is an object then the singleton set containing $x$ is unique.
+\end{lem}
+\begin{proof}
+Let $X = \{x\}$ and $Y = \{y\}$ be another singleton set containing $x$.
+Since $Y$ is a singleton containing $x$, $x \in Y$ and hence $x = y$. Since
+$y = x$, $y \in X$ is also true. Therefore $X = Y$.
+\end{proof}
+
+\begin{lem}\label{c2s1l4}
+$\{x, y\} = \{y, x\}$ for any objects $x, y$.
+\end{lem}
+\begin{proof}
+$x \in \{y, x\}, y \in \{y, x\}$ and $y \in \{x, y\}, x \in \{x, y\}$.
+\end{proof}
+
+\begin{lem}\label{c2s1l5}
+If $X, Y, X^\op$ are sets, $X = X^\op$ then $X \cup Y = X^\op \cup Y$.
+\end{lem}
+\begin{proof}
+Let $a \in X \cup Y$. Then $a \in X$ or $a \in Y$. Since $X = X^\op$, we
+have $a \in X^\op$ or $a \in Y$, that is $a \in X^\op \cup Y$.
+
+We can similarly show that if $b \in X^\op \cup Y$, $b \in X \cup Y$.
+\end{proof}
+
+\begin{lem}\label{c2s1l6}
+If $x$ and $y$ are objects then $\{x\} \cup \{y\} = \{x, y\}$.
+\end{lem}
+\begin{proof}
+$x \in \{x\} \cup \{y\}$ and $x \in \{x, y\}$. Similarly for $y$. 
+Therefore, every element of $\{x\} \cup \{y\}$ is an element of $\{x, y\}$.
+We can similarly show that every element of $\{x, y\}$ is an element of
+$\{x\} \cup \{y\}$.
+\end{proof}
+
+\begin{lem}\label{c2s1l7}
+If $X$ and $Y$ are sets then $X \cup Y = Y \cup X$.
+\end{lem}
+\begin{proof}
+Let $a$ be an arbitrary element of $X \cup Y$. Then
+$a \in X \cup Y \Rightarrow a \in X \;\lor\; a \in Y \Rightarrow a \in Y
+\;\lor\; a \in X \Rightarrow a \in Y \cup X$.
+
+Likewise, if $b$ is an arbitrary element of $Y \cup X$ then we can show 
+that $b \in X \cup Y$.
+\end{proof}
+
+We can use the same idea to show that
+\begin{lem}\label{c2s1l8}
+If $X, Y, Z$ are sets then $X \cup (Y \cup Z) = (X \cup Y) \cup Z$.
+\end{lem}
+
+\begin{lem}\label{c2s1l9}
+If $X$ is a set then $X \cup \varnothing = X$.
+\end{lem}
+\begin{proof}
+If $a \in X$ then clearly $a \in X \cup \varnothing$. If $b \in X \cup
+\varnothing$ then $b \in X$ or $b \in \varnothing$. But the statement $b 
+\in \varnothing$ is always false. Therefore, the only way $b \in X 
+\;\lor\; b \in \varnothing$ can be true is if $b \in X$ is true.
+\end{proof}
+
+From lemmas \ref{c2s1l7} and \ref{c2s1l9} we conclude that
+\begin{lem}\label{c2s1l10}
+If $X$ is a set then $\varnothing \cup X = X$.
+\end{lem}
+
+If $P$ is a proposition then $P \Leftrightarrow P \;\lor\; P$. Using this
+we can conclude 
+\begin{lem}\label{c2s1l11}
+$X = X \cup X$ for any set $X$.
+\end{lem}
+
+\begin{defn}\label{c2s1d1}
+If $X$ and $Y$ are sets then $X$ is a subset of $Y$ iff every element of 
+$X$ is also an element of $Y$. The relation is denoted by $X \subseteq Y$.
+\end{defn}
+
+Proofs of lemmas \ref{c2s1l4} tp \ref{c2s1l11} can be written more 
+elegantly if we use the notation of subsets because
+\begin{lem}\label{c2s1l12}
+$X = Y$ iff $X \subseteq Y$ and $Y \subseteq X$.
+\end{lem}
+\begin{proof}
+$X = Y$ means every element of $X$ is an element of $Y$, that is, $X 
+\subseteq Y$ and every element of $Y$ is an element of $X$, that is $Y 
+\subseteq X$.
+\end{proof}
+
+Since $X = X$ for every set $X$ (follows from the logical idea of equality
+of objects), lemma \ref{c2s1l12} leads us to
+\begin{lem}\label{c2s2l13}
+$X \subseteq X$ for all sets $X$.
+\end{lem}
+
+\begin{defn}\label{c2s1d2}
+If $X \subseteq Y$ and $X \ne Y$ then $X$ is called a proper subset of 
+$Y$ and is denoted by $X \subset Y$.
+\end{defn}
+
+\begin{lem}\label{c2s1l14}
+If $X \subset Y$ and $Y \subset Z$ then $X \subset Z$.
+\end{lem}
+\begin{proof}
+$Y \subset Z \Rightarrow \forall\; y \in Y, y \in Z$. Since $X \subset
+Y$, $x \in Y, \forall\; x \in X$. Therefore, $\forall\; x \in X, x \in Z$.
+\end{proof}
+
+Since $X \subset Y \Rightarrow X \subseteq Y$, we also have
+\begin{lem}\label{c2s1l15}
+If $X \subseteq Y$ and $Y \subseteq Z$ then $X \subset Z$.
+\end{lem}
+
+\begin{lem}\label{c2s1l16}
+$X = Y$ iff $X \subseteq Y$ and $Y \subseteq X$.
+\end{lem}
+\begin{proof}
+$X = Y$ means,
+\begin{itemize}
+\item $\forall\; x \in X, x \in Y$. Therefore, $X \subseteq Y$ and
+\item $\forall\; y \in Y, y \in X$. Therefore, $Y \subseteq X$.
+\end{itemize}
+
+Conversely,
+\begin{itemize}
+\item $X \subseteq Y \Rightarrow \forall\; x \in X, x \in Y$ and
+\item $Y \subseteq X \Rightarrow \forall\; y \in Y, y \in X$.
+\end{itemize}
+Therefore, $X = Y$.
+\end{proof}
+
+\begin{lem}\label{c2s1l17}
+$X \subseteq X \cup Y$ for any sets $X$ and $Y$.
+\end{lem}
+\begin{proof}
+If $x \in X$ then $x \in X \cup Y$.
+\end{proof}
+
+Axiom (A6) allows us to define
+\begin{defn}\label{c2s1d3}
+The intersection of sets $X$ and $Y$ is the set $X \cap Y := \{x \in X
+\;|\; x \in Y\}$.
+\end{defn}
+Note that although axiom (A6) allows us to define the intersection of two
+sets it does not suffice to introduce union. That is why the operation of 
+union has to be introduced as a separate axiom. Suppose we define, $X \cup
+Y = \{x \in X, y \in Y \;|\; x \in X \;\lor\; y \in Y\}$. The clause $x \in
+X, y \in Y$ is itself a union and we are using axiom (A6) to define a union
+in terms of itself!
+
+\begin{defn}\label{c2s1d4}
+The sets $X$ and $Y$ are said to be disjoint if $X \cap Y = \varnothing$.
+\end{defn}
+Note that $X \cap Y \varnothing$ does not mean $X \ne Y$. In fact, $X
+\cap Y = \varnothing \Rightarrow X \ne Y$ but not conversely.
+
+A concept closely related to intersection is
+\begin{defn}\label{c2s1d5}
+The difference of sets $X$ and $Y$ is the set $X - Y := \{x \in X
+\;|\; x \notin Y\}$.
+\end{defn}
+
+\begin{prop}\label{c2s1p1}
+If $X, Y, Z$ are sets and if $U$ is a set such that $X \cup Y \cup Z 
+\subseteq U$ then
+\begin{enumerate}
+\item $X \cup \varnothing = X$.
+\item $X \cap \varnothing = \varnothing$.
+\item $X \cup U = U$.
+\item $X \cap U = X$.
+\item $X \cup X = X$.
+\item $X \cap X = X$.
+\item $X \cup Y = Y \cup X$.
+\item $X \cap Y$ = $Y \cap X$.
+\item $X \cup (Y \cup Z) = (X \cup Y) \cup Z$.
+\item $X \cap (Y \cap Z) = (X \cap Y) \cap Z$.
+\item $X \cap (Y \cup Z) = X \cap Y \cup X \cap Z$.
+\item $X \cup (Y \cap Z) = X \cup Y \cap X \cup Z$.
+\item $X \cup (U - X) = U$.
+\item $X \cap (U - X) = \varnothing$.
+\item $U - (X \cap Y) = (U - X) \cup (U - Y)$.
+\item $U - (X \cup Y) = (U - X) \cap (U - Y)$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item $X \cup \varnothing = \{x\;|\; x \in X \;\lor\; x \in varnothing\}$.
+Since the statement $x \in \varnothing$ is vacuously false, $X \cup 
+\varnothing = \{x\;|\; x \in X\} = X$.
+\item $X \cap \varnothing = \{x\;|\; x \in X \;\land\; x \in varnothing\}$.
+Since the statement $x \in \varnothing$ is vacuously false, there is no
+$x$ such that $x \in X \cap \varnothing$, making it an empty set. Lemma
+\ref{c2s1l1} assures us that the empty set is unique.
+\item From lemma \ref{c2s1l17}, $U \subset X \cup U$. Since $X \subseteq
+U$ by hypothesis, every element of $X \cup U$ is a subset of $U$ or $X 
+\cup U \subseteq U$.
+\item Since $X \subseteq U$ by hypothesis, $X \cap U = \{x\;|\; x \in X 
+\;\land \; x \in U\} = \{x\;|\; x \in X\} = X$.
+\item Same as lemma \ref{c2s1l11}.
+\item $X \cap X = \{x \in X \;|\; x \in X\} = \{x \in X\} = X$.
+\item Same as lemma \ref{c2s1l7}.
+\item $a \in X \cap Y \Leftrightarrow a \in X \;\land\; a \in Y 
+\Leftrightarrow a \in Y \;\land\; a \in X \rightarrow Y \cap X$.
+\item Same as lemma \ref{c2s1l8}.
+\item $a \in X \cap (Y \cap Z) \Leftrightarrow a \in X \;\land\; a \in 
+Y \cap Z \Leftrightarrow a \in X \;\land a \in Y \;\land\; a \in Z
+\Leftrightarrow a \in X \cap Y \;\land\; a \in Z \Leftrightarrow a \in
+(X \cap Y) \cap Z$.
+\item Let $a \in X \cap (Y \cup Z)$. Then $a \in X$ and $a \in Y \cup Z$.
+If $a \in Y$ then $a \in X \cap Y$. If $a \in Z$ then $a \in X \cap Z$. In
+any case, $a \in X \cap Y$ or $a \in X \cap Z$. That is $a \in (X \cap Y) 
+\cup (X \cap Z)$.
+
+Now let $a \in (X \cap Y) \cup (X \cap Z)$. Then $a \in X \cap Y$ or $a
+\in X \cap Z$, that is $a \in X$ and $a \in Y$ or $a \in Z$.
+\item $a \in X \cup (Y \cap Z) \Leftrightarrow a \in X \;\lor\; a \in Y 
+\cap Z \Leftrightarrow (a \in X \;\lor\; a \in Y) \;\land\; (a \in X 
+\;\lor\; a \in Z) \Leftrightarrow a \in (X \cup Y) \cap (X \cup Z)$.
+
+\item $a \in X \cup (U - X) \Leftrightarrow a \in X \;\lor\; a \in U, a 
+\notin X$. Since $X \subseteq U$, $a \in X \Rightarrow a \in U$. Therefore,
+$a \in X \cup (U - X) \Leftrightarrow (a \in X, a \in U) \;\lor\; (a \notin
+X, a \in ) \Leftrightarrow a \in U$.
+
+\item $a \in X \cap (U - X) \Leftrightarrow a \in X \;\land\; a \in U - X
+\Leftrightarrow a \in X \;\land\; a \in U, a \notin X$. Now, $X \subseteq
+U \Rightarrow a \in U \;\forall\; a \in X$. Therefore $a \in X \cap (U - X)
+$ will require $a$ to be simultaneously in and not in $X$. There is no such
+$a$. Therefore $X \cap (U - X) = \varnothing$.
+
+\item Let $a \in U - (X \cap Y)$. Then $a \in U$ and $a \notin X \cap Y$.
+Since $X, Y \subseteq U$, this means that $a$ is $a \in X, a \notin Y$ or
+$a \notin X, a \in Y$ or $a \notin X, a \notin Y$. $a \in X$ and $a \notin
+Y \Rightarrow a \in U - Y$. Similarly, $a \in Y, a \notin X \Rightarrow
+a \in U - X$. Therefore, the three possibilities are $a \in U - Y$ or $a
+\in U - X$ or $a \in U - Y \;\land\; a \in U - X$. Therefore, $U - (X \cap
+Y) \subseteq (U - X) \cup (U - Y)$.
+
+Now let $a \in (U - X) \cup (U - Y)$. Then $a \in U - X$ or $a \in U - Y$ 
+or both. This can happen if 1) $a \notin X, a \in Y$ or 2) $a \in X, a 
+\notin Y$ or 3) $a \notin X, a \notin Y$. These three possibilities can
+be combined as $a$ is not a member of $X \cap Y$. That is $(U - X) \cup
+(U - Y) \subseteq U - (X \cap Y)$.
+
+\item Let $a \in U - (X \cup Y)$. Then $a$ is not a member of $X$ and
+neither is it a member of $Y$. That is $a \in U - X$ and $a \in U - Y$. 
+Therefore $U - (X \cup Y) \subseteq (U - X) \cap (U - Y)$.
+
+If $a \in (U - X) \cap (U - Y)$ then $a \in U - X$ and $a \in U - Y$, that
+is $a \notin X$ and $a \notin Y$, which is same as $a \in U - (X \cap Y)$.
+\end{enumerate}
+\end{proof}
+
