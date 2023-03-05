@@ -161,3 +161,9 @@ dmypy.json
 **.synctex.gz
 **.toc
 
+**.swp
+**.classpath
+**.prefs
+**.settings
+**.project
+**.jpg

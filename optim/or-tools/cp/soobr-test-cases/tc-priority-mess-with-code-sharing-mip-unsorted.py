@@ -79,7 +79,7 @@ for t in range(n_tours):
             if ub == b_id:                
                 for j in range(len(cleaning_areas_in_bldg)):
                     for k in range(j + 1, len(cleaning_areas_in_bldg)):
-                        p = -np.abs(floor_id[j] - floor_id[k])
+                        p = -np.abs(floor_id[j] - floor_id[k]) * 2
                         terms.append(p*x[(t, j)])
                         terms.append(p*x[(t, k)])
                         if floor_penalty > (j - k):
