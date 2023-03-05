@@ -178,8 +178,8 @@ public class AJClusterer {
 	}
 
 	private int totalTime;
-	private int nClusters;
-	private Map<Integer, CleaningArea> cleaningAreas;
+	private final int nClusters;
+	private final Map<Integer, CleaningArea> cleaningAreas;
 	private static final String[] GRAPHS = { "graph_3.json" };
 	protected static final Logger logger = LoggerFactory.getLogger(AJClusterer.class.getName());
 	private static final double MARGIN = 0.1; // 10%
