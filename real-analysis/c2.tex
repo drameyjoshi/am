@@ -27,6 +27,15 @@ belong to $X$ or $Y$. (The word 'or' is always in the inclusive sense.)
 each element $x$ of $X$ then there exists a set $\{x \in A \;|\; P(x)\}$
 whose elements are precisely those elements of $X$ for which $P(x)$ is 
 true.
+\item[(A7)] Let $X$ be a set and $x$ be an arbitrary member of the set.
+If $y$ is any object and we have a statement $P(x, y)$ which is true for
+at most $y$. Then there exists a set $Y = \{y: P(x, y) \text{ is true for 
+some } x \in A\}$ such that for any object $z$, $z \in Y \Leftrightarrow
+P(x, z)$ is true for some $x \in A$.
+\item[(A8)] There exists a set $\son$, whose elements are called natural
+numbers. There is an object $0 \in \son$ and an object $S(n)$ assigned to
+every natural number $n \in \son$ such that the axioms in section 
+\ref{c1s1} hold.
 \end{enumerate}
 
 We now prove a few basic lemmas that follow from these axioms.
@@ -302,3 +311,27 @@ is $a \notin X$ and $a \notin Y$, which is same as $a \in U - (X \cap Y)$.
 \end{enumerate}
 \end{proof}
 
+Statements in the above proposition are collectively called as the laws
+of Boolean algebra.
+
+\section{Exercises}\footnote{Exercise numbers are same as the one in 
+Tao's books \cite{tao2014a1} and \cite{tao2014a2}.}
+\begin{enumerate}
+\item[(Ex 3.1.5)] Let $A, B$ be sets. Show that the three statements $A
+\subseteq B$, $A \cup B = B$, $A \cap B = A$ are logically equivalent.
+\item[(Solution)] Assume that $A \subseteq B$. Then for all $a \in A, a
+\in B$ so that $A \cup B = \{x \;|\; x \in A \;\lor\; x \in B\} = 
+\{x \:|\; x \in B\} = B$. 
+
+Assume that $A \cup B = B$. Then every element of $A \cup B$ is an element
+of $B$. In particular, every element of $A$ is also an element of $B$. 
+Therefore, the set $A \cap B = \{x \;|\; x \in A \;\land\; x \in B\} = 
+\{x \;|\; x \in A\} = A$. (Note that every element of $A$ is an element of
+$B$ does not mean that the converse is also true. That is why in the
+second last set cannot be written as $\{x \;|\; x \in B\}$.)
+
+Now assume that $A \cap B = A$. $A \cap B = B \cap A = \{x \in B | x \in
+A\}$. If this set is same as $A$ then every element of $A$ is an element
+of $B$. That is $A \subseteq A$.
+
+\end{enumerate}
