@@ -314,14 +314,15 @@ is $a \notin X$ and $a \notin Y$, which is same as $a \in U - (X \cap Y)$.
 Statements in the above proposition are collectively called as the laws
 of Boolean algebra.
 
-\section{Exercises}\footnote{Exercise numbers are same as the one in 
-Tao's books \cite{tao2014a1} and \cite{tao2014a2}.}
+\section{Exercises}
 \begin{enumerate}
-\item[(Ex 3.1.5)] Let $A, B$ be sets. Show that the three statements $A
+\item[Ex 3.1.5 ] Let $A, B$ be sets. Show that the three statements $A
 \subseteq B$, $A \cup B = B$, $A \cap B = A$ are logically equivalent.
-\item[(Solution)] Assume that $A \subseteq B$. Then for all $a \in A, a
+\footnote{Exercise numbers are same as the one in Tao's books 
+\cite{tao2014a1} and \cite{tao2014a2}.}
+\item[Solution: ] Assume that $A \subseteq B$. Then for all $a \in A, a
 \in B$ so that $A \cup B = \{x \;|\; x \in A \;\lor\; x \in B\} = 
-\{x \:|\; x \in B\} = B$. 
+\{x \:|\; x \in B\} = B$.
 
 Assume that $A \cup B = B$. Then every element of $A \cup B$ is an element
 of $B$. In particular, every element of $A$ is also an element of $B$. 
@@ -334,4 +335,33 @@ Now assume that $A \cap B = A$. $A \cap B = B \cap A = \{x \in B | x \in
 A\}$. If this set is same as $A$ then every element of $A$ is an element
 of $B$. That is $A \subseteq A$.
 
+\item[Ex 3.1.9 ] Let $A, B, X$ be sets such that $A \cup B = X$ and $A
+\cap B = \varnothing$. Show that $A = X - B$ and $B = X - A$.
+\item[Solution: ] Let $a \in X - B$, that is $a \in (A \cup B) - B$. Thus,
+$a \in A \cup B \;\land\; a \notin B$. Therefore, $a \in A \;\land\; A 
+\notin B$, that is $a \in A$ alone. Since $a$ was an arbitrary element
+of $X - B$, this just means that $X - B \subseteq A$.
+
+Now, let $a \in A$ so that $a \in X$. Since $A \cap B = \varnothing$, $a
+\notin B$. Thus, $a \in X \;\land\; a \notin B$ or $a \in X - B$. Since
+$a$ was an arbitrary element of $A$ this just means that $A \subseteq X -
+B$.
+
+\item[Ex 3.1.10 ] Let $A$ and $B$ be sets. Show that the three sets $A - B$,
+$A \cap B$ and $B - A$ are disjoint and that their union is $A \cup B$.
+\item[Solution: ] If $a \in A - B$ then $a \in A \;\land\; a \notin B$. 
+Therefore, $a \notin A \cap B$ and $a \notin B - A$. Likewise, if $b \in
+B - A$ then $b \notin A \cap B$ and $b \notin A$.
+
+Let $X = (A - B) \cup (A \cap B) \cup (B - A)$. If $x \in X$, then $x$ is
+a member of one of the three disjoint sets, $A - B, A \cap B$ and $B - A$,
+each of which is a subset of $A \cup B$. Therefore $X \subseteq A \cup B$.
+
+Let $x \in A \cup B$. If $x \in A$ then $x \in A - B \cup A \cap B$, making
+$x$ a member of $X$. We can similarly show that if $x \in B$ then $x \in
+X$. Thus, $x \in A \cup B \Rightarrow x \in X$ or $A \cup B \subseteq X$.
+
+\item[Ex 3.1.11 ] Show that the axiom of replacement implies the axiom of
+specification.
+\item[Solution: ] Put $y = x$ in the axiom of replacement.
 \end{enumerate}
