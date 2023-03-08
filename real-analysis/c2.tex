@@ -314,7 +314,7 @@ is $a \notin X$ and $a \notin Y$, which is same as $a \in U - (X \cap Y)$.
 Statements in the above proposition are collectively called as the laws
 of Boolean algebra.
 
-\section{Exercises}
+\subsection{Exercises}
 \begin{enumerate}
 \item[Ex 3.1.5 ] Let $A, B$ be sets. Show that the three statements $A
 \subseteq B$, $A \cup B = B$, $A \cap B = A$ are logically equivalent.
@@ -364,4 +364,56 @@ X$. Thus, $x \in A \cup B \Rightarrow x \in X$ or $A \cup B \subseteq X$.
 \item[Ex 3.1.11 ] Show that the axiom of replacement implies the axiom of
 specification.
 \item[Solution: ] Put $y = x$ in the axiom of replacement.
+\end{enumerate}
+
+\section{Russell's Paradox}\label{c2s2}
+If one introduces an axiom like
+\begin{enumerate}
+\item If for every object $x$ we have a logical
+proposition $P(x)$ then there exists a set $U = \{x \;|\; P(x)\}$ such that
+for all $y \in U \Rightarrow P(y)$ is true
+\end{enumerate}
+then one is led to a logical inconsistency. As a set is also an object, we
+can construct sets of whose members are sets. As an example, let $P$ be
+a proposition which is true for sets that do not contain themselves and
+let
+\begin{equation}
+V = \{x \;|\; P(x)\}.
+\end{equation}
+If $V \notin V$ then $P(V)$ is true making $V \in V$. If $V \in V$ then
+$P(V)$ is false making $V \notin V$. This is \emph{Russell's paradox} also
+known to philosophers before Bertrand Russell. To avoid it, we augment the
+axioms of section \ref{c2s1} with
+\begin{enumerate}
+\item[(A9)] If $A$ is a non-empty set, then there is at least one element
+$x$ of $A$ which is either not a set, or is disjoint from $A$.
+\end{enumerate}
+
+Let us consider the set $A = \{3, 4, \{3, 4\}\}$. Then the elements $3$
+and $4$ are not sets but $\{3, 4\}$ is. Now consider 
+\[
+\{3, 4\} \cap A = \{x \in \{3, 4\} \;|\; x \in A\} = \{3,  4\} \ne
+\varnothing.
+\]
+However, this is not a problem because $A$ has elements $3$ and $4$ that
+are not sets.
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[3.2.2] Use the axiom of regularity to show that if $A$ is a set
+then $A \notin A$. Furthermore, show that if $A$ and $B$ are sets then
+either $A \notin B$ or $B \notin A$ or both.
+\item[Solution: ] The axiom of regularity applies to non empty sets. Let
+$A$ be a non-empty set then there is at least one element $x$ in $A$. 
+Using axiom (A4), there exists a singleton set ${x}$. If $A \in A$, then
+there is a singleton set $\{A\}$. The axiom of regularity assures that
+$A \cap \{A\} = \varnothing$. Therefore, no element of $\{A\}$ is an 
+element of $A$. That is $A \notin A$.
+
+To prove the second statement, assume to the contrary. That is, assume that
+there are sets $A$ and $B$ such that $A \in B$ and $B \in A$. Construct
+a set $C = \{A, B\}$. No element of $C$ is 'not a set'. Therefore, it
+must be true that $C \cap A = \varnothing$ and $C \cap B = \varnothing$.
+The first relation leads us to conclude that $B \notin A$ and the second
+one $A \notin B$, a contradiction.
 \end{enumerate}
