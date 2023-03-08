@@ -367,7 +367,7 @@ specification.
 \end{enumerate}
 
 \section{Russell's Paradox}\label{c2s2}
-If one introduces an axiom like
+If one introduces an axiom of universal specification like
 \begin{enumerate}
 \item If for every object $x$ we have a logical
 proposition $P(x)$ then there exists a set $U = \{x \;|\; P(x)\}$ such that
@@ -400,10 +400,27 @@ are not sets.
 
 \subsection{Exercises}
 \begin{enumerate}
+\item[3.2.1] Show that the universal specification axiom implies several
+other axioms of section \ref{c2s1}.
+\item[Solution:] Let AUS stand for the axiom of universal specification.
+Then,
+\begin{enumerate}
+\item Choose $P$ to be $P(x)$ is false for every object. Then the set it
+leads to is the empty set. Thus UAS $\Rightarrow$ (A3).
+\item Choose $P_x$ to be such that $P_x(x)$ is true only for $x$ and if 
+$y \ne x$ then $P_x(y)$ is false. This leads to the singleton sets. Thus 
+UAS $\Rightarrow$ (A4).
+\item Let $P_{xy}$ be the proposition that is true only for $x$ and $y$.
+Then using it in UAS gives us the set $\{x, y\}$.
+\item Axiom (A6) is UAS restricted to elements of a certain set $X$.
+\item Axiom (A7) is UAS restricted to elements of a certain set $X$ and
+and object $y$.
+\end{enumerate}
+
 \item[3.2.2] Use the axiom of regularity to show that if $A$ is a set
 then $A \notin A$. Furthermore, show that if $A$ and $B$ are sets then
 either $A \notin B$ or $B \notin A$ or both.
-\item[Solution: ] The axiom of regularity applies to non empty sets. Let
+\item[Solution:] The axiom of regularity applies to non empty sets. Let
 $A$ be a non-empty set then there is at least one element $x$ in $A$. 
 Using axiom (A4), there exists a singleton set ${x}$. If $A \in A$, then
 there is a singleton set $\{A\}$. The axiom of regularity assures that
@@ -416,4 +433,19 @@ a set $C = \{A, B\}$. No element of $C$ is 'not a set'. Therefore, it
 must be true that $C \cap A = \varnothing$ and $C \cap B = \varnothing$.
 The first relation leads us to conclude that $B \notin A$ and the second
 one $A \notin B$, a contradiction.
+
+\item[3.2.3] Show that the axiom of universal specification is equivalent
+to the existance of a universal set.
+\item[Solution:] If we choose the logical proposition $P$ to be true for
+all objects then we get the universal set.
+
+On the other hand, if $\Omega$ were a universal set then we can use axiom
+(A6) to define a set $U = \{x \in \Omega \;|\; P(x)\}$. Since $\Omega$ is 
+the universal set, this is equivalent to $U = \{x\;|\; P(x)\}$, which is
+what UAS states.
 \end{enumerate}
+
+The crucial difference between UAS and (A6) is that the latter is 
+restricted to members of a certain set $X$ while the former is applicable 
+to everything. That is why it is called the axiom of 'universal' 
+specification.
