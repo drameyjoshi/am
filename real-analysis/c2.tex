@@ -449,3 +449,121 @@ The crucial difference between UAS and (A6) is that the latter is
 restricted to members of a certain set $X$ while the former is applicable 
 to everything. That is why it is called the axiom of 'universal' 
 specification.
+
+\section{Functions}\label{c2s3}
+So far I have come across definitions of functions as a special kind of
+relation. Tao \cite{tao2014a1} defines it in terms of logical propositions.
+The two definitions are equivalent.
+\begin{defn}\label{c2s3d1}
+Let $X, Y$ be sets and $P(x, y)$ be a logical proposition for an $x \in X$
+and $y \in Y$. If for every $x \in X$, there is a unique $y \in Y$ for 
+which $P(x, y)$ is true then we define the function $f: X \rightarrow Y$ to 
+be the object that assigns a value $y$ to every $x \in X$. Thus, for $x 
+\in X, y \in Y$,
+\[
+y = f(x) \Leftrightarrow P(x, y) \text{ is true.}
+\]
+The set $X$ is called the domain of $f$ and $Y$ the codomain. The set $\{y
+\in Y \;|\; y = f(x) \;\forall\; x \in X\}$ is called the range of the 
+function.
+\end{defn}
+
+Tao has used this definition because he has not defined Cartesian products
+by the time he introduced functions.
+
+\begin{defn}\label{c2s3d2}
+Two functions $f: X \rightarrow Y$ and $g: X \rightarrow Y$ are said to be
+equal if their domain and codomain are equal and for all $x \in X$, $f(x) = 
+g(x)$.
+\end{defn}
+
+\begin{defn}\label{c2s3d3}
+If $f: X \rightarrow Y$ and $g: Y \rightarrow W$ are functions then the
+composition $g \circ f: X \rightarrow Z$ is the function $(g \circ f)(x)
+= g(f(x))$.
+\end{defn}
+
+\begin{lem}\label{c2s3p1}
+Let $f: U \rightarrow V, g: V \rightarrow W$ and $h: W \rightarrow X$ be
+functions. Then $h \circ (g \circ f) = (h \circ g) \circ f$.
+\end{lem}
+\begin{proof}
+We first confirm that the two functions have the same domain and codomain. 
+$g \circ f$ is a function with $U$ as domain and $W$ as codomain and $h 
+\circ (g \circ f)$ has $U$ as domain and $X$ as codomain. Likewise, the 
+function $h \circ g$ has $V$ as domain and $X$ as codomain and the function
+$(h \circ g) \circ f$ has $U$ as fomain and $X$ as codomain. 
+
+Now consider, for some $u \in U$,
+\begin{eqnarray*}
+(h \circ (g \circ f))(u) &=& h((g \circ f)(u)) \\
+ &=& h(g(f(u)) \\
+ &=& (h \circ g)(f(u)) \\
+ &=& ((h \circ g) \circ f)(u)
+\end{eqnarray*}
+\end{proof}
+
+\begin{defn}\label{c2s3d4}
+A function $f: X \rightarrow Y$ is said to be one-to-one, or injective, 
+if $x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)$ for all $x_1, x_2 \in X$.
+\end{defn}
+
+\begin{defn}\label{c2s3d5}
+A function $f: X \rightarrow Y$ is said to be onto, or surjective, if
+for all $y \in Y$, there exists an $x \in X$ such that $y = f(x)$.
+\end{defn}
+
+\begin{defn}\label{c2s3d6}
+A function $f: X \rightarrow Y$ is said to be bijective if it is injective
+and surjective.
+\end{defn}
+
+If $f$ is bijective then for every $y \in Y$ there is a unique $x \in X$
+such that $y = f(x)$. We can as well define a function $f^{-1}: Y 
+\rightarrow X$ such that $f^{-1}(y) = x$ iff $y = f(x)$ for all $x \in X$
+and $y \in Y$.
+
+\subsection{Exercices}
+These are problems at the end of section 3.3 of Tao's first volume
+\cite{tao2014a1}.
+\begin{enumerate}
+\item[Ex 1:] Show that the equality of functions defined in \ref{c2s3d2}
+is reflexive, symmetric and transitive.
+\item[Solution:] All three properties follow from the corresponding 
+properties of equality of elements of the domain and the codomain.
+
+\item[Ex 2:] If $f_1, f_2: X \rightarrow Y$ and $g_1, g_2: Y \rightarrow
+Z$ are such that $f_1 = f_2$ and $g_1 = f_2$ then $g_1 \circ f_1 = g_2
+\circ f_2$.
+\item[Solution:] The functions $g_1 \circ f_1$ and $g_2 \circ f_2$ both
+have $X$ as their domain and $Y$ as their codomain. For some $x \in X$
+consider $(g_1 \circ f_1)(x) = g_1(f_1(x))$. Since $f_1 = f_2$, 
+$g_1(f_1(x)) = g_1(f_2(x))$. Since $g_1 = g_2$, $g_1(f_2(x)) = g_2f_2(x))$.
+
+\item[Ex 3:] If $f: X \rightarrow Y$ and $g: Y \rightarrow Z$ are both
+injective then so is $g \circ f$.
+\item[Solution:] Let $x_1, x_2 \in X$. Then $x_1 \ne x_2 \Rightarrow
+f(x_1) \ne f(x_2) \Rightarrow g(f(x_1)) \ne g(f(x_2))$. The first 
+implication follows from injectivity of $f$ and the second one from that of
+$g$.
+
+\item[Ex 4:] If $f: X \rightarrow Y$ and $g: Y \rightarrow Z$ are both
+surjective then so is $g \circ f$.
+\item[Solution:] Since $g$ is surjective, for all $z \in Z$, there exists
+a $y \in Y$ such that $z = g(y)$. Since $f$ is also surjective, for all $y
+\in Y$, there exists an $x \in X$ such that $y = f(x)$. Therefore, for all
+$z \in Z$, we can find an $x \in X$ such that $z = g(f(x)) = (g \circ f)(x)
+$.
+
+\item[Ex 5:] The function $e: \varnothing \rightarrow Y$ is called an
+empty function. When is it injective, surjective and bijective?
+\item[Solution:] $e$ will be injective if $x_1 \in \varnothing \;\land\;
+x_2 \in \varnothing \;\land\; x_1 \ne x_2 \Rightarrow e(x_1)
+\ne e(x_2)$. Since $x_1 \in \varnothing$ is false, the implication is true
+making $e$ an injective function.
+
+$e$ will be surjective if for all $y \in Y$, there exists an $x \in 
+\varnothing$ such that $e(x) = y$. Since the statement $x \in \varnothing$
+is false, the implication is also false. Therefore $e$ is not surjective
+and hence is not bijective.
+\end{enumerate}
