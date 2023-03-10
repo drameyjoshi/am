@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\title{Elementary Probability}
+\date{09-Mar-2023}
+\author{Amey Joshi}
+\begin{document}
+\maketitle
+A mathematical treatment of probability requires a clear definition of a
+sample space, events and an assignment of probability to the events. We
+will start our discussion with discrete sample spaces. We will focus on
+quickly understanding the key concepts and applying them to practical 
+problems in statistics.
+
+We require the theory of probability when we cannot predict the outcome of
+an experiment. Sometimes it is theoretically possible to predict the 
+outcome but doing so is not practically feasible. For instance, we 
+understand classical mechanics sufficiently well to accurately predict 
+whether a coin will land heads up if we have enough details about the coin
+and the way it was tossed. We can, after all, predict and control the 
+motion of rockets in outer space. In most practical situations, it is
+easier to conduct a large number of experiments and estimate the outcome of
+future experiments.
+
+Since we decided to start with discrete sample spaces we will naturally 
+restrict ourselves to experiments which have a countable number of 
+outcomes. For example
+\begin{enumerate}
+\item A toss of a coin in which we allow the coin to land heads or tails 
+up. We do not consider the possibility of the coin at rest in the vertical
+plane. We can describe the sample space by $\{H, T\}$.
+\item A die when rolled on a flat table will have one of its six faces up.
+The sample space is $\{1, 2, 3, 4, 5, 6\}$.
+\item Number of typos in a book. Although in all practical situations this
+number is finite it is helpful if consider the number to be indefinitely
+large. We can allow the sample space to be $\mathbb{N}$, the set of all
+natural numbers.
+\item The number of mutations in a gene will have the same sample space
+as above.
+\item Consider a man whose senses have largely abandoned him. If he were
+left at a lamppost and permitted to walk along a straigh line passing 
+through the lamppost then in his inebriated state, he may move either
+toward or away from the lamppost at every step. If we let the origin be
+at the lamppost and align the $x$-axis along the path he takes, then at
+every step he either moves along the positive of the negative $x$-axis.
+After $n$ steps, he can be anywhere between $-n$ and $+n$. Once again, it
+is convenient to consider the sample space to be the set of all integers,
+$\mathbb{Z}$.
+
+Although stated in casual terms this is a genuinely interesting problem in
+the theory of probability. It is called the \emph{random walk} problem. It
+is used to model several phenomena like change in asset price or Brownian
+motion of pollen grains in a fluid. 
+\end{enumerate}
+
+A sample space is just the set of all possible outcomes of an experiment.
+The subsets of the sample space are called events. Elementary events are
+singleton subsets of the (discrete) sample space. We assign probabilities
+to the elementary events and using them we compute probabilities of other
+events. We will illustrate this process for the sample spaces considered
+above.
+\begin{enumerate}
+\item The sample space is $\Omega = \{H, T\}$. We assign probabilities
+\begin{eqnarray}
+P(H) &=& p \label{e1} \\
+P(T) &=& q \label{e2}
+\end{eqnarray}
+such that 
+\begin{equation}\label{e3}
+p, q \ge 0
+\end{equation}
+and 
+\begin{equation}\label{e4}
+p + q = 1.
+\end{equation}
+If $p = q = 1/2$, we declare the coin to be fair. However, we can always 
+start with an arbitrary choice of $p$ and $q$ subject to equations 
+\eqref{e3} and \eqref{e4}, conduct an experiment and revise our estimates.
+
+\item The sample space is $\Omega = \{1, 2, 3, 4, 5, 6\}$ and we can 
+assign probability $p_i$ to each $i \in \Omega$ such that
+\begin{equation}\label{e5}
+p_i \ge 0 \;\forall\; i \in \Omega
+\end{equation}
+and
+\begin{equation}\label{e6}
+\sum_{i=1}^6 p_i = 1.
+\end{equation}
+Once again we can assign arbitrary values to the probabilites subject to
+the constraints of equations \eqref{e5} and \eqref{e6}. We then conduct
+systematic experiments to determine if our assignment was correct. The
+die is declared to be fair only if each $p_i = 1/6$.
+
+\item The sample space is $\mathbb{N}$ and we can assign probabilities
+$p_n$ for all $n \in \mathbb{N}$ such that 
+\begin{equation}\label{e7}
+p_n \ge 0 \;\forall\; n \in \Omega
+\end{equation}
+and
+\begin{equation}\label{e8}
+\sum_{n=1}^\infty p_n = 1.
+\end{equation}
+If the number of words in the book is $N$ then even if we allow the book
+to have $m$ typos per word, we can let $p_n$ to be $0$ for all $n > mN$.
+Note that our definition of $\mathbb{N}$ includes the number zero. An
+initial assignment of probabilities can once again be confirmed by doing
+an experiment.
+
+\item The sample space and assignment of probabilities for the number of
+mutations in a gene is similar.
+
+\item The sample space in a one dimensional random walk problem is the
+set of all integers. We can assign probabilities $p_i \ge 0$ for all $i
+\in \mathbb{Z}$ such that 
+\begin{equation}\label{e9}
+\sum_{i=-\infty}^{\infty} p_i = 1.
+\end{equation}
+As $0$ is a permissible probability, we can choose sample spaces much 
+larger than the practically achievable values of the distance from the 
+origin.
+\end{enumerate}
+
+The assignment of probabilities to the elementary events of a sample space
+is called the probability mass function. In mathematical terms, it is a
+function $P: \Omega \rightarrow [0, 1]$ such that
+\begin{equation}\label{e10}
+P(\omega) \ge 0, \;\forall\; \omega \in \Omega
+\end{equation}
+and
+\begin{equation}\label{e11}
+\sum_{\omega \in \Omega}P(\omega) = 1.
+\end{equation}
+
+Often times while dealing with \emph{finite} sample spaces we consider all
+outcomes to be equally probable. This is called the assumption of equal
+\emph{a priori} probability. If the sample space if of size $N$ then the
+probability of an event is the ratio of the number of ways in which the 
+event can happen and $N$. The calculation of probabilities them reduces to
+a problem of counting, that is combinatorics. Such problems are usually
+easy to state but quite challenging to solve.
+
+We will now state the axioms of probability theory in the language of set
+theory. We considered our sample space $\Omega$ to be discrete. An event
+is a subset $E \subseteq \Omega$. The set of all events is usually denoted
+by $\mathcal{F}$ and the probability function by $P$. The triple $(\Omega,
+\mathcal{F}, P)$ is called a probability space. The probability function
+$P$ satisfies the following axioms first proposed by Andrey Kolmogorov
+in 1933.
+\begin{enumerate}
+\item[(A1)] $P(E) \ge 0$ for all $E \in \mathcal{F}$.
+\item[(A2)] $P(\Omega) = 1$.
+\item[(A3)] If $E_1, E_2, \ldots$ are disjoint event then
+\begin{equation}\label{e12}
+P\left(\bigcup_{i \ge 1} E_i\right) = \sum_{i \ge 1}P(E_i).
+\end{equation}
+
+A few remarks are in order:
+\begin{enumerate}
+\item When $\Omega$ is a finite set then $\mathcal{F}$ is the set of all
+subsets, also called the \emph{power set} of $\Omega$.
+\item When $\Omega$ is countable (discrete but infinite) or uncountable 
+then the power set is exceedingly large. Many members of the power set are
+not interesting events. In such situation, we choose far fewer subsets 
+that satisfy certain properties. We will consider them when we study the
+theory of probability more rigorously.
+\item The union in \eqref{e12} is called a countable union. This seems to
+be a trivial choice for simple problems but it is not so when $\Omega$ is
+not finite.
+\item While writing equation \eqref{e10} we defined $P: \Omega \rightarrow
+[0, 1]$. Over there, we were assigning probabilities only to the elementary
+events in a discrete sample space. In general, we would want to assign
+probabilities to non-elementary events as well. Therefore, we let the domain
+of $P$ be all events of interest, that is $\mathcal{F}$. Its range is 
+always $[0, 1]$.
+\end{enumerate}
+
+A mathematically rigorous probability theory gets into deep waters very
+quickly. We will mention the spots where things can get tricky but will
+avoid lingering there for too long.
+
+Some sample spaces are ordered, others are not. By an ordered sample space
+we mean a set on which the $<$ relation makes sense. If $\Omega = \{H, T\}$
+then there is no natural ordering between its members. Likewise, if 
+$\Omega$ is the set of all colours of a brand of cars then there is no
+natural ordering of its members. On the other hand, the sample space of
+typos in a book is $\mathbb{N}$ and for any pair $m, n \in \mathbb{N}$, 
+exactly one of the three possibilities $m < n, m = n, m > n$ is true. Such
+a set is called an ordered set. For an ordered sample space, one can 
+define the \emph{cumulative distribution function} as
+\begin{equation}\label{e13}
+F(x) = \sum_{\omega \le x}P(\omega).
+\end{equation}
+The cumulative distribution function may seem to be an unnecessary 
+appendage to the theory if we confine ourselves to discrete sample spaces.
+It shines when we consider continuous sample spaces.
+
+
+\end{enumerate}
+\end{document}
