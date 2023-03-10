@@ -566,4 +566,128 @@ $e$ will be surjective if for all $y \in Y$, there exists an $x \in
 \varnothing$ such that $e(x) = y$. Since the statement $x \in \varnothing$
 is false, the implication is also false. Therefore $e$ is not surjective
 and hence is not bijective.
+
+\item[Ex 6:] Let $f_1, f_2: X \rightarrow Y$ and $g_1, g_2: Y \rightarrow
+Z$. Suppose $g_1 \circ f_1 = g_1 \circ f_2$. Show that $f_1 = f_2$ if $g_1$
+is injective. What if it is not injective.
+\item[Solution:] Let $x$ be an arbitrary member of $X$. Then, $g_1 \circ
+f_1 = g_1 \circ f_2 \Rightarrow (g_1 \circ f_1)(x) = (g_1 \circ f_2)(x)
+\Rightarrow g_1(f_1(x)) = g_1(f_2(x))$. But $g_1$ is injective. Therefore
+from the previous inequality we conclude that $f_1(x) = f_2(x)$. Since $x$
+was chosen arbitrarily, this implies $f_1 = f_2$.
+
+If $g_1$ is not injective then we cannot proceed beyond $g_1(f_1(x)) = 
+g_1(f_2(x))$. For instance, $g_1$ can map its entire domain to a single
+member of its codomain.
+
+\item[Ex 6:] Let $f_1, f_2: X \rightarrow Y$ and $g_1, g_2: Y \rightarrow
+Z$. Suppose $g_1 \circ f_1 = g_2 \circ f_1$. Show that $g_1 = g_2$ if $f_1$
+is surjective. What if it is not surjective.
+\item[Solution:] Let $x \in X$ be arbitrary. Then $g_1 \circ f_1 = g_2
+\circ f_2 \Rightarrow g_1(f_1(x)) = g_2(f_1(x))$. Since $f_1$ is 
+surjective, every $y \in Y$ has an $x \in X$ such that $y = f_1(x)$.
+Therefore, the previous inequality can also be written as $g_1(y) = g_2(y)$
+for all $y \in Y$.
+
+If $f_1$ were not surjective then there will be at least one $y \in Y$ for
+which $g_1(y) = g_2(y)$ cannot be concluded from $g_1(f_1(x)) = 
+g_2(f_1(x))$.
+
+\item[Ex 7:] Let $f: X \rightarrow Y$ be bijective with $f^{-1}: Y
+\rightarrow X$ as its inverse. Show that $f^{-1}(f(x)) = x, \;\forall\;
+x \in X$ and $f(f^{-1}(y)) = y, \;\forall\; y \in Y$.
+\item[Solution:] Fix a $y \in Y$. Since $f$ is bijective, there is a unique
+$x \in X$ such that $y = f(x)$. This unique $x$ is defined to be 
+$f^{-1}(y)$. Therefore, $y = f(f^{-1}(y))$. Since $y$ was chosen 
+arbitrarily, this statement is true for all $y \in Y$.
+
+Since $y = f(x) \Rightarrow x = f^{-1}(y) = f^{-1}(f(x))$.
+
+Remark: The definition of $f^{-1}$ as $f^{-1}(y) = x$ iff $y = f(x)$ is 
+important here. Mere bijectivity is not enough to prove this. If $X = {1, 
+2}, Y = {3, 4}$ then $f(1) = 3, f(2) = 4$ is bijective. So is $g(3) = 2$
+and $g(4) = 1$. But the two are not inverse of each other.
+
+\item[Ex 8:] If $f: X \rightarrow Y$ and $g: Y \rightarrow Z$ are bijective
+then show that $g \circ f$ is also bijective and $(g \circ f)^{-1} = f^{-1}
+\circ g^{-1}$.
+\item[Solution:] We showed in exercises 3(4) that if $f$ and $g$ are
+injective(surjective) then so is their composition. From this it follows 
+that if $f$ and $g$ are bijective then so is $g \circ f$. Therefore,
+$(g \circ f)^{-1}$ exists and is such that $(g \circ f)^{-1}(z) = x$ iff
+$z = (g \circ f)(x)$. Thus, 
+\begin{equation}\label{c2s3e1}
+(g \circ f)^{-1}(z) = x \Leftrightarrow z = g(f(x)). 
+\end{equation}
+
+Since $g$ is invertible, $z = g(f(x)) \Rightarrow g^{-1}(z) = f(x)$. Since
+$f$ is invertible, $g^{-1}(z) = f(x) \Rightarrow f^{-1}(g^{-1}(z)) = x$.
+Thus, we have 
+\begin{equation}\label{c2s3e2}
+z = g(f(x)) \Rightarrow (f^{-1} \circ g^{-1})(z) = x
+\end{equation}
+
+From \eqref{c2s3e1} and \eqref{c2s3e2} we get
+\begin{equation}\label{c2s3e3}
+(g \circ f)^{-1}(z) = x \Leftrightarrow (f^{-1} \circ g^{-1})(z) = x.
+\end{equation}
+Since $x$ was chosen arbitrarily this just means that
+\begin{equation}\label{c2s3e4}
+(g \circ f)^{-1}(z) = (f^{-1} \circ g^{-1})(z)
+\end{equation}
+is true for all $z \in Z$.
+
+\item[Ex 9:] If $X \subseteq Y$ then $\iota_{X \rightarrow Y}:X 
+\rightarrow Y$, called the inclusion map, is defined by the mapping 
+$\iota(x) = x$ for all $x \in X$. The map $\iota_{X \rightarrow X}$ is
+called the identity map.
+\begin{enumerate}
+\item[(a)] Show that if $X \subseteq Y \subseteq Z$ then 
+\[
+\iota_{Y \rightarrow Z} \circ \iota_{X \rightarrow Z} = 
+\iota_{X \rightarrow Z}.
+\]
+\item[Solution:] $\iota_{X \rightarrow Z}(x) = x$ for all $x \in X 
+\subseteq Z$. Likewise $(\iota_{Y \rightarrow Z} \circ \iota_{X \rightarrow
+Z})(x) = \iota_{Y \rightarrow Z}(\iota_{X \rightarrow Y}(x)) =
+\iota_{Y \rightarrow Z}(x)$, for all $x \in X \subseteq Y$. Since $X
+\subseteq Z$ as well, the rhs of the previous equation evaluates to $x$.
+
+\item[(b)] If $f: A \rightarrow B$ then $f \circ \iota_{A \rightarrow A} = 
+\iota_{B \rightarrow B}f$.
+\item[Solution:] Let $a \in A$ and $b \in B$ be such that $b = f(a)$.
+Then $(f \circ \iota_{A \rightarrow A})(a) = f(\iota_{A \rightarrow A}(a))
+= f(a) = b$ and $(\iota_{B \rightarrow B} \circ f)(a) = 
+\iota_{B \rightarrow B}(f(a)) = \iota_{B \rightarrow B}(b) = b$.
+
+\item[(c)] Show that if $f$ is a bijective function then $f \circ f^{-1}
+= \iota_{B \rightarrow B}$ and $f^{-1} \circ f = \iota_{A \rightarrow A}$.
+\item[Solution:] Follows from the fact that $(f \circ f^{-1})(b) = b$ and
+$(f^{-1} \circ f)(a) = a$.
+
+\item[(d)] Show that if $X$ and $Y$ are disjoint sets, $f: X \rightarrow Z$
+and $g: Y \rightarrow Z$ are functions then there is a unique function
+$h: X \cup Y \rightarrow Z$ such that $h \circ \iota_{X \rightarrow X \cup
+Y} = f$ and $h \circ \iota_{Y \rightarrow X \cup Y} = g$.
+\item[Solution:] Since $X$ and $Y$ are disjoint, we can define a function
+$h: X \cup Y \rightarrow Z$ such that
+\[
+h(u) = 
+\begin{cases} f(u) & \text{ if } u \in X \\
+g(u) & \text{ if } u \in Y.
+\end{cases}
+\]
+Note that the domain of $h \circ \iota_{X \rightarrow X \cup Y}$ is $X$
+and its range is $Z$. Further, from the definition of $h$ it is clear that
+for all $u \in X$, $h(u) = f(u)$. Similarly, we can show that $h \circ
+\iota_{Y \rightarrow X \cup Y} = g$.
+
+Let, if possible, $k: X \cup Y \rightarrow Z$ be a function such that $k
+\circ \iota_{X \rightarrow X \cup Y} = f$ and $k \circ
+\iota_{Y \rightarrow X \cup Y} = g$. Then if $u \in X$, $f(u) = (k \circ 
+\iota_{X \rightarrow X \cup Y})(u) = k(\iota_{X \rightarrow X \cup Y}(u))
+= k(u)$. Similarly, if $u \in Y$, $g(u) = (k \circ 
+\iota_{Y \rightarrow X \cup Y})(u)$. Thus, $h$ and $k$ are identical maps.
+\end{enumerate}
+
 \end{enumerate}
