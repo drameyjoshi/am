@@ -36,6 +36,14 @@ P(x, z)$ is true for some $x \in A$.
 numbers. There is an object $0 \in \son$ and an object $S(n)$ assigned to
 every natural number $n \in \son$ such that the axioms in section 
 \ref{c1s1} hold.
+\item[(A9)] Let $X$ and $Y$ be sets. Then there exists a set $Y^{X}$ which
+consists of all the functions from $X$ to $Y$.
+\item[(A10)] Let $X$ be a set all of whose elements are themselves sets.
+Then there exists a set $\cup X$ whose elements are precisely those objects
+which are \underline{elements of elements} of $X$. Thus,
+\[
+x \in \cup X \Leftrightarrow x \in S \in X.
+\]
 \end{enumerate}
 
 We now prove a few basic lemmas that follow from these axioms.
@@ -689,5 +697,133 @@ Let, if possible, $k: X \cup Y \rightarrow Z$ be a function such that $k
 = k(u)$. Similarly, if $u \in Y$, $g(u) = (k \circ 
 \iota_{Y \rightarrow X \cup Y})(u)$. Thus, $h$ and $k$ are identical maps.
 \end{enumerate}
+\end{enumerate}
 
+\section{Images and inverse images}\label{c2s4}
+\begin{defn}\label{c2s4d1}
+Let $f: X \rightarrow Y$ and $S \subseteq X$ then $f(S) = \{y \in Y\;|\;
+y = f(x), x \in S\}$. $f(S)$ is called the image of $S \subseteq X$ under
+the function $f: X \rightarrow Y$.
+\end{defn}
+
+The set $f(S)$ is well defined by axiom (A6) if we let $P$ be the 
+proposition that $P(y)$ is true if $y = f(x)$ for some $x \in S$.
+
+\begin{defn}\label{c2s4d2}
+Let $f: X \rightarrow Y$ and $T \subseteq Y$ then $f^{-1}(T) = \{x \in X
+\;|\; f(x) \in T\}$. $f^{-1}(T)$ is called the preimage of $T \subseteq
+Y$ under the function $f: X \rightarrow Y$.
+\end{defn}
+\begin{itemize}
+\item $T$ may have some elements for which there is no preimage. 
+$f^{-1}(T)$ is just that subset of $X$ which maps to $T$.
+\item It is not always true that $f(f^{-1}(T)) = T$ although one can always
+be assured of $f(f^{-1}(T)) \subseteq T$. This is because some elements of
+$T$ will not have a preimage and they will be not be recovered by applying
+$T$ to $f^{-1}(T)$.
+\end{itemize}
+
+\subsection{Exercises - 1}
+\begin{enumerate}
+\item[Ex 1:] Let $f: X \rightarrow Y$ be a bijective function and let 
+$g$ be its inverse. Show that the image of $V$ under $g$ is the same as 
+the preimage of $V$ under $f$.
+\item[Solution:] Let $V \subseteq Y$. Then $g(V) = \{g(y) \;|\; y \in V\}$.
+Since $f$ is a bijective map, every element of $V$ is mapped to a unique
+element of $X$. The preimage of $V$ under $f$ is the set $f^{-1}(V) = \{x
+\in X \;|\; f(x) \in V$.
+
+We will first show that $g(V) \subseteq f^{-1}(V)$. Let $x \in g(V)$. Then
+there exists $x = g(y) = f^{-1}(y)$. Equivalently, $x \in f^{-1}(V)$.
+
+Let $x \in f^{-1}(V)$. Then $y = f(x) \in V$ and $x = g(y)$. Therefore,
+$x \in g(V)$.
+
+Therefore, $f^{-1}(V) = g(V)$.
+
+\item[Ex 2:] Let $f: X \rightarrow Y, S \subseteq X, T \subseteq Y$. What
+can one say about $f^{-1}(f(S))$ and $S$. What about $f(f^{-1}(T))$ and 
+$T$?
+\item[Solution:] $f^{-1}(f(S)) \subseteq S$ and $f(f^{-1}(T)) \subseteq T$.
+If $f$ is bijective then $f^{-1}(f(S)) = S$ and $f(f^{-1}(T)) = T$.
+
+\item[Ex 3:] Let $f: X \rightarrow Y$, $A, B \subseteq X$. Show that
+\begin{enumerate}
+\item[(a)] $f(A \cap B) \subseteq f(A) \cap f(B)$.
+\item[Solution:] Let $x \in f(A \cap B)$. Then $x \in f(A \cap B), x \in
+f(A), x \in f(B)$. In particular, $x \in f(A \cap B)$.
+
+\item[(b)] $f(A) - f(B) \subseteq f(A - B)$.
+\item[Solution:] Let $y \in f(A) - f(B)$. That is, $y = f(x)$ for some $x
+\in A$ and $x \notin B$. That is, $y = f(x)$ for some $x \in A - B$, or
+$y \in f(A - B)$.
+
+\item[(c)] $f(A \cup B) = f(A) \cup f(B)$.
+\item[Solution:] Let $y \in f(A \cup B)$. Then there exists $x \in A \cup
+B$ such that $y = f(x)$. Since $x \in A \cup B \Rightarrow x \in A$, $y \in
+f(A \cup B) \Rightarrow y \in f(A) \Rightarrow y \in f(A) \cup f(B)$.
+Therefore, $f(A \cup B) \subseteq f(A) \cup f(B)$.
+
+Now let $y \in f(A) \cup f(B)$. If $y \in f(A)$ then there exists an $x
+\in A$ such that $y = f(x)$. In particular, for the chosen $y \in f(A)$,
+there is an $x \in A \cup B$ such that $y = f(x)$. Therefore, $y$ is also
+a member of $f(A \cup B)$. We can show the same thing for $y \in f(B)$.
+Thus $y \in f(A) \cup f(B) \Rightarrow y \in f(A \cup B)$.
+
+\item[(d)] Can we replace $\subseteq$ with $=$ for the inequalities in
+(a) and (b)?
+\item[Solution:] If $y \in f(A) \cap f(B)$ then $y \in f(A)$ and $y \in 
+f(B)$. However, if $f$ is a many to one function then distinct elements of 
+$X$ may may to $y$. Therefore, one cannot confirm that the preimage of $y$
+under $f$ belongs to both $A$ and $B$.
+
+If $y \in f(A - B)$ then there exists $x \in A - B$ such that $y = f(x)$.
+Although $x \in A - B$, there could be an $x^\op \in B$ with $f(x^\op) = y$.
+Therefore, $y \in f(A)$ and $y \in f(B)$ and hence $y \notin f(A) - f(B)$.
+\end{enumerate}
+
+\item[4:] Let $f: X \rightarrow Y$ and $S, T \subseteq Y$. Show that
+\begin{enumerate}
+\item[(a)] $f^{-1}(S \cup T) = f^{-1}(S) \cup f^{-1}(T)$.
+\item[Solution:] Let $x \in f^{-1}(S \cup T)$. Then $f(x) \in S \cup T$.
+If $f(x) \in S$, then $x \in f^{-1}(S)$. If $f(x) \in T$, then $x \in 
+f^{-1}(T)$. Since at least one of the possibilities is true, $x \in f^{-1}
+(S) \cup f^{-1}(T)$.
+
+Let $x \in f^{-1}(S) \cup f^{-1}(T)$. If $x \in f^{-1}(S)$, then $x \in
+f^{-1}(S \cup T)$. Likewise, if $x \in f^{-1}(T)$, then $x \in f^{-1}(S
+\cup T)$. Since both possibilities lead to the same conclusion, $x \in
+f^{-1}(S \cup T)$ is always true.
+
+\item[(b)] $f^{-1}(S \cap T) = f^{-1}(S) \cap f^{-1}(T)$.
+\item[Solution:] Let $x \in f^{-1}(S \cap T)$. Then $y = f(x) \in S \cap T
+\Rightarrow y = f(x) \in S \;\land\; y = f(x) \in T \Rightarrow x \in
+f^{-1}(S) \;\land\; x \in f^{-1}(T) \Rightarrow x \in f^{-1}(S) \cap
+f^{-1}(T)$.
+
+Let $x \in f^{-1}(S) \cap f^{-1}(T)$. Then there exists $y = f(x)$ such 
+that $y \in S \;\land\; y \in T \Rightarrow y \in S \cap T$ and hence $x
+\in f^{-1}(S \cap T)$.
+
+\item[(c)] $f^{-1}(S - T) = f^{-1}(S) - f^{-1}(T)$.
+\item[Solution:] Let $x \in f^{-1}(S - T)$. Then there exists $y \in S - T$
+such that $y = f(x)$. $y \in S \;\land\; y \notin T \Rightarrow x \in
+f^{-1}(S) \;\land\; x \notin f^{-1}(T) \Rightarrow x \in f^{-1}(S) - 
+f^{-1}(T)$.
+
+Now let $x \in f^{-1}(S) - f^{-1}(T)$. Then $x \in f^{-1}(S)$ and $x \notin
+f^{-1}(T)$. Therefore, if $y = f(x)$ then $y \in S$ and $y \notin T$, or
+$y \in S - T$, that is $x \in f^{-1}(S - T)$.
+\end{enumerate}
+I think relations between preimages are exact equalities while those 
+between images need not be because preimages are subsets of domain while 
+images are subsets of the range. Elements of the domain map to a unique 
+element in the range but the converse is not true. Further, not all 
+elements of the codomain are mapped to an element in the domain.
+
+\item[5:] Let $f: X \rightarrow Y, S \subseteq X, T \subseteq Y$. Then
+$f(f^{-1}(T)) = T$ iff $f$ is surjective and $f^{-1}(f(S)) = S$ iff $f$
+is injective.
+\item[Solution:] Let $f$ be surjective. Then for all $t \in T$, there 
+exists an $x \in X$ such that $t = f(x)$.
 \end{enumerate}
