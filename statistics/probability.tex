@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{hyperref}
 \title{Elementary Probability}
 \date{09-Mar-2023}
 \author{Amey Joshi}
@@ -152,6 +153,7 @@ in 1933.
 \begin{equation}\label{e12}
 P\left(\bigcup_{i \ge 1} E_i\right) = \sum_{i \ge 1}P(E_i).
 \end{equation}
+\end{enumerate}
 
 A few remarks are in order:
 \begin{enumerate}
@@ -191,8 +193,191 @@ F(x) = \sum_{\omega \le x}P(\omega).
 \end{equation}
 The cumulative distribution function may seem to be an unnecessary 
 appendage to the theory if we confine ourselves to discrete sample spaces.
-It shines when we consider continuous sample spaces.
+It shines when we consider continuous sample spaces, to which we turn our
+attention now.
 
+Consider the second hand of a clock. If you look at the clock at a random
+instant of time the probability that the second hand is between 2 and 3
+is $1/12$. There are $12$ intervals on the dial and when you look at the 
+clock at an arbitrary moment it could be in any one of them. Now suppose 
+that the dial is divided in to $N$ sections. Then the probability of 
+spotting the second hand in any given section is $1/N$. As the number $N$
+increases, the sections become shorter and when $N \rightarrow \infty$ a
+section reduces to a point. The probability that the second hand is at a
+given geometrical point is therefore exactly zero. If this is so how come
+the probability of finding the second hand somewhere on the dial is $1$?
+Herein lies the subtle difference between uncountable sets and countable
+ones. A rigorous analysis of these matters demands a deeper understanding
+of \emph{real analysis}. We will, therefore, stay an informal level and 
+the first point we will note is that when the sample space is continuous,
+it does not make sense to ask the probability at a point. The sensible 
+question, in this case, is to ask the probability of something (that thing
+is called a random variable) taking a value in an interval. In the case of
+the example at hand, the correct question is, what is the probability that
+I can find the second hand between angles $\theta_1$ and $\theta_2$?
 
+To understand this point better, consider an analogy. If you have a gram 
+of sand then you can ask what is the mass of each grain. You cannot ask 
+the same question if you have a gram of water. Instead, you ask what is the
+mass of a given droplet of water. If $\rho$ is the density of water then
+the mass of the droplet is
+\begin{equation}\label{e14}
+m = \int_{x_1}^{x_2}\int_{y_1}^{y_2}\int_{z_1}^{z_2}\rho(x, y, z)dxdydz,
+\end{equation}
+where the droplet extends from $x_1$ to $x_2$ along the $x$-axis, $y_1$
+to $y_2$ along the $y$-axis and $z_1$ to $z_2$ along the $z$-axis. You 
+don't have to know how to solve such an integral. Just make sure that you
+understand what it means.
+
+Likewise, when you have a discrete sample space you can ask the probability
+of a random variable taking a particular value. If you know the probability
+at all values you know the \emph{probability mass function}. On the other
+hand, when you have a continuous sample space you can only ask what is
+the probability that a random variable takes values in an interval $[a, b]$
+and the answer to that question is
+\begin{equation}\label{e15}
+p = \int_a^b f(x)dx.
+\end{equation}
+Continuing the analogy, the function $f$ is called the \emph{probability
+density function}.
+
+It is often convenient to assume that the domain of the probability density 
+function is $-\infty$ to $\infty$. The probability that a random variable
+$X$ takes any value up to a certain number $a$ is
+\begin{equation}\label{e16}
+P(X \le a) = F(a) = \int_{-\infty}^a f(x)dx.
+\end{equation}
+The function $F$ is called the cumulative distribution function. From the
+fundamental theorem of calculus equation \eqref{e16} also implies that
+\begin{equation}\label{e17}
+f(x) = \frac{dF}{dx}.
+\end{equation}
+
+The usage of continuous sample spaces is not particularly difficult than
+the discrete ones. In some ways it is also easier because often times
+problems in calculus are easier than those in combinatorics. We will remain
+at as mere users and not delve deeper into the mathematical nuances. At
+that level the continous sample spaces demand a much greater understanding
+of the theory of sets and their sizes, also called their 'measure'.
+
+We close our elementary treatment of probability with an introduction to
+conditional probability and Bayes theorem. The ideas are common place and
+of common experience. Supposing you go to a doctor complaining of dizziness,
+nausea, restlessness and sweating. An experienced physician will not 
+immediately conclude that you have a heart attack. Instead, he might ask 
+you to raise you arms. He may also ask you if you can walk without support.
+If you cannot then he might conclude that you are more likely to have 
+vertigo than heart attack. He might nevertheless do additional tests to
+ensure that there is nothing life threatening but he might not consider
+yours to be an emergency case. 
+
+The probability of an event, here a heart attack, changes as one gets more
+information about the patients condition. If the probability was $2/3$ when
+the doctor read the first symtoms, it might be $1/3$ by the time he suspects
+vertigo. One can state these observations as
+\begin{itemize}
+\item The probability that the patient has a heart attack given that he is
+feeling dizzy, nauseated, restless and sweating is $2/3$.
+\item The probability that the patient has a heart attach given that he has
+all the above symptoms plus he is unable to walk steadily but he can move
+his left arm freely is $1/3$.
+\end{itemize}
+The phrase 'probability given that' is called 'conditional probability'. We
+will make it more formal in terms of sample spaces and events. Let $\Omega$
+be a sample space and $A$ and $B$ be events with probability $P(A)$ and
+$P(B)$. These are called unconditional probabilities. Now suppose you know
+that the event $B$ has occurred and you want to know the probability of 
+event $A$. That event $B$ has occurred immediately shrinks your sample 
+space to $B$ and the probability of $A$ is proportional to the overlap
+between $B$ and $A$. The overlap between $B$ and $A$ is the event that
+$B$ and $A$ both occur. In set theoretical language, it is the probability
+of the event $A \cap B$. Remember that we said that the probability of $A$
+occurring knowing that $B$ has occurred is \emph{proportional to} 
+$P(A \cap B)$. The actual probability is
+\begin{equation}\label{e18}
+P(A | B) = \frac{P(A \cap B)}{P(B)}.
+\end{equation}
+Note that
+\begin{equation}\label{e19}
+P(B | A) = \frac{P(B \cap A)}{P(A)} = \frac{P(A \cap B)}{P(A)} \ne
+P(A | B).
+\end{equation}
+We often confuse $P(A|B)$ with $P(B|A)$. We will illustrate it with a
+few examples.
+\begin{enumerate}
+\item Suppose that a certain test is done to check if a patient has a 
+disease D. The outcome of the test could be '+' or '-'. The patient could
+have the disease or not have it. We denote the first event as $D$ and the
+second one as $D^c$, the complement of $D$. No test is perfect. Sometimes 
+a patient with the disease may get a '-' result and a healthy person may
+get a '+' result. The probabilities of these happening are mentioned in 
+the table below.\footnote{This example comes from Larry Wasserman's \emph{
+All of Statistics, volume 1.}}
+\begin{center}
+\begin{tabular}{c | c c}
+ & $D$ & $D^c$ \\
+\hline
+'+' & 0.009 & 0.099 \\
+'-' & 0.001 & 0.891
+\end{tabular}
+\end{center}
+Let us understand this table before we analyse it. The unconditional 
+probability that a patient has disease is the sum of the first column $
+0.009 + 0.001 = 0.01$. That is, $1 \%$ of people in a population have the
+disease. Likewise, the unconditional probability that a person is disease
+free is the sum of the second column $0.099 + 0.891 = 0.990$. $99\%$ of 
+people in a population are disease free. The two probabilities add up to 
+$1$.
+
+If we select a person at random and carry out the test the probability of
+getting a positive outcome is $0.009 + 0.099 = 0.108$ or $10.8\%$. The 
+probability of getting a negative outcome is $0.001 + 0.891 = 0.892$ or
+$89.2\%$. One again the sum of the probabilities of two mutually exclusive
+outcomes is $1$.
+
+How to interpret the four numbers independently?
+\begin{enumerate}
+\item The probability that a person has disease and test is '+' is $0.009$.
+\item The probability that a person has disease and test is '-' is $0.001$.
+\item The probability that a person is healthy and test is '-' is $0.099$.
+\item The probability that a person is healthy and test is '+' is $0.891$.
+\end{enumerate}
+
+How good is the test?
+\begin{enumerate}
+\item If a person has disease then the probability that the test result is
+'+' is
+\begin{equation}\label{e20}
+P(+|D) = \frac{P(+ \cap D)}{P(D)} = \frac{0.009}{0.009 + 0.001} = 0.9.
+\end{equation}
+If a person has the disease there is a $90\%$ chance that the test will be 
+positive.
+\item If the person is healthy then the probability that the test result is
+'-' is
+\begin{equation}\label{e21}
+P(-|D^c) = \frac{P(+ \cap D^c)}{P(D^c)} = \frac{0.891}{0.099 + 0.891} = 0.9.
+\end{equation}
+If a person is healthy then there is a $90\%$ chance that the test will be
+negative.
+\end{enumerate}
+These two cases suggest that the test is quite reliable. In practise, 
+however, these numbers are not useful. We are not testing the test but the
+patient. We want to know the probability that the person has disease given
+that the test is '+'. It is
+\begin{equation}\label{e23}
+P(D|+) = \frac{P(D \cap +)}{P(+)} = \frac{0.009}{0.009 + 0.099} = 0.0833.
+\end{equation}
+The answer is surprising but correct. If the test is positive then there is
+only an $8\%$ chance that you have the disease. That is why medical test
+reports always remind their readers to correlate test results with clinical
+symptoms. If you do not walk into a medical centre, get yourself tested
+and see a '+' outcome then do not immediately conclude that you have the
+disease.
+
+\item We now analyse the data about the number of arrests in the UK. The 
+summarisation and filtering of raw data from one source, selection 
+complementary data from another source and computing the conditional 
+probabilities is demonstrated in \href{https://docs.google.com/spreadsheets/d/1tPOcdYhDACN7974XZW4ho0eRbLCEAa3xUChZX5bPOPo/edit?usp=sharing}{a Google
+sheet}.
 \end{enumerate}
 \end{document}

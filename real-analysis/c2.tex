@@ -825,5 +825,15 @@ elements of the codomain are mapped to an element in the domain.
 $f(f^{-1}(T)) = T$ iff $f$ is surjective and $f^{-1}(f(S)) = S$ iff $f$
 is injective.
 \item[Solution:] Let $f$ be surjective. Then for all $t \in T$, there 
-exists an $x \in X$ such that $t = f(x)$.
+exists at least one $x \in X$ such that $t = f(x)$. Further, all these
+$x$ lie in $f^{-1}(T)$ and their image lies in $f(f^{-1}(T))$. Thus, $T
+\subseteq f(f^{-1}(T))$. We proved in exercise 2 that $f(f^{-1}(T)) 
+\subseteq T$. Therefore, $T = f(f^{-1}(T))$.
+
+Let $f$ be injective and $S \subset X$. Every $y \in Y$ will have at most
+one preimage in $X$. However, every $y \in f(S) \subseteq Y$ will have
+exactly one preimage in $S$. If $s \in S$ then $f(s) \in f(S)$ and 
+because $f$ is injective $s \in f^{-1}(f(S))$ so that $S \subseteq 
+f^{-1}(f(S))$. We proved in exercise 2 that $f^{-1}(f(S)) \subseteq S$.
+Therefore $S = f^{-1}(f(S))$.
 \end{enumerate}
