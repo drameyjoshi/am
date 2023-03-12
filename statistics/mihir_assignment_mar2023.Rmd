@@ -13,7 +13,8 @@ library(lmtest)
 
 ## Prepare the data
 
-Read the data and create dummies for industry.
+Read the data and create dummies for industry. The data is shared on 
+[Google drive](https://docs.google.com/spreadsheets/d/1F7_UGud7W_ADI76pqF3OGWGTKw4OHdXAkngYnLWU3G0/edit#gid=2020986000).
 
 ```{r echo = TRUE}
 raw_data <-
