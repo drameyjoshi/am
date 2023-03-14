@@ -19,7 +19,9 @@ element of $B$ and \emph{vice versa}.
 contains no elements. In particular, for every object $x$, $x \notin 
 \varnothing$.
 \item[(A4)] If $x$ is an object then there exists a set $\{x\}$ whose only
-element is $x$. A set with just a single element is called a singleton set. 
+element is $x$. A set with just a single element is called a singleton set.
+If $x$ and $y$ are objects then there exits a set whose only elements are
+$x$ and $y$.
 \item[(A5)] If $X$ and $Y$ are sets then there exists a set $X \cup Y$, 
 called the union of $X$ and $Y$, which consists of all the elements which
 belong to $X$ or $Y$. (The word 'or' is always in the inclusive sense.)
@@ -36,9 +38,14 @@ P(x, z)$ is true for some $x \in A$.
 numbers. There is an object $0 \in \son$ and an object $S(n)$ assigned to
 every natural number $n \in \son$ such that the axioms in section 
 \ref{c1s1} hold.
-\item[(A9)] Let $X$ and $Y$ be sets. Then there exists a set $Y^{X}$ which
+\item[(A9)] The axiom of universal specification and existence of a 
+universal set. This axiom is dropped in Zermelo-Frankael Set Theory and
+the next one is included to avoid Russell's paradox.
+\item[(A10)] (Regularity) If $A$ is a non-empty set then there is at least 
+one element $x$ of $A$ which is either not a set or is disjoint from $A$.
+\item[(A11)] Let $X$ and $Y$ be sets. Then there exists a set $Y^{X}$ which
 consists of all the functions from $X$ to $Y$.
-\item[(A10)] Let $X$ be a set all of whose elements are themselves sets.
+\item[(A12)] Let $X$ be a set all of whose elements are themselves sets.
 Then there exists a set $\cup X$ whose elements are precisely those objects
 which are \underline{elements of elements} of $X$. Thus,
 \[
@@ -355,8 +362,8 @@ Now, let $a \in A$ so that $a \in X$. Since $A \cap B = \varnothing$, $a
 $a$ was an arbitrary element of $A$ this just means that $A \subseteq X -
 B$.
 
-\item[Ex 3.1.10 ] Let $A$ and $B$ be sets. Show that the three sets $A - B$,
-$A \cap B$ and $B - A$ are disjoint and that their union is $A \cup B$.
+\item[Ex 3.1.10 ] Let $A$ and $B$ be sets. Show that the three sets $A - 
+B$, $A \cap B$ and $B - A$ are disjoint and that their union is $A \cup B$.
 \item[Solution: ] If $a \in A - B$ then $a \in A \;\land\; a \notin B$. 
 Therefore, $a \notin A \cap B$ and $a \notin B - A$. Likewise, if $b \in
 B - A$ then $b \notin A \cap B$ and $b \notin A$.
@@ -465,8 +472,8 @@ The two definitions are equivalent.
 \begin{defn}\label{c2s3d1}
 Let $X, Y$ be sets and $P(x, y)$ be a logical proposition for an $x \in X$
 and $y \in Y$. If for every $x \in X$, there is a unique $y \in Y$ for 
-which $P(x, y)$ is true then we define the function $f: X \rightarrow Y$ to 
-be the object that assigns a value $y$ to every $x \in X$. Thus, for $x 
+which $P(x, y)$ is true then we define the function $f: X \rightarrow Y$ 
+to be the object that assigns a value $y$ to every $x \in X$. Thus, for $x 
 \in X, y \in Y$,
 \[
 y = f(x) \Leftrightarrow P(x, y) \text{ is true.}
@@ -481,8 +488,8 @@ by the time he introduced functions.
 
 \begin{defn}\label{c2s3d2}
 Two functions $f: X \rightarrow Y$ and $g: X \rightarrow Y$ are said to be
-equal if their domain and codomain are equal and for all $x \in X$, $f(x) = 
-g(x)$.
+equal if their domain and codomain are equal and for all $x \in X$, $f(x) 
+= g(x)$.
 \end{defn}
 
 \begin{defn}\label{c2s3d3}
@@ -666,7 +673,10 @@ Z})(x) = \iota_{Y \rightarrow Z}(\iota_{X \rightarrow Y}(x)) =
 \item[Solution:] Let $a \in A$ and $b \in B$ be such that $b = f(a)$.
 Then $(f \circ \iota_{A \rightarrow A})(a) = f(\iota_{A \rightarrow A}(a))
 = f(a) = b$ and $(\iota_{B \rightarrow B} \circ f)(a) = 
-\iota_{B \rightarrow B}(f(a)) = \iota_{B \rightarrow B}(b) = b$.
+\iota_{B \rightarrow B}(f(a))$ or 
+\[
+\iota_{B \rightarrow B}(b) = b.
+\]
 
 \item[(c)] Show that if $f$ is a bijective function then $f \circ f^{-1}
 = \iota_{B \rightarrow B}$ and $f^{-1} \circ f = \iota_{A \rightarrow A}$.
@@ -723,6 +733,38 @@ $T$ will not have a preimage and they will be not be recovered by applying
 $T$ to $f^{-1}(T)$.
 \end{itemize}
 
+Axiom (A12) allows us to contruct the unions based on an index set. If $I$
+is a set and if for every $\alpha \in I$ there is a set $A_\alpha$ then 
+\begin{equation}\label{c2s4e1}
+\bigcup_{\alpha \in I} = \cup \{A_\alpha \;|\; \alpha \in I\}.
+\end{equation}
+The set $I$ is called the index set, its elements $\alpha$ are called 
+labels and the sets $A_\alpha$ is called a family of sets indexed by label
+$\alpha$.
+
+\begin{lem}\label{c2s4l1}
+If $I$ is empty then the set defined by is empty.
+\end{lem}
+\begin{proof}
+\[
+x \in \cup \{A_\alpha \;|\; \alpha \in I\} \Leftarrow x \in A_\alpha
+\text{ for some } \alpha \in I.
+\]
+Since $I$ is empty, there is no set $A_\alpha$ labelled by an element of 
+$I$. Therefore the union is empty.
+\end{proof}
+
+If $I$ is a non-empty set of labels $\alpha$ and if $A_\alpha$ is a family
+of labelled sets then
+\begin{equation}\label{c2s4e2}
+\bigcap_{\alpha \in I} A_\alpha := \{x \in A_\beta \;|\; x \in A_\alpha
+\forall \alpha \in I\}.
+\end{equation}
+We require the set $I$ to be non-empty because the definition selects one
+element $\beta \in I$ and the set labelled $A_\beta$ by it and chooses
+all elements of $A_\beta$ which are common to other labelled sets in the 
+family.
+
 \subsection{Exercises - 1}
 \begin{enumerate}
 \item[Ex 1:] Let $f: X \rightarrow Y$ be a bijective function and let 
@@ -778,8 +820,9 @@ $X$ may may to $y$. Therefore, one cannot confirm that the preimage of $y$
 under $f$ belongs to both $A$ and $B$.
 
 If $y \in f(A - B)$ then there exists $x \in A - B$ such that $y = f(x)$.
-Although $x \in A - B$, there could be an $x^\op \in B$ with $f(x^\op) = y$.
-Therefore, $y \in f(A)$ and $y \in f(B)$ and hence $y \notin f(A) - f(B)$.
+Although $x \in A - B$, there could be an $x^\op \in B$ with $f(x^\op) = 
+y$. Therefore, $y \in f(A)$ and $y \in f(B)$ and hence $y \notin f(A) - 
+f(B)$.
 \end{enumerate}
 
 \item[4:] Let $f: X \rightarrow Y$ and $S, T \subseteq Y$. Show that
@@ -836,4 +879,234 @@ exactly one preimage in $S$. If $s \in S$ then $f(s) \in f(S)$ and
 because $f$ is injective $s \in f^{-1}(f(S))$ so that $S \subseteq 
 f^{-1}(f(S))$. We proved in exercise 2 that $f^{-1}(f(S)) \subseteq S$.
 Therefore $S = f^{-1}(f(S))$.
+
+\item[6:] Let $X$ be a set set. Show that $\{Y \;|\; Y \subseteq X\}$ is
+also a set.
+\item[Solution:] Choose $Z = \{0, 1\}$. Axiom (A9) assures us that there
+exists a set $\{0, 1\}^X$ which consists of all functions from $f: X 
+\rightarrow \{0, 1\}$. If $f \in \{0, 1\}^X$ then let $P_f(x)$ be true if
+$f(x) = 1$ and false otherwise. Define the set $Y_f = \{x \in X \;|\;
+P_f(x)\}$. The existence of $Y_f$ follows from axiom (A6). For every $f \in
+\{0, 1\}^X$ there exists a unique $Y_f$. If $Q(f, Y_f)$ is true if $Y_f$
+corresponds to $f$ then axiom (A7) assures us of the set
+\[
+\{Y_f: Q(f, Y_f), f \in \{0, 1\}^X\}.
+\]
+
+\item[7:] Let $X$ and $Y$ be sets. A partial function from $X$ to $Y$ is
+a function $f: X^\op \rightarrow Y^\op$, where $X^\op \subseteq X$ and
+$Y^\op \subseteq Y$. Show that the set of all partial functions is a set.
+\item[Solution:] For a fixed choice of $X^\op, Y^\op$, axiom (A9) assures
+us of the existence of the set ${Y^\op}^{X^\op}$. The previous exercise
+proved the existence of set of all subsets of a set. Then by axiom (A6)
+\[
+Z = \{{Y^\op}^{X^\op} \;|\; X^\op \in 2^X, Y^\op \in 2^Y\}
+\]
+is a set whose elements are sets. Finally (A10) guarantees that the union
+of all members of $Z$ is also a set. It is the set of all partial functions
+from $X$ to $Y$.
+
+\item[8:] Show that axiom (A5) follows from (A1), (A4) and (A12).
+\item[Solution:] Let $A$ and $B$ be sets. Then by axiom if $a \in A$ and
+$b \in B$, then by (A4) we have a set $\{a, b\}$. Now consider the set
+whose elements are such pair sets. We can define it as
+\[
+X = \{ \{a, b\} \;|\; \forall\; a \in A, b \in B\}
+\]
+Then by axiom (A12), $\cup X$ to be the union of elements of elements of 
+$X$, which is precisely the union of $A$ and $B$.
+
+\item[9:] Show that if $\beta$ and $\beta^\op$ are two elements of a set
+$I$, and to each $\alpha \in I$ we assign a set $A_\alpha$, then
+\[
+\{x \in A_\beta \;|\; x \in A_\alpha \forall\; \alpha \in I\} =
+\{x \in A_{\beta^\op} \;|\; x \in A_\alpha \forall\; \alpha \in I\}
+\]
+so the definition in \eqref{c2s4e2} does not depend on the choice of 
+$\beta$.
+\item[Solution:] Let 
+\[
+y \in \{x \in A_\beta \;|\; x \in A_\alpha \forall\; \alpha \in I\}
+\]
+Then $y \in A_\alpha \forall \alpha \in I$. In particular $y \in 
+A_{\beta^\op}$ and $y \in A_\alpha \forall \alpha \in I$. Therefore,
+\[
+y \in \{x \in A_{\beta^\op} \;|\; x \in A_\alpha \forall\; \alpha \in I\}
+\]
+Therefore,
+\[
+\{x \in A_\beta \;|\; x \in A_\alpha \forall\; \alpha \in I\} \subseteq
+\{x \in A_{\beta^\op} \;|\; x \in A_\alpha \forall\; \alpha \in I\}
+\]
+We can similarly show that
+\[
+\{x \in A_{\beta^\op} \;|\; x \in A_\alpha \forall\; \alpha \in I\} 
+\subseteq
+\{x \in A_\beta \;|\; x \in A_\alpha \forall\; \alpha \in I\} \subseteq
+\]
+
+\item[9:] Suppose that $I$ and $J$ are two sets and for all $\alpha \in 
+I \cup J$ let $A_\alpha$ be a set. Show that
+\[
+\left(\bigcup_{\alpha \in I} A_\alpha\right) \cup
+\left(\bigcup_{\alpha \in J} A_\alpha\right) = 
+\bigcup_{\alpha \in I \cup J} A_\alpha.
+\]
+If $I$ and $J$ are non-empty then show that
+\[
+\left(\bigcap_{\alpha \in I} A_\alpha\right) \cap
+\left(\bigcap_{\alpha \in J} A_\alpha\right) = 
+\bigcap_{\alpha \in I \cap J} A_\alpha.
+\]
+\item[Solution:] Let 
+\[
+x \in \left(\bigcup_{\alpha \in I} A_\alpha\right) \cup
+\left(\bigcup_{\alpha \in I} A_\alpha\right)
+\]
+Then $x \in \cup_{\alpha \in I} A_\alpha$ or $x \in \cup_{\alpha \in J}
+A_\alpha$ If $x \in A_{\bar{\alpha}}$ for some $\bar{\alpha} \in I$ then 
+since $\bar{\alpha} \in I \cup J$, $x \in \cup_{\alpha \in I \cup J} 
+A_\alpha$. Similarly,
+\[
+x \in \cup_{\alpha \in J}A_\alpha \Rightarrow x \in \cup_{\alpha \in I 
+\cup J} A_\alpha
+\]
+so that
+\[
+\left(\bigcup_{\alpha \in I} A_\alpha\right) \cup
+\left(\bigcup_{\alpha \in J} A_\alpha\right) \subseteq
+\bigcup_{\alpha \in I \cup J} A_\alpha.
+\]
+
+Now let $x \in \cup_{\alpha \in I \cup J} A_\alpha$. Then there exists
+$\bar{\alpha} \in I \cup J$ such that $x \in A_{\bar{\alpha}}$. If 
+$\bar{\alpha} \in I$ then $x \in \cup_{\alpha \in I \cup J}A_\alpha$. The
+same conclusion holds good if $\bar{\alpha} \in J$. Therefore we have
+\[
+\bigcup_{\alpha \in I \cup J} A_\alpha \subseteq
+\left(\bigcup_{\alpha \in I} A_\alpha\right) \cup
+\left(\bigcup_{\alpha \in J} A_\alpha\right).
+\]
+
+We will now prove similar result for the intersection of index sets. Given
+that $I$ and $J$ are non-empty, there is $\beta \in I, \bar{\beta} \in J$
+such that if
+\[
+x \in 
+\left(\bigcap_{\alpha \in I} A_\alpha\right) \cap
+\left(\bigcap_{\alpha \in J} A_\alpha\right) 
+\]
+then 
+\[
+x \in \left(\bigcap_{\alpha \in I} A_\alpha\right) \;\land\;
+x \in \left(\bigcap_{\alpha \in J} A_\alpha\right) \Rightarrow 
+\]
+\[
+x \in A_\alpha \;\forall\; \alpha \in I \;\land\; x \in A_\alpha
+\;\forall\; \alpha \in J \Rightarrow
+\]
+\[
+x \in A_\alpha \;\forall\; \alpha \in I \;\land\; \alpha \in J 
+\Rightarrow x \in A_\alpha \;\forall\; \alpha \in I \cup J \Rightarrow
+x \in \bigcap_{\alpha \in I \cup J} A_\alpha.
+\]
+Therefore,
+\[
+\left(\bigcap_{\alpha \in I} A_\alpha\right) \cap
+\left(\bigcap_{\alpha \in J} A_\alpha\right) \subseteq
+\bigcap_{\alpha \in I \cup J} A_\alpha.
+\]
+Now let
+\[
+x \in \bigcap_{\alpha \in I \cup J} A_\alpha.
+\]
+Then $x \in A_\alpha$ for all $\alpha \in I \cup J$. In particular, $x
+\in A_\alpha$ for all $\alpha \in I$ and $\alpha \in J$. Therefore,
+\[
+x \in \bigcap_{\alpha \in I}A_\alpha \;\land\;
+x \in \bigcap_{\alpha \in J}A_\alpha \Rightarrow 
+x \in \left(\bigcap_{\alpha \in I}A_\alpha\right) \cap
+\left(\bigcap_{\alpha \in J}A_\alpha\right)
+\]
+Therefore,
+\[
+\bigcap_{\alpha \in I \cup J} A_\alpha \subseteq
+\left(\bigcap_{\alpha \in I}A_\alpha\right) \cap
+\left(\bigcap_{\alpha \in J}A_\alpha\right)
+\]
+
+\item[11:] Let $X$ be a set. $I$ be a non-empty set, and for all $\alpha
+\in I$ let $A_\alpha$ be a subset of $X$. Show that
+\[
+X - \bigcup_{\alpha \in I} A_\alpha = \bigcap_{\alpha \in I} (X - A_\alpha)
+\]
+and
+\[
+X - \bigcap_{\alpha \in I} A_\alpha = \bigcup_{\alpha \in I} (X - A_\alpha)
+\]
+\item[Solution:] Let
+\[
+x \in X - \bigcup_{\alpha \in I} A_\alpha
+\]
+then 
+\[
+x \notin \bigcup_{\alpha \in I} A_\alpha \Rightarrow x \notin A_\alpha
+\;\forall\; \alpha \in I \Rightarrow x \in X - A_\alpha \;\forall\;
+\alpha \in I \Rightarrow x \in \bigcap_{\alpha \in I}(X - A_\alpha)
+\]
+therefore,
+\begin{equation}\label{c2s4e3}
+X - \bigcup_{\alpha \in I} A_\alpha \subseteq \bigcap_{\alpha \in I}
+(X - A_\alpha).
+\end{equation}
+If 
+\[
+x \in \bigcap_{\alpha \in I}(X - A_\alpha)
+\]
+then $x \in (X - A_\alpha)$ for all $\alpha \in I$ that is $x \notin 
+A_\alpha \;\forall\; \alpha \in I$ or 
+\[
+x \notin \bigcup_{\alpha \in I} A_\alpha
+\]
+or
+\[
+x \in X - \bigcup_{\alpha \in I} A_\alpha.
+\]
+so that
+\begin{equation}\label{c2s4e4}
+\bigcap_{\alpha \in I}(X - A_\alpha) \subseteq X - \bigcup_{\alpha \in I} 
+A_\alpha.
+\end{equation}
+From \eqref{c2s4e3} and \eqref{c2s4e4} we conclude that
+\[
+\bigcap_{\alpha \in I}(X - A_\alpha) = X - \bigcup_{\alpha \in I} 
+A_\alpha.
+\]
+
+Next consider
+\[
+y \in \bigcap_{\alpha \in I}(X - A_\alpha).
+\]
+Therefore,
+\[
+y \in (X - A_\alpha) \;\forall\; \alpha \in I \Rightarrow y \notin
+A_\alpha \;\forall\; \alpha \in I \Rightarrow y \notin \bigcup_{\alpha
+\in I}A_\alpha \Rightarrow y \in X - \bigcup_{\alpha \in I}A_\alpha
+\]
+that is,
+\begin{equation}\label{c2s4e5}
+\bigcap_{\alpha \in I}(X - A_\alpha) \subseteq X - \bigcup_{\alpha \in I}
+A_\alpha.
+\end{equation}
+On the other hand, if
+\[
+y \in X - \bigcup_{\alpha \in I}A_\alpha,
+\]
+$y$ is in none of $A_\alpha$ and hence it is in all of $X - A_\alpha$ and
+hence it is a member of $\cap_{\alpha \in I}(X - A_\alpha)$ so that
+\begin{equation}\label{c2s4e6}
+X - \bigcup_{\alpha \in I}A_\alpha \subseteq \cap_{\alpha \in I}
+(X - A_\alpha).
+\end{equation}
+The equality of the sets follows from \eqref{c2s4e5} and \eqref{c2s4e6}.
 \end{enumerate}
