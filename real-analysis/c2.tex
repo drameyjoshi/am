@@ -538,7 +538,7 @@ such that $y = f(x)$. We can as well define a function $f^{-1}: Y
 \rightarrow X$ such that $f^{-1}(y) = x$ iff $y = f(x)$ for all $x \in X$
 and $y \in Y$.
 
-\subsection{Exercices}
+\subsection{Exercises}
 These are problems at the end of section 3.3 of Tao's first volume
 \cite{tao2014a1}.
 \begin{enumerate}
@@ -765,7 +765,7 @@ element $\beta \in I$ and the set labelled $A_\beta$ by it and chooses
 all elements of $A_\beta$ which are common to other labelled sets in the 
 family.
 
-\subsection{Exercises - 1}
+\subsection{Exercises}
 \begin{enumerate}
 \item[Ex 1:] Let $f: X \rightarrow Y$ be a bijective function and let 
 $g$ be its inverse. Show that the image of $V$ under $g$ is the same as 
@@ -1109,4 +1109,322 @@ X - \bigcup_{\alpha \in I}A_\alpha \subseteq \cap_{\alpha \in I}
 (X - A_\alpha).
 \end{equation}
 The equality of the sets follows from \eqref{c2s4e5} and \eqref{c2s4e6}.
+\end{enumerate}
+
+\section{Cartesian products}\label{c2s5}
+In the spirit of this chapter, we will prefer a set theoretic definition
+of the cartesian product. It is given as an alternative to the more
+conventional one in terms of an ordered pair. It is part of exercise
+(3.5.1) of Tao's \cite{tao2014a1} book.
+\begin{defn}\label{c2s5d1}
+For objects $x$ and $y$ define the ordered pair 
+\[
+(x, y) := \{\{x\}, \{x,y\}\}
+\]
+\end{defn}
+
+\begin{lem}\label{c2s5l1}
+The set in definition \ref{c2s5d1} can be constructed from the axioms of
+set theory.
+\end{lem}
+\begin{proof}
+Since $x$ and $y$ are objects, by axiom (A4), $\{x\}$ is a set. By axiom
+(A4) again, $\{x, y\}$ is also a set. Applying (A4) to the objects $\{x\}$
+and $\{x, y\}$ again we get the set on the rhs of the definition. That
+sets are themselves objects follows from (A1).
+\end{proof}
+
+\begin{lem}\label{c2s5l2}
+$(x, y) = (x^\op, y^\op)$ iff $x = x^\op$ and $y = y^\op$.
+\end{lem}
+\begin{proof}
+Let $(x, y) = (x^\op, y^\op)$. Then $\{{x}, \{x, y\}\} = \{{x^\op}, 
+\{x^\op , y^\op \}\}$. Two sets are equal iff they have the same elements.
+Therefore, $\{x\} \in \{\{x^\op\}, \{x^\op, y^\op\}\}$ so that either
+$\{x\} = \{x^\op\}$ or $\{x\} = \{x^\op, y^\op\}$. The second possibility
+is ruled out because, $x^\op \ne y^\op$ does not permit $x = x^\op$ and
+$x = y^\op$. The first possibility gives $x = x^\op$. We are also required
+to have $\{x, y\} = \{x^\op, y^\op\} = \{x, y^\op\}$. Since $x \ne y$
+we must have $y = y^\op$.
+
+To prove the converse, we note that $x = x^\op$ and $y = y^\op$ implies 
+$\{x\} = \{x^\op\}$ and $\{x, y\} = \{x^\op, y^\op\}$, so that 
+$\{\{x\}, \{x, y\}\} = \{\{x^\op\}, \{x^\op, y^\op\}\}$.
+\end{proof}
+
+Note that the definition cleverly differentiates $(x, y) = \{\{x\}, \{x,
+y\}\}$ from $(y, x) = \{\{y\}, \{y, x\}\} = \{\{y\}, \{x, y\}\}$.
+
+An alternative definition of an ordered pair is
+\begin{defn}\label{c2s5d2}
+If $x$ and $y$ are objects then their ordered pair is defined as
+\[
+(x, y) := \{x, \{x. y\}\}.
+\]
+\end{defn}
+\begin{lem}\label{c2s5l3}
+The set in definition \ref{c2s5d2} can be constructed from the axioms of
+set theory.
+\end{lem}
+\begin{proof}
+Since $x$ and $y$ are objects $\{x, y\}$ is a set by axiom (A4). Axiom
+(A10) permits us to construct a set $\{x, \{x, y\}\}$, one of whose 
+element is not a set.
+\end{proof}
+
+\begin{lem}\label{c2s5l4}
+Using definition \ref{c2s5d2}, $(x, y) = (x^\op, y^\op)$ iff $x = x^\op$
+and $y = y^\op$.
+\end{lem}
+\begin{proof}
+Let $(x, y) = (x^\op, y^\op)$. Then $\{x, \{x, y\}\} = \{x^\op, \{x^\op,
+y^\op\}\}$. Now $x$ is an object that is not a set and $\{x^\op, y^\op\}$ 
+is a set. Therefore the two cannot be equal. That leaves the only 
+possibility that $x = x^\op$. This, coupled with the other conclusion
+$\{x, y\} = \{x^\op, y^\op\}$ gives us $y = y^\op$.
+
+Conversely, if $x = x^\op$ and $y = y^\op$, $\{x, y\} = \{x^\op, y^\op\}$
+and hence $\{x, \{x, y\}\} = \{x^\op, \{x^\op, y^\op\}\}$.
+\end{proof}
+
+\begin{defn}\label{c2d5d3}
+If $X$ and $Y$ are sets then their cartesian product $X \times Y$ is 
+defined as 
+\[
+a \in X \times Y \Leftrightarrow a = (x, y) \text{ for some} x \in X,
+y \in Y.
+\]
+\end{defn}
+
+We can generalise the concept of an ordered pair to an ordered n-tuple
+using both a rigorous set theoretic definition and an axiomatic one. We
+will start with the later and prove in the exercise that the axiom can 
+be dropped.
+\begin{defn}\label{c2s5d4}
+If $n$ is a natural number then an ordered $n$-tuple is $(x_1, \ldots,
+x_n)$ such that $(x_1, \ldots, x_n) = (y_1, \ldots, y_n)$ iff $x_i = y_i$
+for all $1 \le i \le n$.
+\end{defn}
+
+We can also introduce an n-fold cartesian product as 
+\begin{defn}\label{c2s5d5}
+If $n$ is a natural number and $X_1, \ldots, X_n$ are sets than
+\[
+a \in X_1 \times \cdots \times X_n \Leftrightarrow a = (x_1, \ldots, x_n)
+\text{ for some } x_i \in X_i \;\forall\; 1 \le i \ne n.
+\]
+\end{defn}
+
+\begin{lem}\label{c2s5l5}
+Let $n \ge 1$ be a natural number. Let $X_i$ be a non-empty set for each
+$1 \le i \le n$. There exists an n-tuple $(x_1, \ldots, x_n)$ such that
+$x_i \in X_i \;\forall\; 1 \le i \le n$. This makes $X_1 \times \cdots
+\times X_n$ non-empty.
+\end{lem}
+\begin{proof}
+Since $X_1$ is non empty there is at least one element $x_1 \in X_1$,
+which can for a tuple $(x_1)$. This proves the base case. Assume that the
+induction hypothesis is true for $n = k$. Now consider the sets $X_1, 
+\ldots, X_k, X_{k+1}$. By induction hypothesis, there is at least one
+tuple $(x_1, \ldots x_k)$. If $Y = X_1 \times X_k$ then the sets $Y$ and
+$X_{k+1}$ are non empty and hence there is a tuple $((x_1, \ldots, x_k),
+x_{k+1})$ for some $x_{k+1} \in X_{k+1}$. We once again used the induction
+hypothesis. We can identify the 2-tuple $((x_1, \ldots, x_k), x_{k+1})$
+with the (k+1)-tuple $(x_1, \ldots, x_k, x_{k+1})$ and close the induction.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] We define a function $x: \{i \in \son\;|\; 1 \le i \le n\}
+\rightarrow X$, where $X$ is an arbitrary set. Then each $x(i) \in X$. If
+we denote $x(i)$ by $x_i$ then we see that the function $x$ is just an
+n-tuple in disguise. Each n-tuple is a different function and the 
+cartesian product is just a set of these functions. Show that if $x$ and 
+$y$ are two such functions then $x = y \Leftrightarrow x_i = y_i \;\forall
+\; 1 \le i \le n$.
+\item[Solution:] If $x = y$ then by the definition of equality of 
+functions, their ranges are identical and $x(i) = y(i)$ for all $1 \le i
+\le n$. Conversely, if $x_i = y_i$, that is $x(i) = y(i)$ then the two
+functions have same range and same values for same arguments.
+
+\item[2:] Show that is $(X_1, \ldots, X_n)$ is an ordered n-tuple of sets
+then the cartesian product defined in \ref{c2s5d5} is indeed a set.
+\item[Solution:] For any n-tuple $x = (x_1, \ldots, x_n)$ one can construct
+the set $X = \{x_i | x_i \in X_i \;\forall\; 1 \le i \le n\}$. The function
+$x$ is a partial function from $\{1, \ldots, n\}$ to the set $X$. By 
+exercise 7 of the previous section the collection of all partial functions
+is itself a set. It is indeed the set of all n-tuples.
+
+\item[3:] Show that the definition of equality of ordered pairs obeys
+the reflexivity, symmetry and transitivity properties.
+\item[Solution:] Since the equality of elements of sets obeys reflexivity,
+for any $(x, y)$, $x = x, y = y \Rightarrow (x, y) = (x, y)$. Likewise,
+since $x = u \Rightarrow u = x$ and $y = v \Rightarrow v = y$, $(x, y)
+= (u, v) \Rightarrow (u, v) = (x, y)$. Further, since $x = u, u = s 
+\Rightarrow x = s$ and $y = v, v = r \Rightarrow y = r$ we have $(x, y)
+= (u, v)$ and $(u, v) = (s, r)$ implies $(x, y) = (s, r)$.
+
+The proof can be easily extended to n-tuples.
+
+\item[4:] Let $A, B, C$ be sets. Then show that
+\begin{enumerate}
+\item[(a)] $A \times (B \cup C) = A \times B \cup A \times C$. 
+\item[Solution:] Let $(x, y)
+\in A \times (B \cup C)$. Then $x \in A$ and $y \in B \cup C$. If $y \in
+B$, $(x, y) \in A \times B$. If $y \in C$, $(x, y) \in A \times C$. In
+any case, $(x, y) \in A \times B \cup A \times C$ so that $A \times (B
+\cup C) \subseteq A \times B \cup A \times C$.
+
+If $(x, y) \in A \times B \cup A \times C$, $(x, y) \in A \times B$ or
+$(x, y) \in A \times C$. That is $x \in A$ and $y \in B$ or $y \in C$.
+That is, $x \in A, y \in B \cup C$ or that $(x, y) \in A \times (B \cup C)$
+so that $A \times B \cup A \times C \subseteq A \times (B \cup C)$.
+
+\item[(b)] $A \times (B \cap C) = A \times B \cap A \times C$. 
+\item[Solution:] Let $(x, y)
+\in A \times (B \cap C)$. Then $x \in A$ and $y \in B \cap C$. Therefore,
+$y \in B$ and $y \in C$ so that $(x, y) \in A \times B$ and $(x, y) \in A 
+\times C$. That is, $(x, y) \in A \times B \cap A \times C$ so that
+$A \times (B \cap C) \subseteq A \times B \cap A \times C$.
+
+If $(x, y) \in A \times B \cap A \times C$, $(x, y) \in A \times B$ and
+$(x, y) \in A \times C$. That is $x \in A$ and $y \in B$ and $y \in C$.
+That is, $x \in A, y \in B \cap C$ or that $(x, y) \in A \times (B \cap C)$
+so that $A \times B \cap A \times C \subseteq A \times (B \cap C)$.
+
+\item[(c)] $A \times (B - C) = A \times B - A \times C$.
+\item[Solution:] $(x, y) \in A \times (B - C) \Rightarrow x \in A, y \in
+B - C \Rightarrow x \in A, y \in B, y \notin C \Rightarrow (x, y) \in A
+\times B \;\land\; (x, y) \notin A \times C \Rightarrow (x, y) \in A 
+\times B - A \times C$ so that $A \times (B - C) \subseteq A \times B - A 
+\times C$.
+
+If $(x, y) \in A \times B - A \times C$ then $(x, y) \in A \times B$ and
+$(x, y) \notin A \times C$. $(x, y) \in A \times B \Rightarrow x \in A,
+y \in B$. $(x, y) \notin A \times C$ means either $x \notin A$ or $y \notin
+C$. But the former property is ruled out. Therefore, $y \notin C$, or 
+that $y \in B - C$. Therefore, $(x, y) \in A \times (B - C)$ so that
+$A \times B - A \times C \subseteq A \times (B - C)$.
+\end{enumerate}
+
+\item[5:] If $A, B, C, D$ are sets then
+\begin{enumerate}
+\item[(a)] Show that $A \times B \cap C \times D = A \cap C \times B \cap
+D$.
+\item[Solution:] If $(x, y) \in A \times B \cap C \times D$ then $(x, y)
+\in A \times B$ and $(x, y) \in C \times D$ so that $x \in A, x \in C,
+y \in B, y \in D$, that is $x \in A \cap C, y \in B \cap D$ or $(x, y)
+\in A \cap C \times B \cap D$.
+
+If $(x, y) \in A \cap C \times B \cap D$ then $x \in A \cap C, y \in B 
+\cap D$ so that $x \in A, y \in B, x \in C, y \in D$ or $(x, y) \in A 
+\times B, (x, y) \in C \times D$. That is, $(x, y) \in A \times C \cap
+B \times D$.
+
+\item[(b)] Is $A \times B \cup C \times D = A \cup C \times B \cup D$?
+\item[Solution:] If $(x, y) \in A \times B \cup C \times D$, $(x, y) \in
+A \times B$ or $(x, y) \in C \times D$. That is, $x \in A, y \in B$ or 
+$x \in C, y \in D$. That is, $x \in A \cup C, y \in B \cup D$. Therefore,
+$A \times B \cup C \times D \subseteq A \cup C \times B \cup D$.
+
+Now let $(x, y) \in A \cup C \times B \cup D$. Therefore, $x \in A \cup C$
+and $y \in B \cup D$. It is quite possible that $x \in C$ and $y \in B$ so
+that $(x, y) \in C \times B$. Therefore, in general $(x, y) \notin 
+A \times B \cup C \times D$.
+
+\item[(c)] Is $A \times B - C \times D = A - C \times B - D$?
+\item[Solution:] Let $(x, y) \in A \times B - C \times D$. Then $(x, y)
+\in A \times B$ and $(x, y) \notin C \times D$. Thus, $x \in A, y \in B$
+but either $x \notin C$ or $y \notin D$ or both. If both possibilities
+are true then $x \in A - C, y \in B - D$ making $(x, y)$ a member of
+$A - C \times B - D$. But if $x \in C, y \notin D$ then $x \notin A - C$
+or $(x, y) \notin A - C \times B - D$.
+
+If $(x, y) \in A - C \times B - D$ then $x \in A - C, y \in B - D$ so
+that $x \in A, y \in B$ and $x \notin C, y \notin D$, that is $(x, y) \in
+A \times B, (x, y) \notin C \times D$ or $(x, y) \in A \times B - C \times
+D$. Thus, $A - C \times B - D \subseteq A \times B - C \times D$ but not
+the other way round.
+\end{enumerate}
+
+\item[6:] Let $A, B, C, D$ be non-empty sets.
+\begin{enumerate}
+\item[(a)] Show that $A \times B \subseteq C \times D$ iff $A \subseteq
+C$ and $B \subseteq D$.
+\item[Solution:] Let $A \times B \subseteq C \times D$. Then $(x, y)
+\in A \times B \Rightarrow (x, y) \in C \times D$. That is, $x \in A
+\Rightarrow x \in C$ and $y \in B \Rightarrow y \in D$. That is, $A 
+\subseteq C$ and $B \subseteq D$.
+
+If $A \subseteq C$ and $B \subseteq D$, $x \in A \Rightarrow x \in B$
+and $y \in C \Rightarrow y \in D$. That is $(x, y) \in A \times B 
+\Rightarrow (x, y) \in C \times D$ or that $A \times B \subseteq C \times
+D$.
+
+\item[(b)] $A \times B = C \times D$ iff $A = C$ and $B = D$.
+\item[Solution:] If $(x, y) \in A \times B \Leftrightarrow (x, y) \in
+C \times D$ then $x \in A, y \in B \Leftrightarrow x \in C, y \in D$
+which means that $A = C, B = D$.
+
+The converse is trivially true.
+
+\item[(c)] What happens if any of the sets are allowed to be empty?
+\item[Solution:] If $A$ is an empty set then $A \subseteq B, C, D$ and
+$A \times B = \varnothing \subset C \times D$. Same is true if $B$ is
+empty.
+
+If $C$ is empty and $A \subseteq C$ then $A$ is empty. Therefore $A \times
+B$ and $C \times D$ are both empty and thus equal. However, $B$ and $D$
+may be completely unrelated sets and yet the relation between $A \times B$
+and $C \times D$ will be true.
+\end{enumerate}
+
+\item[7:] Let $X_1, X_2$ be sets and let $\pi_1: X_1 \times X_2 
+\rightarrow X_1$ and $\pi_2: X_1 \times X_2 \rightarrow X_2$ be maps such 
+that if $x = (x_1, x_2)$ then $\pi_1(x) := x_1, \pi_2(x) := x_2$. They
+are called the coordinate functions on $X_1 \times X_2$. Show that for
+any function $f_1: Z \rightarrow X_1, f_2: Z \rightarrow X_2$ there is a
+unique function $f: Z \rightarrow X_1 \times X_2$ such that $\pi_1 \circ
+f = f_1$ and $\pi_2 \circ f = f_2$. The function $f$ is known as the
+direct sum of functions $f_1$ and $f_2$. It is written as $f = f_1 \oplus
+f_2$.
+\item[Solution:] For all $z \in Z$, we have $f_1(z) \in X_1$ and $f_2(z)
+\in X_2$ or $(f_1(z), f_2(z)) \in X_1 \times X_2$. This defines the
+function $f: Z \rightarrow X_1 \times X_2$ such that $f(z) = (f_1(z),
+f_2(z))$ for all $z \in Z$. Further $(\pi_i \circ f)(z) = \pi_i(f(z))
+= \pi_i((f_1(z), f_2(z)) = f_i(z)$ for $i = 1, 2$. This shows the 
+existence of the direct sum.
+
+To prove uniqueness, let $g: Z \times X_1 \times X_2$ be such that $\pi_i
+\circ g = f_i$. Then for all $z \in Z$, $(\pi_i \circ g)(z) = f_i(z)$.
+Therefore, $g(z) = (f_1(z), f_2(z)) = f(z)$ for all $z \in Z$ or that 
+$g = f$.
+
+\item[8:] Let $X_1, \ldots, X_n$ be sets then the cartesian product
+$\prod_{i=1}^n X_i$ is empty iff at lease one of $X_i$ is empty.
+\item[Solution:] If at least one of $X_i$ is empty then clearly the
+Cartesian product is empty.
+
+To prove the converse, we prove the contrapositive. If none of the $X_i$
+are empty, that is all are non-empty, then by lemma \ref{c2s5l5} the
+cartesian product is non-empty.
+
+\item[9:] Let $I$ and $J$ be two sets and for all $\alpha \in I$ let
+$A_\alpha$ be a set and for all $\beta \in J$ let $B_\beta$ be a set.
+Show that $(\cup_{\alpha \in I} A_\alpha) \cap (\cup_{\beta \in J }
+B_\beta) = \cup_{(\alpha, \beta) \in I \times J} (A_\alpha \cap B_\beta)$.
+\item[Solution:] Let $x \in (\cup_{\alpha \in I} A_\alpha) \cap 
+(\cup_{\beta \in J}B_\beta)$. Therefore, there exists at least one $\alpha
+\in I, \beta \in J$ such that $x \in A_\alpha, x \in B_\beta$ or that
+$(\alpha, \beta) \in I \times J$ such that $x \in A_\alpha \cap B_\beta$.
+Therefore, $x \in \cup_{(\alpha, \beta) \in I \times J} (A_\alpha \cap
+B_\beta)$.
+
+Now let $x \in \cup_{(\alpha, \beta) \in I \times J} (A_\alpha \cap 
+B_\beta)$. Then there exists $\alpha \in I, \beta \in J$ such that
+$(\alpha, \beta) \in I \times J$ and $x \in A_\alpha, x \in B_\beta$.
+Thus, $\alpha \in I \;\land\; x \in A_\alpha$ and $\beta \in J \;\land\;
+x \in B_\beta$. Therefore $x \in \cup_{\alpha \in A} A_\alpha$ and $x
+\in \cup_{\beta \in B} B_\beta$. That is, $x \in (\cup_{\alpha \in I} 
+A_\alpha) \cap (\cup_{\beta \in J } B_\beta)$.
 \end{enumerate}
