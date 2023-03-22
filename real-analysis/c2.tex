@@ -743,7 +743,8 @@ labels and the sets $A_\alpha$ is called a family of sets indexed by label
 $\alpha$.
 
 \begin{lem}\label{c2s4l1}
-If $I$ is empty then the set defined by is empty.
+If $I$ is empty then the set defined by $\cup_{\alpha \in I}A_\alpha$ is 
+empty.
 \end{lem}
 \begin{proof}
 \[
@@ -880,7 +881,7 @@ because $f$ is injective $s \in f^{-1}(f(S))$ so that $S \subseteq
 f^{-1}(f(S))$. We proved in exercise 2 that $f^{-1}(f(S)) \subseteq S$.
 Therefore $S = f^{-1}(f(S))$.
 
-\item[6:] Let $X$ be a set set. Show that $\{Y \;|\; Y \subseteq X\}$ is
+\item[6:] Let $X$ be a set. Show that $\{Y \;|\; Y \subseteq X\}$ is
 also a set.
 \item[Solution:] Choose $Z = \{0, 1\}$. Axiom (A9) assures us that there
 exists a set $\{0, 1\}^X$ which consists of all functions from $f: X 
@@ -1427,4 +1428,59 @@ Thus, $\alpha \in I \;\land\; x \in A_\alpha$ and $\beta \in J \;\land\;
 x \in B_\beta$. Therefore $x \in \cup_{\alpha \in A} A_\alpha$ and $x
 \in \cup_{\beta \in B} B_\beta$. That is, $x \in (\cup_{\alpha \in I} 
 A_\alpha) \cap (\cup_{\beta \in J } B_\beta)$.
+
+\item[10:] If $f:X \rightarrow Y$ is a function then its graph is the
+subset of $X \times Y$ defined by $\{(x, f(x)) \;|\; x \in X\}$.
+\begin{enumerate}
+\item[(a)] Show that two functions $f: X \rightarrow Y, \tilde{f}: X
+\rightarrow Y$ are equal iff they have the same graph.
+\item[Solution:] If $f = \tilde{f}$ then $f(x) = \tilde{f}(x)$ for all 
+$x \in X$. Therefore, $(x, f(x)) = (x, \tilde{f}(x))$ for all $x \in X$,
+so that their graphs are identical.
+
+Now assume that the graphs of the functions are identical. That is $\{(x,
+f(x) \;|\; \forall x \in X\} = \{(x, \tilde{f}(x)\;|\; \forall x \in X\}$.
+Thus, for every $(x, f(x))$ in the first set there is $(x, \tilde{f}(x))$
+in the second one. For exery $x$ there is exactly one $f(x)$ and one 
+$\tilde{f}(x)$. Therefore, we have $f(x) = \tilde{f}(x)$ for all $x$.
+
+\item[(b)] Let $G \subseteq X \times Y$ such that for all $x \in X$, the
+set $\{y \in Y: (x, y) \in G\}$ has exactly one element. Then show that 
+there is exactly one function $f: X \rightarrow Y$ whose graph is $G$.
+\item[Solution:] Define a function using the proposition $P(x, y)$ which
+is defined for all $x \in X$ and which is true if and only if $(x, y) \in 
+G$. Since there is a unique $y$ for each $x$, this proposition defines a
+function $f: X \rightarrow Y$. The graph of the function is then the set
+$(x, f(x)) \;|\; \forall x \in X\}$ and this is same as the set $G$. We
+proved in part (a) that if there is a unique function that produces this
+set.
+
+\item[(c)] Suppose we define a function $f: X \rightarrow Y$ to be an 
+ordered triple $f = (X, Y, G)$ where $X, Y$ are sets and $G$ is a subset 
+of $X \times Y$ that obeys the conditions of problem 10(b). We define $X$
+to be the domain of $f$, $Y$ to be its codomain and for every $x \in X$, we
+define $f(x)$ to be the unique $y \in Y$ such that $(x, y) \in G$. Show
+that this definition is compatible with definition \ref{c2s3d1}.
+\item[Solution:] Assume the definition of a function as the ordered triple
+$f = (X, Y, G)$. Let $P(x, y)$ be a logical proposition that for each 
+$x \in X$ there is a unique $y \in Y$ such that $(x, y) \in G$. Then, by
+our choice $P(x, y)$ is defined for all $x \in X$ and there is exactly
+one $y \in Y$ for which $P(x, y)$ is true. Therefore, the statment
+\[
+y = f(x) \Leftrightarrow P(x, y) \text{ is true.}
+\]
+is true. Conversely, define $G$ to be a subset of $X \times Y$ as
+\[
+G = \{(x, y) \;|\; x \in X, P(x, y) \text{ is true.}\}
+\]
+Since for a given $x$, $P(x, y)$ is true for exactly one $y \in Y$, the
+set $G$ satisfies the conditions of 10(b). Therefore $(X, Y, G)$ is indeed
+a function and we call $y = f(x)$.
+\end{enumerate}
+
+\item[11:] Show that the power set axiom (A11) can be deduced from the
+statement proved in problem 6 of the exercises in section \ref{c2s4} and
+the other axioms of set theory.
+\item[Solution:] I cannot solve this problem.
+
 \end{enumerate}
