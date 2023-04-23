@@ -20,6 +20,7 @@ Read the data and create dummies for industry. The data is shared on
 raw_data <-
   read.csv('datasets/mihir-dataset-1-student000942781.csv')
 raw_data$industry = as.factor(raw_data$industry)
+raw_data <- raw_data[raw_data$industry != 'Services', ]
 
 # Create dummies
 industry_dummies <- model.matrix( ~ raw_data$industry - 1)
@@ -27,7 +28,7 @@ colnames(industry_dummies) <- levels(raw_data$industry)
 
 data <-
   raw_data[, c('firm_id', 'emissions', 'tax', 'employment', 'export', 'city')]
-data <- cbind(data, industry_dummies)
+data <- cbind(data, industry_dummies[, c('Agriculture', 'Construction', 'Manufacturing')])
 ```
 
 ## Build the model
@@ -41,18 +42,32 @@ model <-
 summary(model)
 ```
 
+## Interpret the summary
+
+- The coefficients of 'Manufacturing' is NA. This means that 'Manufacturing' is
+a linear function of other columns. Let us remove it from the model.
+
+```{r echo=TRUE}
+model <-
+  lm(
+    emissions ~ tax + employment + export + city + Agriculture + Construction,
+    data = data
+  )
+summary(model)
+```
+
 ## Check multi-collinearity and heteroscedasticity
 ```{r echo=TRUE}
 all_vifs <- vif(model)
 if (length(all_vifs[all_vifs >= 5]) == 0) {
-  cat("None of the variance inflation factors are greater than 5.")
-  cat("There is no strong multi-collinearity.")
+  cat("None of the variance inflation factors are greater than 5.\n")
+  cat("There is no strong multi-collinearity.\n")
 }
 
 breusch_pagan_results <- bptest(model)
 if (breusch_pagan_results$p.value <= 0.05) {
-  cat("There is evidence of heteroscedasticity.")
+  cat("There is evidence of heteroscedasticity.\n")
 } else {
-  cat("There is no strong evidence of heteroscedasticity.")
+  cat("There is no strong evidence of heteroscedasticity.\n")
 }
 ```

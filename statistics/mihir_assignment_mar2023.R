@@ -4,6 +4,7 @@ library(lmtest)
 raw_data <-
   read.csv('datasets/mihir-dataset-1-student000942781.csv')
 raw_data$industry = as.factor(raw_data$industry)
+raw_data <- raw_data[raw_data$industry != 'Services', ]
 
 # Create dummies
 industry_dummies <- model.matrix( ~ raw_data$industry - 1)
@@ -11,7 +12,9 @@ colnames(industry_dummies) <- levels(raw_data$industry)
 
 data <-
   raw_data[, c('firm_id', 'emissions', 'tax', 'employment', 'export', 'city')]
-data <- cbind(data, industry_dummies)
+data <- cbind(data, industry_dummies[, c('Agriculture', 'Construction', 'Manufacturing')])
+
+data <- data[complete.cases(data), ]
 
 # Build the model
 model <-

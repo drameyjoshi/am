@@ -1481,6 +1481,64 @@ a function and we call $y = f(x)$.
 \item[11:] Show that the power set axiom (A11) can be deduced from the
 statement proved in problem 6 of the exercises in section \ref{c2s4} and
 the other axioms of set theory.
-\item[Solution:] I cannot solve this problem.
+\item[Solution:] Consider the set $X \times Y$. Let us take the statement
+that the collection $\{Z \;|\; Z \subseteq X \times Y\}$ is a set. Let
+$P$ be a proposition that $P(Z)$ is true for a subset of $X \times Y$ iff
+$Z$ passes the vertical line test. The set $Z$ is then a function from $X
+\rightarrow Y$. By the axiom of specification, the set of all such $Z$
+is a set. It is precisely the set of all functions from $X \rightarrow Y$
+and is the set $Y^X$ of axiom (A11).
 
+\item[12:] Let $f: \son \times \son \rightarrow \son$ be a function and 
+let $c$ be a natural number. Show that there exists a function $a: \son 
+\rightarrow \son$ such that $a(0) = c$ and $a(S(n)) = f(n, a(n))$ for all
+$n \in \son$. Furthermore, this function is unique.
+\item[Solution:] We will show that for every natural number $N$, there
+exists a function $a_N : \{n \in \son \;|\; n \le N\} \rightarrow \son$
+such that $a_N(0) = c$ and $a_N(S(n)) = f(n, a_N(n))$. We will use 
+induction on $\son$.
+
+For the base case, the domain is just the set $\{0\}$. We define the
+function $a_0: \{0\} \rightarrow \son$ such that $a_0(0) = c$.
+
+Assume that the hypothesis is true for some $k \in \son$ and consider a
+function $a_{S(k)} : \{n \;|\; n \le S(k)\} \rightarrow \son$ such that
+$a_{S(k)}(n) = a_k(n)$ for all $0 \le n \le k$. Since we are given a 
+function $f: \son \times \son \rightarrow \son$. we can define $a_{S(k)}(
+S(k)) := f(k, a_k(k))$. This closes the induction and proves the existence
+of the function $a_N$ for all $N \in \son$. 
+
+The function $a : \son \rightarrow \son$ is defined as $a(n) := a_n(n)$
+for all $n \in \son$.
+
+To prove uniqueness, let $b$ be another function such that $b(0) = c$ and
+$b(S(n)) = f(n, b(n))$. We will show by induction on $\son$ that $b(n) =
+a(n)$ for all $n \in \son$.
+
+The base case is obviously true. $a(0) = c$ and $b(0) = c$ and hence by
+properties of $=$, $a(0) = b(0)$.
+
+Assume that the claim is true for some $k \in \son$ and consider $b(S(k))
+= f(k, b(k))$. By induction hypothesis $b(k) = a(k)$. Therefore, $b(S(k))
+= f(k, a(k)) = a(S(k))$. 
+
+Therefore, $a(k) = b(k) \;\forall\; k \in \son$.
+
+\item[13:] Show that the set of natural numbers is unique to within a 
+bijection.
+\item[Solution:] Let if possible there be a set $M$ with a starting
+number $0^\op$ and a successor function $S^\op$. We will show that there
+is a bijection $a: N \rightarrow M$ such that $a(0) = 0^\op$ and $a(n) =
+n^\op \Rightarrow a(S(n)) = S^\op(n^\op)$.
+
+Define $a_0: \{0\} \rightarrow \son^\op$ as $a_0(0) = 0^\op$. Let $a_N:
+\{0, \ldots, N\} \rightarrow \son^\op$ be such that $a_N(0) = 0^\op$ and
+$a_N(S(n)) = S^\op(n^\op)$ for all $0 \le n < N$. We will now 
+show the existence of a function $a_{N+1}$ that maps $n$ to $n^\op$ for 
+all $0 \le n^\op \le N + 1$. Let $a_{N+1}:\son \rightarrow \son^\op$ be
+such that $a_{N+1}(n) := a_N(n)$ for all $0 \le n \le N$ and $a_{N+1}(N+1)
+:= S^\op(N^\op)$.
+
+The functions $a_N$ are clearly surjective. They are also injective because
+of the properties of $\son$ and $\son^\op$.
 \end{enumerate}
