@@ -1542,3 +1542,114 @@ such that $a_{N+1}(n) := a_N(n)$ for all $0 \le n \le N$ and $a_{N+1}(N+1)
 The functions $a_N$ are clearly surjective. They are also injective because
 of the properties of $\son$ and $\son^\op$.
 \end{enumerate}
+
+\section{Cardinality of Sets}\label{c2s6}
+Natural numbers were defined as successors of numbers starting from $0$. It
+gives the elements of $\son$ an ordering. $0$ is the first number, $1$ is the
+second one and so on. Numbers interpreted this way are called \emph{ordinal}
+numbers. Members of $\son$ can also be interpreted as sizes of sets. For 
+example, the sise of an empty set is $0$, that of a singleton is $1$ and so on.
+Numbers interpreted this way are called \emph{cardinal} numbers. In the case of
+$\son$ the two ideas coincide. However, infinite ordinals are different from
+infinite cardinals.
+
+\begin{defn}\label{c2s6d1}
+The sets $X$ and $Y$ are said to be of equal cardinality if there is a bijection
+from $X$ to $Y$.
+\end{defn}
+
+We show that
+\begin{prop}\label{c2s6p1}
+Cardinality is an equivalence relation.
+\end{prop}
+\begin{proof}
+Let $X, Y, Z$ be sets and let $\sim$ denote the cardinality relation, that is,
+$X \sim Y$ iff $X$ and $Y$ have the same cardinality.
+
+Clearly $X \sim X$ as the identity function $\iota: X \rightarrow X$ is a 
+bijection.
+
+If $X \sim Y$ then there exists a bijection $f: X \rightarrow Y$. That means
+$f^{-1}: Y \rightarrow X$ exists and is also a bijection so that $Y \sim X$.
+
+If $X \sim Y$ and $Y \sim Z$ then there are bijections $f: X \rightarrow Y$
+and $g: Y \rightarrow Z$. Consider the function $h = g \circ f:X \rightarrow Z$.
+Let $z_1 = h(x_1)$ and $z_2 = h(x_2)$. Then $z_1 = z_2 \Rightarrow g(f(x_1)) =
+g(f(x_2))$. Since $g$ is a bijection, this implies $f(x_1) = f(x_2)$. Since $f$
+is a bijection this further implies that $x_1 = x_2$. Thus, $h$ is an injection.
+
+Since $g$ is a bijection, for all $z \in Z$ there exists $y \in Y$ such that $z
+= g(y)$. Since $f$ is a bijection, for all $y \in Y$ there exists $x \in X$ such
+that $y = f(x)$. Therefore, for all $z \in Z$ there exists $x \in X$ such that
+$z = g(f(x)) = h(x)$, making $h$ a surjection.
+\end{proof}
+
+\begin{defn}\label{c2s6d2}
+Let $n$ be a natural number and $X$ be a set. $X$ is said to have cardinality 
+$n$ iff it has equal cardinality with the set $\{i \in \son \;|\; 1 \le i \le
+n\}$.
+\end{defn}
+\begin{proof}
+\end{proof}
+
+We note that
+\begin{lem}\label{c2s6l1}
+There is no bijection between an empty set and a non-empty set.
+\end{lem}
+\begin{proof}
+Let $X$ be a non-empty set and $f:\varnothing \rightarrow X$ be a bijection.
+Then $f$ must be a surjection so that for all $x \in X$ there has to be an
+element in $\varnothing$. That is not possible.
+\end{proof}
+
+We next show that
+\begin{lem}\label{c2s6l2}
+Let $n \ge 1$ and $X$ be a set of cardinality $n$. Then $X$ is non-empty and if
+$x \in X$ then the set $X - \{x\}$ has cardinality $n - 1$.
+\end{lem}
+\begin{proof}
+Since $X$ has cardinality $n \ge 1$, there is a bijection from $X$ to $\{i\;|\;
+1 \le i \le n\}$. There is no bijection possible if $X$ is empty. Therefore, $X$
+is non-empty and it contains at least one element, say $x$.
+
+Let $f: X \rightarrow \{i \;|\; 1 \le i \le n\}$ be a bijection and let $f(x) =
+k$. Define $g: X - \{x\} \rightarrow \{i \;|\; 1 \le i \le n - 1\}$ such that
+$g(y) = f(y)$ if $f(y) < k$ and $g(y) = l$ such that $f(y) = S(l)$ when $f(y)
+> k$. Then $g$ is clearly an injection. For if it were not then neither would
+$f$ be an injection. $g$ is also a surjection. Let $m \in \{i \;|\; 1 \le i 
+\le n - 1\}$. If $m < k$ then there is $y \in X - \{x\}$ such that $g(y) = 
+f(y) = m$. Let $m \ge k$ then $f^{-1}(S(m)) = y$. Then $g(y) = m$ so that $g$
+is also surjective.
+\end{proof}
+
+\begin{prop}\label{c2s6p2}
+Let $n$ be a natural number and $X$ be a set of cardinality $n$. Then $X$ cannot
+have any other cardinality.
+\end{prop}
+\begin{proof}
+We will induct on $n$. If $n = 0$ then $X$ is an empty set. If $X$ has another
+cardinality, say $m > 0$ then we require a bijection from an empty set to the
+set $\{i \;|\; 1 \le i \le m\}$. But lemma \ref{c2s6l1} assures that there is 
+none such.
+
+Let the claim be true for all sets of cardinality $k$ and consider the set with
+cardinality $S(k)$. Such a set is non-empty and if $x$ be an arbitrary element
+of it, the set $X - \{x\}$ has cardinality $k$. If $X$ had another cardinality,
+say $S(m)$ then $X - \{x\}$ will have cardinality $m$. But by induction 
+hypothesis $m = k$ so that $S(m) = S(k)$. This closes the induction.
+\end{proof}
+
+\begin{defn}\label{c2s6d3}
+A set is finite iff it has cardinality $n$ for some natural number $n$. 
+Otherwise it is an infinite set.
+\end{defn}
+
+\begin{thm}\label{c2s6t1}
+The set $\son$ is infinite.
+\end{thm}
+\begin{proof}
+Let, if possible, $\son$ be a finite set with cardinality $n$. Then there is a 
+bijection, say $f$, from $\son$ to $\{1, \ldots, n\}$. Therefore, the set 
+$f^{-1}(k)$ for $1 \le k le n$ is a subset finite of $\son$. Let $M$ be the
+largest number of this set.
+\end{proof}
