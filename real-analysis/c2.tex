@@ -1545,17 +1545,17 @@ of the properties of $\son$ and $\son^\op$.
 
 \section{Cardinality of Sets}\label{c2s6}
 Natural numbers were defined as successors of numbers starting from $0$. It
-gives the elements of $\son$ an ordering. $0$ is the first number, $1$ is the
-second one and so on. Numbers interpreted this way are called \emph{ordinal}
-numbers. Members of $\son$ can also be interpreted as sizes of sets. For 
-example, the sise of an empty set is $0$, that of a singleton is $1$ and so on.
-Numbers interpreted this way are called \emph{cardinal} numbers. In the case of
-$\son$ the two ideas coincide. However, infinite ordinals are different from
-infinite cardinals.
+gives the elements of $\son$ an ordering. $0$ is the first number, $1$ is 
+the second one and so on. Numbers interpreted this way are called 
+\emph{ordinal} numbers. Members of $\son$ can also be interpreted as sizes 
+of sets. For example, the sise of an empty set is $0$, that of a singleton 
+is $1$ and so on.  Numbers interpreted this way are called \emph{cardinal} 
+numbers. In the case of $\son$ the two ideas coincide. However, infinite 
+ordinals are different from infinite cardinals.
 
 \begin{defn}\label{c2s6d1}
-The sets $X$ and $Y$ are said to be of equal cardinality if there is a bijection
-from $X$ to $Y$.
+The sets $X$ and $Y$ are said to be of equal cardinality if there is a 
+bijection from $X$ to $Y$.
 \end{defn}
 
 We show that
@@ -1563,31 +1563,33 @@ We show that
 Cardinality is an equivalence relation.
 \end{prop}
 \begin{proof}
-Let $X, Y, Z$ be sets and let $\sim$ denote the cardinality relation, that is,
-$X \sim Y$ iff $X$ and $Y$ have the same cardinality.
+Let $X, Y, Z$ be sets and let $\sim$ denote the cardinality relation, that 
+is, $X \sim Y$ iff $X$ and $Y$ have the same cardinality.
 
 Clearly $X \sim X$ as the identity function $\iota: X \rightarrow X$ is a 
 bijection.
 
-If $X \sim Y$ then there exists a bijection $f: X \rightarrow Y$. That means
-$f^{-1}: Y \rightarrow X$ exists and is also a bijection so that $Y \sim X$.
+If $X \sim Y$ then there exists a bijection $f: X \rightarrow Y$. That 
+means $f^{-1}: Y \rightarrow X$ exists and is also a bijection so that $Y 
+\sim X$.  
 
-If $X \sim Y$ and $Y \sim Z$ then there are bijections $f: X \rightarrow Y$
-and $g: Y \rightarrow Z$. Consider the function $h = g \circ f:X \rightarrow Z$.
-Let $z_1 = h(x_1)$ and $z_2 = h(x_2)$. Then $z_1 = z_2 \Rightarrow g(f(x_1)) =
-g(f(x_2))$. Since $g$ is a bijection, this implies $f(x_1) = f(x_2)$. Since $f$
-is a bijection this further implies that $x_1 = x_2$. Thus, $h$ is an injection.
+If $X \sim Y$ and $Y \sim Z$ then there are bijections $f: X 
+\rightarrow Y$ and $g: Y \rightarrow Z$. Consider the function $h = g 
+\circ f:X \rightarrow Z$.  Let $z_1 = h(x_1)$ and $z_2 = h(x_2)$. Then 
+$z_1 = z_2 \Rightarrow g(f(x_1)) = g(f(x_2))$. Since $g$ is a bijection, 
+this implies $f(x_1) = f(x_2)$. Since $f$ is a bijection this further 
+implies that $x_1 = x_2$. Thus, $h$ is an injection.
 
-Since $g$ is a bijection, for all $z \in Z$ there exists $y \in Y$ such that $z
-= g(y)$. Since $f$ is a bijection, for all $y \in Y$ there exists $x \in X$ such
-that $y = f(x)$. Therefore, for all $z \in Z$ there exists $x \in X$ such that
-$z = g(f(x)) = h(x)$, making $h$ a surjection.
+Since $g$ is a bijection, for all $z \in Z$ there exists $y \in Y$ such 
+that $z = g(y)$. Since $f$ is a bijection, for all $y \in Y$ there exists
+$x \in X$ such that $y = f(x)$. Therefore, for all $z \in Z$ there exists 
+$x \in X$ such that $z = g(f(x)) = h(x)$, making $h$ a surjection.
 \end{proof}
 
 \begin{defn}\label{c2s6d2}
-Let $n$ be a natural number and $X$ be a set. $X$ is said to have cardinality 
-$n$ iff it has equal cardinality with the set $\{i \in \son \;|\; 1 \le i \le
-n\}$.
+Let $n$ be a natural number and $X$ be a set. $X$ is said to have 
+cardinality $n$ iff it has equal cardinality with the set $\{i \in \son 
+\;|\; 1 \le i \le n\}$.
 \end{defn}
 \begin{proof}
 \end{proof}
@@ -1597,46 +1599,47 @@ We note that
 There is no bijection between an empty set and a non-empty set.
 \end{lem}
 \begin{proof}
-Let $X$ be a non-empty set and $f:\varnothing \rightarrow X$ be a bijection.
-Then $f$ must be a surjection so that for all $x \in X$ there has to be an
-element in $\varnothing$. That is not possible.
+Let $X$ be a non-empty set and $f:\varnothing \rightarrow X$ be a 
+bijection. Then $f$ must be a surjection so that for all $x \in X$ there 
+has to be an element in $\varnothing$. That is not possible.
 \end{proof}
 
 We next show that
 \begin{lem}\label{c2s6l2}
-Let $n \ge 1$ and $X$ be a set of cardinality $n$. Then $X$ is non-empty and if
-$x \in X$ then the set $X - \{x\}$ has cardinality $n - 1$.
+Let $n \ge 1$ and $X$ be a set of cardinality $n$. Then $X$ is non-empty 
+and if $x \in X$ then the set $X - \{x\}$ has cardinality $n - 1$.
 \end{lem}
 \begin{proof}
-Since $X$ has cardinality $n \ge 1$, there is a bijection from $X$ to $\{i\;|\;
-1 \le i \le n\}$. There is no bijection possible if $X$ is empty. Therefore, $X$
-is non-empty and it contains at least one element, say $x$.
+Since $X$ has cardinality $n \ge 1$, there is a bijection from $X$ to 
+$\{i\;|\; 1 \le i \le n\}$. There is no bijection possible if $X$ is empty.
+Therefore, $X$ is non-empty and it contains at least one element, say $x$.
 
-Let $f: X \rightarrow \{i \;|\; 1 \le i \le n\}$ be a bijection and let $f(x) =
-k$. Define $g: X - \{x\} \rightarrow \{i \;|\; 1 \le i \le n - 1\}$ such that
-$g(y) = f(y)$ if $f(y) < k$ and $g(y) = l$ such that $f(y) = S(l)$ when $f(y)
-> k$. Then $g$ is clearly an injection. For if it were not then neither would
-$f$ be an injection. $g$ is also a surjection. Let $m \in \{i \;|\; 1 \le i 
-\le n - 1\}$. If $m < k$ then there is $y \in X - \{x\}$ such that $g(y) = 
-f(y) = m$. Let $m \ge k$ then $f^{-1}(S(m)) = y$. Then $g(y) = m$ so that $g$
-is also surjective.
+Let $f: X \rightarrow \{i \;|\; 1 \le i \le n\}$ be a bijection and let 
+$f(x) = k$. Define $g: X - \{x\} \rightarrow \{i \;|\; 1 \le i \le n - 1\}$
+such that $g(y) = f(y)$ if $f(y) < k$ and $g(y) = l$ such that $f(y) = 
+S(l)$ when $f(y) > k$. Then $g$ is clearly an injection. For if it were 
+not then neither would $f$ be an injection. $g$ is also a surjection. Let 
+$m \in \{i \;|\; 1 \le i \le n - 1\}$. If $m < k$ then there is $y \in X -
+\{x\}$ such that $g(y) = f(y) = m$. Let $m \ge k$ then $f^{-1}(S(m)) = y$. 
+Then $g(y) = m$ so that $g$ is also surjective.
 \end{proof}
 
 \begin{prop}\label{c2s6p2}
-Let $n$ be a natural number and $X$ be a set of cardinality $n$. Then $X$ cannot
-have any other cardinality.
+Let $n$ be a natural number and $X$ be a set of cardinality $n$. Then $X$ 
+cannot have any other cardinality.
 \end{prop}
 \begin{proof}
-We will induct on $n$. If $n = 0$ then $X$ is an empty set. If $X$ has another
-cardinality, say $m > 0$ then we require a bijection from an empty set to the
-set $\{i \;|\; 1 \le i \le m\}$. But lemma \ref{c2s6l1} assures that there is 
-none such.
+We will induct on $n$. If $n = 0$ then $X$ is an empty set. If $X$ has 
+another cardinality, say $m > 0$ then we require a bijection from an empty 
+set to the set $\{i \;|\; 1 \le i \le m\}$. But lemma \ref{c2s6l1} assures 
+that there is none such.
 
-Let the claim be true for all sets of cardinality $k$ and consider the set with
-cardinality $S(k)$. Such a set is non-empty and if $x$ be an arbitrary element
-of it, the set $X - \{x\}$ has cardinality $k$. If $X$ had another cardinality,
-say $S(m)$ then $X - \{x\}$ will have cardinality $m$. But by induction 
-hypothesis $m = k$ so that $S(m) = S(k)$. This closes the induction.
+Let the claim be true for all sets of cardinality $k$ and consider the set 
+with cardinality $S(k)$. Such a set is non-empty and if $x$ be an arbitrary
+element of it, the set $X - \{x\}$ has cardinality $k$. If $X$ had another 
+cardinality, say $S(m)$ then $X - \{x\}$ will have cardinality $m$. But by 
+induction hypothesis $m = k$ so that $S(m) = S(k)$. This closes the 
+induction.
 \end{proof}
 
 \begin{defn}\label{c2s6d3}
@@ -1648,8 +1651,108 @@ Otherwise it is an infinite set.
 The set $\son$ is infinite.
 \end{thm}
 \begin{proof}
-Let, if possible, $\son$ be a finite set with cardinality $n$. Then there is a 
-bijection, say $f$, from $\son$ to $\{1, \ldots, n\}$. Therefore, the set 
-$f^{-1}(k)$ for $1 \le k le n$ is a subset finite of $\son$. Let $M$ be the
-largest number of this set.
+Let, if possible, $\son$ be a finite set with cardinality $n$. Then there 
+is a bijection, say $f$, from $\son$ to $\{1, \ldots, n\}$. Therefore, the 
+set $f^{-1}(k)$ for $1 \le k \le n$ is a subset finite of $\son$. Let $M$ 
+be the largest number of this set. Then $S(M)$ is a natural number but it
+has no image under $f$ in $\{1. \ldots, n\}$.
+\end{proof}
+
+\begin{rem}
+One may object that we have not defined the maximum of a finite set. We
+can do so using the axiom (A6). Let $X$ be a finite set and $P(x)$ be a 
+proposition $x \in X \land x \ge y \;\forall\; y \in X$. Then the set $\{x 
+\in X \;| \; P(x)\}$ will be the singletone set $\{M\}$.
+\end{rem}
+
+If $X$ is a set then we denote its cardinatlity by $\card X$. Note that
+$\card X$ is a natural number. Therefore it is no surprise that 
+cardinalities behave similar to natural numbers. We derived the algebraic
+properties of natural numbers assuming the axioms in chapter \ref{c1}. 
+However, the numbers so defined were ordinals. We next show that cardinals
+of finite sets have similar arithmetic.
+
+\begin{prop}\label{c2s6p3}
+Let $X$ and $Y$ be finite sets. Then
+\begin{enumerate}
+\item If $x \notin X$ then $X \cup \{x\}$ is finite with cardinality $\card
+X + 1$.
+\item $\card(X \cup Y) \le \card X + \card Y$. If $X \cap Y = \varnothing$
+then $\card(X \cup Y) = \card X + \card Y$.
+\item If $Y \subseteq X$ then $\card Y \le \card X$. If $Y \subset X$ then
+$\card Y < \card X$.
+\item If $f: X \rightarrow Y$ then $\card f(X) \le \card X$. If $f$ is
+injective then $\card f(X) = \card X$.
+\item $\card(X \times Y) = \card X \times \card Y$.
+\item $\card(Y^X) = {\card Y}^{\card X}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let $\card X = m$ and $\card Y = n$.
+\begin{enumerate}
+\item Since $X$ is finite, there is a bijection, say $f$, between $X$ and 
+$\{1, \ldots, \card X\}$. If $x \notin X$ then let $g: X \cup \{x\} 
+\rightarrow \{1, \ldots, \card X, \card X + 1\}$ be such that $g(y) = f(y)$
+for all $y \in X$ and $g(x) = \card{X} + 1$. Since $f$ is a bijection, so
+is $g$. Therefore $\card(X \cup \{x\}) = \card X + 1$.
+
+\item Let $\card X = m$ and $\card Y = n$, where $m, n \in \son$. Then
+there are bijections $f: X \rightarrow \{1, \ldots, m\}$ and $g: Y 
+\rightarrow \{1, \ldots, n\}$. In the second case, if there are $l$ 
+elements unique to $Y$ then map them to $\{1, \ldots, l\}$ and map the 
+rest to $\{l + 1, \ldots, n\}$. Now consider the set $X \cup Y$. We will 
+construct a bijection $h: X \cup Y \rightarrow \{1, \ldots, m + l\}$ such 
+that 
+\[
+h(z) = \begin{cases}
+f(z) & \text{ if } z \in X \\
+m + g(z) & \text{ if } z \in Y, z \notin X
+\end{cases}
+\]
+Since $f$ and $g$ are bijections, so is $h$. Therefore $X \cup Y$ is finite
+and has cardinality $m + l \le m + n = \card X + \card Y$.
+
+From this analysis it is also clear that if $X$ and $Y$ have no elements
+in common then the function $h$ is
+\[
+h(z) = \begin{cases}
+f(z) & \text{ if } z \in X \\
+m + g(z) & \text{ if } z \in Y
+\end{cases}
+\]
+and the cardinality of $X \cup Y$ is $\card X + \card Y$.
+
+\item Let $Y \subseteq X$. Let $f: X \rightarrow \{1, \ldots, m\}$ be
+a bijection such that $f(y) \le f(x)$ if $y \in X \cap Y, x \in X - Y$.
+Thus, all elements are mapped to the set $\{1, \ldots, n\}$ with $n \le m$.
+That is, $\card Y \le \card X$. 
+
+If $Y \subset X$ then there is at least one $x \in X$ such that $x \notin
+Y$ and $Y \cup \{x\} \subseteq X$. Therefore, $\card Y + 1 \le \card X$
+or $\card Y < \card X$.
+
+\item Let $f: X \rightarrow Y$. Then $f(X) \subseteq Y$. Therefore, $\card
+f(X) \le \card Y$. If $f$ is injective then $f(X) = Y$ so that $\card f(X)
+= \card Y$.
+
+\item $X \times Y = \{(x, y) \;|\; x \in X, y \in Y\}$. Fix an element 
+$y_1 \in Y$ and consider the set $X_1 = \{(x, y_1) \;|\; x \in X\}$. There 
+is a bijection $f_1: X \rightarrow X_1$ such that $f_1(x) = (x, y_1)$.
+Therefore, $\card X = \card X_1$. This is true for any choice $y_1 \in Y$.
+If $Y = \{y_1, \ldots, y_n\}$ then $X \times Y = X_1 \cup \ldots \cup X_n$.
+Further, $X_i \cap X_j = \varnothing$ for all $1 \le i, j \le n$. 
+Therefore, $\card X \times Y = \card X_1 + \cdots + \card X_n = m + \cdots
++ m$, $n$ times. 
+
+\item The set $Y^X$ is the set of all functions from $X$ to $Y$. Let us 
+consider the number of functions between $\{1, \ldots, m\}$ and $\{1. 
+\ldots, n\}$. Any such function will be represented by ordered pairs 
+$\{(i, j) \;|\; \forall\; 1 \le i \le m, j \in \{1, \ldots, n\}\}$. When
+we consider all functions, we consider the union of such ordered pairs 
+such that for a fixed $i \in \{1, \ldots, m\}$ there are all possible
+values of $j \in \{1, \ldots, n\}$. Thus there are $n = \card Y$ ordered
+pairs for each $i$. But there are $m = \card X$ possible $i$s. Therefore,
+the total number of ordered pairs is $n \times \cdots \times n$, $m$
+times.
+\end{enumerate}
 \end{proof}
