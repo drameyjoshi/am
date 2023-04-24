@@ -1756,3 +1756,100 @@ the total number of ordered pairs is $n \times \cdots \times n$, $m$
 times.
 \end{enumerate}
 \end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] Show that a set $X$ has cardinality zero iff it is an empty set.
+\item[Solution:] The set $\{i \;|\; 1 \le i \le 0\}$ is an empty set and
+by the definition \ref{c2s6d2}, has cardinality zero. Since the empty set
+is unique this shows that if $X$ is empty then it has zero cardinality.
+
+To prove the converse, assume that $X$ has cardinality zero. Therefore, 
+there is a bijection between $X$ and $\varnothing$. If $X$ is non-empty,
+such a bijection cannot exist. Therefore, $X$ must be an empty set.
+
+\item[2:] Let $f: \{i \;|\; 1 \le i \le n\} \rightarrow \son$ be a function
+where $n$ is a natural number. Show that there exists a natural number $M$
+such that $f(i) \le M$ for all $1 \le i \le n$.
+\item[Solution:] Since $n$ is a natural number, the set $X = \{i \;|\; 1
+\le i \le n\}$ is a finite set. Define the set $Y$ as $Y = \{f(i) \;|\;
+i \in X, f(i) \le f(j) \;\forall\; j \in X\}$. $Y$ is a singleton set which
+contains the maximum of $f(X)$. Choose $M = S(y)$ where $y$ is the sole
+member of $Y$.
+
+\item[3:] Show that if $A$ and $B$ are sets then the sets $A \times B$ and
+$B \times A$ have equal cardinality.
+\item[Solution:] $A \times B = \{(a, b) \;|\; a \in A, b \in B\}$ and $B
+\times A = \{(b, a) \;|\; a \in A, b \in B\}$. Let $f: A \times B 
+\rightarrow B \times A$ be such that $f((a, b)) = (b, a)$. $f$ is 
+surjective because for a given $(y, x) \in B \times A$, there exists 
+$(x, y) \in A \times B$ such that $f((x, y)) = (y, x)$. It is also 
+injective because if $f((x_1, y_1)) = f((x_2, y_2))$ then $(y_1, x_1) = 
+(y_2, x_2)$, which is possible iff $y_1 = y_2$ and $x_2 = x_2$, that is,
+iff $(x_1, y_1) = (x_2, y_2)$.
+
+\item[4:] Let $A, B, C$ be sets. Show that the set $(A^B)^C$ and $A^{B
+\times C}$ have the same cardinality.
+\item[Solution:] The set $(A^B)^C$ is the set of all functions from $C$ to
+$A^B$. The set $A^B$ is a the set of all functions from $B$ to $A$. If 
+$f \in (A^B)^C$ then $f(c)$ is a function from $B$ to $A$. That is, $f(c)
+(b) \in A$.
+
+The set $A^{B \times C}$ is the set of all functions from $B \times C$ to
+$A$.
+
+Let $f \in (A^B)^C$ and $u \in A^{B \times C}$. Let $\psi: (A^B)^C
+\rightarrow A^{B \times C}$ be such that $\psi(f) = u$ is $f(c)(b) = 
+u((b, c))$. 
+
+Claim: The function $\psi$ is surjective.\\
+Proof: Let $v$ be an arbitrary member of $A^{B \times C}$. Thus, $v((b, c))
+= a$ for a fixed $c$, $v((b, c))$ is a function from $B \rightarrow A$.
+Further, such a function is defined for every $c \in C$, by virtue of $v$
+being defined over the cartesian product. Therefore, we can denote the
+function by $g(c) \in A^B$. It is such that $v((b, c)) = g(c)(b)$. We can
+now consider the function $g$ to be a member of $(A^B)^C$.
+
+Claim: The function $\psi$ is injective.\\
+Proof: Let, if possible, $\psi(f) = \psi(g)$. That is, $\psi(f)((b, c)) = 
+\psi(g)((b, c))$ for all $(b, c) \in B \times C$. Then $f(c)(b) = g(c)(b)$
+for all $c \in C, b \in B$. Therefore, $f(c) = g(c)$ for all $c \in C$,
+making $f = g$.
+
+\begin{rem}
+An immediate corollary of this exercise is that if $A, B, C$ are all finite
+sets with cardinalities $a, b, c$ then $(a^b)^c = a^{bc}$.
+\end{rem}
+
+\item[5:] Use an argument similar to the previous problem to prove that
+$a^b \times a^c = a^{b + c}$.
+\item[Solution:] Let $A, B, C$ be finite sets of cardinalities $a, b, c$.
+Then $b + c$ is the cardinality of $B \cup C$ is $B$ and $C$ are disjoint.
+$a^{b + c}$ is then the cardinality of the set of all functions from 
+$B \cup C$ to $A$.
+
+Likewise, $a^b$ is the cardinality of the set of all functions $B 
+\rightarrow A$ and $a^c$ is the cardinality of the set of all functions $
+C \rightarrow A$. $a^b \times a^c$ is the cardinality of the cartesian
+product $A^B \times A^C$.
+
+Let $\psi: A^{B \cup C} \rightarrow A^B \times A^C$ be such that $\psi(f)
+= (u, v)$ iff
+\[
+f(x) = \begin{cases} u(x) & \text{ if } x \in B \\
+v(x) & \text{ if } x \in C.
+\end{cases}
+\]
+
+Claim: $\psi$ is surjective. \\
+Proof: Let $(u, v) \in A^B \times A^C$. Then for some $b \in B, c \in C$,
+$u(b) \in A, v(c) \in A$. Therefore, define a function $f: B \cup C
+\rightarrow A$ such that $f(x) = u(x)$ if $x \in B$, otherwise $f(x) = v(x)
+$.
+
+Claim: $\psi$ is injective. \\
+Proof: Let, if possible, $\psi(f) = \psi(g)$. If $\psi(f) = (u_1, v_1)$ 
+and $\psi(g) = (u_2, g_2)$ then this means that $u_1 = u_2$ and $v_1 = v_2$
+so that $u_1(x) = u_2(x) \;\forall\; x \in B$ and $v_1(x) = v_2(x) 
+\;\forall\; x \in C$ or that $f(x) = g(x)$ for all $x \in B \cup C$.
+\end{enumerate}
