@@ -1852,4 +1852,59 @@ Proof: Let, if possible, $\psi(f) = \psi(g)$. If $\psi(f) = (u_1, v_1)$
 and $\psi(g) = (u_2, g_2)$ then this means that $u_1 = u_2$ and $v_1 = v_2$
 so that $u_1(x) = u_2(x) \;\forall\; x \in B$ and $v_1(x) = v_2(x) 
 \;\forall\; x \in C$ or that $f(x) = g(x)$ for all $x \in B \cup C$.
+
+\item[6:] Let $A$ and $B$ be sets. We say that $A$ has lesser or equal
+cardinality than $B$ if there exists an injection $f: A \rightarrow B$.
+Show that if $A$ and $B$ are finite sets then $A$ has lesser or equal
+cardinality than $B$ iff $\card A \le \card B$.
+\item[Solution:] Let $\card A \le \card B$. Then there are bijections
+$f_A: A \rightarrow \{1, \ldots, m\}$ and $f_B: B \rightarrow \{1, \ldots,
+n\}$ with $m \le n$. Clearly, there is an injection $f: \{1, \ldots, m\}
+\rightarrow \{1, \ldots, n\}$ such that $f(i) = i$ for all natural numbers
+$i$ such that $1 \le i \le n$. We will show that $f_B^{-1} \circ f \circ
+\circ f_A:A \rightarrow B$ is an injection. Let $g(a_1) = g(a_2)$, that is,
+\[
+f_B^{-1}(f(f_A(a_1))) = f_B^{-1}(f(f_A(a_2))).
+\]
+Since $f_B$ is a bijection, we have $f(f_A(a_1)) = f(f_A(a_2))$. Since $f$
+is an injection, this implies that $f_A(a_1) = f_A(a_2)$. Finally, since
+$f_A$ is a bijection, we get $a_1 = a_2$. Thus, $g$ is an injection.
+
+Conversely, let there be an injection $g: A \rightarrow B$. Continuing
+with the assumption that $\card A = m, \card B = n$ and the definitions of
+bijections $f_A, f_B$, let us define the function $f: f_A^{-1} \circ g
+\circ f_B:\{1, \ldots, m\} \rightarrow \{1, \ldots, n\}$. We will show that
+$f$ is an injection. Let $f(i_i) = f(i_2)$, that is,
+\[
+f_A^{-1}(g(f_B(i_1))) = f_A^{-1}(g(f_B(i_2))).
+\]
+Since $f_A$ is a bijection, $g(f_B(i_1)) = g(f_B(i_2))$, since $g$ is an
+injection, we have $f_B(i_1) = f_B(i_2)$. Since $f_B$ is a bijection, we
+get $i_1 = i_2$. Thus $f$ is an injection. Therefore, $m \le n$ or $\card
+A \le \card B$.
+
+\item[7:] Let $A, B$ be sets, $A \ne \varnothing$ and $f: A \rightarrow
+B$ be an injection. Show that there exists a surjection $g: B \rightarrow
+A$.
+\item[Solution:] If $m \ne n$, we will show that there exists a surjection
+$f$ from $I_n = \{1, \ldots, n\}$ to $I_m = \{1, \ldots, m\}$. We define
+$f$ as 
+\[
+f(i) = \begin{cases}
+    i & \text{ if } i < m \\
+    m & \text{ if } m \le i \le n.
+\end{cases}
+\]
+Now let $g = f_A^{-1} \circ f \circ f_B: B \rightarrow A$, where $f_A: A
+\rightarrow I_m$ and $f_B: B \rightarrow I_n$ are bijections. We will show
+that $g$ is a surjection. For an $a \in A$, there exists $f_A(a) \in
+I_m$ because $f_A$ is a bijection. Since $f$ is surjection, there exists
+$i \in I_n$ such that $i = f^{-1}(f_A(a))$. Further, since $f_B$ is
+a bijection, there exists $b$ such that $i = f_B^{-1}(f^{-1}(f_A(a)))$
+that is $a = f_A^{-1}(f(f_B(i))) = g(i)$, making $g$ a surjective function.
+
+\item[8:] If $A$ and $B$ are finite sets show that $A \cup B$ and $A \cap
+B$ are also finite. Further show that $\card A + \card B = \card A \cup B
++ \card A \cap B$.
+\item[Solution:]
 \end{enumerate}
