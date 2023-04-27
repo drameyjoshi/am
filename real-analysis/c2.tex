@@ -1906,5 +1906,65 @@ that is $a = f_A^{-1}(f(f_B(i))) = g(i)$, making $g$ a surjective function.
 \item[8:] If $A$ and $B$ are finite sets show that $A \cup B$ and $A \cap
 B$ are also finite. Further show that $\card A + \card B = \card A \cup B
 + \card A \cap B$.
-\item[Solution:]
+\item[Solution:] Continuing with the notation $I_m$ and $I_n$, there are 
+bijections $A \rightarrow I_m, B \rightarrow I_n$. Without loss of 
+generality, let $m \le n$. If $A$ and $B$ have no elements in common then
+$A \cup B \rightarrow I_{m+n}$ is a bijection. If there are any common
+elements then it will be an injection. In both cases, $\card A \cup B \le
+m + n$, where we used the results of the previous problem.
+
+If $A$ and $B$ have no elements in common then $A \cap B$ will be an
+empty set. At the other extreme, if $A \subset B$ then $A \cap B = A$.
+In all situations, $A \cap B \rightarrow I_m$ is an injection so that 
+$\card A \cap B \le m$.
+
+We will now show that $\card A + \card B=\card A \cup B + \card A \cap B$.
+Let there be $k$ elements in common between the two sets so that $0 \le 
+k \le m$. Let the mapping $B \rightarrow I_n$ be such that the common
+elements are mapped from $n - k + 1$ to $n$. This allows us to define a
+bijection $f_u: A \cup B \rightarrow I_{m + n - k}$ as
+\[
+f_u(x) = \begin{cases}
+f_A(x) & \text{ if } x \in A \\
+m + f_B(x) & \text{ if } x \in B, x \notin A
+\end{cases}
+\]
+and the bijection $f_i: A \cap B \rightarrow I_k$ as
+\[
+f_i(x) = f_B(x) - k - n.
+\]
+Clearly, $\card A \cup B = m + n - k$ and $\card A \cap B = k$ from which 
+the result follows immediately.
+
+\item[9:] Let $A_1, \ldots, A_n$ be finite sets such that 
+\[
+\card\bigcup_{i=1}^n A_i > n.
+\]
+Then there is at least one set $A_j$ such that $\card A_j >= 2$.
+\item[Solution:] From the previous problem we conclude that
+\[
+\card\bigcup_{i=1}^n A_i \le \sum_{i=1}^n \card A_i.
+\]
+Thus, we have 
+\[
+n < \sum_{i=1}^n \card A_i.
+\]
+This is possible iff there is at least one $j$ such that $\card A_j \ge 2$.
+
+\item[Solution:] One can also prove by induction. For the base case of 
+$n = 1$, $\cup_i A_i = A_1$. If $\card \cup_i A_i > 1$ then $\card A_1 
+\ge 2$. Assume that the claim is true for $n = k$ and consider
+\[
+B_{k+1} = \bigcup_{i=1}^{k+1}A_i = \bigcup_{i=1}^k A_i \cup A_{k+1}
+\]
+We are given that $\card B_{k+1} > k + 1$. If $\card A_{k+1} \ge 2$ we are
+done. If not
+\[
+\card B_{k+1} = \card B_k + \card A_{k+1} - \card B_k \cap A_{k+1} =
+\card B_k + 1 - \card B_k \cap A_{k+1} > k + 1.
+\]
+Now $\card B_k \cap A_{k+1}$ is either $0$ or $1$. Thus, either $\card 
+B_{k+1} = \card B_k + 1 > k + 1$ or $\card B_{k+1} = \card B_k > k + 1$
+In either cases we have $\card B_k > k$. From the induction hypothesis this
+means that one of $A_1, \ldots, A_k$ has cardinality at least $2$.
 \end{enumerate}
