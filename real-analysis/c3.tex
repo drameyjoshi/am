@@ -1,0 +1,54 @@
+\chapter{Integers and Rationals}\label{c3}
+Natural numbers admit addition and multiplication but not their inverse
+operations. Integers permit us to define subtraction, which is inverse of 
+addition and rationals allow us to introduce division as an inverse of
+multiplication. We start with constructing the integers.
+
+\section{The Integers}\label{c3s1}
+\begin{defn}\label{c3s1d1}
+We define integers as an ordered pair of natural numbers and denote the 
+set of all integers as $\soi$. Two integers $(a, b)$ and $(c, d)$ are 
+equal iff $a + d = c + b$.
+\end{defn}
+
+\begin{lem}\label{c3s1l1}
+The equality of integers is an equivalance relation.
+\end{lem}
+\begin{proof}
+Let $a. b, c, d, e, f \in \son$. Clearly $(a, b) = (a, b)$ because $a + b
+= a + b$, the last equality follows from the properties of equality of 
+natural numbers. Let $(a, b) = (c, d)$, that is $a + d = c + b$. But the
+equality of natural numbers is symmetric. Therefore, $c + b = a + d$ so
+that $(c, d) = (a, b)$.
+
+In order to prove transitivity, let $(a, b) = (c, d)$ and $(c, d) = 
+(e, f)$. Therefore, $a + d = c + b$ and $c + f = d + e$. Therefore $a + d
++ c + f = c + b + d + e$. Using commutativity and associativity of addition
+of natural numbers, $a + f + c + d = e + b + c + d$. Using proposition 
+\ref{c1s2p7}, we get $a + f = e + b$ or that $(a, b) = (e, f)$.
+\end{proof}
+
+\begin{defn}\label{c3s1d2}
+The sum of two integers $(a, b)$ and $(c, d)$ is defined as $(a + c, 
+b + d)$.
+\end{defn}
+\begin{rem}
+This definition is very similar to that of addition of two dimensional 
+vectors.
+\end{rem}
+
+\begin{lem}\label{c3s2l2}
+Addition of integers is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $(a, b), (c, d), (e, f)$ be integers such that $(a, b) = (c, d)$. Then
+we will show that $(a, b) + (e, f) = (c, d) + (e, f)$. The lhs of this 
+claim is $(a + e, b + f)$. Now, $(a, b) = (c, d) \Rightarrow a + d = b + 
+c$.
+\end{proof}
+
+\begin{defn}\label{c3s1d3}
+The product of two integers $(a, b)$ and $(c, d)$ is defined as $(ac + bd,
+ad + bc)$.
+\end{defn}
+
