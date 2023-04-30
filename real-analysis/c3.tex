@@ -43,12 +43,173 @@ Addition of integers is a well-defined operation.
 \begin{proof}
 Let $(a, b), (c, d), (e, f)$ be integers such that $(a, b) = (c, d)$. Then
 we will show that $(a, b) + (e, f) = (c, d) + (e, f)$. The lhs of this 
-claim is $(a + e, b + f)$. Now, $(a, b) = (c, d) \Rightarrow a + d = b + 
-c$.
+claim is $(a + e, b + f)$ and rhs is $(c + e, d + f)$. The two will be equal
+if $a + e + d + f = c + e + b + f$. Now, $(a, b) = (c, d) \Rightarrow 
+a + d = b + c$. Therefore, using the law of cancellation of natural numbers
+in proposition \ref{c1s2p7} and the associativity of natural numbers we 
+get $e + f = e + f$, which is true from the equality of natural numbers.
 \end{proof}
 
 \begin{defn}\label{c3s1d3}
 The product of two integers $(a, b)$ and $(c, d)$ is defined as $(ac + bd,
 ad + bc)$.
 \end{defn}
+
+\begin{lem}\label{c3s3l3}
+Multiplication of integers is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $(a, b), (c, d), (e, f)$ be integers such that $(a, b) = (c, d)$. Then
+we will show that $(a, b) \times (e, f) = (c, d) \times (e, f)$. That is,
+we will prove that
+\[
+(ae + bf, af + be) = (ce + df, cf + de),
+\]
+or
+\[
+ae + bf + cf + de = ce + df + af + be
+\]
+or
+\[
+(a + d)e + (b + c)f = (c + b)e + (d + a)f.
+\]
+This is indeed true because $(a, b) = (c, d) \Rightarrow a + d = c + b$ and
+because addition is commutative in natural numbers.
+\end{proof}
+
+\begin{lem}\label{c3s1l4}
+There is a bijection between the set of integers $\{(a, 0) \;|\; a \in 
+\son\}$ and $\son$ that preserves addition and multitplication. That is, 
+if we denote the bijection by $f$ then $f(x + y) = f(x) + f(y)$ and $f(xy)
+= f(x)f(y)$.
+\end{lem}
+\begin{proof}
+Let $f: \{(a, 0) \;|\; a \in \son\} \rightarrow \son$ be such that $f(a) =
+a$. Then for any $n \in \son$, there is an integer $(n, 0)$ such that
+$f((n, 0)) = n$ making $f$ surjective. If $f((a, 0)) = f((b, 0))$ then
+$a = b$ and $a + 0 = b + 0$ and hence $(a, 0) = (b, 0)$. Thus $f$ is also
+injective.
+
+We will now show that $f$ preserves addition and multiplication. $(a, 0) +
+(b, 0) = (a + b, 0) \Rightarrow f((a, 0) + (b, 0)) = f((a+b,0)) = a+b
+= f(a) + f(b)$. Likewise, $(a, 0)(b, 0) = (ab+0,0+0)=(ab,0)$ so that
+$f((a, 0)(b, 0)) = f((ab, 0)) = ab = f(a, 0)f(b, 0)$.
+
+We also note that $f(0, 0) = 0$ and $f(1, 0) = 1$
+\end{proof}
+
+This bijection allows us to identify an integer $(a, 0)$ with natural 
+numbers $a$. In an algebraic setting such a bijection would be called an
+\emph{isomorphism}.
+
+\begin{defn}\label{c3s1d4}
+The negation of an integer $(a, b)$ is defined as $(b, a)$ and is denoted
+by $-(a, b)$.
+\end{defn}
+
+\begin{lem}\label{c3s1l5}
+Negation is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $(a, b) = (c, d)$ that $a + d = b + c$. Then $-(a, b) = (b, a)$ and
+$-(c, d) = (d, c)$. They will be equal iff $b + c = d + a$, which is 
+indeed true.
+\end{proof}
+
+\begin{lem}\label{c3s1l6}
+Let $x$ be an integer then exactly one of the three statements is true:
+(a) $x$ is zero; (b) $x$ is equal to $(a, 0)$ or (c) $x$ is equal to 
+$(0, a)$, for some $a \in \son$.
+\end{lem}
+\begin{proof}
+Let $x = (m, n)$. By the law of trichotomy for the natural numbers, 
+\ref{c1s3t1}, either $m = n$ or $m < n$ or $m > n$. If $m = n$ then we
+observe that $(m, n) = (0, 0)$ because $m + 0 = n + 0$. In this case, $x$
+is indeed $(0, 0)$. If $m > n$ then there is a natural number $a$ such
+that $m = n + a$ that is $m + 0 = n + a$ of $(m, n) = (a, 0)$. If $n > m$
+then there is a natural number $a$ such that $n + 0 = m + a$ or $(n, m) =
+(a, 0)$ or $(m, n) = (0, a) = -(a, 0)$.
+\end{proof}
+
+\begin{rem}
+Note that we have not defined order relation between integers yet. That is
+why we did not case this lemma as a statment about two rationals $x$ and 
+$y$.
+\end{rem}
+
+Combining this lemma with lemma \ref{c3s1l4} we see that any integer is
+either zero or equal to a natural number $n > 0$ or its negation is equal 
+to a natural number $n > 0$. These integers are called zero, positive and
+negative.
+
+We will now prove the laws of algebra for integers in a series of lemmas.
+In each of these $x, y, z$ will denote integers.
+\begin{lem}\label{c3s1l7}
+Addition of integers is commutative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d)$ then $x + y = (a + c, b + d) = (c + a, d + b)$
+because addition is commutative in $\son$. But the last integer is $y + x$.
+\end{proof}
+
+\begin{lem}\label{c3s1l8}
+Addition of integers is associative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d), z = (e, f)$. Then $(a, b) + ((c, d) + (e, f))
+= (a, b) + (c + e, d + f) = (a + (c + e), b + (d + f)) = ((a + c) + e, 
+(b + d), f) = (a + c, b + d) + (e, f) = ((a, b) + (c, d)) + (e, f)$.
+\end{proof}
+
+\begin{lem}\label{c3s1l9}
+$0$ is an additive identity for integers.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$, Then $x + 0 = (a, b) + (0, 0) = (a + 0, b + 0) = (a, b)
+= x$. By lemma \ref{c3s1l7} $0 + x = x$.
+\end{proof}
+
+\begin{lem}\label{c3s1l10}
+$-x$ is the additive inverse of $x$.
+\end{lem}
+\begin{proof}
+The negation of an integer $x = (a, b)$ was defined as $-x = (b, a)$. Then
+$-x + x = (b, a) + (a, b) = (a + b, a + b) = (0, 0) = 0$. By lemma 
+\ref{c3s1l7} we also have $x + (-x) = 0$.
+\end{proof}
+
+\begin{rem}
+Lemmas \ref{c3s1l7} to \ref{c3s1l10} make the set of integers an abelian
+group.
+\end{rem}
+
+\begin{lem}\label{c3s1l11}
+Multiplication of integers is commutative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d)$ then $xy = (a, b)(c, d) = (ac + bd, ad + bc)
+= (ca + db, da + cb) = (c, d)(a, b)$, where we used the commutativity of
+multiplication in $\son$.
+\end{proof}
+
+\begin{lem}\label{c3s1l12}
+Multiplication of integers is associative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d), z = (e, f)$. Then $x(yz) = (a, b)(cf + de, ce
++ df) = (a(ce + df) + b(cf + de), a(cf + de) + b(ce + df)) = ((ad + bc)f +
+(ac + bd)e, (ad + dc)e + (ac + bd)f) = ((ad + bc), (ac + bd))(e, f) = 
+((a, b)(c, d))(e, f) = (xy)z$. We used the associativity of natural numbers
+and proposition \ref{c1s5p5} concerning the distributivity of 
+multiplication over addition.
+\end{proof}
+
+\begin{lem}\label{c3s1l13}
+$1$ is a multiplicative identity in integers.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$. Then $1 \times x = (1, 0)(a, b) = (1 \times a + 0 \times 
+b, 1 \times b + 0 \times a) = (a, b) = x$. Commutativity of multiplication,
+\ref{c3s1l11}, assures us that $x \times 1 = x$.
+\end{proof}
 
