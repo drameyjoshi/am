@@ -213,3 +213,130 @@ b, 1 \times b + 0 \times a) = (a, b) = x$. Commutativity of multiplication,
 \ref{c3s1l11}, assures us that $x \times 1 = x$.
 \end{proof}
 
+\begin{lem}\label{c3s1l14}
+Multiplication is distributive over addition. That is, $x(y + z) = xy + xz$
+and $(x + y)z = xz + yz$.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d), z = (e, f)$. Then $x(y+z) = (a, b)(c+e, d+f)
+= (ad + af + bc + be, ac + ae + bd + bf) = (ad+bc, ac+bd) + (af+be, ae+bf)
+= (a, b)(c, d) + (a, b)(e, f) = xy + xz$. The other equality can be 
+similarly proved.
+\end{proof}
+
+Lemmas \ref{c3s1l7} to \ref{c3s1l14} make the set of integers a commutative
+ring.
+
+\begin{defn}\label{c3s1d5}
+Subtraction of an integer $b$ from an integer $a$ is defined as $a - b = 
+a + (-b)$.
+\end{defn}
+Since addition and negation are well-defined operations on the set of 
+integers so is subtraction.
+
+We next observe that
+\begin{prop}
+If the product of two integers $x$ and $y$ is zero then at least one of 
+them is zero.
+\end{prop}
+\begin{proof}
+Let $x = (a, b), y = (c, d)$ so that $xy = (ad + bc, ac + bd)$. If $xy = 0$
+then $(ad + bc, ac + bd) = (0, 0)$ that is $ad + bc + 0 = ac + bd + 0$ or
+$ad + bc = ac + bd$. Now let us assume that $x \ne 0$ that is $a \ne b$. 
+Without loss of generality, assume that $a > b$ or that $a = b + k$, where
+$k > 0$ is a natural number. Then $ad + bc = ac + bd \Rightarrow bd + bc +
+kd = bc + kc + bd \Rightarrow kd = kc \Rightarrow d = c$ or $y = 0$. If
+$a < b$ then $b = a + k$ and we get similar conclusion. Thus if $xy = 0,
+x \ne 0$ then $y = 0$. We can similarly show that if $xy = 0, y \ne 0$ 
+then $x = 0$.
+\end{proof}
+
+\begin{lem}\label{c3s1l15}
+If $x, y, z \in \soi$ are such that $xz = yz$ and if $z \ne 0$ then $x=y$.
+\end{lem}
+\begin{proof}
+$xz = xz \Rightarrow xz - xz = 0 \Rightarrow (x - y)z = 0$. Since $z \ne 0$
+we have $x - y = 0$ or $x = y$.
+\end{proof}
+
+\begin{defn}\label{c3s1d6}
+If $x, y \in \soi$ we say $x \ge y$ or $y \le x$ if there is $n \in \son$
+such that $x = y + n$. If $n > 0$ then $x > y$, or $y < x$.
+\end{defn}
+
+We will now prove a few properties of the order relation.
+\begin{lem}\label{c3s1l16}
+If $x, y \in \soi$, $x > y$ iff $x - y$ is a positive natural number.
+\end{lem}
+\begin{proof}
+$x > y \Rightarrow x = y + k$ where $k \in \son, k > 0$. Therefore $x +
+(-y) = y + k + (-y) \Rightarrow x - y = k > 0$.
+\end{proof}
+
+\begin{lem}\label{c3s1l17}
+If $x, y, z \in \soi$ and $x > y$ then $x + z > y + z$.
+\end{lem}
+\begin{proof}
+$x > y \Rightarrow x = y + k$ where $k \in \son, k > 0$. Then $x + z =
+y + z + k$ or $x + z > y + z$.
+\end{proof}
+
+\begin{lem}\label{c3s1l18}
+If $x > y$, $z > 0$ then $xz > yz$.
+\end{lem}
+\begin{proof}
+If $z > 0$ then $z = m > 0$ where $m \in \son$. Note that we are treating
+$z = (m, 0) = m$. $x > y \Rightarrow x = y + k$, where $k \in \son, k > 0$.
+Therefore $xz = (y + k)z = yz + kz = yz + km$. If $k > 0, m > 0$ then $km
+> 0$. Therefore $xz > yz$.
+\end{proof}
+
+\begin{lem}\label{c3s1l19}
+If $x > y$, $z < 0$ then $xz < yz$.
+\end{lem}
+\begin{proof}
+If $z < 0$ then $z = (0, m)$ for some natural number $m$. Then $zk = (0, m)
+(k, 0) = (0 + 0, 0 + mk) = (0, mk) < 0$ and hence $-zk = (mk, 0) > 0$. Now
+$x > y$ implies $x = y + k$ where $k \in \son, k > 0$. Therefore, $xz = yz
++ zk \Rightarrow xz + (-zk) = yz$. Since $(-zk) > 0$, $xz < yz$.
+\end{proof}
+
+\begin{lem}\label{c3s1l20}
+If $x > y$ then $-x < -y$.
+\end{lem}
+\begin{proof}
+$x > y \Rightarrow x = y + k \Rightarrow 0 = -x + y + k \Rightarrow -y = 
+-x + k \Rightarrow -y > -x$.
+\end{proof}
+
+\begin{lem}\label{c3s1l21}
+If $x < y$ and $y < z$ then $x < z$.
+\end{lem}
+\begin{proof}
+$x < y \Rightarrow y = x + k$, $y < z \rightarrow z = y + l = x + k + l$.
+If $k > 0, l > 0$ then $k + l > 0$ by proposition \ref{c1s2p4}. Therefore,
+$z > x$.
+\end{proof}
+
+\begin{lem}\label{c3s1l22}
+If $x, y \in \soi$ then exactly one of the three possibilities: $x > y$,
+$x < y$, $x = y$, is true.
+\end{lem}
+\begin{proof}
+Let $z = x - y$. Then by lemma \ref{c3s1l6} applied to $z$ we have exactly
+one of the possibilities $z > 0, z < 0, z = 0$. If $z > 0$ then $x - y > 0$
+or, by lemma \ref{c3s1l17} $x > y$. Similarly, we can show that $z < 0
+\Rightarrow x < y$ and $z = 0 \Rightarrow x = y$.
+\end{proof}
+
+\subsection{Problems}
+\begin{enumerate}
+\item[1:] Show that for all $x \in \soi$, $(-1)x = -x$.
+\item[Solution:] Let $x = (a, b)$. Then $(-1)x = (0, 1)(a, b) = (0 + b, 0 +
+a) = (b, a) = -(a, b) = -x$.
+
+\item[2:] Show that for any integer $x$, $x^2 \ge 0$.
+\item[Solution:] If $x > 0$ then $x \times x > 0 \times x = 0$, by lemma
+\ref{c3s1l18}. If $x < 0$ then $x \times x > 0 \times x = 0$ by lemma 
+\ref{c3s1l19}.
+\end{enumerate}
