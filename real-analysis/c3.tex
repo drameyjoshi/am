@@ -37,7 +37,7 @@ This definition is very similar to that of addition of two dimensional
 vectors.
 \end{rem}
 
-\begin{lem}\label{c3s2l2}
+\begin{lem}\label{c3s1l2}
 Addition of integers is a well-defined operation.
 \end{lem}
 \begin{proof}
@@ -340,3 +340,190 @@ a) = (b, a) = -(a, b) = -x$.
 \ref{c3s1l18}. If $x < 0$ then $x \times x > 0 \times x = 0$ by lemma 
 \ref{c3s1l19}.
 \end{enumerate}
+
+\section{The rational numbers}\label{c3l2}
+The way integers were built from natural numbers as a certain subset of 
+$\son \times \son$, we will construct rational numbers from integers as a
+subset of $\soi \times \soi$.
+
+\begin{defn}\label{c3l2d1}
+We define rational numbers as an ordered pair $(a, b)$ of integers such 
+that $b \ne 0$ and denote the set of all rationals as $\soq$. Two 
+rationals $(a, b)$ and $(c, d)$ are equal iff $ad = bc$.
+\end{defn}
+
+\begin{lem}\label{c3s2l1}
+The equality of rationals is an equivalence relation.
+\end{lem}
+\begin{proof}
+If $(a, b)$ is a rational number then $(a, b) = (b, a)$ because $ab = ba$
+is true for $a, b \in \soi$. If $(a, b) = (c, d)$ then $ad = bc 
+\Rightarrow cb = da \Rightarrow (c, d) = (a, b)$. Once again we have used
+the commutativity of multiplication of integers. If $(a, b) = (c, d)$ and
+$(c, d) = (e, f)$ then $ad = cb$ and $cf = de$ and hence $adcf = cbde$. 
+Since $d \ne 0$, we have $acf = cbe$. If $c \ne 0$ we have $af = be$ 
+which implies $(a, b) = (e, f)$. If $c = 0$ then we necessarily have $a=0$
+because $b \ne 0$ and $e = 0$ because $f \ne 0$. Once again we have $(a, b)
+= (e, f)$.
+\end{proof}
+
+\begin{defn}\label{c3s2d2}
+The sum of two rationals $(a, b)$ and $(c, d)$ is defined as
+$(ad + bc, bd)$.
+\end{defn}
+
+\begin{lem}\label{c3s2l2}
+Addition of rationals is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $(a, b), (c, d), (e, f)$ be rationals such that $(a, b) = (c, d)$.
+Then $(a, b) + (e, f) = (af + eb, bf)$ and $(c, d) + (e, f) = (cf+ed, df)$.
+The two sums will be equal iff $(af + eb)df = (cf + ed)bf \Leftrightarrow
+adf^2 + bdef = bcf^2 + bdef \Rightarrow adf^2 = bcf^2$. Since $f \ne 0,
+f^2 \ne 0$ and the two sums will be equal iff $ad = bc$. However that is 
+true because $(a, b) = (c, d)$.
+\end{proof}
+
+\begin{defn}\label{c3s2d3}
+The product of two rationals $(a, b)$ and $(c, d)$ is defined to be $(ac,
+bd)$.
+\end{defn}
+
+\begin{lem}\label{c3s2l3}
+Product of rationals is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $(a, b), (c, d), (e, f)$ be rationals such that $(a, b) = (c, d)$.
+Then $(a, b) \times (e, f) = (ae, bf)$ and $(c, d) \times (e, f)=(ce, df)$.
+The two products will be equal iff $(ae, bf) = (ce, df) \Leftrightarrow
+adef = bcef$. Since $f \ne 0$, the products will be equal iff $ade = bce$.
+Now $e$ must non-zero, otherwise we have $x\times 0 = y\times 0$ for 
+rationals $x \ne y$. With that assumption, the products will be equal iff
+$ad = bc$. However, that is true because $(a, b) = (c, d)$.
+\end{proof}
+
+\begin{defn}\label{c3s2d4}
+The negation of a rational number $(a, b)$ is defined to be the rational
+number $(-a, b)$.
+\end{defn}
+
+\begin{lem}\label{c3s2l4}
+Negation of rationals is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $(a, b) = (c, d)$. Then their negations will be equal if $-ad = -cb$,
+which is indeed true because the equality of integers gives $ad = bc$.
+\end{proof}
+
+\begin{lem}\label{c3s2l5}
+There is a bijection between the set of rationals $\{(a, 1) \;|\; a \in 
+\soq\}$ and $\soi$ that preserves addition and multiplication. That is, if
+we denote the bijection by $f$ then $f(x + y) = f(x) + f(y)$ and $f(xy)
+= f(x)f(y)$ for all $x, y \in \{(a, 1) \;|\; a \in \soq\}$.
+\end{lem}
+\begin{proof}
+Let $f: \{(a, 1) \;|\; a \in \soq\} \rightarrow \soi$ such that $f((a, 1))
+= a$. Then $f((a, 1) + (b, 1)) = f((a + b, 1)) = a + b = f((a, 1)) + f((b,
+1))$. Similarly, $f((a, 1)(b, 1)) = f((ab, 1)) = ab = f((a, 1))f((b, 1))$.
+\end{proof}
+
+\begin{defn}\label{c3s2d5}
+Subraction of rationals is defined as $(a, b) - (c, d) := (a, b) + 
+(-(c, d))$.
+\end{defn}
+
+\begin{lem}\label{c3s2l6}
+A rational number $(a, b)$ is zero iff $a = 0$.
+\end{lem}
+\begin{proof}
+$(a, b) = (0, 1)$ iff $a \times 1 = b \times 0$ iff $a = 0$.
+\end{proof}
+
+\begin{defn}\label{c3s2d6}
+If $x = (a, b)$ is a rational number with $a \ne 0$ (and $b \ne 0$) then
+its reciprocal is defined as $x^{-1} := (b, a)$.
+\end{defn}
+
+We will now prove a series of lemmas proving elementary properties of
+rationals.
+\begin{lem}\label{c3s2l7}
+Addition of rationals is commutative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d)$ so that $x + y = (ad + cb, bd) = (da + bc, db)
+= (c, d) + (a, b)$.
+\end{proof}
+
+\begin{lem}\label{c3s2l8}
+Addition of rationals is associative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d), z = (e, f)$ then $x + (y + z) = (a, b) + 
+(cf + ed, df) = (adf + bcf + bed, bdf) = (ad + bc, bd) + (e, f) = ((a, b)
++ (c, d)) + (e, f) = (x + y) + z$.
+\end{proof}
+
+\begin{lem}\label{c3s2l9}
+$0 = (0, 1)$ is the additive identity.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$. Then $x + 0 = (a, b) + (0, 1) = (a + 0, b) = (a, b)$.
+$0 + x = x + 0$ follows from \ref{c3s2l7}.
+\end{proof}
+
+\begin{lem}\label{c3s2l10}
+For any $x \in \soq$, $-x$ is the additive inverse.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$. Then $-x = (-a, b)$ and $x + (-x) = (a, b) + (-a, b) = 
+(ab - ba, b^2) = (0, b^2) = 0$. From \ref{c3s2l7} $(-x) + x = 0$ is also
+true.
+\end{proof}
+
+\begin{lem}\label{c3s2l11}
+Multiplication of rationals is commutative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d)$ so that $xy = (a, b)(c, d) = (ac, bd) = (ca,
+db) = (c, d)(a, b) = yx$. We used commutativity of multiplication of 
+integers in this proof.
+\end{proof}
+
+\begin{lem}\label{c3s2l12}
+Multiplication of rationals is associative.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d), z = (e, f)$ so that $x(yz) = (a(ce), b(df)) =
+((ac)e, (bd)f) = (ac, bd)(e, f) = ((a, b)(c, d))(e, f) = (xy)z$
+\end{proof}
+
+\begin{lem}\label{c3s2l13}
+$1 = (1, 1)$ is a multiplicative identity.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$ so that $1 \times x = (1, 1)(a, b) = (a, b) = (a, b)(1, 1)
+$ so that we have $1x = x = x1$.
+\end{proof}
+
+\begin{lem}\label{c3s2l14}
+Multiplication distributes over addition.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d), z = (e, f)$. Then $x(y + z) = (a, b)((c, d)
++ (e, f)) = (a, b)(cf + de, df) = (acf + ade, bdf) = (bacf + bade, bdbf) =
+(ac, bd) + (ae, bf) = (a, b)(c, d) + (a, b)(e, f) = xy + xz$. We can 
+similarly show that $(x + y)z = xz + yz$.
+\end{proof}
+
+\begin{lem}\label{c3s2l15}
+If $x \ne 0$ then $xx^{-1} = x^{-1}x = 1$.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$ where $a \ne 0, b \ne 0$. Then $x^{-1} = (b, a)$ so that
+$xx^{-1} = (a, b)(b, a) = (ab, ba) = (ab, ab) = (1, 1)$. Similarly $x^{-1}x
+= (b, a)(a, b) = (ba, ab) = (ab, ab) = (1, 1)$. We used commutativity of
+multiplication of integers in the proof.
+\end{proof}
+
+Lemmas \ref{c3s2l7} to \ref{c3s2l15} make $\soq$ a field.
+
