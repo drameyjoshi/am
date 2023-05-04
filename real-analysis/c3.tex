@@ -527,3 +527,121 @@ multiplication of integers in the proof.
 
 Lemmas \ref{c3s2l7} to \ref{c3s2l15} make $\soq$ a field.
 
+\begin{defn}\label{c3s2d7}
+A rational number $x = (a, b)$ is said to be positive of both $a$ and $b$
+are positive. It is said to be negative if $x = -y$ for some positive 
+number $y$
+\end{defn}
+
+\begin{lem}\label{c3s2l16}
+If $x = (-a, -b)$ for $a, b \in \soi$ and $a, b > 0$ then $x$ is positive.
+\end{lem}
+\begin{proof}
+$(a, b) = (-a, -b)$ because $-ab = -ba$.
+\end{proof}
+
+\begin{lem}\label{c3s2l17}
+If $x = (-a, b)$ where $a, b \in \soi$ and both a positive then $x$ is 
+negative. Moreover, $x$ is also equal to $(a, -b)$.
+\end{lem}
+\begin{proof}
+Equality of $(a, -b)$ and $(-a, b)$ follows from the definition of equality
+of rationals. $x$ is negative because $-(-a, b) = (a, b)$ is positive. The
+equality follows from (a) definition \ref{c3s2d4} of negativen numbers and
+(b) $-(-a) = a$ for any integer, being a consequence of lemma 
+\ref{c3s1l10}.
+\end{proof}
+
+\begin{lem}\label{c3s2l18}
+If $x$ is a rational number then exactly one of the following it true (a)
+$x = 0$, (b) $x$ is a positive rational number or (c) $x$ is a negative
+rational number.
+\end{lem}
+\begin{proof}
+Let $x = (a, b)$. The law of trichotomy for integers assures us that $a$
+and $b$ can be one of (a) zero, (b) positive or (c) negative. The 
+definition of rational assures us that $b \ne 0$. If $a = 0$ then lemma
+\ref{c3s2l6} tells us that $x = 0$. That leaves us with four possibilities:
+if both $a$ and $b$ are both positive or both negative then by definition
+or by lemma \ref{c3s2l16} $x$ is positive. If one of $s$ or $b$ is positive
+and the other is negative then by lemma \ref{c3s2l7} $x$ is negative. Thus
+we have shown that at least one of the three possibilities is true.
+
+We next show that at most one of them is true. If $x = (a, b)$ is positive
+then $a, b > 0$ so that $x$ is neither zero, nor negative. If $x = (a, b)$
+is negative, then one of $a$ or $b$ is negative. Therefore, $x$ is not
+positive. Neither is it zero. If $x = 0$ then $a = 0$. That makes $x$ 
+neither positive nor negative.
+\end{proof}
+
+\begin{defn}\label{c3s2d8}
+Let $x, y \in \soq$. Then $x > y$ iff $x - y$ is a positive rational number,
+$x < y$ is $x - y$ is negative rational number. We write $x \ge y$ if 
+$x > y$ or $x = y$ and $x \le y$ if $x < y$ or $x = y$.
+\end{defn}
+
+\begin{lem}\label{c3s2l19}
+If $x, y \in \soq$ then exactly one of the three statements $x = y, x < y$
+or $x > y$ is true.
+\end{lem}
+\begin{proof}
+Let $z = x - y$. Then by lemma \ref{c3s2l18} exactly one of the following
+statements is true $z = 0, z < 0$ or $z > 0$. By definition \ref{c3s2d8}
+these correspond to $x = y, x < y$ and $x > y$ respectively.
+\end{proof}
+
+\begin{lem}\label{c3s2l20}
+For $x, y \in \soq$, $x < y$ iff $y > x$.
+\end{lem}
+\begin{proof}
+If $y > x$ then $y - x > 0$ so that $(-1)(y - x) = -y -(-x) = x - y < 0$ so
+that $x < y$. 
+
+Interchanging $x$ and $y$ in the above argument proves the `only if' part.
+\end{proof}
+
+\begin{lem}\label{c3s2l21}
+For $x, y, z \in \soq$, $x < y, y < z \Rightarrow x < z$.
+\end{lem}
+\begin{proof}
+Let $z_1 = y - x, z_2 = z - y$. Then, by definition, $z_1 > 0, z_2 > 0$.
+Therefore, both numbers are of the form $z_1 = (a_1, b_1), z_2 = (a_2, 
+b_2)$, where $a_1, a_2, b_1, b_2 \in \soi$ are all positive integers. 
+Therefore, $z_1 + z_2 = y - x + z - y = z - x$, following commutativity
+and associativity of addition of rationals. Further, $z_1 + z_2 = (a_1b_2
++ a_2b_1, b_1b_2)$. Since $a_1, a_2, b_1, b_2 > 0$ so are $a_1b_2 + 
+a_2b_1$ and $b_1b_2$. Therefore, $z_1 + z_2 > 0$ or that $z > x$.
+\end{proof}
+
+\begin{rem}
+By lemma \ref{c3s1l18} $a_1 > 0, b_2 > 0 \Rightarrow a_1b_2 > 0$. 
+Similarly, $a_2b_1 > 0$ and $b_1b_2 > 0$. By lemma \ref{c3s1l17}, $a_1b_2 
+> 0 \Rightarrow a_1b_2 + a_2b_1 > a_2b_1$. By lemma \ref{c3s1l21}, the 
+previous inequality along with $a_2b_1 > 0$ implies $a_1b_2 + a_2b_1 > 0$.
+\end{rem}
+
+\begin{lem}\label{c3s2l22}
+If $x, y, z \in \soq$ and $x < y$ then $x + z < y + z$.
+\end{lem}
+\begin{proof}
+$y + z - (x + z) = y + z - x - z = y - x > 0$ because $y > x$. Therefore,
+$y +z > x + z$.
+\end{proof}
+
+\begin{lem}\label{c3s2l23}
+If $x, y \in \soq, x, y > 0$ then $xy > 0$.
+\end{lem}
+\begin{proof}
+Let $x = (a, b), y = (c, d)$. $x > 0, y > 0 \Rightarrow a, b, c, d > 0$
+so that $ac > 0, bd > 0$ by lemma \ref{c3s1l18}. Therefore, $(ac, bd) =
+xy > 0$.
+\end{proof}
+
+\begin{lem}\label{c3s2l24}
+If $x, y, z \in \soq$, $z > 0$ then $x < y \Rightarrow xz < yz$.
+\end{lem}
+\begin{proof}
+$x < y \Rightarrow y - x > 0$. Therefore $z(y - x) > 0 \Rightarrow zy - zx
+> 0 \Rightarrow yz - xz > 0 \Rightarrow xz < yz$.
+\end{proof}
+
