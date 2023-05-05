@@ -55,7 +55,7 @@ The product of two integers $(a, b)$ and $(c, d)$ is defined as $(ac + bd,
 ad + bc)$.
 \end{defn}
 
-\begin{lem}\label{c3s3l3}
+\begin{lem}\label{c3s1l3}
 Multiplication of integers is a well-defined operation.
 \end{lem}
 \begin{proof}
@@ -643,5 +643,143 @@ If $x, y, z \in \soq$, $z > 0$ then $x < y \Rightarrow xz < yz$.
 \begin{proof}
 $x < y \Rightarrow y - x > 0$. Therefore $z(y - x) > 0 \Rightarrow zy - zx
 > 0 \Rightarrow yz - xz > 0 \Rightarrow xz < yz$.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] Show that if $x, y, z \in \soq$ and $z < 0$ then $x < y 
+\Rightarrow xz > xy$.
+\item[Solution:] $x < y \Rightarrow y - x > 0$. Likewise, $z < 0 
+\Rightarrow -z > 0$. Therefore, using lemma \ref{c3s2l23}, we get $(-z)
+(y - x) > 0 \Rightarrow -zy + zx > 0 \Rightarrow zx > zy$.
+\end{enumerate}
+
+\section{Absolute value and exponentiation}\label{c3s3}
+\begin{defn}\label{c3s3d1}
+If $x \in \soq$ then its absolute value $|x|$ is defined as
+\[
+|x| := \begin{cases}
+x & \text{ if } x \ge 0 \\
+-x & \text{ if } x < 0.
+\end{cases}
+\]
+\end{defn}
+
+\begin{defn}\label{c3s3d2}
+If $x, y \in \soq$ then the distance between $x$ and $y$ is defined as 
+\[
+d(x, y) := |x - y|.
+\]
+\end{defn}
+
+We will now prove a few basic properties of absolute value and distance.
+\begin{lem}\label{c3s3l1}
+For all $x \in \soq$, $|x| \ge 0$. Further, $|x| = 0$ iff $x = 0$.
+\end{lem}
+\begin{proof}
+If $x = (-a, b)$ is a negative rational, that is, if $a, b \in \soi$ are 
+positive integers then $-x = (-1, 1)(-a, b) = (a, b) > 0$. Therefore, by
+definition \ref{c3s3d1}, $|x| \ge 0$, whatever be the value of $x$.
+
+If $x = 0$ then by definition $|x| = 0$. Now let $|x| = 0$. Since $|x| = 
+x$ if $x \ge 0$ this gives us $x = 0$.
+\end{proof}
+
+\begin{lem}\label{c3s3l2}
+$\pm x \le |x|$ for all $x \in \soq$.
+\end{lem}
+\begin{proof}
+If $x \ge 0$, $|x| = x$ therefore, $|x| \ge x$. In this case, we also have
+$-x \le 0 \le x \le |x|$. Therefore $\pm x \le |x|$.
+
+If $x < 0$, $|x| = -x$ so that $|x| \ge -x > 0$. This, coupled with the 
+fact that $0 > x$ gives us $|x| \ge \pm x$.
+\end{proof}
+
+\begin{lem}\label{c3s3l3}
+If $a, b, c, d \in \soq$ be such that $a < b$ and $c < d$ then we have
+$a + c < b + d$.
+\end{lem}
+\begin{proof}
+In this proof we used the fact that $a < b, c < d \Rightarrow a + c < b + 
+d$. We prove it as follows: $a < b \Rightarrow a + c < b + c$. $c < d
+\Rightarrow b + c < b + d$. Therefore, we have $a + c < b + c < b + d$.
+We used lemma \ref{c3s3l2} over here.
+\end{proof}
+
+\begin{lem}\label{c3s3l4}
+If $x, y \in \soq$, $|x + y| \le |x| + |y|$.
+\end{lem}
+\begin{proof}
+From lemma \ref{c3s3l2} we have $\pm x \le |x|$ for all $x \in \soq$. From
+lemma \ref{c3s3l3} we also have $x \le |x|$ and $y \le |y|$ implies $x + y 
+\le |x| + |y|$. Likewise, $-(x + y) = -x - y \le |x| + |y|$. Since $|x + y|
+= x + y$ or $-(x+y)$, we have $|x + y| \le |x| + |y|$.
+\end{proof}
+
+\begin{lem}\label{c3s3l5}
+If $x, y \in \soq$ then $-y \le x \le y$ iff $y \ge |x|$. In particular,
+we have $-|x| \le x \le |x|$.
+\end{lem}
+\begin{proof}
+Let $y \ge |x|$. By lemma \ref{c3s3l2} $|x| \ge x$. Therefore 
+\begin{equation}\label{c3s3e1}
+y \ge x.
+\end{equation}
+
+$y \ge |x|$ also means $-y \le -|x|$. By lemma \ref{c3s3l2} $|x| \ge \pm x$.
+Therefore, $-|x| \le \mp x$. Therefore 
+\begin{equation}\label{c3s3e2}
+-y \le -|x| \le x \Rightarrow -y \le x.
+\end{equation}
+The lemma follows from \eqref{c3s3e1} and \eqref{c3s3e2}.
+
+Since $|x| \ge x$, we can put $y = |x|$ and get $-|x| \le x \le |x|$.
+\end{proof}
+
+\begin{lem}\label{c3s3l6}
+If $x, y \in \soq$ then $|xy| = |x||y|$.
+\end{lem}
+\begin{proof}
+If $x \ge 0, y \ge 0$ then $xy \ge 0$. We also have $x = |x|, y = |y|, xy
+= |xy|$ that is $|x||y| = |xy|$.
+
+If $x \le 0, y \le 0$, then $xy \ge 0$. We also have $-x = |x|, -y = |y|,
+xy = |xy|$ that is $(-|x|)(-|y|) = |x||y| = |xy|$.
+
+If $x \le 0, y \ge 0$ then $xy \le 0$. We also have $-x = |x|, y = |y|,
+-xy = |xy|$. Therefore, we have $|x||y| = |xy|$. The same is true if $x \ge
+0, y \le 0$.
+\end{proof}
+
+\begin{lem}\label{c3s3l7}
+For all $x, y \in \soq$, $d(x, y) \ge 0$. Further, $d(x, y) = 0$ iff 
+$x = y$.
+\end{lem}
+\begin{proof}
+$d(x, y) = |x - y| \ge 0$ be definition of the absolute value. By lemma
+\ref{c3s3l1} $|x - y| = 0$ iff $x - y = 0$, therefore, $d(x, y) = 0$ iff
+$x = y$.
+\end{proof}
+
+\begin{lem}\label{c3s3l8}
+For all $x \in \soq$, $|x| = |-x|$.
+\end{lem}
+\begin{proof}
+By definition $|-1| = 1 = |1|$. Therefore, $|-1||x| = |-x| = |1||x| = |x|$.
+\end{proof}
+
+\begin{lem}\label{c3s3l9}
+For all $x, y \in \soq$, $d(x, y) = d(y, x)$.
+\end{lem}
+\begin{proof}
+Follows immediately from the fact that $|y - x| = |-(y - x)| = |x - y|$.
+\end{proof}
+
+\begin{lem}\label{c3s3l10}
+For all $x, y, z \in \soq$, $d(x, z) \le d(x, y) + d(y, z)$.
+\end{lem}
+\begin{proof}
+Follows immediately from $|z - x| = |z - y + y - x| \le |z - y| + |y - x|$. 
 \end{proof}
 
