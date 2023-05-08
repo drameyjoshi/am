@@ -1,0 +1,298 @@
+\chapter{The real numbers}\label{c4}
+There are several ways to construct the reals from the rationals. We will
+follow the one that uses Cauchy sequences. It is profitable because it 
+introduces a familiar motif in analysis, that of `completion' of a space
+(that is, a set with certain properties).
+
+\section{Cauchy sequences}\label{c4s1}
+\begin{defn}\label{c4s1d1}
+A sequence of rational numbers is a mapping $\son \rightarrow \soq$. It is
+customary to denote it be $\seq{a_n}$ its range rather than the functional
+notation $a(n)$.
+\end{defn}
+
+\begin{rem}
+We will always mean an infinite sequence when we mention `sequence'. If we
+want to describe the set $\{a_0, \ldots, a_n\}$ of rational numbers we will
+call it a \emph{finite} sequence.
+\end{rem}
+
+\begin{defn}\label{c4s1d2}
+A sequence $\seq{a_n}$ is called a Cauchy sequence if for any rational 
+$\epsilon > 0$ there exists $N \in \son$ such that for all $m, n > N$,
+$d(a_m, a_n) < \epsilon$.
+\end{defn}
+
+\begin{rem}
+We could have written the Cauchy condition as $|a_m - a_n| < \epsilon$. 
+However, we chose to write it in terms of a distance function $d$ because
+it makes it easy for us to take this definition to metric spaces.
+\end{rem}
+
+\begin{defn}\label{c4s1d3}
+A sequence $\seq{a_n}$ of rationals is bounded if we can find a rational 
+number $M \ge 0$ such that $|a_n| \le M$ for all $n \in \son$. The number
+$M$ is called a bound of the sequence.
+\end{defn}
+
+\begin{lem}\label{c4s1l1}
+A finite sequence is always bounded.
+\end{lem}
+\begin{proof}
+Consider the finite sequence $\{a_0, \ldots, a_n\}$. Then we will show 
+that it is bounded for any $n \in \son$. We will use induction on $\son$.
+The base case is the sequence $\{a_0\}$. It is clearly bounded if we choose
+$M = |a_0|$. Let us assume that the claim is true for some $n$ and consider
+the sequence $\{a_0, \ldots, a_n, a_{n+1}\}$. By induction hypothesis, 
+there exists $M \ge 0$ such that $|a_i| \le M$ for all $0 \le i \le n$. 
+Then the constant $M^\op = M + |a_{n+1}|$ is such that $|a_i| \le M^\op$
+for all $0 \le i \le n + 1$, thus closing the induction.
+\end{proof}
+
+\begin{lem}\label{c4s1l2}
+A Cauchy sequence is bounded.
+\end{lem}
+\begin{proof}
+Let $\seq{a_n}$ be a Cauchy sequence. Fix an $\epsilon > 0$. Then we can 
+find a natural number $N$ such that for all $m, n > N$, $d(a_m, a_n) < 
+\epsilon$. By lemma \ref{c4s1l1}, the finite sequence $\{a_0, \ldots,
+a_N\}$ is bounded. Let $M_0$ be its bound. For all $n \ge N + 1$, $d(a_n,
+a_{N+1}) < \epsilon \Rightarrow |a_n - a_{N+1}| < \epsilon \Rightarrow
+a_{N+1} - \epsilon < a_n < a_{N+1} + \epsilon$. Thus, the rest of the
+terms are bounded by $a_{N+1} + \epsilon$. If we let $M = M_0 + |a_{N+1}|
++ \epsilon$ then $|a_n| < M$ for all $n \in \son$.
+\end{proof}
+
+\subsection{Properties of Cauchy sequences}
+\begin{lem}\label{c4s1l3}
+If $\seq{a_n}$ and $\seq{b_n}$ are Cauchy sequences then so is $\seq{a_n
++ b_n}$.
+\end{lem}
+\begin{proof}
+Fix an $\epsilon > 0$. Then there exist natural numbers $N_1, N_2$ such
+that for all $m, n > N_1$, $d(a_m, a_n) < \epsilon/2$ and for all $m, n >
+N_2$, $d(b_m, b_n) < \epsilon/2$. Let $N = \max(N_1, N_2)$. For $n, m > N$,
+consider 
+\begin{eqnarray*}
+d(a_m + b_m, a_n + b_n) &=& |a_m + b_m - a_n - b_n| \\
+ &\le& |a_m - a_n| + |b_m - b_n| \\
+ &<& \epsilon.
+\end{eqnarray*}
+\end{proof}
+
+\begin{lem}\label{c4s1l4}
+If $\seq{a_n}$ and $\seq{b_n}$ are Cauchy sequences then so is $\seq{a_n
+b_n}$.
+\end{lem}
+\begin{proof}
+By lemma \ref{c4s1l2} $\seq{a_n}$ and $\seq{b_n}$ are bounded. Let $M_a$
+and $M_b$ be their bounds. Fix an $\epsilon > 0$. Let $N_a \in \son$ be
+such that for all $n, m > N_a$, $d(a_m, a_n) < \epsilon/(2M_b)$. Let $N_b 
+\in \son$ be such that for all $n, m > N_b$, $d(b_m, b_n) < \epsilon/
+(2M_a)$.  Let $N = \max(N_a, N_b)$. Then, for $n, m > N$, consider
+\begin{eqnarray*}
+d(a_nb_n, a_mb_m) &=& |a_nb_n - a_mb_m| \\
+ &=& |a_nb_n - b_na_m + b_na_m - a_mb_m| \\
+ &\le& |b_n||a_n - a_m| + |a_m||b_n - b_m| \\
+ &<& M_b\frac{\epsilon}{2M_b} + M_a\frac{\epsilon}{2M_a} \\
+ &<& \epsilon.
+\end{eqnarray*}
+\end{proof}
+
+\begin{lem}\label{c4s1l5}
+If $\seq{a_n}$ is a Cauchy sequence then so is $\seq{ka_n}$ for a constant
+$k \in \soq$. In particular, $\seq{-a_n}$ is a Cauchy sequence.
+\end{lem}
+\begin{proof}
+Fix an $\epsilon > 0$ and let $N \in \son$ be such that for all $n, m > N$,
+$d(a_m, a_n) < \epsilon/|k|$. If $b_n = ka_n$ then we clearly have $d(b_n,
+b_m) < \epsilon$ for all $m, n > N$.
+\end{proof}
+
+\section{Equivalent Cauchy sequences}\label{c4s2}
+\begin{defn}\label{c4s2d1}
+Sequences $\seq{a_n}$ and $\seq{b_n}$ are equivalent if for a given
+rational $\epsilon > 0$ we can find a natural number $N$ such that for
+all $n > N$, $d(a_n, b_n) < \epsilon$.
+\end{defn}
+
+\begin{lem}\label{c4s2l2}
+Let $\seq{a_n}$ and $\seq{b_n}$ be equivalent sequences. Then $\seq{a_n}$ 
+is a Cauchy sequence iff $\seq{b_n}$ is a Cauchy sequence.
+\end{lem}
+\begin{proof}
+Fix an $\epsilon > 0$. Let $\seq{a_n}$ be a Cauchy sequence. Then we can
+find $N_1 \in \son$ such that for all $m, n > N_1$, $d(a_m, a_n) < 
+\epsilon/3$. Since $\seq{a_n}$ is equivalent to $\seq{b_n}$ we can find $N_2
+\in \son$ such that for all $n > N_2$, $d(a_n, b_n) < \epsilon/3$. Choose
+$N = \max(N_1, N_2)$ and let $m, n > N$. Then
+\begin{eqnarray*}
+d(b_m, b_n) &=& |b_m - b_n| \\
+ &=& |b_m - a_m + a_m + a_n - a_n - b_n| \\
+ &\le& |b_m - a_m| + |a_m - a_n| + |a_n - b_n| \\
+ &<& \epsilon.
+\end{eqnarray*}
+is Cauchy implies that so is $\seq{b_n}$.
+
+Now let $\seq{b_n}$ be a Cauchy sequence and $\seq{a_n}$ be equivalent to 
+it.  Fix an $\epsilon$ and let $N_1 \in \son$ be such that for all $m, n > 
+N_1$ $d(b_m, b_n) < \epsilon/3$ and let $N_2 \in \son$ be such that for 
+all $n > N_2$, $d(a_n, b_n) < \epsilon/3$. Choose $N = \max(N_1, N_2)$ 
+and let $m, n > N$. Then,
+\begin{eqnarray*}
+d(a_m, a_n) &=& |a_m - a_n| \\
+ &=& |a_m - b_m + b_n - a_n + b_m - b_n| \\
+ &\le& |a_m - b_m| + |a_n - b_n| + |b_m - b_n| \\
+ &<& \epsilon.
+\end{eqnarray*}
+\end{proof}
+
+Note that two sequences can be equivalent without being bounded or Cauchy.
+The set of rationals is dense. Therefore two sequences can arbitrarily 
+close to each other, term by term, without being identical. However, for
+all practical purposes they are the same. Equivalence means that for a
+given $\epsilon > 0$ we can find a natural number $N$ such that all terms
+of $\seq{b_n}$ are within a distance $\epsilon$ from the corresponding 
+terms of $\seq{a_n}$.
+
+Let us denote the equivalance of Cauchy sequences $\seq{a_n}$ and 
+$\seq{b_n}$ as $\seq{a_n} \sim \seq{b_n}$. We next show that
+\begin{prop}\label{c4s2p1}
+The relation $\sim$ between Cauchy sequences is an equivalence relation.
+\end{prop}
+\begin{proof}
+For any $\epsilon > 0$, $d(a_n, a_n) < \epsilon$ for all $n \in \son$.
+Therefore, $\seq{a_n} \sim \seq{a_n}$. Since $d(a_n, b_n) = d(b_n, a_n)$, 
+$\seq{a_n} \sim \seq{b_n} \Rightarrow \seq{b_n} \sim \seq{a_n}$.
+
+Let $\seq{a_n} \sim \seq{b_n}$ and $\seq{b_n} \sim \seq{c_n}$. Then for a
+given $\epsilon > 0$, there exists $N_1, N_2 \in \son$ such that for all
+$n > N_1$, $d(a_n, b_n) < \epsilon/2$ and for all $n > N_2$, $d(b_n, c_n)
+< \epsilon/2$. Let $N = \max(N_1, N_2)$ and let $n > N$. Then,
+\begin{eqnarray*}
+d(a_n, c_n) &=& |a_n - c_n| \\
+ &=& |a_n - b_n + b_n - c_n| \\
+ &\le& |a_n - b_n| + |b_n - c_n| \\
+ &<& \epsilon.
+\end{eqnarray*}
+Thus, $\seq{a_n} \sim \seq{c_n}$.
+\end{proof}
+
+\section{The construction of the real numbers}\label{c4s3}
+\begin{defn}\label{c4s3d1}
+The equivalence class of a Cauchy sequence of rational numbers is called 
+a real number. We will denote the equivalence class of a Cauchy sequence
+$\seq{a_n}$ by $\overline{\seq{a_n}}$.
+\end{defn}
+
+\begin{rem}
+If $q \in \soq$ then the sequence $\seq{a_n}$ with $a_n = q$ for all $n$
+is a Cauchy sequence and it represents the real number $q$. We can thus
+identify rational numbers with real numbers of same `value'.
+\end{rem}
+
+\begin{defn}\label{c4s3d2}
+The equivalence class of Cauchy sequences containing the sequence 
+$\seq{a_n}$ with the property $|a_n| < \epsilon$ for all $n > N$, where
+$N$ may depend on $\epsilon$ is called the zero real number. Sequences
+in the corresponding equivalence class are called zero sequences.
+\end{defn}
+
+\begin{defn}\label{c4s3d3}
+If $x = \overline{\seq{a_n}}$ and $y = \overline{\seq{b_n}}$ are two
+real number then their sum is defined as $x + y := \overline{\seq{a_n + 
+b_n}}$.
+\end{defn}
+
+\begin{lem}\label{c4s3l1}
+Addition of real numbers is a well-defined operation.
+\end{lem}
+
+\begin{defn}\label{c4s3d4}
+If $x = \overline{\seq{a_n}}$ and $y = \overline{\seq{b_n}}$ are two
+real number then their product is defined as $xy := 
+\overline{\seq{a_nb_n}}$.
+\end{defn}
+
+\begin{lem}\label{c4s3l2}
+Multiplication of real numbers is a well-defined operation.
+\end{lem}
+
+\begin{defn}\label{c4s3d5}
+If $x = \overline{\seq{a_n}}$ is a real number then its negation is 
+defined as $-x := \overline{\seq{-a_n}}$.
+\end{defn}
+
+\begin{lem}\label{c4s3l3}
+Negation of real numbers is a well-defined operation.
+\end{lem}
+
+\begin{defn}\label{c4s3d6}
+A sequence $\seq{a_n}$ of rational numbers is said to be bounded away 
+from zero iff there exists a rational number $c > 0$ such that $|a_n| > c$
+for all $n \in \son$.
+\end{defn}
+
+\begin{lem}\label{c4s3l4}
+For all $r, s \in \soq$, $|r + s| \ge |r| - |s|$.
+\end{lem}
+\begin{proof}
+$|r| = |r + s - s| \le |r + s| + |-s| \Rightarrow |r| - |s| \le |r + s$.
+\end{proof}
+
+\begin{lem}\label{c4s3l5}
+Let $x$ be a non-zero real number. Then its equivalence class contains 
+a sequence that is bounded away from zero.
+\end{lem}
+\begin{proof}
+Let $\seq{a_n}$ belong to the equivalence class of $x$ which may not be
+bounded away from zero. That is, some of its terms may be zero although
+all terms beyond a certain $n$ will be non-zero. 
+
+Since $\seq{a_n}$ is a Cauchy sequence, for a given $\epsilon > 0$, we
+can find $N_0 \in \son$ such that for all $n, m > N_0$, $d(a_m, a_n) <
+\epsilon/2$.
+
+For all $n > N_0$, it will be \emph{not} be the case that $|a_n| < 
+\epsilon$. If that were the case then $\seq{a_n}$ will be a zero sequence.
+Therefore, there is at least one $N > N_0$ such that $|a_N| > \epsilon$.
+
+Now, $|a_m| = |a_m - a_N + a_N| \ge |a_N| - |a_m - a_N| > \epsilon/2$,
+where we used lemma \ref{c4s3l4}. Here $m > N_0$. Now define a sequence
+$\seq{b_n}$ as
+\[
+b_n = \begin{cases}
+ a_{N_0} & \;\forall\; 0 \le n \le N_0 \\
+ a_n     & \;\forall\; n > N_0.
+\end{cases}
+\]
+Clearly $\seq{b_n} \sim \seq{a_n}$ but $\seq{b_n}$ is bounded away from 
+zero.
+\end{proof}
+
+\begin{lem}\label{c4s3l6}
+If $\seq{a_n}$ is a Cauchy sequence of rationals bounded away from zero 
+then $\seq{a_n^{-1}}$ is also a Cauchy sequence.
+\end{lem}
+\begin{proof}
+Since $\seq{a_n}$ is bounded away from zero there exists a rational number
+$c > 0$ such that $|a_n| > c$ for all $n \in \son$. Fix an $\epsilon > 0$.
+Choose an $N \in \son$ such that for all $m, n > N$, $d(a_m, a_n) < c^2
+\epsilon$. Now consider
+\begin{eqnarray*}
+d(a_n^{-1}, a_m^{-1}) &=& \left|\frac{1}{a_n} - \frac{1}{a_m}\right| \\
+ &=& \frac{|a_n - a_m|}{|a_na_m|} \\
+ &<& \frac{c^2\epsilon}{c^2} \\
+ &<& \epsilon.
+\end{eqnarray*}
+\end{proof}
+
+\begin{defn}\label{c4s3d7}
+Let $x$ be a non-zero real number. Then its equivalence class will have
+at least one sequence $\seq{a_n}$ that is bounded away from zero. The
+reciprocal of $x$ is defined as $x^{-1} := \overline{\seq{a_n^{-1}}}$.
+\end{defn}
+
+\begin{lem}\label{c4s3l7}
+Reciprocation of real numbers is a well-defined operation.
+\end{lem}
