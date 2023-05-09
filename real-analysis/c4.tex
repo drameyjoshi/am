@@ -207,6 +207,12 @@ b_n}}$.
 \begin{lem}\label{c4s3l1}
 Addition of real numbers is a well-defined operation.
 \end{lem}
+\begin{proof}
+Let $\seq{a_n} \sim \seq{b_n}$. Then we will show that $\seq{a_n + c_n}
+\sim \seq{b_n + c_n}$. Fix an $\epsilon > 0$. Then we can find $N \in 
+\son$ such that for all $n > N$. $d(a_n, b_n) < \epsilon/2$. Consider
+$d(a_n + c_n - b_n - c_n) = d(a_n - b_n) < \epsilon$ for all $n > N$.
+\end{proof}
 
 \begin{defn}\label{c4s3d4}
 If $x = \overline{\seq{a_n}}$ and $y = \overline{\seq{b_n}}$ are two
@@ -217,6 +223,12 @@ real number then their product is defined as $xy :=
 \begin{lem}\label{c4s3l2}
 Multiplication of real numbers is a well-defined operation.
 \end{lem}
+\begin{proof}
+Let $\seq{a_n} \sim \seq{b_n}$. Since $\seq{c_n}$ is a Cauchy sequence, it
+is bounded. Let $M$ be its bound. Fix an $\epsilon > 0$. We can find $N 
+\in \son$ such that for all $n > N$, $d(a_n - b_n) < \epsilon/M$. Consider 
+$d(c_na_n - c_nb_n) = |c_na_n - c_nb_n| = |c_n||a_n - b_n| < \epsilon$.
+\end{proof}
 
 \begin{defn}\label{c4s3d5}
 If $x = \overline{\seq{a_n}}$ is a real number then its negation is 
@@ -226,6 +238,10 @@ defined as $-x := \overline{\seq{-a_n}}$.
 \begin{lem}\label{c4s3l3}
 Negation of real numbers is a well-defined operation.
 \end{lem}
+\begin{proof}
+Let $\seq{a_n} \sim \seq{b_n}$. Then $d(a_n, b_n) = d(-a_n, -b_n)$. 
+Therefore, $\seq{-a_n} \sim \seq{-b_n}$.
+\end{proof}
 
 \begin{defn}\label{c4s3d6}
 A sequence $\seq{a_n}$ of rational numbers is said to be bounded away 
@@ -295,4 +311,34 @@ reciprocal of $x$ is defined as $x^{-1} := \overline{\seq{a_n^{-1}}}$.
 
 \begin{lem}\label{c4s3l7}
 Reciprocation of real numbers is a well-defined operation.
+\end{lem}
+\begin{proof}
+Let $\seq{a_n} \sim \seq{b_n}$. If their reciprocal exists then they
+are bounded away from zero. Let $c_1, c_2 > 0$ be such that $|a_n| > c_1$
+and $|b_n| > c_2$ for all $n \in \son$. Let $c = \min(c_1, c_2)$. Then
+we have 
+\[
+\frac{1}{|a_n|} < c; \frac{1}{|b_n|} < c
+\]
+so that
+\[
+\frac{1}{|a_nb_n|} < c^2.
+\]
+Fix an $\epsilon > 0$. Then there exists $N \in \son$ such that $d(a_n,
+b_n) < \epsilon c^2$ for all $n > N$. Now consider,
+\[
+\left|\frac{1}{a_n} - \frac{1}{b_n}\right| = \left|\frac{b_n - a_n}{a_nb_n}
+\right| = \frac{|a_n - b_n|}{a_nb_n} < \frac{c^2\epsilon}{c^2} = 
+\epsilon.
+\]
+\end{proof}
+
+From lemma \ref{c4s3l1} and \ref{c4s3l3} we infer
+\begin{lem}\label{c4s3l8}
+Subraction is a well-defined operation.
+\end{lem}
+
+Similarly, from \ref{c4s3l2} and \ref{c4s3l7} we infer
+\begin{lem}\label{c4s3l9}
+Division is a well-defined operation.
 \end{lem}
