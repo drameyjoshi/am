@@ -342,3 +342,114 @@ Similarly, from \ref{c4s3l2} and \ref{c4s3l7} we infer
 \begin{lem}\label{c4s3l9}
 Division is a well-defined operation.
 \end{lem}
+
+We will now prove the field theoretic properties of real numbers.
+\begin{lem}\label{c4s3l10}
+Addition is commutative.
+\end{lem}
+
+\begin{lem}\label{c4s3l11}
+Addition is associative.
+\end{lem}
+
+\begin{lem}\label{c4s3l12}
+For all real numbers $x$, $x + 0 = x$.
+\end{lem}
+
+\begin{lem}\label{c4s3l13}
+For all real numbers $x$, $x + (-x) = 0$.
+\end{lem}
+
+\begin{lem}\label{c4s3l14}
+Multiplication is commutative.
+\end{lem}
+
+\begin{lem}\label{c4s3l15}
+Multiplication is associative.
+\end{lem}
+
+\begin{lem}\label{c4s3l16}
+For all real numbers $x$, $x \times 1 = x$.
+\end{lem}
+
+\begin{lem}\label{c4s3l17}
+For all real numbers $x \ne 0$, $x \times x^{-1} = 1$.
+\end{lem}
+
+\begin{lem}\label{c4s3l18}
+Multiplication distributes over addition.
+\end{lem}
+
+\begin{lem}\label{c4s3l19}
+For all real numbers $x, y$ $x(-y) = -(xy) = (-x)y$.
+\end{lem}
+
+\begin{lem}\label{c4s3l20}
+For all real numbers $x$, $x \times 0 = 0$.
+\end{lem}
+\begin{proof}
+From lemma \ref{c4s3l13}, $1 + (-1) = 0$. Therefore, $x \times 0 =
+x \times (1 + (-1)) = x \times 1 + x \times (-1)$ using \ref{c4s3l18}.
+Using \ref{c4s3l19}, we have $x \times 0 = x \times 1 - x \times 1 = 0$.
+\end{proof}
+
+\section{Ordering the reals}\label{c4s4}
+\begin{defn}\label{c4s4d1}
+Let $\{a_n\}$ be a sequence of rationals. We say it is positively 
+(negatively) bounded away from zero iff we have a positive (negative)
+rational number $c > 0$ ($c < 0$) such that $a_n \ge c$ ($a_n \le c$)
+for all $n \in \son$.
+\end{defn}
+
+\begin{defn}\label{c4s4d2}
+A real number $x$ is said to be positive (negative) if $x = 
+\overline{\seq{a_n}}$ for some positively (negatively) bounded away from
+zero sequence $\seq{a_n}$ of rationals.
+\end{defn}
+
+\begin{lem}\label{c4s4l1}
+For every real number $x$ exactly one of the following three statements
+is true: (1) $x$ is zero, (2) $x$ is positive, (3) $x$ is negative. 
+\end{lem}
+\begin{proof}
+Let $x = \overline{\seq{a_n}}$. $x$ is positive of $\seq{a_n}$ is 
+positively bounded away from zero. Let, if possible, it be negative as 
+well. That is, $\seq{b_n} \in \overline{\seq{a_n}}$ but $\seq{b_n}$ is
+negatively bounded away from zero. If $c_b < 0$ is the bound of $\seq{b_n}$
+and $c_a > 0$ is the bound of $\seq{a_n}$ then $d(a_n, b_n) \ge c_a + c_b
+$ and they will not be equivalent. Therefore, $\seq{b_n}$ will not be a 
+member of $\overline{\seq{a_n}}$. Now let us examine the possibility
+of it being zero simultaneously. In that case, there will be a $\seq{b_n}$
+in $\overline{\seq{a_n}}$ such that $|b_n| < \epsilon$ for any $\epsilon > 
+0$ for all $n$ greater than some $N$. In particular, $|b_n| < c_a/2$ for 
+all $n$ beyond some $N$. If that were to be the case then $|a_n - b_n| \ge
+|a_n| - |b_n| \ge c_a/2$ for all large enough $n$. Once again it means 
+that $\seq{b_n}$ cannot be equivalent to $\seq{a_n}$.
+\end{proof}
+
+\begin{lem}\label{c4s4l2}
+A real number $x$ is negative iff $-x$ is positive.
+\end{lem}
+\begin{proof}
+$x = \overline{\seq{a_n}}$ is negative implies that $\seq{a_n}$ is 
+negatively bounded away from zero. Therefore, $\seq{-a_n}$ is positively
+bounded away from zero. By definition \ref{c4s3d5}, the equivalence class
+of this sequence is $-x$. Therefore $-x$ is positive.
+
+If $-x = \overline{\seq{b_n}}$ then $\seq{b_n}$ is negatively bounded away
+from zero. Therefore, $\seq{-b_n}$ is positively bounded away from zero 
+and its equivalence class will be $-(-x) = x$, a positive real.
+\end{proof}
+
+\begin{rem}
+$-(-x) = x$ follow immediately from the corresponding property of 
+rationals.
+\end{rem}
+
+\begin{lem}\label{c4s4l3}
+If $x$ and $y$ are positive then so are $x + y$ and $xy$.
+\end{lem}
+\begin{proof}
+Follows immediately from the corresponding properties of rationals.
+\end{proof}
+
