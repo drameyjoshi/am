@@ -182,7 +182,8 @@ Thus, $\seq{a_n} \sim \seq{c_n}$.
 \begin{defn}\label{c4s3d1}
 The equivalence class of a Cauchy sequence of rational numbers is called 
 a real number. We will denote the equivalence class of a Cauchy sequence
-$\seq{a_n}$ by $\overline{\seq{a_n}}$.
+$\seq{a_n}$ by $\overline{\seq{a_n}}$. The set of all real number is 
+denoted by $\sor$.
 \end{defn}
 
 \begin{rem}
@@ -347,42 +348,85 @@ We will now prove the field theoretic properties of real numbers.
 \begin{lem}\label{c4s3l10}
 Addition is commutative.
 \end{lem}
+\begin{proof}
+Let $x = \overline{\seq{a_n}}$ and $y = \overline{\seq{b_n}}$ then $x + y
+= \overline{\seq{a_n}} + \overline{\seq{b_n}} = \overline{\seq{a_n+b_n}}
+= \overline{\seq{b_n + a_n}} = \overline{\seq{b_n}} + \overline{\seq{a_n}}
+= y + x$.
+\end{proof}
 
 \begin{lem}\label{c4s3l11}
 Addition is associative.
 \end{lem}
+\begin{proof}
+Very similar to above and depends on the associativity of rationals.
+\end{proof}
 
 \begin{lem}\label{c4s3l12}
 For all real numbers $x$, $x + 0 = x$.
 \end{lem}
+\begin{proof}
+By definition \ref{c4s3d2}, the real number $0$ is the equivalence class of
+a sequence $\seq{b_n}$ with the property $|b_n| < \epsilon$ got all $n
+> N$. Let $x$ be the equivalence class of a sequence $\seq{a_n}$. Then
+$x + 0$ is the equivalence class of $\seq{c_n} = \seq{a_n} + \seq{b_n}$. 
+For $n > N$, $|c_n - a_n| = |b_n| < \epsilon$ so that $\seq{c_n} \sim
+\seq{a_n}$ and hence $x + 0 = x$.
+\end{proof}
 
 \begin{lem}\label{c4s3l13}
 For all real numbers $x$, $x + (-x) = 0$.
 \end{lem}
+\begin{proof}
+Follows immediately from the definition of negation and the fact that for
+any rational $a_n$, $a_n + (-a_n) = 0$.
+\end{proof}
 
 \begin{lem}\label{c4s3l14}
 Multiplication is commutative.
 \end{lem}
+\begin{proof}
+Similar to proof of lemma \ref{c4s3l10}.
+\end{proof}
 
 \begin{lem}\label{c4s3l15}
 Multiplication is associative.
 \end{lem}
+\begin{proof}
+Similar to proof of lemma \ref{c4s3l11}.
+\end{proof}
 
 \begin{lem}\label{c4s3l16}
 For all real numbers $x$, $x \times 1 = x$.
 \end{lem}
+\begin{proof}
+The real number $1$ is the equivalence class $\overline{\seq{b_n}}$
+where $b_n = 1$ for $n \in \son$. If $x = \overline{\seq{a_n}}$ then $x
+\times = \overline{\seq{a_nb_n}} = \overline{\seq{a_n}} = 1$. We used the
+property of rationals that $a_n \times 1 = a_n$.
+\end{proof}
 
 \begin{lem}\label{c4s3l17}
 For all real numbers $x \ne 0$, $x \times x^{-1} = 1$.
 \end{lem}
+\begin{proof}
+Follows immediately from the definition of reciprocal of a non-zero real
+number.
+\end{proof}
 
 \begin{lem}\label{c4s3l18}
 Multiplication distributes over addition.
 \end{lem}
+\begin{proof}
+Follows immediately from the corresponding property of rationals.
+\end{proof}
 
 \begin{lem}\label{c4s3l19}
 For all real numbers $x, y$ $x(-y) = -(xy) = (-x)y$.
 \end{lem}
+\begin{proof}
+Follows immediately from the corresponding property of rationals.
+\end{proof}
 
 \begin{lem}\label{c4s3l20}
 For all real numbers $x$, $x \times 0 = 0$.
@@ -453,3 +497,139 @@ If $x$ and $y$ are positive then so are $x + y$ and $xy$.
 Follows immediately from the corresponding properties of rationals.
 \end{proof}
 
+\begin{defn}\label{c4s4d3}
+The absolute value of a real number $x$ is defined as 
+\[
+|x| = \begin{cases}
+ x & \text{ if } x \ge 0 \\
+ -x & \text{ if } x < 0.
+\end{cases}
+\]
+\end{defn}
+
+\begin{defn}\label{c4s4d4}
+Let $x, y \in \sor$. We say $x > y$ iff $x - y$ is a positive real number
+and $x < y$ iff $x - y$ is a negative real number. We define $x \ge y$ iff
+$x > y$ or $x = y$ and $x \le y$ iff $x < y$ or $x = y$.
+\end{defn}
+
+\begin{prop}\label{c4s4p1}
+Let $x, y, z \in \sor$. Then:
+\begin{enumerate}
+\item Exactly one of the three statements $x = y, x < y, x > y$ is true.
+\item $x > y$ iff $y < x$.
+\item $x < y$ and $y < z$ implies $x < z$.
+\item If $x < y$ then $x + z < y + z$.
+\item If $z > 0$ and $x < y$ then $xz < yz$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item Let $d = x - y$. By lemma \ref{c4s4l1} exactly one of the statements
+$d > 0, d < 0, d = 0$ is true. Each of these statements corresponds to 
+$x > y, x < y, x = y$ respectively.
+\item If $x > y$ then $d > 0$, so that $-d < 0$, that is $-x + y < 0$ or 
+$y - x < 0$ or $y < x$. The converse can be proved similarly.
+\item Let $d = y - x$ and $e = z - y$ then $d + e = z - x$. Since $d > 0,
+e > 0$, by lemma \ref{c4s4l3} $d + e > 0$. Therefore $z > x$.
+\item $y + z - (x + z) = y - x > 0 \Rightarrow y + z > x + z$.
+\item $yz - xz = (y - x)z$. Since $x < y$, $y - z > 0$. We are given that
+$z > 0$. By lemma \ref{c4s4l3}, $(y - x)z > 0$ so that $yz > xz$.
+\end{enumerate}
+\end{proof}
+
+\begin{lem}\label{c4s4l4}
+Let $x > 0$ be a real number then $x^{-1} > 0$.
+\end{lem}
+\begin{proof}
+By lemma \ref{c4s3l19}, if $y = -x^{-1} > 0$ then $x(-y) = -(xy)$. Since
+$x > 0, y > 0$, by lemma \ref{c4s4l3}, $xy$ is positive, so that $-(xy)$
+is negative. Therefore $x(-y) = xx^{-1} = 1$ is negative.
+\end{proof}
+
+\begin{lem}\label{c4s4l5}
+Let $x, y \in \sor$, $x > 0, y > 0$ and $x < y$. Then $x^{-1} > 
+y^{-1}$.
+\end{lem}
+\begin{proof}
+$x < y \Rightarrow x^{-1}x < x^{-1}y$ because $x^{-1} > 0$. Therefore,
+$1 < x^{-1}y \Rightarrow y^{-1} < y^{-1}x^{-1}y = x^{-1}$.
+\end{proof}
+
+\begin{lem}\label{c4s4l6}
+Let $\seq{a_n}$ be a Cauchy sequence of non-negative rational numbers.
+Then $\overline{\seq{a_n}}$ is a non-negative real number.
+\end{lem}
+\begin{proof}
+Let, if possible, $\overline{\seq{a_n}} = x < 0$. Therefore, there is a
+sequence $\seq{b_n}$ which is negatively bounded away from zero such that
+$x = \overline{\seq{b_n}}$. Therefore, $\seq{a_n} \sim \seq{b_n} 
+\Rightarrow d(a_n, b_n) < \epsilon$ for all $n > N$. Let $c > 0$ be 
+such that $b_n < -c$ for all $n \in \son$. Then $-b_n > c > 0$ or $a_n
+- b_n > a_n + c \ge c$ because $a_n \ge 0$. Therefore, $|a_n - b_n| \ge c
+> 0$. Therefore, it is not possible for $\seq{b_n}$ to be in the 
+equivalence class of $\seq{a_n}$. This contradicts our assumption that
+$\seq{a_n} \sim \seq{b_n}$.
+\end{proof}
+
+An immediate corollary of this lemma is
+\begin{cor}
+If $\seq{a_n}$ and $\seq{b_n}$ are Cauchy sequences of rationals such
+that $a_n \ge b_n$ for all $n \in \son$ then $\overline{\seq{a_n}} \ge
+\overline{\seq{b_n}}$.
+\end{cor}
+\begin{proof}
+If $c_n = a_n - b_n$ then $\seq{c_n}$ is a sequence of non-negative
+rationals. Therefore, $\overline{\seq{c_n}} \ge 0 \Rightarrow \overline{
+\seq{a_n - b_n}} \ge 0 \Rightarrow \overline{\seq{a_n}} - \overline{\seq{
+b_n}} \ge 0 \Rightarrow \overline{\seq{a_n}} \ge \overline{\seq{b_n}}$.
+\end{proof}
+
+\begin{prop}\label{c4s4p2}
+Let $x > 0$ be a real number. Then there exists a rational number $q > 0$
+such that $q < x$ and a natural number $M$ such that $x \le M$.
+\end{prop}
+\begin{proof}
+$x > 0 \Rightarrow x = \overline{\seq{a_n}}$ for some $\seq{a_n}$ 
+positively bounded away from zero. Therefore, there is a positive rational
+$q > 0$ such that $a_n > q > 0$ for all $n \in \son$. Therefore $x > q$.
+
+Claim: If $x, z \in \soq$ such that $x < z$ then we can find $y \in \soq$
+such that $x < z < y$.
+Proof: $y = 2z - z$ has the desired property.
+
+Since $\seq{a_n}$ is a Cauchy sequence, there exists $N \in \son$ such 
+that for all $n, m \ge N$, $|a_n - a_m| < 1$. In particular, $|a_n - a_N|
+< 1 \Rightarrow -1 < a_n - a_N < 1 \Rightarrow a_N - 1 < a_n < a_N + 1$
+Therefore $x = \overline{\seq{a_n}} < a_N + 1$. By proposition 
+\ref{c3s4p1} there is a natural number $M$ greater than the rational number
+$a_N + 1$. Therefore $x < M \Rightarrow x \le M$.
+\end{proof}
+
+\begin{prop}[Archimedean property]\label{c4s4p3}
+Let $x \in \sor$ and $\epsilon > 0$ be another real number. Then there 
+exists a positive natural number $M$ such that $x < M\epsilon$.
+\end{prop}
+\begin{proof}
+If $x \le 0$, choose $M = 1$. If $x > 0$, then we know that $x/\epsilon > 
+0$. By proposotion \ref{c4s4p2} there exists a positive natural number 
+$N$ such that $x/\epsilon \le N < N + 1$. If $M = N + 1$, we have $x < 
+\epsilon M$.
+\end{proof}
+
+\begin{prop}\label{c4s4p4}
+Given two real numbers $x < y$ we can find a rational number $q$ such
+that $x < q < y$.
+\end{prop}
+\begin{proof}
+$x < y \Rightarrow y - x > 0$. If $x = \overline{\seq{a_n}}, y = 
+\overline{\seq{b_n}}, y - x = \overline{\seq{c_n}}$, where $c_n = b_n -
+a_n$ then $y - x > 0$ implies that there is a sequence $\seq{d_n} \in
+\overline{\seq{c_n}}$ that is positively bounded away from zero. That is,
+$d_n > k$ for a rational number $k > 0$. Further, $\seq{d_n} \sim 
+\seq{c_n}$. Therefore, given an $\epsilon > 0$, we can find $N \in \son$
+such that for all $n \ge N$, $|d_n - c_n| < \epsilon \Rightarrow c_n
+- \epsilon < d_n < c_n + \epsilon \Rightarrow k < d_n < c_n + \epsilon
+\Rightarrow k < b_n - a_n + \epsilon \Rightarrow a_n + k < b_n + \epsilon
+\Rightarrow a_n < a_n + k < b_n + \epsilon$ for all $n > N$.
+\end{proof}
