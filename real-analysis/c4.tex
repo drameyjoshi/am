@@ -617,19 +617,23 @@ $N$ such that $x/\epsilon \le N < N + 1$. If $M = N + 1$, we have $x <
 \epsilon M$.
 \end{proof}
 
+\begin{lem}\label{c4s4l7}
+Let $x$ be a positive real number. Then there exists a positive natural
+number $N$ such that $x > N^{-1}$.
+\end{lem}
+\begin{proof}
+If $x > 1$ then $N = 1$. If $0 < x < 1$, $1 < x^{-1}$. By proposition 
+\ref{c4s4p2} there exists a natural number $N$ such that $x^{-1} \le M <
+M + 1$ so that $x > (M + 1)^{-1}$. Choose $N = M + 1$.
+\end{proof}
+
 \begin{prop}\label{c4s4p4}
 Given two real numbers $x < y$ we can find a rational number $q$ such
 that $x < q < y$.
 \end{prop}
 \begin{proof}
-$x < y \Rightarrow y - x > 0$. If $x = \overline{\seq{a_n}}, y = 
-\overline{\seq{b_n}}, y - x = \overline{\seq{c_n}}$, where $c_n = b_n -
-a_n$ then $y - x > 0$ implies that there is a sequence $\seq{d_n} \in
-\overline{\seq{c_n}}$ that is positively bounded away from zero. That is,
-$d_n > k$ for a rational number $k > 0$. Further, $\seq{d_n} \sim 
-\seq{c_n}$. Therefore, given an $\epsilon > 0$, we can find $N \in \son$
-such that for all $n \ge N$, $|d_n - c_n| < \epsilon \Rightarrow c_n
-- \epsilon < d_n < c_n + \epsilon \Rightarrow k < d_n < c_n + \epsilon
-\Rightarrow k < b_n - a_n + \epsilon \Rightarrow a_n + k < b_n + \epsilon
-\Rightarrow a_n < a_n + k < b_n + \epsilon$ for all $n > N$.
+Since $y - x > 0$, using lemma \ref{c4s4l7}, there exists a positive
+natural number $N$ such that $y - x > N^{-1}$. Therefore, $N(y - x) > 1$.
+Therefore, there exists an integer $M$ such that $Nx < M < Ny$ or that
+$x < M/N < y$.
 \end{proof}
