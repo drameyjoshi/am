@@ -637,3 +637,123 @@ natural number $N$ such that $y - x > N^{-1}$. Therefore, $N(y - x) > 1$.
 Therefore, there exists an integer $M$ such that $Nx < M < Ny$ or that
 $x < M/N < y$.
 \end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] Let $a \le x < b$ and $c \le x < d$ be such that $|d - c| \ge
+|b - a|$. Then either $c \le a \le d$ or $c \le b \le d$ or both.
+\item[Solution:] We have $a \le x < b$ and $c \le x < d$. Let, if 
+possible, neither $c \le a \le d$ nor $c \le b \le d$. $a$ cannot be 
+greater than $d$ for that would mean $x \ge d$. Similarly, $b$ cannot be
+smaller than $c$ for that would mean $x \le c$. Therefore $a < c$ and $b 
+> d$ so that $b - a < d - c$ contradicting the assumption that $|d - c| 
+> |b - a|$. Therefore, one of the three possibilities must be true.
+
+\item[2:] Show that for every real number $x$ there is exactly one integer
+$N$ such that $N \le x < N + 1$.
+\item[Solution:] Let $x = \overline{\seq{a_n}}$ and let, if possible,
+there be two integers $N$ and $M$ such that $N \le x < N + 1$ and $M \le
+x < M + 1$. Since $\seq{a_n}$ is a Cauchy sequence, for a given $\epsilon
+> 0$ we can find $N_a$ such that for all $n, m \ge N_a$, $|a_n - a_m| 
+< \epsilon$. Choose $\epsilon = 1$ so that $|a_n - N| < 1$. Similarly,
+$|a_n - M| < 1$. From these two inequalities, we have
+\begin{eqnarray}
+N - 1 \le a_n \le N + 1 \\
+M - 1 \le a_n \le M + 1
+\end{eqnarray}
+From the previous problem we conclude that either $N$ lies between $M - 1$
+and $M + 1$ or $M$ lies between $N - 1$ and $N + 1$ either of which mean 
+that $N = M$.
+
+\item[3:] Let $x, y \in \sor$ and $\epsilon > 0$ be another real. Show that
+$|x - y| < \epsilon$ iff $y - \epsilon < x < y + \epsilon$ and that 
+$|x - y| \le \epsilon$ iff $y - \epsilon \le x \le y + \epsilon$.
+\item[Solution:] $|x - y| \le \epsilon$ implies $x - y \le \epsilon$ if 
+$x \ge y$ or $y - x \le \epsilon$ if $x < y$. Therefore $x \le y + 
+\epsilon$ if $x \ge y$ or $x - y \le -\epsilon$ if $x < y$. Combining the 
+two, we get $y - \epsilon \le x \le y + \epsilon$. The case of strict 
+inequality is similarly proved.
+
+\item[4:] Let $x, y \in \sor$. Show that $x \le y + \epsilon$ for all
+$\epsilon > 0$ iff $x \le y$. Show that $|x - y| \le \epsilon$ for all
+$\epsilon > 0$ iff $x = y$.
+\item[Solution:] If $x > y$ then $x - y = c$ for some positive real number 
+$c$. Therefore, $x = y + c > y + c/2$ contradicting the assumption that
+$x \le y + \epsilon$ for all $\epsilon > 0$.
+
+If $x = y$ then $|x - y| = 0 < \epsilon$ for any positive $\epsilon$. If
+$|x - y| \le \epsilon$ then $y - \epsilon \le x \le y + \epsilon$. Thus,
+$y - \epsilon \le x$ and $x \le y + \epsilon$, that is, $y \le x + 
+\epsilon$ and $x \le y + \epsilon$. Therefore, $y \le x$ and $x \le y$
+
+\item[5:] Let $\seq{a_n}$ be a Cauchy sequence of rationals and let $x$ be
+a real number. Show that if $a_n \le x$ ($a_n \ge x$) for all $n$ then 
+$\overline{\seq{a_n}} \le x$ ($\overline{\seq{a_n}} \ge x$).
+\item[Solution:] Let, if possible, $\overline{\seq{a_n}} > x$. By 
+proposition \ref{c3s4p4} there is a rational number $q$ such that 
+$\overline{\seq{a_n}} > q > x$. Therefore the sequence $\seq{a_n - q}$ is
+positively bounded away from zero. That is, for all $n \in \son$, $a_n -
+q > c$ for some positive rational $c > 0$. Therefore, $a_n > q$ but we
+also have $q > x$. Therefore we get $a_n > x$, a contradiction.
+
+\item[6:] If $x, y \in \sor$, define 
+\[
+\max(x, y) = \begin{cases}
+x & \text{ if } x \ge y \\
+y & \text{ if } x < y
+\end{cases}
+\]
+and
+\[
+\min(x, y) = \begin{cases}
+x & \text{ if } x \le y \\
+y & \text{ if } x > y.
+\end{cases}
+\] 
+Show that
+\begin{enumerate}
+\item[(a)] $\max(x, y) = -\min(-x, -y)$ and $\min(x, y) = -\max(-x, -y)$.
+\item[Solution:] Let $z = -\min(-x, -y)$. Therefore, $-z = -x$ if $-x \le 
+-y$ or $-z = -y$ if $-x > -y$. That is $z = x$ if $x \ge y$ of $z = y$ is
+$x < y$. But this is exactly the definition of the $\max$ function.
+
+The other equality can be similarly proved.
+
+\item[(b)] $\max(x, y) = \max(y, x)$. 
+\item[Solution:] Let $z = \max(x, y)$. Then $z = x$
+if $x \ge y$ and $z = y$ if $x < y$. Equivalently, $z = x$ if $y < x$ and 
+$z = y$ if $y \ge x$. But this makes $z = \max(y, x)$.
+
+\item[(c)] $\max(x, x) = x$.
+\item[Solution:] Let $\max(x, x) = z$. Then $z = x$ if $x \ge x$, which is
+always true.
+
+\item[(d)] $\max(x + z, y + z) = \max(x, y) + z$.
+\item[Solution:] Let $u = \max(x + z, y + z)$, Then $u = x + z$ if
+$x + z \ge y + z$ or $x \ge y$. Else $u = y + z$ if $x + z < y + z$ or
+$x < y$. Thus,
+\[
+u - z = \begin{cases}
+x & \text{ if } x \ge y \\
+y & \text{ if } x < y
+\end{cases}
+\]
+or $u - z = \max(x, y)$.
+
+\item[(e)] $\max(xz, yz) = z\max(x, y)$ if $z \ge 0$.
+\item[Solution:] Let $u = \max(xz, yz)$. Therefore, $u = xz$ if $xz \ge
+yz$ and $yz$ if $xz < yz$. Let us assume $z > 0$. Then we have $u/z = x$
+if $x \ge y$ and $u/z = y$ if $x < y$. Thus, we have $u/z = \max(x, y)$.
+If $z = 0$ then both sides are identically zero.
+
+If $z < 0$ then $\max(xz, yz) = z\min(x, y)$.
+
+\item[(f)] Let $x, y > 0$. Then $\max(x, y)^{-1} = \min(x^{-1}, y^{-1})$
+and $\min(x, y)^{-1} = \max(x^{-1}, y^{-1})$.
+\item[Solution:] Let $z = \max(x, y)^{-1}$ so that $z^{-1} = \max(x, y)$
+Thus, $z^{-1} = x$ if $x \ge y$ and $z^{-1} = y$ if $x < y$. Equivalently,
+$z^{-1} = x$ if $x^{-1} \le y^{-1}$ and $z^{-1} = y$ if $x^{-1} > y^{-1}$
+or $z = x^{-1}$ if $y^{-1} \ge x^{-1}$ and $z = y^{-1}$ if $y^{-1} <
+x^{-1}$. Thus, $x = \min(x^{-1}, y^{-1})$.
+\end{enumerate}
+\end{enumerate}
