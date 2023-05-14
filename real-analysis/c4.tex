@@ -757,3 +757,150 @@ or $z = x^{-1}$ if $y^{-1} \ge x^{-1}$ and $z = y^{-1}$ if $y^{-1} <
 x^{-1}$. Thus, $x = \min(x^{-1}, y^{-1})$.
 \end{enumerate}
 \end{enumerate}
+
+\section{The least upper bound property}\label{c4s5}
+\begin{defn}\label{c4s5d1}
+Let $E$ be a subset of $\sor$ and $M \in \sor$ be such that for all $x \in
+E, x \le M$. Then $M$ is called an upper bound of the set $E$.
+\end{defn}
+
+\begin{defn}\label{c4s5d2}
+Let $E \subset \sor$ and $M \in \sor$. $M$ is a least upper bound of $E$
+iff (a) $M$ is an upper bound of $E$ and (b) if $M^\op$ is another upper
+bound of $E$ then $M \le M^\op$.
+\end{defn}
+
+\begin{lem}\label{c4s5l1}
+Let $E \subset R$ and let $L, M \in \son$ be such that $L < M$ and for
+some integer $n > 0$, $L/n \in E$ and $M/n \notin E$. Then there exists
+an integer $m$ such that $L < m \le M$, $m/n$ is an upper bound of $E$
+but $(m - 1)/n$ is not. Further, $m$ is unique.
+\end{lem}
+\begin{proof}
+Suppose there is no such integer $m$. Then either all $m/n$ are members of
+$E$ or all of them are upper bounds of $E$. If they are members of $E$ 
+then by induction on integers starting with base case of $L = m$, we can
+show that $m/n \in E$ for all $m \le L$. In particular, $M/N \in E$, a
+contradiction.
+
+If all are upper bounds then we have $(m - 1)/n$ is an upper bound if 
+$m/n$ is. However, carrying out this logic $M - L$ times starting with
+$m = M$ we infer that $L/n$ is an upper bound of $E$, which is also not
+true.
+
+Let, if possible, there be two integers $m_1$ and $m_2$ with this 
+property. Without loss of generality, let $m_1 < m_2$. If $m_1/n$ is an 
+upper bound then so is $m_2/n$. However, $(m_2 - 1)/n$ is also an upper
+bound because it is either equal to $m_1$ or is greater than $m_1$. In
+either case we have $m_2/n$ and $(m_2 - 1)/n$ both being upper bounds of
+$E$.
+\end{proof}
+
+\begin{prop}\label{c4s5p1}
+Let a non-empty set $E \subset \sor$ have an upper bound. Then it has a 
+least upper bound.
+\end{prop}
+\begin{proof}
+Let $M$ be an upper bound of $E$. Since $E$ is not empty it has an element
+$x_0$ Let $n \ge 1$ be an integer. By Archimedean property, proposition
+\ref{c4s4p3}, there are integers $L$ and $H$ such that $L/n \le x_0$ and
+$H/n \ge M$. Since $x_0 \in E$. $L/n$ not an upper bound of $E$. Since
+$H/n \ge M$, $H/n$ is an upper bound of $E$. By lemma \ref{c4s5l1} there is
+a unique integer $m_n$ such that $L < m_n \le H$ such that $m_n/n$ is 
+an upper bound of $E$ but $(m_n - 1)/n$ is not. Note that the integer
+$m_n$ depends on $n$.
+
+Let $l, k \in \son$ such that $l > k \le N$ for some $N \in \son$ be
+integers with the property that $m_l/l$ is an upper bound of $E$ and
+$(m_l - 1)/l$ is not.
+
+Since $m_l/l$ is an upper bound but $(m_k - 1)/k$ is not, we have
+\[
+\frac{m_l}{l} > \frac{m_k - 1}{k} = \frac{m_k}{k} - \frac{1}{k}.
+\]
+Since $k \ge N$, $k^{-1} \le N^{-1}$ and $-k^{-1} \ge -N^{-1}$. Thus,
+\begin{equation}\label{c4s5e1}
+\frac{m_l}{l} - \frac{m_k}{k} > -\frac{1}{N}.
+\end{equation}
+
+Since $m_k/k$ is an upper bound but $(m_l - 1)/l$ is not, we have
+\[
+\frac{m_k}{k} > \frac{m_l - 1}{l}
+\]
+from which we get
+\begin{equation}\label{c4s5e2}
+\frac{m_k}{k} - \frac{m_l}{l} > -\frac{1}{N} \Rightarrow 
+\frac{m_l}{l} - \frac{m_k}{k} < \frac{1}{N}.
+\end{equation}
+From equations \eqref{c4s5e1} and \eqref{c4s5e2} we have
+\begin{equation}\label{c4s5e3}
+-\frac{1}{N} < \frac{m_l}{l} - \frac{m_k}{k} < \frac{1}{N}
+\Rightarrow \left|\frac{m_l}{l} - \frac{m_k}{k}\right| < \frac{1}{N}
+\end{equation}
+making $\seq{m_k/k}$ a Cauchy sequence. Let 
+\begin{equation}\label{c4s5e4}
+S = \overline{\seq{m_k/k}}.
+\end{equation}
+$\overline{\seq{1/n}} = 0$, we also have 
+\begin{equation}\label{c4s5e5}
+S = \overline{\seq{(m_k - 1)/k}}.
+\end{equation}
+Let $x \in E$ be an arbitrary element. Then $x \le m_k/k$ for all $k$.
+From problem (5) in the set of exercises in the previous section, we
+conclude that $x \le S$. Therefore, $S$ is an upper bound of $E$. Let
+$T$ be another upper bound of $E$. Then $T \ge (m_k - 1)/k$ for all $k$
+so that $S \ge T$. Therefore, $S$ is indeed the least upper bound of $E$.
+\end{proof}
+
+It is easy to prove
+\begin{prop}\label{c4s5p2}
+Let $E \subset \sor$ then $E$ can have at most one least upper bound.
+\end{prop}
+\begin{proof}
+Let $M_1$ and $M_2$ be two upper bounds of $E$. Since $M_1$ is a least 
+upper bound and $M_2$ is an upper bound we have $M_1 \le M_2$. We also
+have $M_2 \le M_1$.
+\end{proof}
+
+Combining propositions \ref{c4s5p1} and \ref{c4s5p2} we have
+\begin{thm}\label{c4s5t1}
+If $E \subset \sor$ is non-empty and has an upper bound then it has a 
+unique least upper bound.
+\end{thm}
+
+The least upper bound of a set $E \subset \sor$ is also called
+the supremum of $E$ and is denoted by $\sup(E)$. If $E$ has no upper bound
+then we write $\sup(E) = +\infty$. If $E$ is an empty set then we write
+$\sup(E) - -\infty$.
+
+A glaring shortcoming of the set $Q$ was that none of its members had
+$2$ as its square. The set $\sor$ does not have it.
+\begin{prop}\label{c4s5p3}
+There exists a positive real number $x$ such that $x^2 = 2$.
+\end{prop}
+\begin{proof}
+Let $E = \{y \in \sor \;|\; y \ge 0, y^2 < 2\}$. $E \ne \varnothing$
+because $1 \in E$. $E$ is bounded above because $y = 2$ is not a member
+of $E$. Therefore by theorem \ref{c4s5t1} $\sup(E)$ exists. If we denote it
+by $x$, we will show that $x^2 = 2$.
+
+If $x^2 < 2$, consider $(x + \epsilon)^2 = x^2 + 2\epsilon x + \epsilon^2
+< 2$. Since $x^2 < 2$, $x < 2$ so that $2\epsilon x < 4\epsilon$. If we 
+choose $\epsilon < 1$ then $\epsilon^2 < \epsilon$ so that
+$x^2 + 5\epsilon < 2$ Therefore $x + \epsilon \in E$. But this contradicts
+the assumption that $x$ is an upper bound of $E$.
+
+If $x^2 > 2$ then we will show that we can find $\epsilon > 0$ such that
+$(x - \epsilon)^2$ is also greater than $2$. For $(x - \epsilon)^2 =
+x^2 - 2\epsilon x + \epsilon^2 \ge x^2 - 2\epsilon x$ for $\epsilon \le 1$.
+We also have $x < 2$ because a number like $1.6$ is smaller than $2$ and is
+yet an upper bound of $E$. $x < 2 \Rightarrow -x > -2 \Rightarrow -2x
+\epsilon > -4\epsilon \Rightarrow x^2 - 2\epsilon x > x^2 - 4\epsilon$.
+Thus, $(x - \epsilon)^2 > x^2 - 4\epsilon$. Since $x^2 > 2$, there is a
+positive real $c$ such that $x^2 - c = 2$. If we choose $\epsilon < c/4$
+then $4\epsilon < c \Rightarrow -4\epsilon > -c \Rightarrow x^2 - 4\epsilon
+> x^2 - c = 2$. Thus, we have $(x - \epsilon)^2 > 2$ or that $(x-\epsilon)$
+is also an upper bound of $E$. This too contradicts the fact that $x$ is
+the least upper bound of $E$.
+\end{proof}
+
