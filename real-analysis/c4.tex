@@ -904,3 +904,47 @@ is also an upper bound of $E$. This too contradicts the fact that $x$ is
 the least upper bound of $E$.
 \end{proof}
 
+\begin{defn}\label{c4s5d3}
+A real number $m$ is said to be a lower bound of a set $E$ if $m \le x$
+for all $x \in E$. A set is said to be bounded below if it has a lower 
+bound.
+\end{defn}
+
+\begin{rem}
+Every real number is a lower bound of an empty set.
+\end{rem}
+
+\begin{defn}\label{c4s5d4}
+Let $E$ be a set that is bounded below. A real number $m$ is said to be
+the greatest lower bound of $E$ is $m$ is a lower bound of $E$ and every
+other lower bound is less than or equal to $m$. The greatest lower bound
+of a set $E$ is also called the infimum of $E$ and is denoted by $\inf(E)$.
+\end{defn}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] Let $E \subset \sor$ be such that $M = \sup(E)$ is a real 
+number. If $-E = \{-x \;|\; \forall x  \in E\}$. Then $-M = \inf(-E)$.
+\item[Solution:] $M = \sup(E) \Rightarrow x \le M \;\forall\; x \in E
+\Rightarrow -M \le -x \;\forall\; x \in E \Rightarrow -M \le y \;\forall\;
+y \in -E$. Therefore, $-M$ is a lower bound of $-E$. Let $-m$ be another
+lower bound of $-E$. That is $-m \le y \;\forall\; y \in -E \Rightarrow
+m \ge -y \;\forall\; y \in -E \Rightarrow m \ge x \;\forall\; x \in E$.
+Thus, $m$ is an upper bound of $E$. Therefore $m \ge \sup(E) = M$ so that
+$-m \le -M$. Therefore $-M = \inf(-E)$.
+
+\item[2:] Let $q_1, q_2, \ldots$ be a sequence of rational numbers with
+the property that $|q_n - q_m| < M^{-1}$ whenever $M \ge 1$ and $n, m > M$.
+Show that $\seq{q_n}$ is a Cauchy sequence. Further more, if $S = 
+\overline{\seq{q_n}}$ then show that $|q_m - S| \le M^{-1}$ for all
+$M \ge 1$.
+\item[Solution:] Fix a rational $\epsilon > 0$. By proposition \ref{c3s4p1}
+there is a natural number, $N$ such that $N + 1 > \epsilon^{-1} > N$ or 
+that $(N+1)^{-1} < \epsilon < N^{-1}$. Let $M = N+1$. Therfore, if 
+$|q_n - q_m| < M^{-1}$ then $|q_n - q_m| < \epsilon$ for all $n, m > M$,
+making $\seq{q_n}$ a Cauchy sequence.
+
+Let $S = \overline{\seq{q_n}}$. Therefore, given an $\epsilon > 0$, $|
+S - q_n| < \epsilon$. By proposition \ref{c3s4p1} we can find $N$ such that
+$N < \epsilon^{-1} < N + 1$ of $\epsilon < N^{-1}$.
+\end{enumerate}
