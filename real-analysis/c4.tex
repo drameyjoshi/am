@@ -948,3 +948,182 @@ Let $S = \overline{\seq{q_n}}$. Therefore, given an $\epsilon > 0$, $|
 S - q_n| < \epsilon$. By proposition \ref{c3s4p1} we can find $N$ such that
 $N < \epsilon^{-1} < N + 1$ of $\epsilon < N^{-1}$.
 \end{enumerate}
+
+\section{Real exponentiation - I}\label{c4s6}
+\begin{defn}\label{c4s6d1}
+Let $x \in \sor$. Then $x^0 := 1$ and $x^{n+1} = x \times x^n$ for all
+$n \in \son$.
+\end{defn}
+
+\begin{defn}\label{c4s6d2}
+Let $x \in \sor, x \ne 0$. Then $x^{-n} := 1/x^n$ for all $n \in \son$.
+\end{defn}
+
+None of the lemmas about exponentiation of rational numbers depend on
+the least upper bound property. Therefore, they are true for real numbers
+as well. However, we recall that in the case of rational numbers we 
+defined exponentiation only in the case where the exponent is an integer.
+We did not define $p^q$, where $p, q \in \sor$ because we knew that for
+$p = 2, q = 1/2$ the result is not a rational number.
+
+Real numbers are constructed to get over this problem. We can, therefore,
+define
+\begin{defn}\label{c4s6d3}
+Let $x \ge 0$ be a real number and $n \ge 1$ be a positive integer. Then
+$x^{1/n} := \sup\{y \in \sor \;|\; y^n \le x\}$. The number $x^{1/n}$ is
+called the $n$-th root of $x$.
+\end{defn}
+
+\begin{lem}\label{c4s6l1}
+The $n$-th root of a positive real number as defined in \ref{c4s6d3} 
+exists.
+\end{lem}
+\begin{proof}
+The $n$-root is defined as the supremum of a set. Therefore, the existence
+of the $n$-th root is equivalent to the existence of the supremum. If
+$E = \sup\{y \in \sor \;|\; y^n \le x\}$ then $0 \in E$ so that $E$ is
+not empty. Next we show that $E$ is bounded above. We consider two cases
+\begin{itemize}
+\item $x < 1$. In this case $1$ is an upper bound of $E$. For if there was
+a $y \in E$ greater than $1$ then $y > 1 \Rightarrow y^n > 1$ but such a
+$y$ cannot be a member of $E$.
+\item $x > 1$. In this case $x$ is an upper bound of $E$. For if there was
+$y > x$ in $E$ the we would have $y^n > x^n$. However $x > 1 \Rightarrow
+x^n > x$. This implies $y^n > x^n > x$, again a contradiction.
+\end{itemize}
+Thus in all cases $E$ is a non-empty set that is bounded above.
+\end{proof}
+
+We will now prove basic properties of roots of positive reals.
+\begin{lem}\label{c4s6l2}
+$y = x^{1/n} \Rightarrow y^n = x$.
+\end{lem}
+\begin{proof}
+$y^n$ cannot be greater than $x$ because we defined $y$ to be the supremum
+of $E = \{y \in \sor \;|\; y^n \le x\}$. Let, if possible, $y^n < x$. Let
+$\delta > 0$. Consider 
+\[
+(y + \delta)^n = y^n + ny^{n-1}\delta + \frac{n(n-1)}{2}y^{n-2}\delta^2
++ \cdots + \delta^n > y^n,
+\]
+because all terms in $\delta$ are positive. This implies that $y$ is not
+an upper bound of $E$, a contradiction.
+\end{proof}
+
+\begin{lem}\label{c4s6l3}
+$y^n = x \Rightarrow y = x^{1/n}$.
+\end{lem}
+\begin{proof}
+If $y^n = x$ then $y \in E$ where $E = \{y \in \sor \;|\; y \ge 0, y \le
+x^n\}$. $y$ is also $\sup(E)$ because any number greater than it will have
+its $n$th power greater than $x$. $\sup(E)$ is defined to be the $n$-th
+root of $x$.
+\end{proof}
+
+The previous two lemmas are not silly. We defined $x^{1/n}$ as a superemum
+of a set not as a certain value. This definition has a different flavour 
+from the definitions of binary operations.
+
+\begin{lem}\label{c4s6l4}
+$x^{1/n}$ is a non-negative real number. It is positive iff $x > 0$.
+\end{lem}
+\begin{proof}
+$x^{1/n} := \sup(E)$ where $E = \{y \in \sor \;|\; y \ge 0, y^n \le x\}$.
+If $y < 0$, it will be less than all members of $E$ and cannot be the
+supremum of $E$.
+
+If $y > 0$ then $y^n > 0$ therefore $x > 0$. Conversely, if $x > 0$ then
+$y > 0$. For if not $x = y^n = 0$.
+\end{proof}
+
+\begin{lem}\label{c4s6l5}
+$x > y$ iff $x^{1/n} > y^{1/n}$.
+\end{lem}
+\begin{proof}
+Let $E_x = \{u \in \sor \;|\; u^n \le x\}$ and $E_y = \{v \in \sor \;|\; 
+v^n \le y\}$. We want to show that $x > y \Rightarrow \sup(E_x) > 
+\sup(E_y)$. Now $(\sup(E_x))^n = x > y$. Therefore, $\sup(E_x)$ is an
+upper bound of $E_y$ or $\sup(E_x) \ge \sup(E_y)$. If $\sup(E_x) = 
+\sup(E_y)$ then $(\sup(E_x))^n = (\sup(E_y))^n$ or $x = y$, a 
+contradiction. Therefore, $\sup(E_x) > \sup(E_y)$.
+
+To prove the converse, we use lemmas \ref{c3s3l25} and \ref{c3s3l26},
+for they are applicable to real numbers as well. $x^{1/n} > y^{1/n} 
+\Rightarrow (x^{1/n})^n > (y^{1/n})^n \Rightarrow x > y$.
+\end{proof}
+
+\begin{lem}\label{c4s6l6}
+If $x > 1$ then $\sup(E) > \sup(F)$ where $E = \{y \in \sor \;|\; y \ge 0,
+y^n \le x\}$ and $F = \sup\{y\in \sor \;|\; y \ge 1, y^n \le x\}$.
+\end{lem}
+\begin{proof}
+$x > 1 \Rightarrow x^{1/n} > 1$, by lemma \ref{c4s6l5}. Therefore, $\sup
+(E) > 1$. Therefore, we can as well restrict the values of $y$ to be 
+greater than $1$.
+\end{proof}
+
+\begin{lem}\label{c4s6l7}
+If $x > 1$ and $k > l > 0$ then $x^{1/k} < x^{1/l}$.
+\end{lem}
+\begin{proof}
+Using lemma \ref{c4s6l6} we can as well define $x^{1/k} := \sup(F_k)$ and
+$x^{1/l} := \sup(F_l)$ where
+\begin{eqnarray}
+F_k &:=& \{y \in \sor \;|\; y > 1, y^k \le x\} \\
+F_l &:=& \{y \in \sor \;|\; y > 1, y^l \le x\} 
+\end{eqnarray}
+If $k > l$ and $y > 1$ then $y^k > y^l$. Therefore, $\sup(F_k) > 
+\sup(F_l)$.
+\end{proof}
+
+\begin{lem}\label{c4s6l8}
+If $0 < x < 1$ and $k > l > 0$ then $x^{1/k} > x^{1/l}$.
+\end{lem}
+\begin{proof}
+By lemma \ref{c4s6l5} $x < 1 \Rightarrow x^{1/k} < 1, x^{1/l} < 1$. 
+Therefore, the suprema of the sets
+\begin{eqnarray}
+E_k &:=& \{y \in \sor \;|\; y \ge 0, y^k \le x\} \\
+E_l &:=& \{y \in \sor \;|\; y \ge 0, y^l \le x\} 
+\end{eqnarray}
+Since $y < 1$ and $k > l > 0$, $y^k < y^l$. Therefore, $\sup(E_l) >
+\sup(E_k)$.
+\end{proof}
+
+\begin{lem}\label{c4s6l9}
+$(xy)^{1/n} = x^{1/n}y^{1/n}$.
+\end{lem}
+\begin{proof}
+Let
+\begin{eqnarray}
+E_x &:=& \{u \in \sor \;|\; u \ge 0, u^n \le x\} \\
+E_y &:=& \{v \in \sor \;|\; v \ge 0, v^n \le y\} \\
+E_{xy} &:=& \{w \in \sor \;|\; w \ge 0, w^n \le xy\}.
+\end{eqnarray}
+We want to show that $\sup(E_{xy}) = \sup(E_x)\sup(E_y)$. If we define
+$w = uv$ for $u, v \ge 0$ then we have $w^n = (uv)^n = u^nv^n$. Further,
+$u^n \le x, v^n \le y \Rightarrow u^nv^n \le xy \Rightarrow w^n \le xy$.
+Therefore, we can as well define $E_{xy}$ as
+\[
+E_{xy} = \{uv \;|\; u, v \in \sor u, v \ge 0, (uv)^n = u^nv^n\le xy\}.
+\]
+Claim: $\sup(E_{xy}) = \sup(E_x)\sup(E_y)$.
+Proof: If $\sup(E_{xy}) < \sup(E_x)\sup(E_y)$ then we have $u_1^nv_1^n <
+u^nv^n$, where $u_1v_1 \in E_{xy}$. That is $u_1^nv^n < xy$. This means 
+that $u_1^nv_1^n$ is not an upper bound of $E_{xy}$, a contradiction.
+
+If $\sup(E_{xy}) > \sup(E_x)\sup(E_y)$ then we have $u_1^nv_1^n > u^nv^n
+= xy$. Therefore $u_1^nv_1^n$ is not the lowest upper bound of $E_{xy}$,
+a contradiction.
+\end{proof}
+
+\begin{lem}
+$(x^{1/n})^{1/m} = x^{1/nm}$.
+\end{lem}
+\begin{proof}
+Let $u = (x^{1/n})^{1/m}$, then by lemmas \ref{c4s6l2}, $u^m = x^{1/n}$. 
+Using the same lemma once again, $(u^m)^n = x$. Using the analogue of 
+lemma \ref{c3s3l25} for real numbers, we have $u^{nm} = x$. Using lemma
+\ref{c4s6l3} we have $u = x^{1/nm}$.
+\end{proof}
+
