@@ -1117,7 +1117,7 @@ If $\sup(E_{xy}) > \sup(E_x)\sup(E_y)$ then we have $u_1^nv_1^n > u^nv^n
 a contradiction.
 \end{proof}
 
-\begin{lem}
+\begin{lem}\label{c4s6l10}
 $(x^{1/n})^{1/m} = x^{1/nm}$.
 \end{lem}
 \begin{proof}
@@ -1127,3 +1127,140 @@ lemma \ref{c3s3l25} for real numbers, we have $u^{nm} = x$. Using lemma
 \ref{c4s6l3} we have $u = x^{1/nm}$.
 \end{proof}
 
+\begin{defn}\label{c4s6d4}
+Let $x > 0$ be a real number and $q = a/b \in \sor$. Then we define $x^q
+:= (x^{1/b})^a$.
+\end{defn}
+
+\begin{lem}\label{c4s6l11}
+Let $q = a/b = c/d$ then for any real $x > 0$, $(x^{1/b})^a = (x^{1/d})^c$.
+\end{lem}
+\begin{proof}
+$(x^{1/b})^a = (x^{1/bd})^{ad} = (x^{1/bcd})^{acd}$. $a/b = c/d \Rightarrow
+ad = bc$ so that $(x^{1/b})^a = (x^{1/d})^c$.
+\end{proof}
+
+This lemma shows that the exponentiation with rational numbers is a 
+well-defined operation. We next prove a few properties of $x^q$.
+
+\begin{lem}\label{c4s6l12}
+If $x > 0$ and $q \in \sor$, $x^q > 0$.
+\end{lem}
+\begin{proof}
+Let $q = a/b$. By lemma \ref{c4s6l4}, if $x > 0$ then $x^{1/b} > 0$. By the
+analogue of lemma \ref{c3s3l26} for real numbers, we have $x^{1/b} > 0
+\Rightarrow (x^{1/b})^a > 0$.
+\end{proof}
+
+\begin{lem}\label{c4s6l13}
+If $x > 0$, $q, r \in \sor$, $x^{q+r} = x^q x^r$.
+\end{lem}
+\begin{proof}
+Let $q = a/b, r = c/d$ then 
+\[
+x^{q+r} = (x^{1/bd})^{ad + bc}.
+\]
+Using the analogue of lemma \ref{c3s3l25} for real numbers,
+\[
+x^{q+r} = (x^{1/bd})^{ad} (x^{1/bd})^{bc} = x^{a/b} x^{c/d} = x^q x^r.
+\]
+\end{proof}
+
+\begin{lem}\label{c4s6l14}
+If $x > 0$, $q, r \in \sor$ then $(x^q)^r = x^{qr}$.
+\end{lem}
+\begin{proof}
+Let $q = a/b, r = c/d$. Then, 
+\[
+x^q = x^{a/b} = (x^{1/b})^a = x^{1/b} \cdots x^{1/b}, a \text{ times.}
+\]
+The last equation follows from the definition of exponentiation with 
+integers. Therefore,
+\[
+(x^q)^r = ((x^q)^{1/d})^c = ((x^{1/b} \cdots x^{1/b})^{1/d})^c.
+\]
+From lemma \ref{c4s6l9},
+\[
+(x^q)^r = ((x^{1/b})^{1/d} \cdots (x^{1/b})^{1/d})^c.
+\]
+From lemma \ref{c4s6l10},
+\[
+(x^q)^r = (x^{1/bd} \cdots x^{1/bd})^c = (x^{a/bd})^c = x^{ac/bd} = x^{qr}.
+\]
+In the second equality we used the definition of exponentiation with 
+integer, in the third we used the definition of exponentiation with 
+rationals and in the last one the definition of product of rationals.
+\end{proof}
+
+\begin{lem}\label{c4s6l15}
+$x^{-q} = 1/x^q$.
+\end{lem}
+\begin{proof}
+Let $q = a/b$ then 
+\[
+x^{-q} = x^{-a/b} = (x^{1/b})^{-a} = \frac{1}{(x^{1/b})^a} = \frac{1}{x^q}.
+\]
+\end{proof}
+
+\begin{lem}\label{c4s6l16}
+If $q > 0$ then $x > y$ iff $x^q > y^q$.
+\end{lem}
+\begin{proof}
+Let $q = a/b$ then using lemma \ref{c4s6l5}, $x > y \Leftrightarrow
+x^{1/b} > y^{1/b}$. Since $q > 0$, we have $a > 0$. Therefore, by the 
+analogue of lemma \ref{c3s3l26} we get $x^{1/b} > y^{1/b} \Leftrightarrow
+(x^{1/b})^a > (y^{1/b})^a \Leftrightarrow x^{a/b} > y^{a/b}$.
+\end{proof}
+
+\begin{lem}\label{c4s6l17}
+If $x > 1$ then $x^q > x^r$ iff $q > r$. If $x < 1$ then $x^q > x^r$ iff 
+$q < r$.
+\end{lem}
+\begin{proof}
+Let $q = a/b, r = c/d$. $q > r \Rightarrow ad > bc$. If $x > 1$ then
+$x^{ad} > x^{bc}$ iff $ad > bc$ iff $q > r$. Using lemma \ref{c4s6l5},
+taking the $d$-th root, we have $x^a > x^{bc/d} \Leftrightarrow q > r$.
+Taking the $b$-th root, we have $x^{a/b} > x^{c/d} \Leftrightarrow q > r$.
+
+If $x < 1$ then $x^{ad} > x^{bc}$ iff $ad < bc$. The rest of the proof is
+similar.
+\end{proof}
+
+\begin{lem}\label{c4s6l18}
+$(xy)^q = x^q y^q$.
+\end{lem}
+\begin{proof}
+Let $q = a/b$. Then $(xy)^q = ((xy)^{1/b})^q$. Using lemma \ref{c4s6l9}, we
+have $(xy)^q = (x^{1/b} y^{1/b})^a = (x^{1/b})^a (y^{1/b})^a = 
+x^{a/b}y^{a/b} = x^qy^q$.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] If $x \in \sor$ and $n$ is an even natural number then show that
+$x^n \ge 0$.
+\item[Solution:] $n$ is even allows us to write $n = 2m$. Therefore, $x^n
+= x^{2m} = (x^2)^m$. For all $x \in \sor$, $x^2 \ge 0$. Therefore, $x^n
+= (x^2)^m \ge 0$.
+
+\item[2:] If $x \in \sor$ then $|x| = (x^2)^{1/2}$.
+\item[Solution:] The $n$-th root is always defined to be positive. 
+Therefore, 
+\[
+(x^2)^{1/2} = \begin{cases}
+x & \text{ if } x \ge 0 \\
+-x & \text{ if } x < 0
+\end{cases}
+\]
+This is the same as the definition of $|x|$.
+
+\item[3:] Let $x, y$ by positive reals and $q \ge 1$ be a rational. Then
+show that $\max(x^q, y^q) = \max(x, y)^q$ and $\min(x^q, y^q) = 
+\min(x, y)^q$. What happens if $q < 1$?
+\item[Solution:] If $q \ge 1$ then $x > y \Rightarrow x^q > y^q$. Thus
+$max(x, y) = x$ and $\max(x^q, y^q) = x^q$. Also $\min(x, y) = y$ and $\min(
+x^q, y^q) = y^q$. The case $x < y$ is similarly analysed.
+
+If $q < 1$ then the situation is the same because lemma \ref{c4s6l16} is
+applicable to $q \ge 0$.
+\end{enumerate}
