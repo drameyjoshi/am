@@ -1,0 +1,124 @@
+\chapter{Limits of sequences}\label{c5}
+\section{Convergence and limit laws}\label{c5s1}
+\begin{defn}\label{c5s1d1}
+Given two real numbers $x$ and $y$, we define the distance between them as
+$d(x, y) = |x - y|$.
+\end{defn}
+\begin{defn}\label{c5s1d2}
+Let $\epsilon > 0$ be a real number. We say that two real numbers $x$ and $y$
+are $\epsilon$-close iff $d(x, y) \le \epsilon$.
+\end{defn}
+\begin{defn}\label{c5s1d3}
+A sequence $\seq{a_n}$ of real number is a Cauchy sequence if for every
+real $\epsilon > 0$ there exists a natural number $N$ such that for all
+$n, m \ge N$, $d(a_n, a_m) \le \epsilon$.
+\end{defn}
+\begin{defn}\label{c5s1d4}
+A sequence $\seq{a_n}$ of real numbers converges to $L \in \sor$ iff for
+every $\epsilon > 0$ we can find $N \in \son$ such that for all $n \ge N$,
+$d(a_n, L) \le \epsilon$. A sequence that converges to a real number is 
+called convergent. Otherwise it is called divergent.
+\end{defn}
+
+\begin{prop}\label{c5s1p1}
+If a sequence is convergent then it converges to a unique limit.
+\end{prop}
+\begin{proof}
+Let, if possible, $\seq{a_n}$ converge to $L_1$ and $L_2$. Hence, for any 
+$\epsilon > 0$, we can find $N_1, N_2 \in \son$ such that for all $n \ge 
+N_1$, $d(L_1, a_n) < \epsilon/2$ and for all $n \ge N_2$, $d(L_2, a_n) <
+\epsilon/2$. If $N = \max(N_1, N_2)$, then both inequalities are true for
+all $n \ge N$. Now consider $|L_1 - L_2| = |L_1 - a_n + a_n - L_2| \le
+|L_1 - a_n| + |L_2 - a_n| \le \epsilon$. Therefore, $L_1 = L_2$.
+\end{proof}
+\begin{rem}
+If $x, y \in \sor$ are such that for any $\epsilon > 0$, $|x - y| < \epsilon$
+then $x = y$.
+\end{rem}
+
+When a sequence $\seq{a_n}$ converges to a limit $L$ we write it as
+\[
+\lim_{n \rightarrow \infty} a_n = L.
+\]
+
+\begin{prop}\label{c5s1p2}
+\[
+\lim_{n \rightarrow \infty} \frac{1}{n} = 0.
+\]
+\end{prop}
+\begin{proof}
+Let $\epsilon > 0$. Then if $N > \epsilon^{-1}$, $n > N$, we have 
+\[
+\frac{1}{n} < \frac{1}{N} < \epsilon \Rightarrow \left|\frac{1}{n} - 0\right|
+< \epsilon.
+\]
+\end{proof}
+
+\begin{prop}\label{c5s1p3}
+A convergent sequence is a Cauchy sequence.
+\end{prop}
+\begin{proof}
+Let 
+\[
+\lim_{n \rightarrow \infty} a_n = L.
+\]
+Then for any $\epsilon > 0$ we can find $N \in \son$ such that for all
+$n > N$, $|a_n - L| < \epsilon/2$. If $m, n > N$, then $|a_n - a_m| <
+|a_n - L + L - a_m| \le |a_n - L| + |a_m - L| > \epsilon$.
+\end{proof}
+
+\begin{prop}\label{c5s1p4}
+If a sequence of rationals is a Cauchy sequence in the sense of chapter 
+\ref{c4} then it also a Cauchy sequence in the sense of definition 
+\ref{c5s1d3}. The converse is also true.
+\end{prop}
+\begin{proof}
+If a sequence is Cauchy in the sense of chapter \ref{c4} then for any real
+$\epsilon > 0$ we find a rational $\epsilon_r > 0$ such that $\epsilon_r <
+\epsilon$. For this choice of $\epsilon_r$ we can find $N \in \son$ such that
+for all $n, m > N$, $d(a_n, a_m) < \epsilon_r < \epsilon$.
+
+To prove the converse, interchange the role of $\epsilon$ and $\epsilon_r$.
+\end{proof}
+
+\begin{prop}\label{c5s1p5}
+Let $\seq{a_n}$ be a Cauchy sequence of rational and $L = 
+\overline{\seq{a_n}}$ then 
+\[
+\lim_{n \rightarrow \infty} a_n = L.
+\]
+\end{prop}
+\begin{proof}
+Let $L$ be represented by a sequence $\seq{b_n}$ in the equivalance class
+$\overline{\seq{a_n}}$. Therefore, $\overline{\seq{a_n}} = 
+\overline{\seq{b_n}}$. Let $\epsilon > 0$ be a given real number. Let 
+$\epsilon > \epsilon_r > 0$ be a positive rational number. Then
+\[
+|L - a_N| = |\overline{\seq{b_n}} - a_N|
+\]
+For a fixed $N$, $a_N = \overline{\seq{a_N}}$ where all terms of the sequence
+are $a_N$. Therefore,
+\[
+|L - a_N| = |\overline{\seq{b_n}} - \seq{a_N}| = |\overline{b_n - a_N}| <
+\epsilon
+\]
+for $n, N > M$, where the number $M$ depends on $\epsilon_r$. Since 
+$\seq{a_N}$ is also a member of $\overline{\seq{b_n}}$.
+\end{proof}
+
+\begin{defn}\label{c5s1d5}
+A sequence $\seq{a_n}$ is said to be bounded if there is a real number $M>0$
+such that $|a_n| < M$ for all $n$. The number $M$ is called a bound of the
+sequence.
+\end{defn}
+
+\begin{prop}\label{c5s1p6}
+A convergent sequence is bounded.
+\end{prop}
+\begin{proof}
+Let $\seq{a_n}$ converge to $L$. For a fixed $\epsilon > 0$, we can find
+$N \in \son$ such that, for all $n > N$, $|a_n - L| < \epsilon$. Therefore,
+for all $n > N$, $L - \epsilon < a_n < L + \epsilon$. Let $M_1$ be the 
+maximum number in the finite set $|a_1|, \ldots, |a_n|$. Then $M = M_1 + 
+L + \epsilon$ is such that $|a_n| < M$ for all $n$.
+\end{proof}
