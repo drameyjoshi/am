@@ -235,3 +235,230 @@ If we choose $\epsilon > d$ then we have $a_n - b_n < 0$ for all $n \in
 all $n \ge N$, $|\min(a_n, b_n) - x| = |a_n - x| < \epsilon/2 < \epsilon$.
 \end{proof}
 
+\subsection{Exercices}
+\begin{enumerate}
+\item[1:] Explain why lemma \ref{c5s1l6} fails when $\seq{b_n}$ converges 
+to $0$.
+\item[Solution:] We will show that when
+\[
+\lim_{n \rightarrow \infty}b_n = 0
+\]
+then $\seq{b_n^{-1}}$ does not converge. Fix an $\epsilon > 0$, then we can
+find $n \in \son$ such that for all $n \ge N$, $|b_n| < \epsilon$. Therefore,
+\[
+\frac{1}{|b_n|} = \left|\frac{1}{b_n}\right| > \frac{1}{\epsilon}
+\]
+Thus, as $n \rightarrow \infty$, the terms of $\seq{b_n^{-1}}$ rise without
+limit. It is not a bounded sequence and therefore not convergent.
+
+\begin{rem}
+For any $M > 0$, we can find $N \in \son$ such that $|b_n| < M^{-1}$ or that
+$|b_n|^{-1} > M$.
+\end{rem}
+\end{enumerate}
+
+\section{The extended real number system}\label{c5s2}
+\begin{defn}\label{c5s2d1}
+The extended real number system $\soe$ is the set $\sor$ with two additional
+symbols $+\infty$ and $-\infty$. They are distinct from each other and from
+every real numbers. $x \in \soe$ is called finite iff it is a real number
+and infinite iff it is $\pm\infty$.
+\end{defn}
+
+\begin{defn}\label{c5s2d2}
+The operation of negation $x \mapsto -x$ on $\sor$ is extended to $\soe$ by
+letting $-(+\infty) := -\infty$ and $-(-\infty) = \infty$.
+\end{defn}
+
+\begin{defn}\label{c5s2d3}
+Let $x, y \in \soe$. Then $x \le y$ iff one of the following three statements
+is true
+\begin{enumerate}
+\item $x, y \in \sor$ and $x \le y$,
+\item $y = +\infty$.
+\item $x = -\infty$.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}\label{c5s2l1}
+Let $x, y, z \in \soe$. Then the following statements are true.
+\begin{enumerate}
+\item $x \le x$.
+\item Exactly one of the statements $x < y, x = y$ of $x > y$ is true.
+\item $x \le y, y \le z \Rightarrow x \le z$.
+\item $x \le y \Rightarrow -x \le -y$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+If $x, y, z \in \sor$ then we have already proved these statements. If $x = 
+\infty$ then $x \le x$ because of statement 2 in definition \ref{c5s2d3}. If
+$x = -\infty$ then $x \le x$ because of statement 3 in definition 
+\ref{c5s2d3}
+
+If $x = \infty$ then $x > y$ is true for all $y \in \soe - \{\infty\}$. 
+Likewise, if $x = -\infty$ then $x < y$ is true for all $y \in \soe - 
+\{-\infty\}$. $x = y$ is true of $x = \infty, y = \infty$ or $x = -\infty,
+y = -\infty$ or $x = y \in \sor$.
+
+$x \le y$ if $x \le y \;\land\; x, y \in \sor$ or $y = \infty$ or $x = 
+-\infty$. Likewise, $y \le z$ if $y \le z \;\land\; y, z \in \sor$ or $z =
+\infty$ of $y = -\infty$. If $x = -\infty$ then $x \le z$ for all $z \in 
+\soe$. If $z = \infty$, $x \le z$ for all $x \in \infty$. If $y = \infty$
+then $z = \infty$ and hence $x \le z$ is true. If $y = -\infty$ then $x =
+-\infty$ and hence $x \le z$ is true. 
+
+Let $x \le y$. Then either $x, y \in \sor \;\land\; x \le y$ of $y = \infty$
+or $x = -\infty$. In the first case, we have already proved that $x \le y
+\Rightarrow -x \ge -y$. If $y = \infty$ then by definition \ref{c5s2d2},
+$-y = -\infty$ and hence $-y \le -x$ for all $x \in \soe$. If $x = -\infty$
+then by definition \ref{c5s2d2}, $-x = \infty$ and hence $-x \ge -y$ for all
+$y \in \soe$.
+\end{proof}
+
+\begin{defn}\label{c5s2d4}
+Let $E \subset \soe$. Then we define the supremum of $E$ using the following
+rule.
+\begin{enumerate}
+\item If $E \subset \sor$ then its supremum is as defined as in definition 
+\ref{c4s5d2}.
+\item If $\infty \in E$ then $\sup(E) := \infty$.
+\item If $\infty \notin E$ but $-\infty \in E$ then $\sup(E) := 
+\sup(E - \{-\infty\})$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}\label{c5s2d5}
+If $E \subset \soe$ then $\inf(E) = -\sup(-E)$, where $-E = \{-x \;|\; x
+\in E\}$.
+\end{defn}
+
+\begin{thm}\label{c5s2t1}
+Let $E \subset \soe$ then the following statements are true.
+\begin{enumerate}
+\item $\forall\; x \in E$, $x \le \sup(E)$ and $x \ge \inf(E)$.
+\item If $M \in \soe$ is an upper bound for $E$ then $\sup(E) \le M$.
+\item If $m \in \soe$ is an lower bound for $E$ then $\inf(E) \ge m$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+If $\sup(E) \in \sor$ then $\sup(E)$ is an upper bound of $E$ so that
+$x \le \sup(E)$ is true. Further, it is a least upper bound so that if
+$M \in \sor$ is any other upper bound then $\sup(E) \le M$. If $M = \infty$
+then $\sup((E) \le M$ continues to be true.
+
+If $\sup(E) = \infty$ then $x \le \sup(E)$ is true by definition 
+\ref{c5s2d3}. Further, $M \in \soe$ can be an upper bound of $E$ iff $M =
+\infty$. Therefore, $\sup(E) \le M$ by lemma \ref{c5s2l1}.
+
+The statements about infimum can be proved analogously.
+\end{proof}
+
+It is important to note that the supremum or the infimum of a set need not
+be a member of a set.
+
+\section{Suprema and infima of sequences}\label{c5s3}
+\begin{defn}\label{c5s3d1}
+Let $\seq{a_n}$ be a sequence of real numbers. Then $\sup\seq{a_n} :=
+\sup\{a_n \;|\; n \in \son\}$ and $\inf\seq{a_n} := \inf\{a_n \;|\; n 
+\in \son\}$.
+\end{defn}
+
+\begin{prop}\label{c5s3p1}
+Let $\seq{a_n}$ be a sequence of real numbers and let $x = \sup\seq{a_n}
+\in \soe$. Then $a_n \le x$ for all $n \in \son$. If $M \in \soe$ is an
+upper bound for $\{a_n \;|\; n \in \son\}$ then we have $x \le M$. Finally, 
+for every extended
+real number $y$ for which $y < x$ there exists at least one $n \in \son$
+such that $y < a_n \le x$.
+\end{prop}
+\begin{proof}
+Let $E = \{a_n \;|\; n \in \son\}$. Then $x = \sup\seq{a_n} \Rightarrow
+x = \sup(E)$. By theorem \ref{c5s2t1} $a_n \le x$ for all $n \in \son$.
+and if $M \in \soe$ is an upper bound of $E$ then $x \le M$.
+
+Now let $y < x$. Then $y \in \sor$ and $y \notin \soe$. If there was no $a_n$
+greater than $y$ then $y$ will be an upper bound of $E$ and we would have $
+x \ge y$, a contradiction.
+\end{proof}
+
+The corresponding proposition for infima is
+\begin{prop}\label{c5s3p2}
+Let $\seq{a_n}$ be a sequence of real numbers and let $x = \inf\seq{a_n}
+\in \soe$. Then $a_n \ge x$ for all $n \in \son$. If $m \in \soe$ is a
+lower bound for $\{a_n \;|\; n \in \son\}$ then we have $x \ge m$. Finally, 
+for every extended real number $y$ for which $y > x$ there exists at least 
+one $n \in \son$ such that $y > a_n \ge x$.
+\end{prop}
+The proof is similar to that of proposition \ref{c5s3p1}.
+
+In proposition \ref{c5s1p6} we proved that convergent sequences are bounded.
+However, the converse is not true. The sequence $\{1, -1, 1, -1, \ldots\}$
+is bounded but not convergent. However, if a sequence is bounded and monotone
+then we show that it converges. 
+\begin{prop}\label{c5s3p3}
+Let $\seq{a_n}$ be a sequence of real numbers and let $M \in \sor$ be its
+upper bound. If $a_{n+1} \ge a_n$ for all $n \ge N$ for some $N \in \son$
+then $\seq{a_n}$ converges and
+\[
+\lim_{n \rightarrow \infty}a_n = \sup\seq{a_n} \le M.
+\]
+\end{prop}
+\begin{proof}
+Let us first assume that the sequence is positive after some index $m$. 
+We will show that the sequence has to be Cauchy. For if were not then there
+will be an $\epsilon_0 > 0$ such that $a_{n+1} - a_n \ge \epsilon_0$ for
+all $n \ge N > m$ and some $N \in \son$. Therefore $a_{n + k} \ge a_n + 
+k\epsilon_0$. By 
+Archimedean property of real numbers (\ref{c4s4p3}) there will be a positive 
+integer $K$ such that $M < K\epsilon$ or that $a_{n + K} \ge a_n + 
+K\epsilon > a_n + M > M$, contradicting the requirement that $M$ is an upper
+bound of $\seq{a_n}$.
+
+Now let us consider the case where $a_n$ are all negative. For some $N \in
+\son$ we can find $K \in \son$ such that $-a_N + M < K\epsilon_0$. Therefore
+$a_{N + K} > a_N + K\epsilon>0 > -a_N + M > M$, again a contradiction. Note
+that $-a_N > 0$.
+
+Since $\seq{a_n}$ is Cauchy, it converges and as a limit, say $L$. We will
+now show that $L = \sup\seq{a_n}$. We first show that $L$ is an upper bound
+of $E = \{a_n \;|\; n \in \son$. If it was not then there will be some $N
+\in \son$ for which $a_N > L$ and if $\epsilon = a_N - L$. Then, for $n > N$,
+$|a_n - L| = a_n - L > a_N - L$, as the sequence is monotonic. Therefore,
+$|a_n - L| > \epsilon$ so that $L$ is not a limit of the sequence, a
+contradiction. 
+
+We will next show that $L$ is the least upper bound of $E$. If it were
+not then there would be a real number $K < L$ such that $a_n \le K < L$ for
+all $n \in \son$. If $0 < \epsilon < L - K$ then $|a_n - L| = L - a_n =
+L - K + K - a_n > \epsilon + (K - a_n) > \epsilon$. Therefore $L$ cannot be
+a limit of the sequence.
+
+Thus, we have shown that $L = \sup(E)$. Since $M$ is an upper bound of $E$
+we surely have $L \le M$.
+\end{proof}
+
+We can analogously show that
+\begin{prop}\label{c5s3p4}
+Let $\seq{a_n}$ be a sequence of real numbers and let $m \in \sor$ be its
+lower bound. If $a_{n+1} \le a_n$ for all $n \ge N$ for some $N \in \son$
+then $\seq{a_n}$ converges and
+\[
+\lim_{n \rightarrow \infty}a_n = \inf\seq{a_n} \le m.
+\]
+\end{prop}
+
+\begin{prop}\label{c5s3p5}
+Let $0 < x < 1$ be a real number. Then we have
+\[
+\lim_{n \rightarrow \infty}x^n = 0,
+\]
+\end{prop}
+\begin{proof}
+We first note that $x^n > 0$ and $x^{n+1} < x^n$ for all $n \in \son$. 
+Therefore the sequence $\seq{x^n}$ is monotonically decreasing and bounded
+below. Therefore, by proposition \ref{c5s3p5} it converges to a limit $L$.
+We will show that $L = 0$. The sequence $\seq{x^{n+1}}$ is also monotonically
+decreasing and bounded below and its limit will be $Lx$. However both the
+sequences are the same so that $Lx = L$, Since $0 < x < 1$, this is possible
+only if $L = 0$.
+\end{proof}
