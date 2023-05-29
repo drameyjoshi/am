@@ -38,8 +38,9 @@ then $x = y$.
 
 When a sequence $\seq{a_n}$ converges to a limit $L$ we write it as
 \[
-\lim_{n \rightarrow \infty} a_n = L.
+\lim_{n \rightarrow \infty} a_n = L
 \]
+or simply $\lim a_n = L$.
 
 \begin{prop}\label{c5s1p2}
 \[
@@ -461,4 +462,269 @@ We will show that $L = 0$. The sequence $\seq{x^{n+1}}$ is also monotonically
 decreasing and bounded below and its limit will be $Lx$. However both the
 sequences are the same so that $Lx = L$, Since $0 < x < 1$, this is possible
 only if $L = 0$.
+\end{proof}
+
+\subsection{Exercices}
+\begin{enumerate}
+\item[1:] Explain why proposition \ref{c5s3p5} fails when $x > 1$.
+\item[Solution:] The sequence $\seq{x^n}$ is monotonically increasing and
+unbounded. Therefore it is not Cauchy and it does not converge.
+\end{enumerate}
+
+\section{Limsup, liminf and limit points}\label{c5s6}
+\begin{defn}\label{c5s6d1}
+Let $\seq{a_n}$ be a sequence of real numbers, $x \in \sor$ and $\epsilon
+> 0$ be a real number. We say that $x$ is $\epsilon$-adherent to $\seq{a_n}$
+iff there exists an $n \ge 0$ such that $|a_n - x| < \epsilon$. We say
+that $x$ is continually $\epsilon$-adherent to $\seq{a_n}$ iff there exists
+an $N \in \son$ such that $|a_n - x| < \epsilon$ for all $n \ge N$. We say
+that $x$ a limit point of $\seq{a_n}$ iff $x$ is continually $\epsilon$-
+adherent to $\seq{a_n}$ for all $\epsilon > 0$.
+\end{defn}
+
+\begin{rem}
+$x$ is $\epsilon$-adherent to $\seq{a_n}$ iff there is at least one point
+$a_m$ for which $|a_m - x| < \epsilon$.
+\end{rem}
+
+\begin{rem}
+$x$ is continually $\epsilon$-adherent to $\seq{a_n}$ means that beyond a
+certain $a_N$, one can always find at least one $a_m$ such that $|a_m - x|
+< \epsilon$. This \emph{does not} mean that for all $m \ge N$, $|a_m - x|
+< \epsilon$. The latter situation is described by saying that $\seq{a_n}$
+is \emph{eventuall} $\epsilon$-close to $x$.
+\end{rem}
+
+\begin{rem}
+$x$ is a limit point iff for all $\epsilon > 0$, there exists $N \in \son$
+such that for there is at least one $m \ge N$ for which $|a_m - x| < 
+\epsilon$.
+\end{rem}
+
+Limits are limit points but not conversely.
+\begin{prop}\label{c5s6p1}
+Let $\seq{a_n}$ converge to a $c \in \sor$. Then $c$ is a unique limit point 
+of $\seq{a_n}$.
+\end{prop}
+\begin{proof}
+$\seq{a_n}$ converges to $c$ implies that for every $\epsilon > 0$ there 
+exists an $N \in \son$ such that $|a_n - x| < \epsilon$ for all $n \ge N$.
+Thus, $\seq{a_n}$ is continually $\epsilon$-adherent to $x$ and hence $x$
+is a limit point of $\seq{a_n}$.
+
+Now let $y \in \sor$ be another limit point of $\seq{a_n}$. Fix an $\epsilon
+> 0$. Then we can find an $N \in \son$ such that $|a_n - y| < \epsilon/2$ for
+at least one $n \ge N$. But we also have $|a_n - x| < \epsilon/2$ for all 
+$n \ge N$. Therefore, $|x - y| = |x - a_n + a_n - y| \le |x - a_n| + 
+|y - a_n| < \epsilon$. Therefore $x = y$.
+\end{proof}
+
+\begin{rem}
+Recall that the claim `$|x - y| < \epsilon$ for all $\epsilon > 0$ implies
+$x = y$' follows from the fact that both $x$ and $y$ belong to the same
+equivalence class of Cauchy sequence of rationals.
+\end{rem}
+
+\begin{defn}\label{c5s4d2}
+We define the limit superior of a sequence $\seq{a_n}$ as
+\[
+\limsup\seq{a_n} = \inf(\seq{\sup(\seq{a_n}_{n \ge m})}). 
+\]
+\end{defn}
+Informally, we start with $\seq{a_n}$ and for each $m \ge 0$, we look at 
+suprema beyond $a_m$. This is the sequence $\seq{b_m} = \seq{
+\sup(\seq{a_n}_{n \ge m})}$. $\inf(b_m)$ is the limit supremum of 
+$\seq{a_n}$.
+
+Likewise,
+\begin{defn}\label{c5s4d3}
+We define the limit inferior of a sequence $\seq{a_n}$ as
+\[
+\liminf\seq{a_n} = \sup(\seq{\inf(\seq{a_n}_{n \ge m})}).
+\]
+\end{defn}
+Informally, we start with $\seq{a_n}$ and form a sequence $\seq{b_m}$ where
+$\seq{b_m} = \seq{\sup(\seq{a_n}_{n \ge m})}$. $\sup{b_m}$ is the limit 
+inferior of $\seq{a_n}$.
+
+A few observations about the sequences $\seq{b_m}$ in the above definition:
+\begin{lem}\label{c5s4l1}
+Let $\seq{a_n}$ be a sequence of real numbers and let $b_m = \sup\seq{
+{a_n}}_{n \ge m}$. Then the sequence $\seq{b_m}$ is monotone decreasing.
+\end{lem}
+\begin{proof}
+$b_{m + 1} = \sup(\seq{a_n}_{n \ge m + 1})$ so that $b_m = \max(a_m, 
+b_{m+1})$ or that $b_m \ge b_{m+1}$.
+\end{proof}
+
+\begin{rem}
+The sequence $\seq{b_m}$ where $b_m$ is defined in lemma \ref{c5s4l1} may
+not be bounded below. If $\seq{a_n}$ is a monotone increasing sequence then
+$\seq{b_m} = \{\infty, \infty, \ldots\}$ and $\limsup\seq{a_n} = \infty$.
+\end{rem}
+
+Likewise,
+\begin{lem}\label{c5s4l2}
+Let $\seq{a_n}$ be a sequence of real numbers and let $b_m = \inf\seq{
+{a_n}}_{n \ge m}$. Then the sequence $\seq{b_m}$ is monotone increasing.
+\end{lem}
+\begin{proof}
+$b_{m + 1} = \inf(\seq{a_n}_{n \ge m + 1})$ so that $b_m = \min(a_m, 
+b_{m+1})$ or that $b_m \le b_{m+1}$.
+\end{proof}
+
+\begin{rem}
+The sequence $\seq{b_m}$ where $b_m$ is defined in lemma \ref{c5s4l1} will
+not be bounded above. If $\seq{a_n}$ is a stricly monotone increasing 
+sequence, that is $a_n < a_{n + 1}$ for all $n \in \son$, then
+$\seq{b_m} = \{a_1, a_2, \ldots\}$ and $\liminf\seq{a_n} = \infty$.
+\end{rem}
+
+Let $\seq{a_n}$ be a sequence of real numbers, $L = \limsup\seq{a_n}$ and i
+$l = \liminf\seq{a_n}$. Then the following statements are true:
+\begin{lem}\label{c5s4l3}
+For every $x > L$, there exists an $N \in \son$ such that $a_n < x$ for
+all $n \ge N$.
+\end{lem}
+\begin{proof}
+Given that $L = \inf(\seq{\sup(\seq{a_n}_{n \ge m})})$. Let $b_m = 
+\sup(\seq{a_n}_{n \ge m}) > x$. By lemma \ref{c5s4l1}, $\seq{b_m}$ is 
+monotone decreasing. Since $L = \inf\seq{b_m}$, if $x > L$ then there are
+infinitely many $b_m < x$ for all $m \ge N$ for some $N \in \son$. Thus,
+$\sup(\seq{a_n}_{n \ge m}0 < x$ for all $m \ge N$. Therefore $a_m < x$ for
+all $m \ge N$.
+\end{proof}
+
+Likewise,
+\begin{lem}\label{c5s4l4}
+For every $x < l$, there exists an $N \in \son$ such that $a_n > x$ for
+all $n \ge N$.
+\end{lem}
+\begin{proof}
+Given that $l = \sup(\seq{\inf(\seq{a_n}_{n \ge m})})$. Let $b_m = \inf(\seq
+{a_n}_{n \ge m})$. By lemma \ref{c5s4l2}, $\seq{b_m}$ is a monotone
+increasing sequence. Therefore, if $x < l$ then there are an infinitely many
+$b_m$ beyond a certain $N \in \son$ such that $x < b_m$. That is $x < \inf(
+\seq{a_n}_{n \ge m})$ or that $a_n > x$ for all $n \ge N$.
+\end{proof}
+
+\begin{lem}\label{c5s4l5}
+For every $x < L$, for all $N \in \son$, there exists $n \ge N$ such that
+$a_n > x$.
+\end{lem}
+\begin{proof}
+Given that $L = \inf(\seq{\sup(\seq{a_n}_{n \ge m})})$ and $x < L$. If $b_m
+= \sup(\seq{a_n}_{n \ge m})$ then by lemma \ref{c5s4l1} $\seq{b_m}$ is 
+monotone decreasing. Since $x < L$, there exists $N \in \son$ such that $
+b_m > x$ for all $m \ge N$. Thus, $\sup(\seq{a_n}_{n \ge m}) > x$ for all
+$m \ge N$. Therefore, there exists at least one $a_n$, $n \ge M$ such that
+$a_n > x$.
+\end{proof}
+
+Likewise,
+\begin{lem}\label{c5s4l6}
+For every $x > l$, for all $N \in \son$. there exists $n \ge N$ such that 
+$a_n < x$.
+\end{lem}
+\begin{proof}
+Given that $l = \sup(\seq{\inf(\seq{a_n}_{n \ge m)}})$. If $b_m = \inf(\seq{
+a_n}_{n \ge n})$ then by lemma \ref{c5s4l2}, $\seq{b_m}$ is monotone 
+increasing. If $x > l$ then for all $N \in \son$, $x > b_N$. Therefore,
+there exists at least one $a_n$ for $n \ge N$ such that $x > a_n$.
+\end{proof}
+
+\begin{lem}\label{c5s4l7}
+$\inf(\seq{a_n}) \le l \le L \le \sup(\seq{a_n})$.
+\end{lem}
+\begin{proof}
+By definition $l = \sup(\seq{\inf(\seq{a_n}_{n \ge m})})$. In particular,
+$l \ge \inf(\seq{a_n}_{n \ge 0})$. Therefore, $\inf(\seq{a_n}) \le l$. 
+Similarly $L = \inf(\seq{\sup(\seq{a_n}_{n \ge m})}) \Rightarrow L \le 
+\sup(\seq{a_n}_{n \ge 0})$ or that $L \le \sup(\seq{a_n})$. 
+
+Let $B_m = \sup({a_n}_{n \ge m})$ and $b_m = \inf(\seq{a_n}_{n \ge m})$. 
+Then $B_m \ge b_m$ for all $m \in \son$. Further, $\seq{B_m}$ is monotone
+decreasing and $\seq{b_m}$ is monotone increasing. Therefore, 
+$\inf{\seq{B_m}} \ge \sup(\seq{b_m})$
+\end{proof}
+
+\begin{lem}\label{c5s4l8}
+If $c$ is any limit point of $\seq{a_n}$ then $l \le c \le L$.
+\end{lem}
+\begin{proof}
+$c$ is a limit point of $\seq{a_n}$ implies that for any $\epsilon > 0$ 
+and for all $m \in \son$, there is at least one $N \ge m$ such that $|a_N
+- c| < \epsilon$. That is, $a_N - \epsilon < c < a_N + \epsilon$. 
+
+If $B_m = \sup(\seq{a_n}_{n \ge m})$ then $B_m \ge a_n$ for all $n \ge m$. 
+In particular, $B_m \ge a_N$. If $B_m > a_N$, choose $\epsilon < B_m - a_N$
+so that we have $c < B_m$. Otherwise $c = B_m$. In all situations, $c 
+\le B_m$. Therefore, $c \le \inf(\seq{B_m})$ or $c \le L$.
+
+If $b_m = \inf(\seq{a_n}_{n \ge m})$ then $b_m \le a_n$ for all $n \ge m$.
+In particular, $b_m \le a_N$. If $b_m < a_N$, choose $\epsilon < a_N - b_m$
+so that $a_N - \epsilon > b_m$ so that we have $c > b_m$. Otherwise $c = 
+b_m$. In all situations, $c \ge b_m$, so that $c \ge \sup(\seq{b_m}) = l$.
+\end{proof}
+
+\begin{lem}\label{c5s4l9}
+If $L \in \sor$ then $L$ is a limit point of $\seq{a_n}$.
+\end{lem}
+\begin{proof}
+Given that $L = \inf(\seq{\sup(\seq{a_n}_{n \ge m})}) \in \sor$. Therefore
+$L \le B_m$ for all $m \ge 0$ where $B_m = \sup(\seq{a_n}_{n \ge m})$. Since
+$\seq{B_m}$ is monotone decreasing and $L$ is its infimum, for any $\epsilon
+> 0$, there is an $N \in \son$ such that $B_m - L \le \epsilon$ for all 
+$m \ge N$. Since $L \in \sor$, $B_m \in \sor$. $B_m = \sup(\seq{a_n}_
+{n \ge m}) \Rightarrow B_m \ge a_n \;\forall\; n \ge m$. Therefore, $a_n -
+L \le B_m - L \le \epsilon \;\forall\; n \ge m$. Therefore, $L$ is a limit
+point of $\seq{a_n}$.
+\end{proof}
+
+\begin{lem}\label{c5s4l10}
+If $l \in \sor$ then $l$ is a limit point of $\seq{a_n}$.
+\end{lem}
+\begin{proof}
+Given that $l = \sup(\seq{\inf(\seq{a_n}_{n \ge m})}) \in \sor$. Therefore,
+$l \ge b_m$ for all $m \ge 0$, where $b_m = \inf(\seq{a_n}_{n \ge m})$. Since
+$\seq{b_m}$ is monotone increasing and $l$ is its supremum, for any $\epsilon
+> 0$, there is an $N \in \son$ such that $l - b_m \ge \epsilon$ for all
+$m \ge N$. Since $l \in \sor$, $b_m \in \sor$. $b_m = \inf(\seq{a_n}_
+{n \ge m} \Rightarrow b_m \le a_n \;\forall\; n \ge m$. Therefore, $l - b_m
+\ge l - a_n$ or that $l - a_n \le \epsilon \;\forall\; n \ge m$, making $l$
+a limit point of $\seq{a_n}$.
+\end{proof}
+
+\begin{lem}\label{c5s4l11}
+Let $c \in \sor$. If $\lim a_n = c$ then we must have $l = L = c$. 
+\end{lem}
+\begin{proof}
+Let $\lim a_n = c$. Therefore, for a given $\epsilon > 0$ we can find an
+$N \in \son$ such that $|a_n - c| \le \epsilon/2 \;\forall\; n \ge N$. Let
+$B_m = \sup(\seq{a_n}_{n \ge m})$. Then there exists at least one $r \ge m$
+such that $B_m - a_r < \epsilon/2$. Therefore $|B_m - c| = |B_m - a_r + a_r
+- c| \le B_m - a_r + |a_r - c| < \epsilon$.
+
+Similarly, if $b_m = \inf(\seq{a_n}_{n \ge m})$ then there exists at least
+one $r \ge m$ such that $a_r - b_m < \epsilon/2$. Therefore, $|c - b_m| =
+|c - a_r| + a_r - b_m < \epsilon$.
+\end{proof}
+
+\begin{lem}\label{c5s4l12}
+If $l = L = c$ then $\lim a_n = c$.
+\end{lem}
+\begin{proof}
+Follows immediately from lemma \ref{c5s4l8}.
+\end{proof}
+
+The next set of assertions are about comparison of limit suprema and infima
+of two sequences. Let $\seq{a_n}$ and $\seq{b_n}$ be sequences of reals
+such that $a_n \le b_n$ for all $n \in \son$. Then, we have:
+\begin{lem}\label{c5s4l13}
+$\sup(\seq{a_n}) \le \sup(\seq{b_n})$.
+\end{lem}
+\begin{proof}
+Let $A = \sup(\seq{a_n})$ and $B = \sup(\seq{b_n})$. Then, for any $\epsilon
+> 0$, we can find $r, s \in \son$ such that $A - a_r < \epsilon$ and $B - 
+b_s < \epsilon$. 
 \end{proof}
