@@ -145,7 +145,7 @@ $|a_n - b_n - (x - y)| = |a_n - x - (b_n - y)| \le |a_n - x| + |b_n - y|
 \end{proof}
 
 \begin{lem}\label{c5s1l3}
-If $c \in sor$ then $\seq{ca_n}$ converges to $cx$.
+If $c \in \sor$ then $\seq{ca_n}$ converges to $cx$.
 \end{lem}
 \begin{proof}
 Fix an $\epsilon > 0$. If $c = 0$, the sequence is a constant sequence of all
@@ -724,7 +724,236 @@ such that $a_n \le b_n$ for all $n \in \son$. Then, we have:
 $\sup(\seq{a_n}) \le \sup(\seq{b_n})$.
 \end{lem}
 \begin{proof}
-Let $A = \sup(\seq{a_n})$ and $B = \sup(\seq{b_n})$. Then, for any $\epsilon
-> 0$, we can find $r, s \in \son$ such that $A - a_r < \epsilon$ and $B - 
-b_s < \epsilon$. 
+Let $A = \sup(\seq{a_n})$ and $B = \sup(\seq{b_n})$. Further, let $E_a = \{
+a_n \;|\; n \in \son\}, E_b = \{b_n \;|\; n \in \son\}$. If $A > B$ then $B$
+is not an upper bound of $E_a$. Therefore, there exists at least one $m \in
+\son$ such that $B < a_m \le b_m$. But this makes $B$ not an upper bound of
+$E_b$ as well.
 \end{proof}
+
+\begin{lem}\label{c5s4l14}
+$\inf(\seq{a_n}) \le \inf(\seq{b_n})$.
+\end{lem}
+\begin{proof}
+Let $a = \inf(\seq{a_n}), b = \inf(\seq{b_n}), E_a =\{a_n \;|\; n \in \son\},
+E_b = \{b_n \;|\; n \in \son\}$. If $a > b$ then $a$ is not a lower bound
+of $E_b$. Therefore, there exists $m \in \son$ such that $b_m < a$. Therefore
+$a_m \le b_m < a$ so that $a$ is not a lower bound of $E_a$.
+\end{proof}
+
+\begin{rem}
+The above to lemmas are true even if we consider sequences to start from
+$n = m$ instead of $n = 0$.
+\end{rem}
+
+\begin{lem}\label{c5s4l15}
+$\limsup\seq{a_n} \le \limsup\seq{b_n}$.
+\end{lem}
+\begin{proof}
+$a_n \le b_n \Rightarrow \sup(\seq{a_n}_{n \ge m}) \le 
+\sup(\seq{b_n}_{n \ge m})$. If $A_m = \sup(\seq{a_n}_{n \ge m}$ and $B_m =
+\sup(\seq{b_n}_{n \ge m}$ then $A_m \le B_m \Rightarrow \inf(\seq{A_m}) \le
+\inf(\seq{B_m}) \Rightarrow \limsup\seq{a_n} \le \limsup\seq{b_n}$.
+\end{proof}
+
+\begin{lem}\label{c5s4l16}
+$\liminf\seq{a_n} \le \liminf\seq{b_n}$.
+\end{lem}
+\begin{proof}
+Let $A_m = \inf(\seq{a_n}_{n \ge m}), B_m = \inf(\seq{b_n}_{n \ge m})$.
+Then $A_m \le B_m$, by lemma \ref{c5s4l14}. Therefore, $\sup(\seq{A_m}) 
+\le \sup(\seq{B_m})$ by lemma \ref{c5s4l13}.
+\end{proof}
+
+\begin{lem}\label{c5s4l17}
+Let $\seq{a_n}, \seq{b_n}, \seq{c_n}$ be such that $a_n \le b_n \le c_n$
+for all $n \in \son$. If $\lim\seq{a_n} = \lim\seq{c_n} = L$ then $\lim\seq
+{c_n} = L$.
+\end{lem}
+\begin{proof}
+By lemmas \ref{c5s4l16} and \ref{c5s4l17}, $\limsup\seq{a_n} \le \limsup\seq
+{b_n} \le \limsup\seq{c_n}$ and $\liminf\seq{a_n} \le \liminf\seq{b_n} \le
+\liminf\seq{c_n}$. By lemma \ref{c5s4l11}, $\limsup\seq{a_n} = 
+\liminf\seq{a_n} = L$ and $\limsup\seq{b_n} = \liminf\seq{b_n} = L$. 
+Therefore, we have $L \le \limsup\seq{b_n} \le L$ and $L \le \liminf\seq{b_n}
+\le L$ so that $\limsup\seq{b_n} = \liminf\seq{b_n} = L$. By lemma 
+\ref{c5s4l11} this means that $\lim\seq{b_n} = L$.
+\end{proof}
+
+\begin{lem}\label{c5s4l18}
+If $x \in \sor$, $-|x| \le x \le |x|$ and $-x \le |x| \le x$.
+\end{lem}
+\begin{proof}
+Recall that
+\[
+|x| = \begin{cases} x & \text{ if } x \ge 0 \\
+-x & \text{ if } x < 0.
+\end{cases}
+\]
+Therefore, $|x| \le x$ and $|x| \ge -x$ so that $-x \le |x| \le x$. We also
+have $x \le |x|$ and $-x \ge |x| \Rightarrow -|x| \le x$. Therefore, $-|x|
+\le x \le |x|$.
+\end{proof}
+
+An immediate corollary of \ref{c5s4l17} is
+\begin{cor}\label{c5s4c1}
+Let $\seq{a_n}$ be a sequence of real numbers. Then $\lim\seq{a_n}$ exists
+and is equal to zero iff $\lim\seq{|a_n|}$ exists and is equal to zero.
+\end{cor}
+\begin{proof}
+$-|a_n| \le a_n \le |a_n| \Rightarrow \lim\seq{-|a_n|} \le \lim\seq{a_n} \le
+\lim\seq{|a_n|} \Rightarrow -\lim\seq{|a_n|} \le \lim\seq{a_n} \le \lim\seq
+{|a_n|}$. If $\lim\seq{|a_n|} = 0$ then be lemma \ref{c5s4l17}, we have $
+\lim\seq{a_n} = 0$.
+
+Similarly, $-a_n \le |a_n| \le a_n$ implies that $\lim\seq{a_n} = 0 
+\Rightarrow \lim\seq{|a_n|} = 0$.
+\end{proof}
+
+Proposition \ref{c5s1p3} showed that a convergent sequence is Cauchy. We
+will now prove that a Cauchy sequence of reals converges to a real number.
+This fact is called the completeness property of real numbers. Before
+proving it we need an analogue of \ref{c4s1l2} for real numbers.
+\begin{lem}\label{c5s4l19}
+A Cauchy sequence of real numbers is bounded.
+\end{lem}
+\begin{proof}
+If $\seq{a_n}$ is a Cauchy sequence then for any $\epsilon > 0$ there exists
+an $N \in \son$ such that for all $n \ge N$, $|a_n - a_N| \le \epsilon$. Let
+$a = \min\{a_1, \ldots, a_N\}$ and $A = \max\{a_1, \ldots, a_N\}$. Then
+$-|a| \le a \le a_n \le A \le |A|$ for all $n \in \{1, \ldots, N\}$. For 
+$n \ge N$, we have $a_N - \epsilon \le a_n \le a_N + \epsilon \le |a_N| + 
+\epsilon$. Therefore, $-|a| - |a_N| - \epsilon \le a_n \le |A| + |a_N| + 
+\epsilon$.
+\end{proof}
+
+\begin{prop}\label{c5s4p2}
+A Cauchy sequence of real numbers converges to a real number.
+\end{prop}
+\begin{proof}
+By lemma \ref{c5s4l19} a Cauchy sequence is bounded. That is, it has lower 
+and upper bounds. If $l = \liminf\seq{a_n}$ and $L = \limsup\seq{a_n}$
+then $\inf(\{a_n\}) \le l \le L \le \sup(\{a_n\})$ by lemma \ref{c5s4l7}.
+Therefore, $l$ and $L$ are both finite.
+
+If $\seq{a_n}$ is Cauchy then for a given $\epsilon > 0$ there exists $N \in
+\son$ such that $|a_n - a_N| \le \epsilon/2$ for all $n \ge N$. Therefore,
+$a_N - \epsilon/2 \le a_n \le a_N + \epsilon/2$ for all $n \ge N$. Thus, 
+for the sequence $\seq{a_n}_{n \ge N}$, $a_N - \epsilon/2$ is a lower bound 
+and $a_N + \epsilon/2$ is an upper bound. Therefore, $a_N - \epsilon/2 \le l
+\le a_n \le L \le a_N + \epsilon/2$. Now,
+\[
+L \le a_N + \epsilon/2 \Rightarrow L - l \le a_N - l + \epsilon/2.
+\]
+Similarly,
+\[
+a_N - \epsilon/2 \le l \Rightarrow -l \le -a_N + \epsilon/2.
+\]
+Therefore, $L - l \le \epsilon$. Since $\epsilon$ is arbitrary, this leads
+us to $l = L$, which is the limit of the sequence.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] Give an example of two bounded sequences $\seq{a_n}$ and 
+$\seq{b_n}$ such that $a_n < b_n$ for all $n \in \son$ yet $\sup\seq{a_n} 
+\nless \sup \seq{b_n}$.
+\item[Solution:] Let $a_n = 3 - 1/n$ and $b_n = 3 - 1/(2n)$ so that $a_n \le 
+b_n$ and yet $\sup\seq{a_n} = \sup\seq{b_n} = 3$.
+
+\item[2:] Is corollary \ref{c5s4l1} true if the sequences $\seq{a_n}$ or
+$\seq{|a_n|}$ converged to a non-zero numbers?
+\item[Solution:] Let $\lim\seq{|a_n|} = c \ne 0$. Therefore, $-|a_n| \le a_n
+\le |a_n| \Rightarrow -c \le \lim\seq{a_n} \le c$. Thus, all we get is a
+bound for $\lim\seq{a_n}$ not its exact value.
+
+\item[3:] Construct a sequence which has exactly three limit points at
+$-\infty, 0$ and $\infty$.
+\item[Solution:] Let
+\begin{eqnarray*}
+a_{2m} &=& \frac{1}{2m + 1} \\
+a_{2m+1} &=& (-1)^m m
+\end{eqnarray*}
+Thus, $a_0 = 1, a_1 = 1, a_2 = 1/3, a_3 = -1, a_4 = 1/5, a_5 = 2, a_6 = 1/7,
+a_7 = -3, a_8 = 1/9, a_9 = 4, \ldots$. The subsequence $a_0, a_2, a_4, 
+\ldots$ has a limit point $0$. The subsequence $a_3, a_7, a_{11}, a_{15}, 
+\ldots$ has $-\infty$ as a limit point. The subsequence $a_1, a_5, a_9, 
+\ldots$ has $\infty$ as a limit point. There are none other.
+
+\item[4:] Let $\seq{a_n}$ be a sequence of real numbers and $\seq{b_n}$ be
+another sequence of real numbers such that each $b_n$ is a limit point
+of $\seq{a_n}$. If $c$ is a limit point of $\seq{b_n}$ then it is also a
+limit point of $\seq{a_n}$.
+\item[Solution:] Recall that a real number $x$ is a limit point of 
+$\seq{a_n}$ if for any $\epsilon > 0$ there exists $N \in \son$ such that 
+there is atleast one $m \ge N$ such that $|a_m - x| \le \epsilon$. Thus,
+for all $b_m$, for any $\epsilon > 0$, there exists $N_m \in \son$ such that
+$|b_m - a_n| < \epsilon$ for at least one $n \ge N_m$.
+
+Let $c$ be a limit point of $\seq{b_m}$. Fix an $\epsilon > 0$. Then there
+exists $N \in \son$ such that for atleast one $m \ge N$, $|b_m - c| \le 
+\epsilon/2$.
+Since $b_m$ is a limit point of $\seq{a_n}$, there exists $N_m \in \son$
+such that for at least one $n \ge N_m$, $|a_n - b_m| \le \epsilon/2$. For
+this element $|a_n - c| \le |a_n - b_m| + |b_m - c| \le \epsilon$. Thus, for
+every $b_m, m \ge 0$ there exists at least one $a_n$ for which $|a_n - c|
+\le \epsilon$. Thus $c$ is a limit point of $\seq{a_n}$.
+\end{enumerate}
+
+\section{Some standard limits}\label{c5s5}
+In this section we will prove a few lemmas that state limits of commonly
+found sequences.
+\begin{lem}\label{c5s5l1}
+If $a_n = c, \;\forall\; n \in \son$ then $\lim\seq{a_n} = c$.
+\end{lem}
+\begin{proof}
+Let $\epsilon > 0$. Then for all $n \in \son$, $|a_n - c| = 0 < \epsilon$.
+\end{proof}
+
+\begin{lem}\label{c5s5l2}
+Show that for all $k \ge 1$, $k \in \son$, $\lim 1/(n+1)^{1/k} = 0$.
+\end{lem}
+\begin{proof}
+For a fixed $k$, $(n+1)^{1/k}$ is an increasing sequence by lemma 
+\ref{c4s6l5}. Therefore $1/(n+1)^{1/k}$ is a decreasing sequence. It is 
+bounded from below by zero because no element of the sequence is negative.
+Therefore, by proposition \ref{c5s3p4}, $\seq{1/(n+1)^{1/k}}$ converges.
+Let $L$ be its limit. Using lemma \ref{c5s1l4} $k$ times, we get $L^k$
+as the limit of the sequence $\seq{1/n}$. By proposition \ref{c5s1p2} $L^k
+ = 0$. Therefore $L = 0$.
+\end{proof}
+
+\begin{lem}\label{c5s5l3}
+Let $x \in \sor$. Then $\lim\seq{x^n} = 0$ when $|x| < 1$.
+\end{lem}
+\begin{proof}
+Since $0 < |x| < 1$, by proposition \ref{c5s4p5}, $\lim\seq{|x|^n} = 0$.
+$-|x| \le x \le |x| \Rightarrow -|x|^n \le \le x^n \le |x|^n$. Therefore,
+$-\lim\seq{|x|^n} \le \lim\seq{x^n} \le \lim\seq{|x|^n}$. The lemma follows
+from \ref{c5s4l17}.
+\end{proof}
+
+\begin{lem}\label{c5s5l4}
+If $x = 1$, $\lim\seq{x^n} = 1$.
+\end{lem}
+\begin{proof}
+Follows from lemma \ref{c5s5l1}.
+\end{proof}
+
+\begin{lem}\label{c5s5l5}
+If $x = -1$ or when $|x| > 1$ the sequence $\seq{x^n}$ does not converge.
+\end{lem}
+\begin{proof}
+If $x = -1$, the sequence is $\{1, -1, 1, -1, \ldots\}$. Both $1$ and $-1$ 
+are its limit points but neither is a limit. 
+
+If $|x| > 1$ then $|x|^n$ is a monotonically increasing sequence without an
+upper bound. Therefore, it does not converge.
+\end{proof}
+
+\begin{lem}\label{c5s5l6}
+For any $x > 0$, $\lim x^{1/n} = 1$.
+\end{lem}
+\begin{proof}
+\end{proof}
+

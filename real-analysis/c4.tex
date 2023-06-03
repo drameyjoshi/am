@@ -39,14 +39,13 @@ $M$ is called a bound of the sequence.
 A finite sequence is always bounded.
 \end{lem}
 \begin{proof}
-Consider the finite sequence $\{a_0, \ldots, a_n\}$. Then we will show 
-that it is bounded for any $n \in \son$. We will use induction on $\son$.
-The base case is the sequence $\{a_0\}$. It is clearly bounded if we choose
-$M = |a_0|$. Let us assume that the claim is true for some $n$ and consider
-the sequence $\{a_0, \ldots, a_n, a_{n+1}\}$. By induction hypothesis, 
-there exists $M \ge 0$ such that $|a_i| \le M$ for all $0 \le i \le n$. 
-Then the constant $M^\op = M + |a_{n+1}|$ is such that $|a_i| \le M^\op$
-for all $0 \le i \le n + 1$, thus closing the induction.
+If $\seq{a_n}$ is a Cauchy sequence then for any $\epsilon > 0$ there exists
+an $N \in \son$ such that for all $n \ge N$, $|a_n - a_N| \le \epsilon$. Let
+$a = \min\{a_1, \ldots, a_N\}$ and $A = \max\{a_1, \ldots, a_N\}$. Then
+$-|a| \le a \le a_n \le A \le |A|$ for all $n \in \{1, \ldots, N\}$. For 
+$n \ge N$, we have $a_N - \epsilon \le a_n \le a_N + \epsilon \le |a_N| + 
+\epsilon$. Therefore, $-|a| - |a_N| - \epsilon \le a_n \le |A| + |a_N| + 
+\epsilon$.
 \end{proof}
 
 \begin{lem}\label{c4s1l2}
