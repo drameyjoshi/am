@@ -5,8 +5,8 @@ Given two real numbers $x$ and $y$, we define the distance between them as
 $d(x, y) = |x - y|$.
 \end{defn}
 \begin{defn}\label{c5s1d2}
-Let $\epsilon > 0$ be a real number. We say that two real numbers $x$ and $y$
-are $\epsilon$-close iff $d(x, y) \le \epsilon$.
+Let $\epsilon > 0$ be a real number. We say that two real numbers $x$ and 
+$y$ are $\epsilon$-close iff $d(x, y) \le \epsilon$.
 \end{defn}
 \begin{defn}\label{c5s1d3}
 A sequence $\seq{a_n}$ of real number is a Cauchy sequence if for every
@@ -471,8 +471,8 @@ only if $L = 0$.
 unbounded. Therefore it is not Cauchy and it does not converge.
 \end{enumerate}
 
-\section{Limsup, liminf and limit points}\label{c5s6}
-\begin{defn}\label{c5s6d1}
+\section{Limsup, liminf and limit points}\label{c5s4}
+\begin{defn}\label{c5s4d1}
 Let $\seq{a_n}$ be a sequence of real numbers, $x \in \sor$ and $\epsilon
 > 0$ be a real number. We say that $x$ is $\epsilon$-adherent to $\seq{a_n}$
 iff there exists an $n \ge 0$ such that $|a_n - x| < \epsilon$. We say
@@ -502,7 +502,7 @@ such that for there is at least one $m \ge N$ for which $|a_m - x| <
 \end{rem}
 
 Limits are limit points but not conversely.
-\begin{prop}\label{c5s6p1}
+\begin{prop}\label{c5s4p1}
 Let $\seq{a_n}$ converge to a $c \in \sor$. Then $c$ is a unique limit point 
 of $\seq{a_n}$.
 \end{prop}
@@ -927,7 +927,7 @@ as the limit of the sequence $\seq{1/n}$. By proposition \ref{c5s1p2} $L^k
 Let $x \in \sor$. Then $\lim\seq{x^n} = 0$ when $|x| < 1$.
 \end{lem}
 \begin{proof}
-Since $0 < |x| < 1$, by proposition \ref{c5s4p5}, $\lim\seq{|x|^n} = 0$.
+Since $0 < |x| < 1$, by proposition \ref{c5s3p5}, $\lim\seq{|x|^n} = 0$.
 $-|x| \le x \le |x| \Rightarrow -|x|^n \le \le x^n \le |x|^n$. Therefore,
 $-\lim\seq{|x|^n} \le \lim\seq{x^n} \le \lim\seq{|x|^n}$. The lemma follows
 from \ref{c5s4l17}.
@@ -952,8 +952,254 @@ upper bound. Therefore, it does not converge.
 \end{proof}
 
 \begin{lem}\label{c5s5l6}
-For any $x > 0$, $\lim x^{1/n} = 1$.
+For any $x > 0$, $\lim x^{1/n} = 1$. The sequence starts at $n = 1$.
 \end{lem}
 \begin{proof}
+By lemma \ref{c4s6l7} $x^{1/n}$ is a decreasing function of $n$ if $x > 1$,
+be lemma \ref{c4s6l8} it is an increasing function of $n$ if $x < 1$ and it
+is equal to $1$ for all $n$ if $x = 1$. The third case is the constant series
+with limit $1$.
+
+If $x > 1$, $\seq{x^{1/n}}$ is a monotonically decreasing sequence with $1$ 
+as a lower bound. We will show that $1$ is also its infimum. For if it were
+a number $c > 1$ then we would have $x^{1/n} \ge c$ for all $n \in \son, n 
+\ge 1$. But this is false for $x = (1 + c)/2 > 1$. By proposition 
+\ref{c5s3p4} the infimum is the limit.
+
+If $x < 1$, $\seq{x^{1/n}}$ is a monotonically increasing sequence with $1$
+as an upper bound. It is also its supremum. For if it were a number $c < 1$
+then we would have $x^{1/n} \le c$ for all $n$, that is $x \le c^n$ for all
+$n$. But this is false for $x = (c + 1)/2 < 1$. By proposition \ref{c5s3p3}
+the supremum is the limit.
 \end{proof}
+
+\subsection{Exercices}
+\begin{enumerate}
+\item[1:] Show that $\lim n^{-q} = 0$ for any rational $q > 0$. Conclude
+ that $\lim n^q$ does not exist.
+\item[Solution:] Let $q = a/b$ where $a, b > 0$. Then, 
+\[
+n^{-q} = \frac{1}{n^q} = \frac{1}{n^{a/b}} = 
+\left(\frac{1}{n^{1/b}}\right)^{a}
+\]
+so that if $L = \lim 1/n^{1/b}$ then $\lim n^{-q} = L^a$. By lemma 
+\ref{c5s5l2}, $L = 0$.
+
+Let, if possible, $\lim n^q = L \in \sor$. Since $n^q \ne 0$ for all $n$,
+by lemma \ref{c5s1l5}, $\lim n^{-q} = L^{-1} \ne 0$, a contradiction.
+\end{enumerate}
+
+\section{Subsequences}\label{c5s6}
+\begin{defn}\label{c5s6d1}
+Let $\seq{a_n}$ and $\seq{b_n}$ be sequences of real numbers. We say that 
+$\seq{b_n}$ is a subsequence of $\seq{a_n}$ iff there exists a function
+$f: \son \rightarrow \son$ which is strictly increasing, that is, $f(n+1)
+> f(n)$ for all $n \in \son$, such that $b_n = a_{f(n)}$ for all $n \in
+\son$.
+\end{defn}
+
+\begin{lem}\label{c5s6l1}
+Every sequence is a subsequence of itself.
+\end{lem}
+\begin{proof}
+Choose $f$ in definition \ref{c5s6d1} to be the identity function.
+\end{proof}
+
+\begin{lem}\label{c5s6l2}
+If $\seq{b_n}$ is a subsequence of $\seq{a_n}$ and $\seq{c_n}$ is a
+subsequence of $\seq{b_n}$ then $\seq{c_n}$ is also a subsequence of
+$\seq{a_n}$.
+\end{lem}
+\begin{proof}
+$\seq{b_n}$ is a subsequence of $\seq{a_n}$ iff there exists a function
+$f: \son \rightarrow \son$ such that $f(n + 1) > f(n)$ for all $n \in
+\son$ and $b_n = a_{f(n)}$ for all $n \in \son$. Similarly, there exists
+a function $g: \son \rightarrow \son$ such that $g(n + 1) > g(n)$ for all
+$n \in \son$ such that $c_n = b_{g(n)}$. Therefore, $c_n = a_{g(f(n)} =
+a_{(g \circ f)(n)}$. Clearly $g \circ f: \son \rightarrow \son$. If we 
+also show that it is a strictly increasing function then we can conclude
+that $\seq{c_n}$ is a subsequence of $\seq{a_n}$. Now $f(n + 1) > f(n)
+\Rightarrow g(f(n + 1)) > g(f(n))$ so that $g \circ f$ is an increasing
+function of $n$.
+\end{proof}
+
+\begin{prop}\label{c5s6p1}
+Let $\seq{a_n}$ be a sequence of real numbers and $\seq{b_n}$ be its
+subsequence. Then $\lim\seq{a_n} = L$ iff $\lim\seq{b_n} = L$ for every
+subseequence of $\seq{a_n}$.
+\end{prop}
+\begin{proof}
+Let $\seq{b_n}$ be such that $b_n = a_{f(n)}$ for all $n \in \son$ and $f:
+\son \rightarrow \son$ is a strictly increasing function. If $\lim\seq{a_n}
+= L$ then for any $\epsilon > 0$ there exists $N \in \son$ such that $|a_n
+- L| < \epsilon$ for all $n \ge N$. Since $f(n) \ge n$ for all $n \in \son$,
+we also have $|a_{f(n)} - L| < \epsilon$ for all $n \ge N$. Therefore, $
+|b(n) - L| < \epsilon$ for all $n > f(N)$.
+
+To prove the converse, we will prove its contrapositive. The converse is
+`if all subsequences converge to $L$ then the sequence converges to $L$'.
+Its contrapositive is `if the sequence does not converge to $L$ then
+there is at least one subsequence that does not converge to $L$'. Since 
+a sequence is a subsequence of itself, the contrapositive it trivially 
+true.
+\end{proof}
+
+\begin{prop}\label{c5s6p2}
+Let $\seq{a_n}$ be a sequence of real numbers and $L$ be a real number.
+Then $L$ is a limit point of $\seq{a_n}$ iff there is a subsequence of
+$\seq{b_n}$ of $\seq{a_n}$ which converges to $L$.
+\end{prop}
+\begin{proof}
+Let $L$ be a limit point of $\seq{a_n}$. Then for any $\epsilon > 0$, we
+can find $N \in \son$ such that there is at least one $n > N$ for which
+$|a_n - L| < \epsilon$. Define the function $f: \son \rightarrow \son$
+such that
+\[
+f(n) = \begin{cases}
+ & n \text{ if } n \le N \\
+ & \text{first } n > f(n - 1) \text{ for which } |a_n - L| < \epsilon
+\end{cases}
+\]
+By definition $f$ is an increasing function. If $b_n = a_{f(n)}$ then $|b_n
+- L| < \epsilon$ for all $n \ge N$, so that $\lim\seq{b_n} = L$.
+
+Now assume that $b_n = a_{f(n)}$ is such that $\lim\seq{b_n} = L$. Then
+for a given $\epsilon > 0$ there exists $N \in \son$ such that $|b_n - L|
+< \epsilon \Rightarrow |a_{f(n)} - L| < \epsilon$ for all $n \ge N$. In
+particular, for any $\epsilon > 0$ there exists $N \in \son$ such that
+$|a_{f(N)} - L| < \epsilon$ where $f(N) \ge N$ ($f$ has to be an increasing
+function of $N$). Therefore, $L$ is a limit point of $\seq{a_n}$.
+\end{proof}
+
+\begin{thm}[Bolzano-Weierstrass]\label{c5s6t1}
+Every bounded sequence has a convergent subsequence.
+\end{thm}
+\begin{proof}
+Let $\seq{a_n}$ be a bounded sequence. Therefore, there exists $M \in \sor$
+such that $|a_n| \le M$ for all $n \in \son$. By lemmas \ref{c5s4l15} and
+\ref{c5s4l16} $|\limsup\seq{a_n}| \le M$ and $|\liminf\seq{a_n}| \le M$.
+Since $-M \le \limsup\seq{a_n} \le M$, $\limsup\seq{a_n} \in \sor$. 
+Therefore, by lemma \ref{c5s4l9}, $\limsup\seq{a_n}$ is a limit point of
+$\seq{a_n}$. By proposition \ref{c5s6p2}, $\seq{a_n}$ has a subseqeuence
+whose limit point is $\limsup\seq{a_n}$.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item[1:] Can you find two sequences $\seq{a_n}$ and $\seq{b_n}$ which are
+not the same sequence but that each is a subsequence of the other?
+\item[Solution:] $a_n = (-1)^n, b_n = (-1)^{n+1}$.
+
+\item[2:] Let $\seq{a_n}$ be an unbounded sequence. Show that it has a 
+subsequence $\seq{b_n}$ such that $\lim b_n^{-1} = 0$.
+\item[Solution:] $\seq{a_n}$ is unbounded means that for every $m \ge 1$
+there is at least one $n \in \son$ such that $|a_n| > m$. Define $f: \son
+\rightarrow \son$ such that $f(m)$ is the smallest $n > f(m-1)$ such that
+$|a_{f(m)}| > m$ and $f(0)$ is the smallest $n$ for which $|a_n| > 0$.
+$f$ is clearly a strictly increasing function. Therefore $b_m = a_{f(m)}$ 
+is a subsequence such that $|b(m)| > m$ for all $m \in \son$. Therefore,
+$|b_m^{-1}| < m^{-1}$ for all $m \in \son$. Therefore 
+$\inf(\seq{|b_m|^{-1}}) \le \inf(\seq{m^{-1}}) = 0$. But $\seq{|b_m|^{-1}}$
+is also a sequence of non-negative terms. Therefore, $0 \le \inf(\seq{|b_m|
+^{-1}})$ and hence $\inf(\seq{|b_m|^{-1}}) = 0$. Since $\seq{|b_m|}$ is
+monotonically decreasing, the infimum is a limit. Thus, $\lim\seq{|b_m|^{
+-1}} = 0$.
+
+Now $-|b_m| \le b_m \le |b_m| \Rightarrow -|b_m|^{-1} \le b_m^{-1} \le
+|b_m|^{-1} \Rightarrow \lim\seq{b_m^{-1}} = 0$.
+\end{enumerate}
+
+\section{Real exponentiation}\label{c5s7}
+We will now define the quantity $x^\alpha$ where $x \ge 0$ and $\alpha \in
+\sor$ as a limit of the sequence $\seq{x^{q_n}}$ where $\seq{q_n}$ is a
+sequence of rationals whose limit is $\alpha$. Before we do that, we need a 
+few lemmas.
+\begin{lem}\label{c5s7l1}
+Let $x > 1$ be a real number, $\seq{p_n}$ and $\seq{q_n}$ be sequences of
+rational numbers such that both converge to $\alpha$. Then 
+$\lim\seq{x^{p_n}} = \lim\seq{x^{q_n}}$.
+\end{lem}
+\begin{proof}
+We will first show that if $\seq{p_n}$ converges then so does 
+$\seq{x^{p_n}}$. To do that it suffices to show that it is a Cauchy 
+sequence. Fix an integer $K > 1$. As $\seq{p_n}$ is a convergent sequence
+there exists $N_p \in \son$ such that for all $n > m > N_p$, $|p_n - p_m|
+< 1/K$. Consider
+\[
+|x^{p_n} - x^{p_m}| < x^{p_n}|x^{p_n - p_m} - 1| < x^{p_n}|x^{1/K} - 1|.
+\]
+Since $\seq{p_n}$ is a Cauchy sequence, it is also bounded. Therefore, there
+is an $M > 0$ such that $|p_n| < M$ for all $n \in \son$. Therefore,
+\[
+|x^{p_n} - x^{p_m}| < x^M|x^{1/K} - 1|.
+\]
+Fix an $\epsilon > 0$. Choose $K$ such that
+\[
+x^{1/K} < \frac{\epsilon}{x^M} + 1.
+\]
+Such a $K$ can be found out because $\lim\seq{x^{1/n}} = 1$. For this choice
+of $K$, there exists $N_p \in \son$ such that for all $n > m > N_p$, 
+$|x^{p_n} - x^{p_m}| < \epsilon$. We next show that if $\lim\seq{p_n} = 
+\lim\seq{q_n}$ then $\lim\seq{x^{p_n}} = \lim\seq{x^{q_n}}$. Consider
+\[
+|x^{p_n} - x^{q_n}| = x^{q_n}|x^{p_n - q_n} - 1|.
+\]
+Since $\lim\seq{p_n} = \lim\seq{q_n}$, $\lim\seq{p_n - q_n} = 0$. For a
+fixed $K > 0$, there exists $N \in \son$ such that $|p_n - q_n| <
+1/K$ for all $n \ge N$. For such an $n$,
+\[
+|x^{p_n} - x^{q_n}| < x^{q_n}|x^\delta - 1| < x^M|x^{1/K} - 1|,
+\]
+where $M > |q_n|$ is a bound of $\seq{q_n}$. For a given $\epsilon > 0$
+choose a $\delta$ such that
+\[
+x^{1/K} < \frac{\epsilon}{x^M} + 1.
+\]
+\end{proof}
+
+\begin{lem}\label{c5s7l2}
+Let $x \le 1$ be a real number, $\seq{p_n}$ and $\seq{q_n}$ be sequences of
+rational numbers such that both converge to $\alpha$. Then 
+$\lim\seq{x^{p_n}} = \lim\seq{x^{q_n}}$.
+\end{lem}
+\begin{proof}
+If $x = 1$, $x^{p_n}$ and $x^{q_n}$ are constant sequences. The proof for
+$x < 1$ is similar to the one for lemma \ref{c5s7l1}.
+\end{proof}
+
+\begin{defn}\label{c5s7d1}
+Let $x > 0$ be a real number and $\alpha \in \sor$. If $\seq{q_n}$ be
+any sequence of rationals such that $\lim\seq{q_n} = \alpha$ then $x^\alpha
+:= \lim x^{q_n}$.
+\end{defn}
+
+Finally, we prove the following properties of exponentials. In the lemmas
+below, $x, y, z, q, r \in \sor$ and $x, y, z$ are positive.
+\begin{lem}\label{c5s7l3}
+$x^q > 0$.
+\end{lem}
+
+\begin{lem}\label{c5s7l4}
+$x^{q+r} = x^q x^r$.
+\end{lem}
+
+\begin{lem}\label{c5s7l5}
+$x^{-q} = 1/x^q$.
+\end{lem}
+
+\begin{lem}\label{c5s7l6}
+If $q > 0$ then $x > y \Rightarrow x^q > y^q$.
+\end{lem}
+
+\begin{lem}\label{c5s7l7}
+If $x > 1$ then $x^q > x^r$ iff $q > r$.
+\end{lem}
+
+\begin{lem}\label{c5s7l8}
+If $x < 1$ then $x^q < x^r$ iff $q > r$.
+\end{lem}
+
+\begin{lem}\label{c5s7l9}
+$(xy)^q = x^q y^q$.
+\end{lem}
 
