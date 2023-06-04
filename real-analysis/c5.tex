@@ -1178,28 +1178,85 @@ below, $x, y, z, q, r \in \sor$ and $x, y, z$ are positive.
 \begin{lem}\label{c5s7l3}
 $x^q > 0$.
 \end{lem}
+\begin{proof}
+Let, if possible, $x^q = 0$. That is, $\lim\seq{x^{q_n}} = 0$ so that for
+a given $\epsilon > 0$ there exists $N \in \son$ such that for all $n \ge
+N$, $|x^{q_n} - 0| = |x^{q_n}| < \epsilon$ so that $x^{q_n} = 0$. However,
+this contradicts lemma \ref{c4s6l12} that $x^{q_n} > 0$ for any rational
+$q_n$.
+\end{proof}
 
 \begin{lem}\label{c5s7l4}
 $x^{q+r} = x^q x^r$.
 \end{lem}
+\begin{proof}
+Let $q = \lim\seq{q_n}$ and $r = \lim\seq{r_n}$ so that $q + r = \lim\seq{
+q_n + r_n}$ and $x^{q+r} = \lim\seq{x^{q_n+r_n}} = \lim\seq{x^{q_n}x^{r_n}}$
+, where we used lemma \ref{c4s6l13}. Using lemma \ref{c5s1l4} we have 
+$x^{q+r} = \lim\seq{x^{q_n}}\lim\seq{x^{r_n}} = x^qx^r$.
+\end{proof}
 
 \begin{lem}\label{c5s7l5}
 $x^{-q} = 1/x^q$.
 \end{lem}
+\begin{proof}
+Let $q = \lim\seq{q_n}$ so that $x^{-q} = \lim\seq{x^{-q_n}}$. Since 
+$x^{q_n} > 0$ for all $n \in \son$ and $\lim\seq{x^{q_n}} > 0$,
+\[
+x^{-q} = \frac{1}{\lim\seq{x^{q_n}}} = \frac{1}{x^q}.
+\]
+\end{proof}
 
 \begin{lem}\label{c5s7l6}
 If $q > 0$ then $x > y \Rightarrow x^q > y^q$.
 \end{lem}
+\begin{proof}
+If $q = \lim\seq{q_n}$ then for all $n \in \son$, $x > y \Rightarrow x^{q_n}
+> y^{q_n} \Rightarrow x^{q_n} - y^{q_n} > 0$. Let, if possible $x^q = y^q$.
+That would mean, for a given $\epsilon > 0$, there exists $N \in \son$ such
+that for all $n \ge N$, $|x^{q_n} - y^{q_n}| < \epsilon$, that is $x^{q_n}
+= y^{q_n}$. This contradicts lemma \ref{c4s6l16}. Let, if possible $x^q <
+y^q$ so that $y^q - x^q = c > 0$. Therefore, for a given $\epsilon > 0$, 
+there exists $N \in \son$ such that for all $n \ge n$, $|y^{q_n} - x^{q_n} -
+c| < \epsilon \Rightarrow y^{q_n} - x^{q_n} < c + \epsilon \Rightarrow 
+y^{q_n} < x^{q_n}$, again contradicting lemma \ref{c4s6l16}.
+\end{proof}
 
+The next two proofs hinge on
 \begin{lem}\label{c5s7l7}
-If $x > 1$ then $x^q > x^r$ iff $q > r$.
+If $q > r$ then we can find a representation of both reals $q = 
+\lim\seq{q_n}, r = \lim\seq{r_n}$ such that $q_n > r_n$ for all $n \in 
+\son$.
 \end{lem}
+\begin{proof}
+Follows from corollary \ref{c4s4c1}.
+\end{proof}
 
 \begin{lem}\label{c5s7l8}
-If $x < 1$ then $x^q < x^r$ iff $q > r$.
+If $x > 1$ then $x^q > x^r$ iff $q > r$.
 \end{lem}
+\begin{proof}
+Let, if possible, $x > 1, q > r$ but $x^q \le x^r$. Therefore, $c = 
+\lim\seq{x^{q_n} - x^{r_n}} \le 0$. Choose an $\epsilon \in \sor$ such
+that $0 < \epsilon < |c|/2$. Then there exists $N \in \son$ such that for
+all $n \ge N$, $|x^{q_n} - x^{r_n} - c| < \epsilon \Rightarrow x^{q_n}
+- x^{r_n} < c + \epsilon < 0$. Therefore, $x^{q_n} - x^{r_n} < 0$ or that
+$x^{q_n} < x^{r_n}$, contradicting lemma \ref{c4s6l17}.
+\end{proof}
 
 \begin{lem}\label{c5s7l9}
+If $x < 1$ then $x^q < x^r$ iff $q > r$.
+\end{lem}
+\begin{proof}
+Similar to the previous proof.
+\end{proof}
+
+\begin{lem}\label{c5s7l10}
 $(xy)^q = x^q y^q$.
 \end{lem}
+\begin{proof}
+$(xy)^q = \lim\seq{(xy)^q_n} = \lim\seq{x^{q_n}y^{q_n}}$, by lemma 
+\ref{c4s6l18}. By lemma \ref{c5s1l4}, $(xy)^q = \lim\seq{x^{q_n}}
+\lim\seq{y^{q_n}} = x^qy^q$.
+\end{proof}
 
