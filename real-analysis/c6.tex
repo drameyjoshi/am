@@ -1,0 +1,179 @@
+\chapter{Series}\label{c6}
+We will start the discussion with finite series. It might seem a bit 
+pedantic but it has some interesting ideas that will be obvious for finite
+cases but may be true for infinite sums and even integrals.
+\section{Finite series}\label{c6s1}
+We define a finite series recursively as
+\begin{defn}\label{c6s1d1}
+Let $m, n \in \soi$ and let $\{a_i \in \sor \;|\; \forall m \le i \le n \lor
+n \le i \le m\}$ be a finite set. Then we define the finite series as
+\begin{eqnarray*}
+\sum_{i=m}^n a_i &:=& 0 \text{ if } n < m \\
+\sum_{i=m}^{n+1} a_i &:=& \sum_{i=m}^n a_i + a_{n+1}.
+\end{eqnarray*}
+\end{defn}
+Thus,
+\[
+\sum_{i=m}^m a_i = \sum_{i=m}^{m-1} a_i + a_m = 0 + a_m = a_m.
+\]
+and, if $n > m$,
+\[
+\sum_{i=m}^{n} a_i = \sum_{i=m}^{n-1}a_i + a_n = \sum_{i=n}^{n-2}a_i + 
+a_{n-1} + a_n.
+\]
+
+One tends to view the next set of lemmas as obvious. In a way, they are. 
+But it is a fruitful exercise in building proofs starting from definitions
+when one is confident of the assertions and the only challenge is in writing
+a flawless proof.
+
+\begin{lem}\label{c6s1l1}
+Let $m \le n \le p$ be integers and let $a_i$ be a real number assigned to 
+each integer $m \le i \le p$. Then,
+\[
+\sum_{i=m}^p a_i = \sum_{i=m}^n a_i + \sum_{i=n+1}^p a_i.
+\]
+\end{lem}
+\begin{proof}
+Consider
+\[
+\sum_{i=m}^n a_i + \sum_{i=n+1}^p a_i = \sum_{i=m}^n a_i + 
+    \sum_{i=n+1}^{p-1} a_i + a_p \\
+\]
+Continuing inductively for $p - n - 1$ times, we get
+\[
+\sum_{i=m}^n a_i + \sum_{i=n+1}^p a_i = \sum_{i=m}^n a_i + 
+    a_{n+1} + \cdots + a_p = \sum_{i=m}^{n+1} a_i + a_{n+2} + \cdots + a_p.
+\]
+Continuing inductively for $p - n - 1$ times we get
+\[
+\sum_{i=m}^n a_i + \sum_{i=n+1}^p a_i = \sum_{i=m}^{p} a_i 
+\]
+\end{proof}
+\begin{rem}
+This is a finite analogue of the result
+\[
+\int_a^c f = \int_a^b f + \int_b^c f
+\]
+whenever $a \le b \le c$ are real numbers and $f$ is a function that is 
+integrable over the range $[a, c]$.
+\end{rem}
+
+\begin{lem}\label{c6s1l2}
+Let $m \le n$ be integers and $k$ be another integer. Let $a_i$ be a real
+number assigned to each integer $m \le i \le n$. Then,
+\[
+\sum_{i=m}^n a_i = \sum_{j=m+k}^{n+k}a_{j-k}.
+\]
+\end{lem}
+\begin{proof}
+\[
+\sum_{j=m+k}^{n+k}a_{j-k} = \sum_{j=m+k}^{n+k-1}a_{j-k} + a_{n+k-k} =
+\sum_{j=m+k}^{n+k-1}a_{j-k} + a_n.
+\]
+Continuing this way for $n - m + 1$ steps, we get
+\[
+\sum_{j=m+k}^{n+k}a_{j-k} = a_m + \ldots + a_n = \sum_{i=m}^n a_i.
+\]
+\end{proof}
+\begin{rem}
+This is analogous to the change of variable formula for definite integrals.
+When the variable of integration changes the limits also change.
+\end{rem}
+
+\begin{lem}\label{c6s1l3}
+Let $m \le n$ be integers and let $a_i$ and $b_i$ be real numbers assigned 
+to each integer $m \le i \le n$. Then,
+\[
+\sum_{i=m}^n (a_i + b_i) = \sum_{i=m}^n a_i + \sum_{i=m}^n b_i.
+\]
+\end{lem}
+\begin{proof}
+\[
+\sum_{i=m}^n (a_i + b_i) = \sum_{i=m}^{n-1} (a_i + b_i) + (a_n + b_n)
+\]
+Continuing this way $n - m$ times we get
+\[
+\sum_{i=m}^n (a_i + b_i) = (a_1 + b_1) + \cdots + (a_n + b_n) = (a_m +
+\cdots + a_n) + (b_m + \cdots + b_n) = \sum_{i=m}^n a_i + \sum_{i=m}^n b_i.
+\]
+\end{proof}
+\begin{rem}
+This is analogous to
+\[
+\int_a^b (f + g) = \int_a^b f + \int_a^b g.
+\]
+\end{rem}
+
+\begin{lem}\label{c6s1l4}
+Let $m \le n$ be integers and let $a_i$ be a real number assigned to each 
+integer $m \le i \le n$ and let $c \in \sor$ then
+\[
+\sum_{i=m}^n (ca_i) = c\sum_{i=m}^n a_i.
+\]
+\end{lem}
+\begin{proof}
+\[
+\sum_{i=m}^n (ca_i) = \sum_{i=m}^{n-1} (ca_i) + ca_n 
+\]
+Continuing for $n - m$ steps, we get
+\[
+\sum_{i=m}^n (ca_i) = ca_1 + \cdots + ca_n = c(a_1 + \cdots + a_n) = 
+c\sum_{i=m}^n a_i.
+\]
+\end{proof}
+\begin{rem}
+This is analogous to
+\[
+\int (cf) = c\int f.
+\]
+\end{rem}
+
+\begin{lem}\label{c6s1l5}
+Let $m \le n$ be integers and let $a_i$ be a real number assigned to each
+integer $m \le i \le n$. Then,
+\[
+\left|\sum_{i=m}^n a_i\right| \le \sum_{i=m}^n |a_i|.
+\]
+\end{lem}
+\begin{proof}
+\[
+\left|\sum_{i=m}^n a_i\right| = \left|\sum_{i=m}^{n-1} a_i + a_n\right| 
+\le \left|\sum_{i=m}^{n-1}a_i\right| + |a_n|.
+\]
+Continuing this way $n - m$ times, we get
+\[
+\left|\sum_{i=m}^n a_i\right| \le |a_m| + \cdots + |a_n| =
+\sum_{i=m}^n |a_i|.
+\]
+\end{proof}
+\begin{rem}
+This is analogous to
+\[
+\left|\int f\right| \le \int |f|.
+\]
+\end{rem}
+
+\begin{lem}\label{c6l1l6}
+Let $m \le n$ be integers and let $a_i, b_i$ be real numbers assigned to each
+integer $m \le i \le n$. Suppose that $a_i \le b_i$ for all $m \le i \le n$.
+Then,
+\[
+\sum_{i=m}^n a_i \le \sum_{i=m}^n b_i.
+\]
+\end{lem}
+\begin{proof}
+\[
+\sum_{i=m}^n a_i = \sum_{i=1}^{n-1}a_i + a_n \le \sum_{i=1}^{n-1}a_i + b_n
+\]
+Continuing this way $n - m$ times, 
+\[
+\sum_{i=m}^n a_i \le b_1 + \cdots + b_n = \sum_{i=m}^n b_i.
+\]
+\end{proof}
+\begin{rem}
+If $f(x) \le g(x)$ for all $x \in [a, b]$ then
+\[
+\int f \le \int g.
+\]
+\end{rem}
