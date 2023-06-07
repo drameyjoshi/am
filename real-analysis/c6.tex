@@ -177,3 +177,192 @@ If $f(x) \le g(x)$ for all $x \in [a, b]$ then
 \int f \le \int g.
 \]
 \end{rem}
+
+\begin{defn}\label{c6s1d2}
+Let $X$ be a finite set with $n \in \son$ elements and let $f:X \rightarrow
+\sor$. Then
+\[
+\sum_{x \in X} f(x) := \sum_{i=1}^nf(g(i)),
+\]
+where $g:\{1, \ldots n\} \rightarrow X$.
+\end{defn}
+The definition is in terms of a bijection $g$ which is not specified. There
+are many bijections possible between $\{1, \ldots, n\}$ and $X$. In order to
+ensure that this definition is independent of the exact bijection we prove
+that
+\begin{prop}\label{c6s1p1}
+Let $X$ be a finite set of $n \in \son$ elements, $f:X \rightarrow \sor$,
+$g, h: \{1, \ldots, n\} \rightarrow X$ be bijections. Then
+\[
+\sum_{i=1}^n f(g(i)) = \sum_{i=1}^n f(h(i)).
+\]
+\end{prop}
+\begin{proof}
+We will use induction on $n$. For $n = 0$, both sides of the equation are
+zero. This proves the base case. Now assume that the claim is true for some
+$n$. Let $X$ have $n + 1$ elements. Then,
+\[
+\sum_{i=1}^{n+1} f(g(i)) = \sum_{i=1}^n f(g(i)) + f(g(n+1)).
+\]
+Let $g(n+1) = h(m) = x$ for some $1 \le m \le n + 1$. Therefore,
+\[
+\sum_{i=1}^{n+1} f(g(i)) = \sum_{i=1}^n f(g(i)) + f(h(m)).
+\]
+The sum on the rhs is over the $n$-element set $X - \{x\}$. Define 
+bijections $\tilde{g}, \tilde{h}:\{1, \ldots, n\} \Rightarrow X - \{x\}$
+such that $\tilde{g}(i) = g(i)$ for all $1 \le i \le n$,
+\[
+\tilde{h}(i) = \begin{cases}
+ h(i) & 1 \le i < m \\
+ h(i + 1) & m < i \le n
+ \end{cases}
+\]
+In terms of $\tilde{g}$ we can write
+\[
+\sum_{i=1}^{n+1} f(g(i)) = \sum_{i=1}^n f(\tilde{g}(i)) + f(h(m)).
+\]
+By induction hypothesis,
+\[
+\sum_{i=1}^{n+1} f(g(i)) = \sum_{i=1}^n f(\tilde{h}(i)) + f(h(m))
+= \sum_{i=1}^{m-1} f(\tilde{h}(i)) + f(h(m)) + \sum_{i=m}^nf(\tilde{h}(i))
+\]
+From the definition of $\tilde{h}$,
+\[
+\sum_{i=1}^{n+1} f(g(i)) = \sum_{i=1}^{m-1} f(h(i)) + f(h(m)) + 
+\sum_{i=m}^nf(h(i+1))
+\]
+Using the change of index formula in lemma \ref{c6s1l2} with $k=1$,
+\[
+\sum_{i=1}^{n+1} f(g(i)) = \sum_{i=1}^{m-1} f(h(i)) + f(h(m)) + 
+\sum_{j=m+1}^{n+1}f(h(j)) = \sum_{i=1}^{n+1}f(h(i)).
+\]
+\end{proof}
+\begin{rem}
+A bijection determines the order in which elements of $X$ are added. This
+proposition assures that for finite sums ordering is unimportant. We will
+later on realise that it is important for infinite sums.
+\end{rem}
+
+We will now prove a number or lemmas about properties of summation over
+finite sets.
+\begin{lem}\label{c6s1l7}
+If $X$ is an empty set and $f: X \rightarrow \sor$ be a function. Then
+\[
+\sum_{x \in X}f(x) = 0.
+\]
+\end{lem}
+\begin{proof}
+The number of elements in an empty set is $0$. Therefore,
+\[
+\sum_{x \in x}f(x) = \sum_{i=1}^0f(g(i)),
+\]
+where $g$ is a bijection from an empty set to itself. By definition of
+summation, the sum on the rhs is zero.
+\end{proof}
+\begin{rem}
+See exercise 5 in section \ref{c2s3} for a proof of the existence of an
+empty bijection.
+\end{rem}
+
+\begin{lem}\label{c6s1l8}
+If $X$ consists of a single element $X = \{x_0\}$ and $f:X \rightarrow \sor$
+is a function then
+\[
+\sum{x \in X}f(x) = f(x_0).
+\]
+\end{lem}
+\begin{proof}
+There is only one bijections $\{1\} \mapsto X = \{x_0\}$.
+\end{proof}
+
+\begin{lem}\label{c6s1l9}
+If $X$ is a finite set, $f: X \rightarrow \sor$ is a function, $g: Y 
+\rightarrow X$ is a bijection then,
+\[
+\sum_{x \in X}f(x) = \sum_{y \in Y}f(g(y)).
+\]
+\end{lem}
+\begin{proof}
+We start with
+\[
+\sum_{y \in Y}f(g(y)) = \sum_{i=1}^n f(g(b(i))),
+\]
+where $b: \{1, \ldots, n\} \rightarrow Y$ is a bijection. Since $g: Y
+\rightarrow X$ is also a bijection, $g \circ b: \{1, \ldots, n\} \rightarrow
+X$ is a bijection. We can write the rhs of previous equation as
+\[
+\sum_{y \in Y}f(g(y)) = \sum_{i=1}^n f((g \circ b)(i)) = \sum_{x \in X}f(x).
+\]
+\end{proof}
+
+\begin{lem}\label{c6s1l10}
+Let $n \le m$ be integers and $X := \{i \in \soi \;|\; n \le i \le m\}$. If
+$a_i$ is a real number assigned to each integer $i \in X$ then
+\[
+\sum_{i=n}^m a_i = \sum_{i \in X}a_i.
+\]
+\end{lem}
+\begin{proof}
+The set $X$ contains $m - n + 1$ elements. Let $A = \{a_n, \ldots, a_m\}$
+and $f: X \rightarrow A$ such that $f(i) = a_i$. Then,
+\[
+\sum_{i \in X}a_i = \sum_{i \in X}f(i).
+\]
+Let $g:\{1, \ldots, m - n + 1\} \rightarrow X$ be a bijection such that
+$g(j) = n + j - 1$. Therefore, we can write rhs of the above equation as
+\[
+\sum_{i \in X}a_i = \sum_{j=1}^{m-n+1}f(g(j))
+\]
+By definition of $f$,
+\[
+\sum_{i \in X}a_i = \sum_{j=1}^{m-n+1}a_{g(j)}.
+\]
+By definition of $g$,
+\[
+\sum_{i \in X}a_i = \sum_{j=1}^{m-n+1}a_{n + j - 1}.
+\]
+Using the change of index formula of lemma \ref{c6s1l2},
+\[
+\sum_{i \in X}a_i = \sum_{j=n}^ma_n.
+\]
+\end{proof}
+
+\begin{lem}\label{c6s1l11}
+If $X$ and $Y$ are disjoint finite sets and $f: X \cup Y \rightarrow \sor$
+is a function then,
+\[
+\sum_{z \in X \cup Y} = \sum_{x \in X}f(x) + \sum_{y \in Y}f(y).
+\]
+\end{lem}
+
+\begin{lem}\label{c6s1l12}
+Let $X$ be a finite set and let $f, g: X \rightarrow \sor$ be functions.
+Then,
+\[
+\sum_{x \in X}(f(x) + g(x)) = \sum_{x \in X}f(x) + \sum_{x \in X}g(x).
+\]
+\end{lem}
+
+\begin{lem}\label{c6s1l13}
+Let $X$ be a finite set, $f: X \rightarrow \sor$ be a function, $c \in \sor$.
+Then,
+\[
+\sum_{x \in X} cf(x) = c\sum_{x \in X}f(x).
+\]
+\end{lem}
+
+\begin{lem}\label{c6s1l14}
+Let $X$ be a finite set and let $f, g: X \rightarrow \sor$ be functions
+such that $f(x) \le g(x)$ for all $x \in X$. Then,
+\[
+\sum_{x \in X}f(x) \le \sum_{x \in X}g(x).
+\]
+\end{lem}
+
+\begin{lem}\label{c6s1l15}
+Let $X$ be a finite set, $f:X \rightarrow \sor$ then
+\[
+\left|\sum_{x \in X}f(x)\right| \le \sum_{x \in X}|f(x)|.
+\]
+\end{lem}
+
