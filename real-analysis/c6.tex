@@ -154,7 +154,7 @@ This is analogous to
 \]
 \end{rem}
 
-\begin{lem}\label{c6l1l6}
+\begin{lem}\label{c6s1l6}
 Let $m \le n$ be integers and let $a_i, b_i$ be real numbers assigned to each
 integer $m \le i \le n$. Suppose that $a_i \le b_i$ for all $m \le i \le n$.
 Then,
@@ -272,7 +272,7 @@ is a function then
 \]
 \end{lem}
 \begin{proof}
-There is only one bijections $\{1\} \mapsto X = \{x_0\}$.
+There is only one bijection $\{1\} \mapsto X = \{x_0\}$.
 \end{proof}
 
 \begin{lem}\label{c6s1l9}
@@ -331,9 +331,28 @@ Using the change of index formula of lemma \ref{c6s1l2},
 If $X$ and $Y$ are disjoint finite sets and $f: X \cup Y \rightarrow \sor$
 is a function then,
 \[
-\sum_{z \in X \cup Y} = \sum_{x \in X}f(x) + \sum_{y \in Y}f(y).
+\sum_{z \in X \cup Y}f(z) = \sum_{x \in X}f(x) + \sum_{y \in Y}f(y).
 \]
 \end{lem}
+\begin{proof}
+% Problem 8 in section 2.6.1
+\[
+\sum_{z \in X \cup Y} f(z) = \sum_{i=1}^{m+n}f(g(i)),
+\]
+where $g: \{1, \ldots, m + n\} \rightarrow X \cup Y$ where $m = \card X$
+and $n = \card Y$. From problem 8 in section \ref{c2s6}, $\card{X \cup Y}
+= \card{X} + \card{Y}$. By proposition \ref{c6s1p1} all bijections between
+$\{1, \ldots, m + n\}$ and $X \cup Y$  are equivalent. Therefore we can 
+choose the one for which $g(\{1, \ldots, m\}) = X$ and $g(\{m+1, \ldots, 
+m+n\} = Y$. Therefore
+\[
+\sum_{z \in X \cup Y}f(z) = \sum_{i=1}^m f(g(i)) + \sum_{i=m+1}^n f(g(i)).
+\]
+By our choice of $g$
+\[
+\sum_{z \in X \cup Y}f(z) = \sum_{z \in X}f(z) + \sum_{z \in Y} f(z)).
+\]
+\end{proof}
 
 \begin{lem}\label{c6s1l12}
 Let $X$ be a finite set and let $f, g: X \rightarrow \sor$ be functions.
@@ -342,6 +361,23 @@ Then,
 \sum_{x \in X}(f(x) + g(x)) = \sum_{x \in X}f(x) + \sum_{x \in X}g(x).
 \]
 \end{lem}
+\begin{proof}
+Let $h:\{1, \ldots, n\} \rightarrow X$ be a bijection, $n$ being the 
+cardinality of $X$. Then,
+\[
+\sum_{x \in X}f(x) + \sum_{x \in X}g(x) = \sum_{i=1}^nf(h(i)) +
+\sum_{i=1}^n g(h(i)) 
+\]
+By lemma \ref{c6s1l3}, the right hand side can be written as
+\[
+\sum_{x \in X}f(x) + \sum_{x \in X}g(x) = \sum_{i=1}^n(f(h(i)) + g(h(i)))
+\]
+Let $s: X \rightarrow \sor$ be such that $s(x) = f(x) + g(x)$ then,
+\[
+\sum_{x \in X}f(x) + \sum_{x \in X}g(x) = \sum_{i=1}^ns(h(i))
+= \sum_{x \in X} s(x) = \sum_{x \in X} (f(x) + g(x))
+\]
+\end{proof}
 
 \begin{lem}\label{c6s1l13}
 Let $X$ be a finite set, $f: X \rightarrow \sor$ be a function, $c \in \sor$.
@@ -350,6 +386,19 @@ Then,
 \sum_{x \in X} cf(x) = c\sum_{x \in X}f(x).
 \]
 \end{lem}
+\begin{proof}
+Let $g: X \rightarrow \sor$ be such that $g(x) = cf(x)$. Then
+\[
+\sum_{x \in X} cf(x) = \sum_{x \in X} g(x) = \sum_{i=1}^ng(h(i))
+= \sum_{i=1}^n cf(h(i)),
+\]
+where $h: X \rightarrow \{1, \ldots, n\}$ is a bijection. By lemma 
+\ref{c6s1l4}, the last sum can be written as
+\[
+\sum_{x \in X} cf(x) = \sum_{x \in X} g(x) = c\sum_{i=1}^n f(h(i)) = 
+c\sum_{x \in X} f(x).
+\]
+\end{proof}
 
 \begin{lem}\label{c6s1l14}
 Let $X$ be a finite set and let $f, g: X \rightarrow \sor$ be functions
@@ -358,6 +407,18 @@ such that $f(x) \le g(x)$ for all $x \in X$. Then,
 \sum_{x \in X}f(x) \le \sum_{x \in X}g(x).
 \]
 \end{lem}
+\begin{proof}
+Let $h:\{1, \ldots, n\} \rightarrow X$, where $n = \card{X}$ be a bijection.
+Then 
+\[
+\sum_{x \in X}f(x) = \sum_{i=1}^n f(h(i)) \le \sum_{i=1}^n g(h(i)),
+\]
+by lemma \ref{c6s1l6}. This is because $f(h(i)) \le g(h(i))$ for all $i$.
+Therefore,
+\[
+\sum_{x \in X}f(x) \le \sum_{x \in X}g(x).
+\]
+\end{proof}
 
 \begin{lem}\label{c6s1l15}
 Let $X$ be a finite set, $f:X \rightarrow \sor$ then
@@ -365,4 +426,12 @@ Let $X$ be a finite set, $f:X \rightarrow \sor$ then
 \left|\sum_{x \in X}f(x)\right| \le \sum_{x \in X}|f(x)|.
 \]
 \end{lem}
+\begin{proof}
+Let $h:\{1, \ldots, n\} \rightarrow X$ be a bijection. Then,
+\[
+\left|\sum_{x \in X}f(x)\right| = \left|\sum_{i=1}^n f(h(i))\right| \le
+\sum_{i=1}^n |f(h(i))|,
+\]
+using lemma \ref{c6s1l5}.
+\end{proof}
 
