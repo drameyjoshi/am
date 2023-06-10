@@ -435,3 +435,178 @@ Let $h:\{1, \ldots, n\} \rightarrow X$ be a bijection. Then,
 using lemma \ref{c6s1l5}.
 \end{proof}
 
+\begin{lem}\label{c6s1l16}
+Let $X$ and $Y$ be finite sets and let $f: X \times Y \rightarrow \sor$ be
+a function. Then
+\[
+\sum_{x \in X}\left(\sum_{y \in Y} f(x, y)\right) = 
+\sum_{(x, y) \in X \times Y} f(x, y).
+\]
+\end{lem}
+\begin{proof}
+We will use induction on the cardinality of $X$. Let $n = \card X$. If $n=0$
+$X = \varnothing$. Then $X \times Y = \{(x, y) \;|\; x \in X, y \in Y\} =
+\varnothing$ if $X = \varnothing$. Therefore by lemma \ref{c6s1l6}, rhs is
+$0$. Likewise, lhs is also zero by the same lemma. This proves the base
+case.
+
+Let the claim be true to $\card{X} = n$. Let $\card{X} = n+1$. Then $X =
+\{x_0\} \cup X^\op$, where $\card X^\op = n$ and the sets $\{x_0\}$ and 
+$X^\op$ are disjoint. By lemma \ref{c6s1l11},
+\[
+\sum_{x \in X}\left(\sum_{y \in Y} f(x, y)\right) = 
+\sum_{x \in \{x_0\}}\left(\sum_{y \in Y}f(x, y)\right) +
+\sum_{x \in X}\left(\sum_{y \in Y}f(x, y)\right).
+\]
+Using induction hypothesis,
+\[
+\sum_{x \in X}\left(\sum_{y \in Y} f(x, y)\right) = 
+\sum_{(x, y) \in \{x_0\} \times Y} f(x, y) + 
+\sum_{(x, y) \in X^\op \times Y} f(x, y).
+\]
+The sets $\{x_0\} \cup Y$ and $X^\op \times Y$ are disjoint and their
+union is the set $X \times Y$. The result follows immediately from lemma
+\ref{c6s1l11}.
+\end{proof}
+
+\begin{thm}[Fubini's theorem for finite series]\label{c6s1t1}
+Let $X, Y$ be finite sets and let $f: X \times Y \rightarrow \sor$ be a
+function. Then
+\[
+\sum_{x \in X}\left(\sum_{y \in Y} f(x, y)\right) = 
+\sum_{y \in Y}\left(\sum_{x \in X} f(x, y)\right).
+\]
+\end{thm}
+\begin{proof}
+The proof follows if we show that
+\[
+\sum_{(x, y) \in X \times Y} f(x, y) = \sum_{(y, x) \in Y \times X}f(x, y).
+\]
+There is a bijection $h: Y \times X \rightarrow X \times Y$ where $h((y, x))=
+(x, y)$. By lemma \ref{c6s1l9},
+\[
+\sum{(x, y) \in X \times Y}f(x, y) = \sum_{(y, x) \in Y \times X} f(h(y, x))
+= \sum_{(y, x) \in Y \times X} f(x, y).
+\]
+\end{proof}
+
+\subsection{Exercices}
+\begin{enumerate}
+\item[1:] Form a definition for finite products 
+\[
+\prod_{i=1}^n a_i \text{ and } \prod_{x \in X} f(x).
+\]
+\item[Solution:] We define,
+\begin{eqnarray*}
+\prod_{i=1}^na_i &:=& 1 \text{ if } n < 1 \\
+\prod_{i=1}^{n+1}a_i &:=& \prod_{i=1}^n a_i \times a_{n+1}.
+\end{eqnarray*}
+Thus,
+\begin{eqnarray*}
+\prod_{i=1}^3a_i &=& \prod_{i=1}^2 a_i \times a_3 \\
+ &=& \prod_{i=1}^1 a_i \times a_2 \times a_3 \\
+ &=& \prod_{i=1}^0 a_i \times a_1 \times a_2 \times a_3 \\
+ &=& 1 \times a_1 \times a_2 \times a_3 \\
+ &=& a_1 \times a_2 \times a_3 
+\end{eqnarray*}
+
+If $g:\{1, \ldots, \card X\} \rightarrow X$ is a bijection then
+\[
+\prod_{x \in X} f(x) = \prod_{i=1}^{\card X} f(g(i)).
+\]
+
+\item[2:] Let $X$ be a finite set. For each $x \in X$, let $\seq{a_n(x)}$
+be a convergent sequence of real numbers. Show that the sequence 
+$\seq{\sum_{x \in X} a_n(x)}$ is convergent and
+\[
+\lim\sum_{x \in X}\seq{a_n(x)} = \sum_{x \in X}\lim\seq{a_n(x)}.
+\]
+\item[Solution:] We will first show that $\seq{\sum_{x \in X} a_n(x)}$ is 
+convergent. Let $\epsilon > 0$. Then there exists $N \in \son$ such that
+for all $m, n \ge N$, $x \in X$, $|a_n(x) - a_m(x)| < \epsilon/K$, where
+$K = \card X$. Let $b_n = \sum_{x \in X} a_n(x)$. Then for all $m, n \ge N$,
+\begin{eqnarray*}
+|b_m - b_n| 
+ &=& \left|\sum_{x \in X} a_m(x) - \sum_{x \in X} a_n(x)\right| \\
+ &=& \left|\sum_{x \in X} (a_m(x) - a_n(x))\right| \\
+ &\le& \sum_{x \in X}|a_m(x) - a_n(x)| \\
+ &<& \sum_{x \in X}\frac{\epsilon}{K} = \epsilon.
+\end{eqnarray*}
+Thus, $\seq{b_n}$ is a Cauchy sequence and it converges to a limit $L \in 
+\sor$. 
+
+Let $\lim\seq{a_n(x)} = l(x)$ for all $x \in X$. For an $\epsilon > 0$,
+there exists $N \in \son$ such that for all $n \ge N$ and $x \in X$,
+$|a_n(x) - l(x)| < \epsilon/K$. If $b_n = \sum_{x \in X} a_n(x)$, consider
+\begin{eqnarray*}
+\left|b_n(x) - \sum_{x \in X}l(x)\right| 
+ &=& \left|\sum_{x \in X}a_n(x) - \sum_{x \in X}l(x)\right| \\
+ &\le& \sum_{x \in X} |a_n(x) - l(x)| \\
+ &<& \epsilon
+\end{eqnarray*}
+Thus,
+\[
+\lim\seq{b_n} = \sum_{x \in X} l(x) \Rightarrow
+\lim\sum_{x \in X} a_n(x) = \sum_{x \in X}\lim\seq{a_n(x)}.
+\]
+
+\begin{rem}
+If $X$ were an infinite set then this equality is not guaranteed.
+\end{rem}
+
+\item[3:] Let $I$ be a finite set and for each $i \in I$, let $E_i$ be a
+finite set. Let $E_i \cap E_j = \varnothing$ for all $i \ne j, i, j \in I$.
+Let $f: \cup_{i \in I}E_i \rightarrow \sor$. Show that
+\[
+\sum_{x \in \cup_{i \in I} E_i}f(x) = \sum_{i \in I}\sum_{x \in E_i} f(x).
+\]
+\item[Solution:] Let $E = \cup_{i \in I}E_i$. If $x \in E$ then $x$ is a
+member of exactly one $E_i$ because $E_i \cap E_j = \varnothing$ for all
+$i \ne j$. Since each $E_i$ is finite, $E$ is also finite. Let $n_i = \card
+E_i$ and $n = \sum_{i \in I}n_i$. Let $g: \{1, \ldots n\} \rightarrow E$ be
+a bijection such that $g(\{1, \ldots, n_1\}) = E_1, g(\{n_1 + 1, \ldots,
+n_1 + n_2\}) = E_2, \ldots g(\{n_1 + \cdots + n_{K-1}, \ldots, n\}) = E_K$,
+where $K = \card I$. Then,
+\begin{eqnarray*}
+\sum_{x \in E} f(x) &=& \sum_{i=1}^n f(g(i)) \\
+ &=& \sum_{i=1}^{n_1} f(g(i)) + \sum_{i=n_1+1}^{n_1+n_2} f(g(i)) + \cdots
+    + \sum_{i=n_1 + \cdots + n_{K-1}}^n f(g(i)) \\
+ &=& \sum_{x \in E_1} f(x) + \sum_{x \in E_2}f(x) + \cdots + 
+     \sum_{x \in E_K} f(x) \\
+ &=& \sum_{i \in I} \sum_{x \in E_i} f(x)
+\end{eqnarray*}
+
+\begin{rem}
+The solution is probably not wrong, but I am struggling to define the rhs
+rigorously. We have not defined a sum where the outer index $i$ identifies
+the set over which the inner sum runs. Let me retry the solution using 
+induction on $\card I$.
+\end{rem}
+
+\item[Solution:] Without loss of generality we assume $I = \{1, \ldots, K\}$.
+We will prove using induction on $K = \card I$. If $K = 1$
+$\cup_{i \in I}E_i = E_1$ and 
+\[
+\sum_{i=1}^1 \sum_{x \in E_1}f(x) = \sum_{x \in E_1}f(x) = \sum_{x \in 
+\cup_{i \in I}E_i} f(x).
+\]
+This proves the base case. Now assume that the hypothesis is true for 
+$\card I = K$. Consider the case $\card I = K + 1$. 
+\[
+\bigcup_{i=1}^{K + 1} E_i = \bigcup_{i=1}^K E_i \cup E_{K+1} = F_K \cup
+E_{K+1}.
+\]
+The sets $F_K$ and $E_{K+1}$ are disjoint. Therefore, by lemma \ref{c6s1l11},
+\[
+\sum_{x \in F_K \cup E_K} f(x) = \sum_{x \in F_K}f(x) + \sum_{x \in E_{K+1}}
+f(x).
+\]
+By induction hypothesis,
+\[
+\sum_{x \in F_K \cup E_K} f(x) = \sum_{i \in I_K}\sum_{x \in E_i}f(x) + 
+\sum_{x \in E_{K+1}} f(x),
+\]
+where $I_K$ is the set $I$ without the one element. The rhs can be combined
+into a sum over $i \in I$.
+\end{enumerate}
+
