@@ -583,7 +583,8 @@ the set over which the inner sum runs. Let me retry the solution using
 induction on $\card I$.
 \end{rem}
 
-\item[Solution:] Without loss of generality we assume $I = \{1, \ldots, K\}$.
+\item[Solution:] Without loss of generality we assume $I = 
+\{1, \ldots, K\}$.
 We will prove using induction on $K = \card I$. If $K = 1$
 $\cup_{i \in I}E_i = E_1$ and 
 \[
@@ -596,7 +597,8 @@ $\card I = K$. Consider the case $\card I = K + 1$.
 \bigcup_{i=1}^{K + 1} E_i = \bigcup_{i=1}^K E_i \cup E_{K+1} = F_K \cup
 E_{K+1}.
 \]
-The sets $F_K$ and $E_{K+1}$ are disjoint. Therefore, by lemma \ref{c6s1l11},
+The sets $F_K$ and $E_{K+1}$ are disjoint. Therefore, by lemma 
+\ref{c6s1l11},
 \[
 \sum_{x \in F_K \cup E_K} f(x) = \sum_{x \in F_K}f(x) + \sum_{x \in E_{K+1}}
 f(x).
@@ -608,5 +610,32 @@ By induction hypothesis,
 \]
 where $I_K$ is the set $I$ without the one element. The rhs can be combined
 into a sum over $i \in I$.
+
+\item[4:] Let $n, m \in \son$ and for each $1 \le i \le n$, let $a_i \in 
+\son$ such that $a_i \le m$. Show that
+\[
+\sum_{i=1}^n a_i = \sum_{j=1}^m \card\{1 \le i \le n \;|\; a_i \ge j\}.
+\]
+\item[Solution:] It is easy to understand this method graphically. 
+Represent each $a_i$ as a series of horizontal dots. The sum of all $a_i$
+is then the sum of dots. The dots can be counted row wise or column wise.
+The lhs of the claim to be proved is the row wise addition while the rhs
+is the column wise addition. We can write each $a_i$ as
+\[
+a_i = \sum_{j = 1}^m c_{i, j},
+\]
+where $c_{i, j} = 1$ if $1 \le j \le a_i$ and $0$ otherwise. Thus,
+\[
+\sum_{i=1}^m a_i = \sum_{i=1}^n \sum_{j=1}^m c_{i, j} = 
+\sum_{j=1}^m \sum_{i=1}^n c_{i, j},
+\]
+by theorem \ref{c6s1t1}. For a fixed $j$, the sum
+\[
+\sum_{i=1}^n c_{i, j}
+\]
+is the count of all ``dots in the $j$-th column". It is the cardinality
+of the set $\{1 \le i \le n \;|\; a_j \ge m\}$. For each $m$, it considers
+the numbers $a_j$ that are greater than $m$ and counts the ``dots" in the
+column. Numbers smaller than $m$ will not have a ``dot".
 \end{enumerate}
 
