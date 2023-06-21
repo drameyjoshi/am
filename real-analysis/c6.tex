@@ -639,3 +639,180 @@ the numbers $a_j$ that are greater than $m$ and counts the ``dots" in the
 column. Numbers smaller than $m$ will not have a ``dot".
 \end{enumerate}
 
+\section{Infinite series}\label{c6s2}
+We are now stepping into analysis. We will start considering operations
+that involve infinitely many terms. The simplest among them is an infinite
+series.
+\begin{defn}\label{c6s2d1}
+A formal infinite series is an expression of the form
+\[
+\sum_{i=m}^\infty a_i,
+\]
+where $m \in \soi$ and $a_i$ is a real number for each $i \ge m$.
+\end{defn}
+
+We call this expression `formal' because we do not yet know that it means.
+It looks like a sum of infinite terms but we do not know it it evaluates
+to a real number. Interesting things happen when an infinitely many terms
+are involved. For example, a sum of finitely many rational numbers is a
+rational numbers. However,
+\[
+\sum_{k \ge 0}\frac{1}{k!}
+\]
+is the irrational number, $e$. Another example is,
+\[
+4\sum_{k \ge 0}(-1)^k\frac{1}{2k+1} = \pi.
+\]
+
+\begin{defn}\label{c6s2d2}
+If 
+\[
+\sum_{k \ge m}^\infty a_k
+\]
+is an infinite series then its partial sum $S_n$ is defined as
+\[
+S_n = \sum_{k=m}^n a_k.
+\]
+\end{defn}
+Note that $S_n$ is a well defined expression. It is guaranteed to be a
+real number for all values of $n$, even those less than $m$. The terms
+$s_m, s_{m+1}, \ldots$ form a sequence whose convergence can be examined.
+
+\begin{defn}\label{c6s2d3}
+An infinite series $\sum_{k \ge m}a_k$ is said to converge to a limit $L$
+if the sequence $\seq\{s_n\}$ of its partial sums converges to the same
+limit.
+\end{defn}
+Thus, $\lim\sum_{k \ge m} = L$ if $\lim\seq{s_n} = L$.
+
+\begin{defn}\label{c6s2d4}
+An infinite series $\sum_{k \ge m}a_k$ is said to be divergent if the 
+sequence of its partial sums diverges.
+\end{defn}
+
+\begin{prop}\label{c6s2p1}
+An infinite series $\sum_{k \ge m}a_k$ of real numbers converges iff for
+any $\epsilon > 0$ there exists $N \in \son$ such that for all $q \ge p 
+\ge N$,
+\[
+\left|\sum_{k=p}^q a_k\right| \le \epsilon.
+\]
+\end{prop}
+\begin{proof}
+Assume that $\sum_{k \ge m}a_k$ is convergent. Therefore, the sequence
+of its partial sums $\seq{s_n}$ is convergent. Since a convergent sequence
+is a Cauchy sequence, for a given $\epsilon > 0$, there exists $N \in \son$
+such that for all $q \ge p \ge N$, $|s_p - s_q| \le \epsilon$ or
+\[
+\left|\sum_{k=p}^q a_k\right| \le \epsilon.
+\]
+
+Now assume that
+\[
+\left|\sum_{k=p}^q a_k\right| \le \epsilon
+\]
+for all $q > p > N$. Then we have $|s_q - s_p| \le \epsilon$ or that the
+sequence of partial sums is a Cauchy sequence.
+\end{proof}
+
+An immediate corollary of this proposition is
+\begin{cor}\label{c6s2c1}
+If $\sum_{k \ge m}a_k$ is a convergent series then $\lim a_n = 0$.
+\end{cor}
+\begin{proof}
+Put $q = p$ in the proposition \ref{c6s2p1} so that we have $|a_p| \le
+\epsilon$ for all $p \ge N$.
+\end{proof}
+
+The contrapositive of this corollary gives us the zero-test to check a 
+series's convergence. If $\lim a_n \ge 0$ then $\sum_{k \ge m}a_k$ 
+cannot converge. And yet, $\lim a_n = 0$ does not guarantee convergence.
+For we will show that $\sum_{k \ge 1} k^{-1}$ diverges.
+
+\begin{defn}\label{c6s2d5}
+An infinite series $\sum_{k \ge m}a_k$ is said to be absolutely convergent
+if $\sum_{k \ge m}|a_k|$ is convergent.
+\end{defn}
+
+\begin{prop}\label{c6s2p2}
+An absolutely convergent series is convergent.
+\end{prop}
+\begin{proof}
+Fix an $\epsilon > 0$. $\sum_{k \ge m}|a_k|$ is convergent implies that
+there exists $N \in \son$ such that for all $q \ge p \ge N$,
+\[
+\left||a_p| + \cdots + |a_q|\right| \le \epsilon
+\]
+(This follows from proposition \ref{c6s2p1}. Therefore,
+\[
+|a_p| + \cdots |a_q| \le \epsilon \Rightarrow |a_p + \cdots + a_q| \le
+\epsilon.
+\]
+Using proposition \ref{c6s2p1} once again we conclude that $\sum_{k \ge m}
+a_k$ is convergent.
+\end{proof}
+
+\begin{defn}\label{c6s2d6}
+If $\sum_{k \ge m}a_k$ converges but $\sum_{k \ge m}|a_k|$ does not then
+$\sum_{k \ge m}a_k$ is said to converge conditionally.
+\end{defn}
+
+\begin{prop}\label{c6s2p3}
+Let $\seq{a_k}$ be a monotonically decreasing sequence of non-negative 
+real numbers, where $k \ge m$ for some $m \in \soi$. Then the series
+$\sum_{k \ge m}(-1)^k a_k$ is convergent iff $\lim a_k = 0$.
+\end{prop}
+\begin{proof}
+If $\sum_{k \ge m}(-1)^k a_k$ is convergent then for a given $\epsilon > 0$
+there exists $N \in \son$ such that for all $q \ge p \ge N$, $|(-1)^pa_p
++ \cdots + (-1)^qa_q| \le \epsilon$. If $q = p$ then we have $|(-1)^p a_p|
+= |a_p| \le \epsilon$. That is $\lim a_k = 0$.
+
+Now assume that $\lim a_k = 0$. Therefore, for a given $\epsilon > 0$
+there exists $N \in \son$ such that for all $p \ge N$, $|a_p| \le \epsilon
+\Rightarrow |(-1)^p a_p| \le \epsilon$. Now, $s_n = a_m + \cdots + (-1)^n
+a_n$ so that 
+\[
+s_{n+2} = s_n + (-1)^{n+1} a_{n+1} + (-1)^{n+2}a_{n + 2} =
+s_n + (-1)^{n+1}(a_{n+1} - a_{n+2}).
+\]
+By hypothesis, $a_{n+1} \ge a_{n+2}$ so that $s_{n+2} \ge s_n$ if $n$ is
+odd and $s_{n+2} \le s_n$ is $n$ is even. Let $n$ be an even number. Then
+$s_{n + 2k} \le s_n$ for all $k \ge 0$. Now, 
+\begin{equation}\label{c6s2e1}
+s_{n + 2k + 1} = s_{n + 2k}
++ (-1)^{n + 2k + 1}a_{n + 2k + 1} = s_{n + 2k} - a_{n + 2k + 1} \le 
+s_{n+2k} \le s_n.
+\end{equation}
+
+Since $n$ is even $n + 1$ is odd and hence 
+\begin{equation}\label{c6s2e2}
+s_{n + 2k + 1} \ge s_{n + 2k - 1} \ge s_{n + 2k - 3} \cdots s_{n+1} = 
+s_n - a_{n+1}.
+\end{equation}
+From equations \eqref{c6s2e1} and \eqref{c6s2e2} we have
+\[
+s_n - a_{n+1} \le s_{n + 2k + 1} \le s_n.
+\]
+Since this statement is true for all $k \ge 0$, we can as well write
+\begin{equation}\label{c6s2e3}
+s_n - a_{n + 1} \le s_m \le s_n
+\end{equation}
+for all odd $m > n$. Now $s_{n + 2k + 1} = s_{n + 2k} - a_{n + 2k + 1}
+\le s_{n + 2k} \le s_n$. Thus we also have
+\[
+s_n - a_{n+1} \le s_{n + 2k + 1} \le s_{n + 2k} \le s_n \Rightarrow
+s_n - a_{n+1} \le s_{n + 2k} \le s_n 
+\]
+that is, $s_n - a_{n + 1} \le s_m \le s_n$ for all even $m$. Combining
+this with \eqref{c6s2e3} we get
+\begin{equation}\label{c6s2e4}
+s_n - a_{n + 1} \le s_{n + m} \le s_n \;\forall\; m \ge 0.
+\end{equation}
+From this equation, we can easily infer $s_n - a_{n + 1} \le s_{n + m} \le
+s_n + a_{n + 1}$ so that $|s_{n+m} - s_n| < a_{n + 1}$. Since 
+$\lim\seq{a_n} = 0$, for a given $\epsilon > 0$ there exists $N \in \son$,
+so that for all $n > N$, $|a_{n+1}| = a_{n+1} \le \epsilon$. Thus, for all
+$n \ge N$, $|s_{n + m} - s_n| < \epsilon$, making $\seq{s_n}$ a Cauchy
+sequence.
+\end{proof}
