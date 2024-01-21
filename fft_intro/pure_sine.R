@@ -1,3 +1,6 @@
+# Reference:
+# https://www.gaussianwaves.com/2015/11/interpreting-fft-results-obtaining-magnitude-and-phase-information/
+
 nu <- 32 # 32 Hz
 omega <- 2 * pi * nu
 fs <- 100 * nu # Sampling frequency
