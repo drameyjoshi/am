@@ -20,3 +20,12 @@ plot(X.fft.results$freq,
 # Read https://dsp.stackexchange.com/questions/4825/why-is-the-fft-mirrored to 
 # understand why the transform is symmetric. Dilip Sarwate's answer gives the
 # exact details.
+
+# Choose amplitudes greater than the mean of all amplitudes
+selected <- which(X.fft.results$amplitude > mean(X.fft.results$amplitude))
+# Focus on the left half of the spectrum.
+left.selected <- selected[selected < nrow(X.fft.results)/2]
+
+# Here's the data of our interest.
+interesting.freq <- X.fft.results[left.selected, ]
+interesting.freq <- interesting.freq[order(-interesting.freq$amplitude), ]
