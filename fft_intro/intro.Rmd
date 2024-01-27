@@ -1,0 +1,240 @@
+---
+title: "Fourier Analysis - An Introduction"
+author: "Amey Joshi"
+date: "2024-01-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The simplest wave
+
+A wave is a periodic phenomenon. Mathematically, it is described by a periodic
+function of time. The trigonometric functions like $\sin$ or $\cos$ are the 
+simplest periodic function. The two functions are not that different, for one 
+can be written in terms of the other. That is
+$$
+\begin{eqnarray}
+\sin(x + \pi/2) &=& \cos(x) \\
+\cos(x + \pi/2) &=& -\sin(x)
+\end{eqnarray}
+$$
+The simplest periodic motion is that of a simple harmonic oscillator. An example
+of such a system is when a mass $m$ is attached to a rigid support by a string
+of constant $k$. Its equation of motion is 
+$$
+m\ddot{x} = -kx
+$$
+and its solution is 
+$$
+x(t) = A\sin(\omega t + b),
+$$
+where 
+$$
+\omega = \sqrt{\frac{k}{m}}
+$$
+is the angular frequency, $A$ is the amplitude and $b$ is the phase of the wave.
+Let us see how this solution looks like for certain values of the parameters.
+```{r}
+m <- 1              # Mass
+k <- 10             # Spring constant
+omega <- sqrt(k/m)  # Frequency in radians per second
+f <- omega/(2 * pi) # Frequency in Hz.
+A <- 3              # Amplitude.
+b <- pi/6           # Phase
+
+t <- seq(from = -2*pi, to = 2*pi, length.out = 200)
+x <- A * sin(omega * t + b)
+plot(t, x, xlab='t', ylab = 'x(t)', main = 'A sine wave', type = 'l')
+```
+
+## Amplitude, phase and frequency
+
+In the next chart we show three waves that differ from the other two in one of
+the three characteristics.
+
+```{r pressure, echo=FALSE}
+A1 <- 2
+A2 <- 3
+b1 <- pi/6
+b2 <- 2 * pi/3
+omega1 <- sqrt(10)
+omega2 <- sqrt(15)
+
+t <- seq(from = -2*pi, to = 2*pi, length.out = 200)
+x1 <- A1 * sin(omega1*t + b1)
+x2 <- A2 * sin(omega1*t + b1) # Amplitude is different.
+x3 <- A1 * sin(omega2*t + b1) # Frequency is different.
+x4 <- A1 * sin(omega1*t + b2) # Phase is different.
+
+plot(t, x1, type='l', col='black', ylim=c(-A2, A2), xlab='t', ylab='x(t)', main='Waves differing in amplitude')
+lines(t, x2, col='red')
+
+plot(t, x1, type='l', col='black', ylim=c(-A2, A2), xlab='t', ylab='x(t)', main='Waves differing in frequency')
+lines(t, x3, col='red')
+
+plot(t, x1, type='l', col='black', ylim=c(-A2, A2), xlab='t', ylab='x(t)', main='Waves differing in phase')
+lines(t, x4, col='red')
+```
+
+## About complex numbers
+
+Complex numbers were devised to solve equations of the type $x^2 + 1 = 0$, which
+have no real solution. That is, there is no real number $x$ such that $x^2 = -1$.
+We, therefore, introduce an imaginary number $i$ which we define as $i^2 = -1$.
+A complex number is defined as the quantity $z = x + iy$, where $x$ and $y$ are 
+real numbers. $x$ is called the real part of $z$ and $y$, the imaginary part.
+If $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$ are complex numbers then
+$$
+z_1 \pm z_2 = (x_1 \pm x_2) + i(y_1 \pm y_2)
+$$
+Their product is
+$$
+z_1 z_2 = (x_1 + iy_1)(x_2 + iy_2) = x_1x_2 - y_1y_2 + i(x_1y_2 + x_2y_1).
+$$
+
+The conjugate of $z$ is defined as
+$$
+z^\ast = x - iy.
+$$
+Mathematicians denote the complex conjugate as $\bar{z}$. It is easy to check 
+that 
+$$
+zz^\ast = x^2 + y^2 \ge 0.
+$$
+In fact, $zz^\ast = 0$ if and only if $z = 0$, that is, both $x$ and $y$ are zero.
+The modulus of the complex number $z$ is defined as $|z| = \sqrt{zz^\ast}$. We 
+take the positive square-root so that for any $z$, $|z| \ge 0$. If $z_2 \ne 0$ 
+then the ratio of complex numbers is
+$$
+\frac{z_1}{z_2} = \frac{z_1z_2^\ast}{|z_2|^2}.
+$$
+Since $z = x + iy$, we can represent $z$ geometrically as a point on the plane.
+The horizontal axis of the plane is called the real axis and the vertical one the
+imaginary axis. The distance of $z = x + iy$ from the origin is $r = \sqrt{x^2 + y^2}
+= |z|$. If we draw a vector from the origin to $z = x + iy$ it will have length
+$r$ and it will make an angle $\theta$ with the real axis such that $\tan\theta
+= y/x$. In fact, $x = r\cos\theta$ and $y = r\sin\theta$. Therefore, we can also
+express $z$ as
+$$
+z = x + iy = r\cos\theta + ir\sin\theta = r(\cos\theta + i\sin\theta).
+$$
+By using the Taylor expansions of the functions $e^x, \sin(x)$ and $\cos(x)$ it
+is easy to check that 
+$$
+e^{i\theta} = \cos\theta + i\sin\theta.
+$$
+This equation is also called \emph{Euler's formula}. A complex number has two
+equivalent representations. $z = x + iy$ is called the Cartesian representation 
+and $z = re^{i\theta}$ is called the polar representation. It is easy to see that
+$$
+e^{i\omega t} = \cos(\omega t) + i\sin(\omega t)
+$$
+and 
+$$
+ae^{i(\omega t + \alpha)} = a\cos(\omega t + \alpha) + ia\sin(\omega t + \alpha)
+$$
+Thus, the real part of $ae^{i(\omega t + \alpha)}$ is a simple cosine wave of
+amplitude $a$, frequency $\omega$ and phase $\alpha$. Exponential functions are
+far easier to manipulate than the trigonometric function. We will find it quite
+convenient to use them as representation of waves.
+
+## Fourier series
+Joseph Fourier, a French mathematician, discovered that any periodic function
+can be expressed as a sum of trigonometric functions. That is,if $f$ is a function
+of time $t$ such that $f(t + T) = f(t)$ then one can write
+$$
+f(t) = \frac{a_0}{2} + \sum_{n=1}^\infty a_n\cos\left(\frac{2\pi n}{T} t\right) + \sum_{n=1}^\infty b_n\sin\left(\frac{2\pi n}{T} t\right).
+$$
+Now 
+$$
+\cos\left(\frac{2\pi n}{T} (t + T)\right) = \cos\left(\frac{2\pi n}{T} t + 2\pi n\right) = \cos\left(\frac{2\pi n}{T} t\right)
+$$ 
+and
+$$
+\sin\left(\frac{2\pi n}{T} (t + T)\right) = \sin\left(\frac{2\pi n}{T} t + 2\pi n\right) = \sin\left(\frac{2\pi n}{T} t\right).
+$$ 
+Therefore, $f(t + T) = f(t)$. The representation of $f$ as an infinite series of sines
+and cosines has the same periodicity as $f$. It is easy to check that
+$$
+\begin{eqnarray}
+a_0 &=& \frac{2}{T}\int_{-T/2}^{T/2} f(t)dt \\
+a_n &=& \frac{2}{T}\int_{-T/2}^{T/2} f(t)\cos\left(\frac{2\pi n}{T} t\right)dt \\
+b_n &=& \frac{2}{T}\int_{-T/2}^{T/2} f(t)\sin\left(\frac{2\pi n}{T} t\right)dt
+\end{eqnarray}
+$$
+Instead of the pair of constants $(a_n, b_n)$ we can use $(c_n, c_{-n})$ where
+$$
+\begin{eqnarray}
+c_n &=& \frac{a_n - ib_n}{2} \\
+c_{-n} &=& \frac{a_n + ib_n}{2}
+\end{eqnarray}
+$$
+We can invert these relations to get
+$$
+\begin{eqnarray}
+a_n &=& c_n + c_{-n} \\
+b_n &=& c_n - c_{-n}
+\end{eqnarray}
+$$
+Substituting these in the Fourier expansion, we get
+$$
+f(t) = \sum_{n=-\infty}^\infty c_n e^{2\pi in t/T}.
+$$
+Often times, it is easy to manipulate the series written in terms of the 
+exponential function instead of the trigonometric ones. Using the relation between
+$a_n, b_n, c_n$ and the integral representation of $a_n, b_n$, we readily get
+$$
+c_n = \frac{1}{T}\int_{-T/2}^{T/2} f(t)e^{-i2n\pi t/T}dt.
+$$
+
+The analysis so far tells us that any periodic function can be expressed as a 
+sum of trigonometric functions or as a sum of exponential functions with 
+imaginary arguments. It is time to interpret the series.
+
+- The constants $a_n, b_n$ are the amplitudes of waves of frequency $n\omega$.
+- The waves themselves have frequencies $n\omega$.
+
+## Fourier transform
+We can substitute the expression for $c_n$ in the Fourier series to get
+$$
+f(t) = \sum_{n=-\infty}^\infty \left(\frac{1}{T}\int_{-T/2}^{T/2} f(t)e^{-i2n\pi s/T}ds\right) e^{2\pi in t/T}.
+$$
+
+Let 
+$$
+\omega = \frac{2\pi n}{T}
+$$
+so that 
+$$
+\Delta\omega = \frac{2\pi}{T}\Delta n = \frac{2\pi}{T},
+$$
+since the smallest value $\Delta n$ can take is $1$. We can write the above 
+equation as 
+$$
+\frac{1}{T} = \frac{\Delta \omega}{2\pi}.
+$$
+Therefore,
+$$
+f(t) = \sum_{n=-\infty}^\infty \left(\frac{\Delta \omega}{2\pi}\int_{-T/2}^{T/2} f(t)e^{-i2n\pi t/T}dt\right) e^{2\pi in t/T} = \frac{1}{2\pi}\sum_{n=-\infty}^\infty\left( \int_{-T/2}^{T/2} f(t)e^{-i2n\pi t/T}dt\right) e^{2\pi in t/T} \Delta\omega
+$$
+
+Let us further assume that as $T \rightarrow \infty$, $\omega$ remains finite and
+the expression in the brackets can be written as an integral $\hat{f}(\omega)$ 
+so that
+$$
+f(t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \hat{f}(\omega) e^{i\omega t} d\omega
+$$
+where
+$$
+\hat{f}(\omega) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(t)e^{-i\omega t}dt.
+$$
+The function $\hat{f}$ is called the Fourier transform of the function $f$. By
+taking the limit $T \rightarrow \infty$ we have allowed non-periodic functions to
+be treated in the same way as periodic functions.
+
+## Discrete signals and transforms
+
+## Discrete Fourier transforms
