@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 
 from typing import List
 
+# For the range of human voice:
+# https://dsp.stackexchange.com/questions/83749/what-is-the-maximum-possible-frequency-of-human-voice-speechthat-can-be-generat
+
 def get_significant_freq(csvname: str, sampling_rate: int) -> pd.DataFrame:
     X = []
     with open(csvname, "r") as fpr:
