@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,11 +11,8 @@ from typing import List
 # https://dsp.stackexchange.com/questions/83749/what-is-the-maximum-possible-frequency-of-human-voice-speechthat-can-be-generat
 
 def get_significant_freq(csvname: str, sampling_rate: int) -> pd.DataFrame:
-    X = []
-    with open(csvname, "r") as fpr:
-        for line in fpr:
-            X.append(int(line.strip()))
-
+    dfc = pd.read_csv(csvname, header=None)
+    X = dfc[0].to_numpy()
     Xhat = np.fft.fft(X)
     N = Xhat.shape[0]
     freq = [f*sampling_rate/N for f in range(0, N)]
@@ -67,8 +65,10 @@ def main(argv:List[str]) -> None:
 
         assert len(csvfiles1) == len(csvfiles2)
 
+        processing_time = np.zeros(len(csvfiles1))
         for i in range(len(csvfiles1)):
             sname = f"sample_{i}"
+            start = time.time()
             plot_dominant_freq(os.path.join(src1, csvfiles1[i]),
                                name1,
                                os.path.join(src2, csvfiles2[i]),
@@ -76,7 +76,9 @@ def main(argv:List[str]) -> None:
                                os.path.join(dest, f"{sname}.png"),
                                sname,
                                48000)
+            processing_time[i] = time.time() - start
 
+        print("Average processing time is %0.3f s." % np.mean(processing_time))
         sys.exit(0)
     else:
         print('Need three arguments.')
