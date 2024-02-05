@@ -13,18 +13,15 @@ def m4a_to_csv(src: str, dest: str, prefix: str) -> int:
         
     nfiles = 0
     for m4a in m4a_files:
-        data = AudioSegment.from_file(os.path.join(src, m4a))._data
-        numbers = []
-        for i in range(len(data)//2):
-            numbers.append(int.from_bytes(data[i*2:i*2 + 2],
-                                          "little", signed=True))
+        B = AudioSegment.from_file(os.path.join(src, m4a))._data # B for bytes.
+        X = [int.from_bytes(B[i*2:i*2 + 2], "little", signed=True)
+                   for i in range(len(B)//2)]
 
         ofilename = f"{dest}/{prefix}_{nfiles}.csv"
         with open(ofilename, 'w') as fpw:
-            for n in numbers:
+            for n in X:
                 fpw.write(f"{n}\n")
-
-        fpw.close()
+        
         nfiles += 1
 
     return nfiles
