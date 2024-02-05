@@ -30,7 +30,9 @@ def get_significant_freq(csvname: str, sampling_rate: int) -> pd.DataFrame:
 
     
 def plot_dominant_freq(csv1: str,
+                       name1: str,
                        csv2: str,
+                       name2: str,
                        pngname: str,
                        sname: str,
                        sampling_rate: int) -> None:
@@ -40,15 +42,18 @@ def plot_dominant_freq(csv1: str,
     plt.hist(significant_1['freq'], bins=100)
     plt.hist(significant_2['freq'], bins=100)
     plt.title(sname)
+    plt.legend([name1, name2])
     plt.savefig(pngname)
     plt.close()
 
 
 def main(argv:List[str]) -> None:
-    if len(argv) == 4:
+    if len(argv) == 6:
         src1 = argv[1]
-        src2 = argv[2]
-        dest = argv[3]
+        name1 = argv[2]
+        src2 = argv[3]
+        name2 = argv[4]
+        dest = argv[5]
 
         if not os.path.exists(dest):
             os.makedirs(dest)
@@ -65,7 +70,9 @@ def main(argv:List[str]) -> None:
         for i in range(len(csvfiles1)):
             sname = f"sample_{i}"
             plot_dominant_freq(os.path.join(src1, csvfiles1[i]),
+                               name1,
                                os.path.join(src2, csvfiles2[i]),
+                               name2,
                                os.path.join(dest, f"{sname}.png"),
                                sname,
                                48000)
