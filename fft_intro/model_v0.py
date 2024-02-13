@@ -12,7 +12,10 @@ orig_data = pd.read_csv(training_data)
 orig_data.columns = ['mean', 'std', 'min', 'q1', 'q2', 'q3', 'max', 'who']
 X = orig_data[['min', 'q1', 'mean', 'q3', 'max']]
 y = column_or_1d(orig_data[['who']])
-clf = LogisticRegression(random_state=0, max_iter=1000).fit(X, y)
+clf = LogisticRegression(random_state=0,
+                         max_iter=1000,
+                         solver='liblinear',
+                         penalty='l2').fit(X, y)
 print(f"Model score = {clf.score(X, y)}.")
 
 test_data = pd.read_csv(test_data)
