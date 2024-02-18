@@ -2,9 +2,10 @@ import sys
 import os.path
 import scipy.stats
 import pandas as pd
-import matplotlib.pyplot as plt
 
 from typing import List, Tuple
+
+# To compute Pearson correlation coefficient.
 
 def get_csv_list(dir: str) -> None:
     return [f for f in os.listdir(dir) 
