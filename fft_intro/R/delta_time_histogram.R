@@ -1,6 +1,6 @@
 dirname <- 'C:\\Users\\ameyj\\repos\\am\\fft_intro\\txtfiles_24feb2024'
 
-extract_data <- function(pathname) {
+extract_data <- function(pathname, filter_above=100) {
   data <- read.csv(file = pathname, header = TRUE, sep = '\t')
   delta.time <- data$Delta.Time..s.
   delta.time
@@ -9,7 +9,7 @@ extract_data <- function(pathname) {
 times <- c()
 for (f in list.files(dirname)) {
   pathname <- paste(sep='\\', dirname, f)
-  times <- c(times, extract_data(pathname = pathname))
+  times <- c(times, extract_data(pathname = pathname, filter_above = 3))
 }
 
 # Only histogram
