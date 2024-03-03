@@ -3,7 +3,7 @@ dirname <- 'C:\\Users\\ameyj\\repos\\am\\fft_intro\\txtfiles_24feb2024'
 extract_data <- function(pathname, filter_above=100) {
   data <- read.csv(file = pathname, header = TRUE, sep = '\t')
   delta.time <- data$Delta.Time..s.
-  delta.time
+  delta.time[delta.time < filter_above]
 }
 
 times <- c()
