@@ -64,7 +64,7 @@ def P(event: Union[Predicate, Set[U]], space: Set[U]) -> Union[float, Fraction]:
         return Fraction(len(subset & space), len(space))
 
 
-def joint_pmf(P1: Pmf, P2: Pmf, sep: str = ''):
+def joint_pmf(P1: Pmf, P2: Pmf, sep: str = '') -> Pmf:
     """
     Returns the joint probability distribution of two probability mass functions.
 
