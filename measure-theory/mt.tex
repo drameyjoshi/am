@@ -4,6 +4,8 @@
 \usepackage{hyperref}
 
 \newcommand{\td}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\sor}{\mathbb{R}}
+\newcommand{\son}{\mathbb{N}}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}
@@ -20,44 +22,44 @@
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
 
-\newtheorem*{cor}{Corollary}
+\newtheorem{cor}{Corollary}
 
 \numberwithin{equation}{section}
 \begin{document}
 \section{$\sigma$-algebra}\label{s1}
 \begin{defn}\label{s1d1}
-Let $X$ be a non-empty set. A $\sigma$-algebra, $\mathcal{X}$, on $X$ is a family
+Let $X$ be a non-empty set. A $\sigma$-algebra, $\Sigma$, on $X$ is a family
 of subsets of $X$ such that:
 \begin{enumerate}
-\item $\mathcal{X}$ is non-empty,
-\item If $E \in \mathcal{X}$ then $E^c \in \mathcal{X}$ and
-\item If $E_1, E_2, \ldots \in \mathcal{X}$ then $\cup_{n \in \mathbb{N}}E_n \in \mathcal{X}$. 
+\item $\Sigma$ is non-empty,
+\item If $E \in \Sigma$ then $E^c \in \Sigma$ and
+\item If $E_1, E_2, \ldots \in \Sigma$ then $\cup_{n \in \mathbb{N}}E_n \in \Sigma$. 
 \end{enumerate}
 \end{defn}
 \begin{prop}\label{s1p1}
-If $\mathcal{X}$ is a $\sigma$-algebra on $X$ then $X, \varnothing \in \mathcal{X}$.
+If $\Sigma$ is a $\sigma$-algebra on $X$ then $X, \varnothing \in \Sigma$.
 \end{prop}
 \begin{proof}
-Since $\mathcal{X}$ is non-empty, it has at least one member, say $A \subset X$. 
-Therefore, $A^c \in \mathcal{X}$ and hence $A \cup A^c = X \in \mathcal{X}$. 
-Therefore, $X^c = \varnothing \in \mathcal{X}$.
+Since $\Sigma$ is non-empty, it has at least one member, say $A \subset X$. 
+Therefore, $A^c \in \Sigma$ and hence $A \cup A^c = X \in \Sigma$. 
+Therefore, $X^c = \varnothing \in \Sigma$.
 \end{proof}
 
 \begin{prop}\label{s1p2}
-A $\sigma$-algebra $\mathcal{X}$ on $X$ is closed under countable intersections.
+A $\sigma$-algebra $\Sigma$ on $X$ is closed under countable intersections.
 \end{prop}
 \begin{proof}
-Let $E_1, E_2, \ldots \in \mathcal{X}$. Then,
+Let $E_1, E_2, \ldots \in \Sigma$. Then,
 \[
 \bigcap_{n \in \mathbb{N}}E_n = \left(\bigcup E_n^c\right)^c.
 \]
-Since $E_n \in \mathcal{X}$, $E_n^c$ are also in $\mathcal{X}$, so is their
+Since $E_n \in \Sigma$, $E_n^c$ are also in $\Sigma$, so is their
 countable union and its complement.
 \end{proof}
 
 \begin{defn}\label{s1d2}
-If $\mathcal{X}$ is a $\sigma$-algebra on $X$ then the pair $(X, \mathcal{X})$
-is called a measurable space and the members of $\mathcal{X}$ are called measurable
+If $\Sigma$ is a $\sigma$-algebra on $X$ then the pair $(X, \Sigma)$
+is called a measurable space and the members of $\Sigma$ are called measurable
 sets.
 \end{defn}
 
@@ -92,7 +94,7 @@ smallest $\sigma$-algebra containing $\{1\}$.
 
 Note that there are $2^3 = 8$ subsets of $X$. Therefore, there are $2^8 = 256$
 subsets of $2^X$.
-\item If $X = \mathbb{R}$ then $\{(a, b)\;|\; a, b \in \bar{\mathbb{R}}$ is not
+\item If $X = \son$ then $\{(a, b)\;|\; a, b \in \bar{\son}$ is not
 a $\sigma$-algebra. This is because the complement of $(a, b)$ is not an open
 interval. For the same reason, the set of all closed intervals is also not a
 $\sigma$-algebra. (The set of all open intervals is not even closed under unions.)
@@ -100,16 +102,16 @@ $\sigma$-algebra. (The set of all open intervals is not even closed under unions
 \end{enumerate}
 
 \begin{prop}\label{s1p3}
-Let $\mathcal{X}_1$ and $\mathcal{X}_2$ be $\sigma$-algebras on $X$. Then their
+Let $\Sigma_1$ and $\Sigma_2$ be $\sigma$-algebras on $X$. Then their
 intersection is also a $\sigma$-algebra on $X$.
 \end{prop}
 \begin{proof}
-Let $\mathcal{X} = \mathcal{X}_1 \cap \mathcal{X}_2$. Since both $\mathcal{X}_1$ and 
-$\mathcal{X}_2$ contain $X$ and $\sigma$. $\mathcal{X}$ is non-empty. If $A \in
-\mathcal{X}$ then $A \in \mathcal{X}_1$ and $A \in \mathcal{X}_2$, so that $A^c 
-\in \mathcal{X}_1$ and $A^c \in \mathcal{X}_2$, that is $A^c \in \mathcal{X}$. 
-Similarly, if $E_1, E_2, \ldots \in \mathcal{X}$ then these sets are also in 
-$\mathcal{X}_1$ and $\mathcal{X}_2$ so that their countable union is in both
+Let $\Sigma = \Sigma_1 \cap \Sigma_2$. Since both $\Sigma_1$ and 
+$\Sigma_2$ contain $X$ and $\sigma$. $\Sigma$ is non-empty. If $A \in
+\Sigma$ then $A \in \Sigma_1$ and $A \in \Sigma_2$, so that $A^c 
+\in \Sigma_1$ and $A^c \in \Sigma_2$, that is $A^c \in \Sigma$. 
+Similarly, if $E_1, E_2, \ldots \in \Sigma$ then these sets are also in 
+$\Sigma_1$ and $\Sigma_2$ so that their countable union is in both
 $\sigma$-algebras and therefore also in their intersection.
 \end{proof}
 
@@ -128,21 +130,21 @@ $\mathcal{B}(X)$ contains all open sets, closed sets and their countable unions
 and intersections.
 
 \begin{defn}\label{s1d6}
-Let $(X, \mathcal{X})$ be a measurable space. A measure on it is a mapping
-$\mu: \mathcal{X} \rightarrow [0, \infty]$ such that
+Let $(X, \Sigma)$ be a measurable space. A measure on it is a mapping
+$\mu: \Sigma \rightarrow [0, \infty]$ such that
 \begin{enumerate}
 \item $\mu(\varnothing) = 0$,
-\item If $E_1, E_2, \ldots \in \mathcal{X}$ are mutually disjoint then
+\item If $E_1, E_2, \ldots \in \Sigma$ are mutually disjoint then
 \[
 \mu\left(\bigcup_{n \in \mathbb{N}}E_n\right) = \sum_{n \in \mathbb{N}}\mu(E_n).
 \]
-The triple $(X, \mathcal{X}, \mu)$ is called a measure space.
+The triple $(X, \Sigma, \mu)$ is called a measure space.
 \end{enumerate}
 \end{defn}
 
 Examples of measure:
 \begin{itemize}
-\item Let $X$ be an arbitrary set with a $\sigma$-algebrao $\mathcal{X}$. Then,
+\item Let $X$ be an arbitrary set with a $\sigma$-algebrao $\Sigma$. Then,
 \[
 \mu(A) = \begin{cases} |A| & \text{ if } $A$ \text{ is a finite set} \\
 \infty & \text{ otherwise.}
@@ -150,7 +152,7 @@ Examples of measure:
 \]
 is called a counting measure.
 
-\item One the measure space $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ define a 
+\item One the measure space $(\son, \mathcal{B}(\son))$ define a 
 measure $\mu$ such that
 \begin{eqnarray*}
 \mu([a, b]) &=& b - a \\
@@ -160,9 +162,9 @@ measure $\mu$ such that
 \end{eqnarray*}
 It is called the Lebesgue measure. Note that $(a, b] = [a, b] \cap (a, \infty)$
 and $[a, b) = [a, b] \cap (-\infty, b)$ so that semi-open intervals are members
-of the Borel $\sigma$-algebra $\mathcal{B}(\mathbb{R})$.
+of the Borel $\sigma$-algebra $\mathcal{B}(\son)$.
 
-\item One the measure space $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ define a 
+\item One the measure space $(\son, \mathcal{B}(\son))$ define a 
 measure $P$ such that
 \[
 P(B) = \frac{1}{\sqrt{2\pi}}\int_B e^{-x^2/2}dx,
@@ -170,7 +172,7 @@ P(B) = \frac{1}{\sqrt{2\pi}}\int_B e^{-x^2/2}dx,
 is called the probability measure.
 \end{itemize}
 
-\begin{prop}\label{s1p4}Let $(X, \mathcal{X}, \mu)$ be a measure space. Then,
+\begin{prop}\label{s1p4}Let $(X, \Sigma, \mu)$ be a measure space. Then,
 \begin{enumerate}
 \item $\mu$ is finitely additive.
 \item $\mu$ is monotonic.
@@ -181,7 +183,7 @@ is called the probability measure.
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Let $A_1, \ldots A_n \in \mathcal{X}$ be mutually disjoint. Then, 
+Let $A_1, \ldots A_n \in \Sigma$ be mutually disjoint. Then, 
 \[
 \mu\left(\bigcup_{i=1}^n A_i\right) = 
 \mu\left( A_1 \cup \left(\bigcup_{i=2}^n A_i\right)\right) = 
@@ -193,7 +195,7 @@ Carrying out this step $n - 2$ times more, we get
 \]
 This is called the finite additivity of $\mu$.
 
-Let $A, B \in \mathcal{X}$ be such that $A \subseteq B$. Then $B = A \cup (B - A)$
+Let $A, B \in \Sigma$ be such that $A \subseteq B$. Then $B = A \cup (B - A)$
 and the sets $A$ and $B - A$ are disjoint. Therefore, $\mu(B) = \mu(A) + 
 \mu(B - A) \ge \mu(A)$.
 This is called the monotonicity of $\mu$. Further, when $A \subset B$, and 
@@ -225,7 +227,7 @@ by summing the first two equations to get
 \]
 \end{proof}
 
-\begin{prop}\label{s1p5}Let $(X, \mathcal{X}, \mu)$ be a measure space and let
+\begin{prop}\label{s1p5}Let $(X, \Sigma, \mu)$ be a measure space and let
 $E_1 \subseteq E_2 \subseteq \ldots$ be such that
 \[
 \bigcup_{n \ge 1}E_n = E.
@@ -251,8 +253,8 @@ The sets $E_{n} - E_{n-1}$ are disjoint for every $n$ so that
 \end{eqnarray*}
 \end{proof}
 
-\begin{prop}\label{s1p6}Let $(X, \mathcal{X}, \mu)$ be a measure space and
-$E_1, E_2, \ldots \in \mathcal{X}$. Then
+\begin{prop}\label{s1p6}Let $(X, \Sigma, \mu)$ be a measure space and
+$E_1, E_2, \ldots \in \Sigma$. Then
 \[
 \mu\left(\bigcup_{n \ge 1}E_n\right) \le \sum_{n \ge 1}\mu(E_n).
 \]
@@ -277,7 +279,7 @@ term on rhs to get
 Therefore, the hypothesis is true for all $p \in \mathbb{N}$.
 \end{proof}
 
-\begin{prop}\label{s1p7}Let $(X, \mathcal{X}, \mu)$ be a measure space and let
+\begin{prop}\label{s1p7}Let $(X, \Sigma, \mu)$ be a measure space and let
 $E_1 \supseteq E_2 \supseteq \ldots$ be such that 
 \[
 \bigcap_{n \ge 1}E_n = E
@@ -300,6 +302,235 @@ Now, $\mu(E) + \mu(E^c) = \mu(E_1)$ and $\mu(E_n) + \mu(E_n^c) = \mu(E_1)$ so th
 \mu(E_1) - \mu(E) = \lim_{n \rightarrow \infty}(\mu(E_1) - \mu(E_n)).
 \]
 Since $\mu(E_1) < \infty$, the proposition follows immediately.
+\end{proof}
+
+\section{Measurable maps}\label{s2}
+\begin{defn}\label{s2d1}
+Let $(X, \Sigma_X)$ and $(Y, \Sigma_Y)$ be measurable spaces. A map $f: X
+\rightarrow Y$ is said to be measurable if for all $B \in \Sigma_Y$, the set
+$f^{-1}(B)$ is a member of $\Sigma_X$.
+\end{defn}
+
+A trivial example of a measurable map is $f(x) = c$ for all $x \in X$ where $c$
+is a constant. For all $B$ which contain $c$, $f^{-1}(B) = X$ while for those 
+which do not containt $c$, $f^{-1}(B) = \varnothing$.
+
+\begin{prop}\label{s2p1}
+A composition of two measurable maps is measurable.
+\end{prop}
+\begin{proof}
+Let $(X, \Sigma_X), (Y, \Sigma_Y)$ and $(Z, \Sigma_Z)$ be measurable spaces and
+$f:X \rightarrow Y, g: Y \rightarrow Z$ be measurable maps. Let $h = g \circ f$
+and $C$ be an arbitrary member of $\Sigma_Z$. Then $h^{-1}(C) = f^{-1}(g^{-1}(C))$.
+Since $g$ is measurable, $B = g^{-1}(C)$ is a member of $\Sigma_Y$. Since $f$ is
+measurable, $f^{-1}(B)$ is a member of $\Sigma_X$.
+\end{proof}
+
+\begin{prop}\label{s2p2}
+Let $(X, \Sigma_X)$ and $(Y, \Sigma_Y)$ be measurable spaces and let 
+$\mathcal{H}$ generate $\Sigma_Y$. A map $f: X \rightarrow Y$ is measurable iff 
+for all $V \in \mathcal{H}$, $f^{-1}(V) \in \Sigma_X$.
+\end{prop}
+\begin{proof}
+If $V \in \mathcal{H}$ then $V \in \Sigma_Y$. Since $f$ is measurable, 
+$f^{-1}(V) \in \Sigma_X$.
+
+Let $\mathcal{G} = \{f^{-1}(V) \;\forall\; V \in \mathcal{H}\}$ and let 
+$\Sigma_Y^\prime = \{V \in \Sigma_Y \;|\; f^{-1}(V) \in \mathcal{G}\}$. By
+hypothesis, $\mathcal{G} \subseteq \Sigma_X$. We will show that:
+\begin{enumerate}
+\item $\Sigma_Y^\prime$ is a $\sigma$-algebra: Since $\Sigma_Y$ is a $\sigma$-
+algebra, it has at least one member so that $\Sigma_Y^\prime$ is non-empty.
+Let $V \in \Sigma_Y^\prime$. Then $V^c$ is a member of every $\sigma$-algebra
+containing $\mathcal{H}$. In particular, $V^c \in \Sigma_Y^\prime$. If $E_1, E_2,
+\ldots \in \mathcal{H}$ then their countable union is in every $\sigma$-algebra
+containing $\mathcal{H}$ and in particular in $\Sigma_Y^\prime$. Thus, 
+$\Sigma_Y^\prime$ is also a $\sigma$-algebra containing $\mathcal{H}$. 
+
+\item Since $f^{-1}(V) \in \mathcal{G}$ for all $V \in \Sigma_Y^\prime$, 
+$\mathcal{H}$ is a member of $\Sigma_Y^\prime$.
+\end{enumerate}
+
+Thus $\Sigma_Y^\prime$ is a $\sigma$-algebra containing $\mathcal{H}$. Therefore,
+$\Sigma_Y^\prime \supseteq \Sigma_Y$ such that the pre-image of every member of
+$\Sigma_Y^\prime$ is in $\Sigma_X$. Therefore, the pre-image of every member of 
+$\Sigma_Y$ also lies in $\Sigma_X$, making $f$ a measurable map.
+\end{proof}
+
+\begin{defn}\label{s2d2}
+Let $(X, \tau_X)$ and $(Y, \tau_Y)$ be topological spaces and $f: X \rightarrow Y$
+be such that $f^{-1}(V) \in \tau_X$ for all $V \in \tau_Y$. Then $f$ is called a
+continuous map.
+\end{defn}
+
+\begin{cor}\label{s2c1}
+If $(X, \tau_X)$ and $(Y, \tau_Y)$ are topological spaces and $f: X \rightarrow Y$
+is continuous then $f$ is measurable on $(X, \langle\tau_X\rangle)$ and $(Y, \langle
+\tau_Y\rangle)$.
+\end{cor}
+\begin{proof}
+Follows immediately from proposition \ref{s2p2} after identifying $\mathcal{H}$
+with $\tau_Y$.
+\end{proof}
+
+\begin{cor}\label{s2c2}
+Let $(X, \Sigma_X)$ be a measurable space. A function $f: X \rightarrow \sor$
+is measurable iff $f^{-1}((a, \infty]) \in \Sigma_X$ for all $a \in \sor$.
+\end{cor}
+\begin{proof}
+The $\sigma$-algebra on $\sor$ is the $\mathcal{B}$. The corollary follows
+immediately from \ref{s2p2} if we can show that the set of all open intervals
+can be generated from the set of all semi-open intervals by set operations used
+to define a $\sigma$-algebra. If $a < b$, then $(a, b) = (a, \infty] \cap (b,
+\infty]$.
+\end{proof}
+
+\begin{cor}\label{s2c3}
+Let $(X, \Sigma_X)$ be a measurable space. A function $f: X \rightarrow \sor$
+is measurable iff $f^{-1}([-\infty, a) \in \Sigma_X$ for all $a \in \sor$.
+\end{cor}
+\begin{proof}
+If $a < b$, $(a, b) = [-\infty, a)^c \cap [-\infty, b)^c$. Therefore, all open
+intervals can be generated from semi-open intervals by the operations used to
+define a $\sigma$-algebra.
+\end{proof}
+
+\begin{prop}\label{s2p3}
+Let $f: \sor \rightarrow \sor$ be a measuable function. Then so is $cf$, where $c$
+is a non-zero real number.
+\end{prop}
+\begin{proof}
+If $g = cf$ then $g^{-1}(A) = \{x/c \;|\; x \in f^{-1}(A)\}$ for any semi-open 
+interval $A$ in $\mathbb{R}$. The proposition follows from \ref{s2c2}.\
+\end{proof}
+
+\begin{rem}
+I don't think it is easy to show that if $A$ is an arbitrary measurable subset 
+of $\sor$ then so is $\{x/c \;|\; x \in f^{-1}(A)\}$. I can easily show it only 
+for an interval of any kind.
+\end{rem}
+
+\begin{prop}\label{s2p3}
+Let $f$ and $g$ be measurable functions then so are $f + g$ and $fg$.
+\end{prop}
+\begin{proof}
+Let $h = f + g$ and $A = (a, \infty]$.
+\end{proof}
+
+\begin{prop}\label{s2p4}
+Let $\{f_n\}$ be a sequence of measurable real valued functions. Then the functions
+$\sup f_n, \inf f_n, \min f_n, \max f_n, \limsup f_n, \liminf f_n$ are also
+measurable.
+\end{prop}
+\begin{proof}
+Let $f_n: X \rightarrow \sor$ be a real-valued measurable functions for $n \in
+\son$. If $\Sigma_X$ is a $\sigma$-algrbra on $X$ then for all $(a, \infty]$,
+$f_n^{-1}((a, \infty]) \in \Sigma_X$.
+\begin{itemize}
+\item Let $f = \sup f_n$. Then 
+\[
+f^{-1}((c, \infty]) = \bigcup_{n \ge 1}f_n^{-1}((c, \infty]).
+\]
+Since $f_n$ are measurable, $f_n^{-1}((c, \infty]) \in \Sigma_X$ for all $n$
+and so is their countable union. Therefore, by corollary \ref{s2c2}, $f$ is 
+measurable.
+
+\item Let $f = \inf f_n$. Then 
+\[
+f^{-1}([-\infty, c)) = \bigcup_{n \ge 1}f_n^{-1}([-\infty, c)).
+\]
+Since $f_n$ are measurable, $f_n^{-1}([\infty, c)) \in \Sigma_X$ for all $n$
+by corollary \ref{s2c3} and so is their countable union. Therefore, by corollary 
+\ref{s2c3}, $f$ is measurable.
+
+\item Let $f = \max f_n$, then $f$ is also the supremum.
+
+\item Let $f = \inf f_n$ then $f$ is also the infimum.
+
+\item Let $f = \limsup f_n$ then $f = \inf\{\sup\{f_m : m \ge n\} n \ge 1\}$.
+Since $\sup\{f_m : m \ge n\}$ is measurable for all $n$, and the infimum is
+also measurable, $f$ is measurable.
+
+\item Let $f = \liminf f_n$ then $f = \sup\{\inf\{f_m : m \ge n\} n \ge 1\}$.
+For the same reasons as mentioned in the previous case, $f$ is measurable.
+
+\end{itemize}
+\end{proof}
+
+For sake of reference, we prove
+\begin{prop}\label{c2s6}
+Let $A \subseteq \sor$. If $a \in A$ is the maximum element of $A$ then it is also
+the supremum of $A$.
+\end{prop}
+\begin{proof}
+Let $b$ be a supremum of $A$ then $a \le b$. Since $a$ is a maximum, $a \le b$.
+\end{proof}
+
+\begin{prop}\label{c2s7}
+Let $f, g: \sor \rightarrow \sor$ be measurable functions. Then so are $f + g,
+f - g, fg$ and $f/g$.
+\end{prop}
+\begin{proof}
+We will prove each case separately.
+\begin{itemize}
+\item Let $s = f + g$ be the sum of two measurable functions. Then $s(x) > c$ 
+iff $f(x) > r$ and $g(x) > c - r$ for some rational number $r$. The set
+\[
+s^{-1}((c, \infty]) = \bigcup_r f^{-1}((r, \infty]) \cap g^{-1}((c - r, \infty])
+\]
+Note that the set of rational numbers is countable. Since $f^{-1}((r, \infty])$
+and $g^{-1}((c - r, \infty])$ are members of $\Sigma_\sor$, so is their 
+intersection and the countable union of their intersection. Therefore, by 
+corollary \ref{s2c2}, $s$ is measuable.
+
+\item By proposition \ref{s2p3}, $-g$ is measurable. Using the previous point,
+$f + (-g) = f - g$ is measuable.
+
+\item Given a function $f: \sor \rightarrow \sor$, define,
+\begin{eqnarray*}
+f^+(x) &=& \max\{+f(x), 0\} \\
+f^-(x) &=& \max\{-f(x), 0\}
+\end{eqnarray*}
+as the positive and negative parts of a function. In terms of these, $f = f^+
+- f^-$ and $fg = f^+g^+ - f^+g^- - f^-g^+ + f^-g^-$. Each of these terms is a
+product of positive valued function. Therefore, to prove the measurability of
+$fg$, we can as well restrict ourselves to non-negative valued functions and use
+the previous parts of this proposition.
+
+Let $p = fg$ be the product of non-negative valued functions$f, g$. Now , $p(x)
+> c$ iff $f(x) > r$ and $g(x) > c/r$ for every positive $r$. Furthermore,
+\[
+p^{-1}((c, \infty]) = \bigcup_r f^{-1}((r, \infty]) \cap g^{-1}((c/r, \infty])
+\]
+
+\item Let $q = 1/g$ be the reciprocal of a positive valued function $g$. Then
+$q(x) > c$ iff $g(x) < 1/c$ for any positive real $c$. Thus,
+\[
+q^{-1}((c, \infty]) = g^{-1}([-\infty, c)).
+\]
+Since the right hand side is a measurable set, so is the left hand side, making
+$q$ a measurable function.
+
+Measurability of $f/g$ follows from the fact that $f/g = fq$.
+\end{itemize}
+\end{proof}
+
+\begin{thm}\label{s1t1}
+A real-valued function $f$ is measurable iff $f^+$ and $f^-$ are measurable. 
+Moreover, if $f$ is measuable then so is $|f| = f^+ + f^-$.
+\end{thm}
+\begin{proof}
+The `if' part follows from the previous proposition \ref{c2s7}. Assume that
+$f$ is measurable. Then,
+\[
+{f^+}^{-1}((c, \infty]) = \begin{cases}
+f^{-1}((c, \infty]) \text{ for } c \ge 0.
+\varnothing \text{ for } c < 0
+\end{cases}
+\]
+Both these sets are measurable making $f^+$ a measurable function. Since $f^- =
+f^+ - f$, by the previous proposition, $f^-$ is also measurable. From this, the
+measuarability of $f^+ + f^- = |f|$ also follows.
 \end{proof}
 
 \end{document}
