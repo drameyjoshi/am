@@ -524,13 +524,155 @@ The `if' part follows from the previous proposition \ref{c2s7}. Assume that
 $f$ is measurable. Then,
 \[
 {f^+}^{-1}((c, \infty]) = \begin{cases}
-f^{-1}((c, \infty]) \text{ for } c \ge 0.
+f^{-1}((c, \infty]) \text{ for } c \ge 0. \\
 \varnothing \text{ for } c < 0
 \end{cases}
 \]
 Both these sets are measurable making $f^+$ a measurable function. Since $f^- =
 f^+ - f$, by the previous proposition, $f^-$ is also measurable. From this, the
 measuarability of $f^+ + f^- = |f|$ also follows.
+\end{proof}
+
+\begin{defn}\label{s2c3}
+The characteristic function of a subset $A$ of a set $X$ is defined as
+$\chi_A: X \rightarrow \{0, 1\}$ and
+\[
+\chi_A(x) = \begin{cases} 1 & \text{ if } x \in A \\
+0 & \text{ if } x \notin A
+\end{cases}
+\]
+\end{defn}
+
+\begin{prop}\label{s2p8}
+Let $A \subseteq X$. $\chi_A$ is a measurable function iff $A$ is a measurable
+set.
+\end{prop}
+\begin{proof}
+$\chi_A: X \rightarrow \{0, 1\}$ is measurable iff $\chi_A^{-1}(1)$ and 
+$\chi_A^{-1}(0)$ are measurable. But these sets are precisely $A$ and $A^c$.
+\end{proof}
+
+\section{Lebesgue integral}\label{s3}
+\begin{defn}\label{s3d1}
+A real valued simple function is of the form
+\[
+\varphi(x) = \sum_{k=1}^n a_k \chi_{E_k}(x).
+\]
+\end{defn}
+
+\begin{defn}\label{s3d2}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $\varphi: X \rightarrow \sor$ be
+a simple function. Then its Lebesuge integral over $X$ is defined as
+\[
+\int_X\varphi d\mu = \sum_{k=1}^na_k\mu(E_k),
+\]
+where $E_k \in \Sigma_X$ and $\cup_k E_k = X$.
+\end{defn}
+
+\begin{rem}
+Note the way the integral is written. The variable $x$ over which the integration
+is carried out is not mentioned. Instead the measure $\mu$ is emphasised.
+\end{rem}
+
+\begin{rem}
+A simple function is expressed as a finite sum. Therefore, the integral too is
+expressed as a finite sum.
+\end{rem}
+
+\begin{prop}\label{s3p1}
+Let $A_1, \ldots, A_n$ and $B_1, \ldots, B_m$ be partitions of $X$. Then the sets
+$\{C_{ij} = A_i \cap B_j \;|\; i = 1, \ldots, n; j = 1, \ldots m\}$ also partition
+$X$.
+\end{prop}
+\begin{proof}
+Any $x \in X$ belongs to exactly one $A_i$ and exactly one $B_j$ and therefore 
+exactly one $C_{ij}$. Therefore,
+\[
+X \subseteq \bigcup_{i, j} C_{ij}.
+\]
+Conversely, if $x \in \cup_{ij}C_{ij}$ then $x$ is a member of at least one $C_{ij}$
+and hence at least one $A_i$. Therefore,
+\[
+\bigcup_{i, j} C_{ij} \subseteq X.
+\]
+Therefore,
+\[
+\bigcup_{i, j} C_{ij} = X.
+\]
+That an $x \in X$ belongs to exactly one $C_{ij}$ follows from the definition of
+$C_{ij}$ as an intersection of elements of two partitions of $X$.
+\end{proof}
+
+\begin{prop}\label{s3p2}
+Let $A_1, \ldots, A_n$ and $B_1, \ldots, B_m$ be partitions of $X$ and
+$\{C_{ij} = A_i \cap B_j \;|\; i = 1, \ldots, n; j = 1, \ldots m\}$. Then
+\[
+\varphi = \sum_{i=1}^n\sum_{j=1}^m a_i \chi_{C_{ij}} = 
+\sum_{i=1}^n\sum_{j=1}^m b_j \chi_{C_{ij}}.
+\]
+\end{prop}
+\begin{proof}
+Since $A_i = \cup_j C_{ij}$,
+\[
+\varphi = \sum_{i=1}^na_i\chi_{A_i} = \sum_{i=1}^n\sum_{j=1}^m a_i\chi_{C_{ij}}.
+\]
+Similarly,
+\[
+B_j = \cup_i C_{ij} \Rightarrow \varphi = \sum_{i=1}^n\sum_{j=1}^m b_j\chi_{C_{ij}}.
+\]
+\end{proof}
+
+\begin{prop}\label{s3p3}
+Let $X$ be partitioned as $X = \cup_k A_k$ and $X = \cup_k B_k$. If
+\[
+\varphi(x) = \sum_{k=1}^na_k\chi_{A_k} = \sum_{k=1}^mb_k\chi_{B_k}
+\]
+then
+\[
+\int_X\varphi d\mu = \sum_{k=1}^na_k\mu(A_k) = \sum_{k=1}^mb_k\mu(B_k).
+\]
+That is, the Lebesuge integral is independent of the way $X$ is partitioned.
+\end{prop}
+\begin{proof}
+Let $C_{ij} = A_i \cap B_j$. We showed in proposition \ref{s3p1} that $\{C_{ij}\}$
+partition $X$. Further,
+\[
+A_i = \cup_{j=1}^m C_{ij} \Rightarrow \mu(A_i) = \sum_{j=1}^m C_{ij}.
+\]
+Similarly,
+\[
+B_j = \cup_{i=1}^n C_{ij} \Rightarrow \mu(B_j) = \sum_{i=1}^n C_{ij}.
+\]
+Therefore,
+\[
+\int\varphi d\mu = \sum_{i=1}^na_i\mu(A_i) = \sum_{i=1}^n a_i\sum_{j=1}^m C_{ij}.
+\]
+Using proposition \ref{s3p2}, the last term on the right hand side can be written
+as
+\[
+\int\varphi d\mu = \sum_{i=1}^na_i\mu(A_i) = \sum_{i=1}^n\sum_{j=1}^m b_j\chi_{C_{ij}}
+= \sum_{j=1}^m b_j\chi_{B_j}.
+\]
+\end{proof}
+
+\begin{prop}\label{s3p4}
+Let $\varphi$ and $\psi$ be simple functions over a measure space $(X, \Sigma_X, \mu)$
+such that $\varphi \le \psi$ then
+\[
+\int_X\varphi d\mu \le \int_X\psi d\mu.
+\]
+\end{prop}
+\begin{proof}
+Without loss of generality, let us define the two simple functions on the same 
+partition. That is, let,
+\[
+\varphi = \sum_{k=1}^n a_k\chi_{E_k} \text{ and } \psi = \sum_{k=1}^n b_k\chi_{E_k}.
+\]
+Then $\varphi \le \psi \Rightarrow a_k \le b_k$ and hence, using the definition
+\ref{s3d2} of the Lebesgue integral we conclude that
+\[
+\int_X\varphi d\mu \le \int_X\psi d\mu.
+\]
 \end{proof}
 
 \end{document}
