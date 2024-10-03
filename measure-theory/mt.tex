@@ -556,15 +556,15 @@ $\chi_A^{-1}(0)$ are measurable. But these sets are precisely $A$ and $A^c$.
 \begin{defn}\label{s3d1}
 A real valued simple function is of the form
 \[
-\varphi(x) = \sum_{k=1}^n a_k \chi_{E_k}(x).
+s(x) = \sum_{k=1}^n a_k \chi_{E_k}(x).
 \]
 \end{defn}
 
 \begin{defn}\label{s3d2}
-Let $(X, \Sigma_X, \mu)$ be a measure space and $\varphi: X \rightarrow \sor$ be
+Let $(X, \Sigma_X, \mu)$ be a measure space and $s: X \rightarrow \sor$ be
 a simple function. Then its Lebesuge integral over $X$ is defined as
 \[
-\int_X\varphi d\mu = \sum_{k=1}^na_k\mu(E_k),
+\int_Xs d\mu = \sum_{k=1}^na_k\mu(E_k),
 \]
 where $E_k \in \Sigma_X$ and $\cup_k E_k = X$.
 \end{defn}
@@ -607,29 +607,29 @@ $C_{ij}$ as an intersection of elements of two partitions of $X$.
 Let $A_1, \ldots, A_n$ and $B_1, \ldots, B_m$ be partitions of $X$ and
 $\{C_{ij} = A_i \cap B_j \;|\; i = 1, \ldots, n; j = 1, \ldots m\}$. Then
 \[
-\varphi = \sum_{i=1}^n\sum_{j=1}^m a_i \chi_{C_{ij}} = 
+s = \sum_{i=1}^n\sum_{j=1}^m a_i \chi_{C_{ij}} = 
 \sum_{i=1}^n\sum_{j=1}^m b_j \chi_{C_{ij}}.
 \]
 \end{prop}
 \begin{proof}
 Since $A_i = \cup_j C_{ij}$,
 \[
-\varphi = \sum_{i=1}^na_i\chi_{A_i} = \sum_{i=1}^n\sum_{j=1}^m a_i\chi_{C_{ij}}.
+s = \sum_{i=1}^na_i\chi_{A_i} = \sum_{i=1}^n\sum_{j=1}^m a_i\chi_{C_{ij}}.
 \]
 Similarly,
 \[
-B_j = \cup_i C_{ij} \Rightarrow \varphi = \sum_{i=1}^n\sum_{j=1}^m b_j\chi_{C_{ij}}.
+B_j = \cup_i C_{ij} \Rightarrow s = \sum_{i=1}^n\sum_{j=1}^m b_j\chi_{C_{ij}}.
 \]
 \end{proof}
 
 \begin{prop}\label{s3p3}
 Let $X$ be partitioned as $X = \cup_k A_k$ and $X = \cup_k B_k$. If
 \[
-\varphi(x) = \sum_{k=1}^na_k\chi_{A_k} = \sum_{k=1}^mb_k\chi_{B_k}
+s(x) = \sum_{k=1}^na_k\chi_{A_k} = \sum_{k=1}^mb_k\chi_{B_k}
 \]
 then
 \[
-\int_X\varphi d\mu = \sum_{k=1}^na_k\mu(A_k) = \sum_{k=1}^mb_k\mu(B_k).
+\int_Xs d\mu = \sum_{k=1}^na_k\mu(A_k) = \sum_{k=1}^mb_k\mu(B_k).
 \]
 That is, the Lebesuge integral is independent of the way $X$ is partitioned.
 \end{prop}
@@ -645,33 +645,171 @@ B_j = \cup_{i=1}^n C_{ij} \Rightarrow \mu(B_j) = \sum_{i=1}^n C_{ij}.
 \]
 Therefore,
 \[
-\int\varphi d\mu = \sum_{i=1}^na_i\mu(A_i) = \sum_{i=1}^n a_i\sum_{j=1}^m C_{ij}.
+\int s d\mu = \sum_{i=1}^na_i\mu(A_i) = \sum_{i=1}^n a_i\sum_{j=1}^m C_{ij}.
 \]
 Using proposition \ref{s3p2}, the last term on the right hand side can be written
 as
 \[
-\int\varphi d\mu = \sum_{i=1}^na_i\mu(A_i) = \sum_{i=1}^n\sum_{j=1}^m b_j\chi_{C_{ij}}
+\int s d\mu = \sum_{i=1}^na_i\mu(A_i) = \sum_{i=1}^n\sum_{j=1}^m b_j\chi_{C_{ij}}
 = \sum_{j=1}^m b_j\chi_{B_j}.
 \]
 \end{proof}
 
 \begin{prop}\label{s3p4}
-Let $\varphi$ and $\psi$ be simple functions over a measure space $(X, \Sigma_X, \mu)$
-such that $\varphi \le \psi$ then
+Let $s$ and $ t$ be simple functions over a measure space $(X, \Sigma_X, \mu)$
+such that $s \le  t$ then
 \[
-\int_X\varphi d\mu \le \int_X\psi d\mu.
+\int_Xs d\mu \le \int_X t d\mu.
 \]
 \end{prop}
 \begin{proof}
-Without loss of generality, let us define the two simple functions on the same 
-partition. That is, let,
+If the two functions are not defined on the same partition we can redefine them
+on the intersection of the two partitions. That is, let,
 \[
-\varphi = \sum_{k=1}^n a_k\chi_{E_k} \text{ and } \psi = \sum_{k=1}^n b_k\chi_{E_k}.
+s = \sum_{k=1}^n a_k\chi_{E_k} \text{ and }  t = \sum_{k=1}^n b_k\chi_{E_k}.
 \]
-Then $\varphi \le \psi \Rightarrow a_k \le b_k$ and hence, using the definition
+Then $s \le  t \Rightarrow a_k \le b_k$ and hence, using the definition
 \ref{s3d2} of the Lebesgue integral we conclude that
 \[
-\int_X\varphi d\mu \le \int_X\psi d\mu.
+\int_Xs d\mu \le \int_X t d\mu.
+\]
+\end{proof}
+
+\begin{prop}\label{s3p5}
+If $s_1, s_2$ are simple functions of a measure space $(X, \Sigma_X, \mu)$
+and $c_1, c_2 \in \sor$ then
+\[
+\int_X cs_1 d\mu = c\int_Xs_1 d\mu
+\]
+and
+\[
+\int_X(s_1 + s_2)d\mu = \int_Xs_1 d\mu + \int_Xs_2 d\mu.
+\]
+\end{prop}
+\begin{proof}
+Let the collection of subsets $\{E_k\}$ of $X$ partition $X$ and let them be the
+common partition over which $s_1$ and $s_2$ are defined. Let
+\begin{eqnarray*}
+s_1 &=& \sum_{k=1}^na_k\chi_{E_k} \\
+s_1 &=& \sum_{k=1}^nb_k\chi_{E_k} 
+\end{eqnarray*}
+so that
+\begin{eqnarray*}
+cs_1 &=& \sum_{k=1}^n ca_k\chi_{E_k} \\
+s_1 + s_2 &=& \sum_{k=1}^n(a_k + b_k)\chi_{E_k}
+\end{eqnarray*}
+so that
+\[
+\int_X cs_1 d\mu = \sum_{k=1}^n ca_k\mu(E_k) = c\sum_{k=1}^na_k\mu(E_k)
+= c\int_Xs_1 d\mu.
+\]
+and
+\[
+\int_X(s_1 + s_2)d\mu = \sum_{k=1}^n(a_k + b_k)\mu(E_k) = 
+\int_Xs_1 d\mu + \int_Xs_1 d\mu.
+\]
+\end{proof}
+
+\begin{defn}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f:X \rightarrow [0, \infty]$ be
+a measurable function. Then
+\[
+\int_X f d\mu = 
+\sup\left\{\int_X sd\mu \;|\; 0 \le s \le f \text{ and } s \text{ is simple.}\right\}.
+\]
+\end{defn}
+
+We will now show that for any $f:X \rightarrow \sor$ where $(X, \Sigma_X, \mu)$
+is a measure space, there exists a sequence of simple functions which approximate
+$f$ as closely as we wish. For $n = 0, 1, 2, \ldots$ and $0 \le k \le 2^{2n} - 1$,
+let
+\begin{eqnarray*}
+E_n^k &=& f^{-1}\left(\left(\frac{k}{2^n}, \frac{k+1}{2^n}\right]\right) \\
+F_n &=& f^{-1}((2^n, \infty]).
+\end{eqnarray*}
+$F_n$ is the subset of $X$ which is mapped to $(2^n, \infty]$ while $E_n^k$ is
+the subset of $X$ which is mapped to the interval 
+\[
+\left(\frac{k}{2^n}, \frac{k+1}{2^n}\right].
+\]
+We define $s_n$ as 
+\begin{equation}\label{s3e1}
+s_n = \sum_{k=0}^{2^{2n}-1}\frac{k}{2^n}\chi_{E_n^k} + 2^n\chi_{F_n}.
+\end{equation}
+The first few members of this sequence are
+\begin{equation}\label{s3e2}
+s_0 = \chi_{F_0},
+\end{equation}
+where $F_1 = f^{-1}((1, \infty])$,
+\begin{equation}\label{c3e3}
+s_1 = \frac{1}{2}\chi_{E_1^1} + \chi_{E_1^2} + \frac{3}{2}\chi_{E_1^3} + 2\chi_{F_1},
+\end{equation}
+where $F_2 = f^{-1}((2, \infty])$ and
+\begin{eqnarray*}
+E_1^1 &=& f^{-1}\left(\left(\frac{1}{2}, 1\right]\right) \\
+E_1^2 &=& f^{-1}\left(\left(1, \frac{3}{2}\right]\right) \\
+E_1^3 &=& f^{-1}\left(\left(\frac{3}{2}, 2\right]\right)
+\end{eqnarray*}
+Likewise,
+\begin{equation}\label{s3e3}
+s_2 = \sum_{k=0}^{15}\frac{k}{4}\chi_{E_2^k} + 4\chi_{F_2},
+\end{equation}
+where
+\begin{eqnarray*}
+F_2 &=& 4f^{-1}((4, \infty]) \\
+E_2^k &=& f^{-1}\left(\frac{k}{4}, \frac{k+1}{4}\right)
+\end{eqnarray*}
+In a set like $s_2$, the $15$ terms of the sum are the $15$ rectangles which
+approximate the area under $f$. Each rectangle has `width' $\mu(E_2^k)$ and
+`height' $k/4$ while the last term has `width' $\mu(F_2)$ and `height' $4$.
+We prove two properties of the sequence $\{s_n\}$ of simple functions.
+\begin{prop}\label{s3p6}
+$\{s_n\}$ is an monotone increasing and non-negative.
+\end{prop}
+\begin{proof}
+Consider
+\begin{eqnarray*}
+s_n &=& \sum_{k=0}^{2^{2n}-1}\frac{k}{2^n}\chi_{E_n^k} + 2^n\chi_{F_n} \\
+s_{n+1} &=& \sum_{k=0}^{2^{2n+2}-1}\frac{k}{2^{n+1}}\chi_{E_{n+1}^k} + 2^{n+1}\chi_{F_{n+1}}
+\end{eqnarray*}
+If $x \in X$ such that $f(x) > 2^{n+1}$, then $x \in F_{n+1} \subset F_n$ and 
+$s_{n+1}(x) - s_n(x) = 2^{n+1} - 2^n > 0$.
+If $x$ is such that $2^n < x < 2^{n+1}$ then $x \in F_n$ but $x \notin F_{n+1}$.
+The smallest such $x$ will lie in
+\[
+f^{-1}\left(\left(\frac{2^{2n+1}}{2^{n+1}}, \frac{2^{2n+1} + 1}{2^{n+1}}\right]\right)
+\]
+which corresponds to $k = 2^{2n+1}$. Therefore,
+\[
+s_{n+1}(x) - s_n(x) = \frac{2^{2n+1}}{2^{n+1}} = 2^n + \frac{1}{2^{n+1}}
+\]
+and hence
+\[
+s_{n+1}(x) - s_n(x) = \frac{1}{2^{n+1}} > 0.
+\]
+We can follow the same steps for the entire range of $x$. Thus, $\{s_n\}$ is a
+point-wise monotone increasing sequence of simple functions.
+
+That $s_n$ is non-negative follows from the fact that the coefficients of terms
+in the defining equation are positive.
+\end{proof}
+
+\begin{prop}\label{s3p7}
+$s_n \rightarrow f$.
+\end{prop}
+\begin{proof}
+Let $f(x) = (k + \delta)/2^n$ where $k$ is a positive integer and $0 < \delta < 1$
+is a real. Then 
+\[
+x \in f^{-1}\left(\left(\frac{k}{2^n}, \frac{k+1}{2^n}\right]\right)
+\]
+so that
+\[
+s_n(x) = \frac{k}{2^n}
+\]
+and hence
+\[
+f(x) - s_n(x) = \frac{\delta}{2^n}.
 \]
 \end{proof}
 
