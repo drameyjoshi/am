@@ -22,7 +22,9 @@
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
 
+\theoremstyle{plain}
 \newtheorem{cor}{Corollary}
+\numberwithin{cor}{section}
 
 \numberwithin{equation}{section}
 \begin{document}
@@ -412,14 +414,14 @@ of $\sor$ then so is $\{x/c \;|\; x \in f^{-1}(A)\}$. I can easily show it only
 for an interval of any kind.
 \end{rem}
 
-\begin{prop}\label{s2p3}
+\begin{prop}\label{s2p4}
 Let $f$ and $g$ be measurable functions then so are $f + g$ and $fg$.
 \end{prop}
 \begin{proof}
 Let $h = f + g$ and $A = (a, \infty]$.
 \end{proof}
 
-\begin{prop}\label{s2p4}
+\begin{prop}\label{s2p5}
 Let $\{f_n\}$ be a sequence of measurable real valued functions. Then the functions
 $\sup f_n, \inf f_n, \min f_n, \max f_n, \limsup f_n, \liminf f_n$ are also
 measurable.
@@ -522,7 +524,7 @@ A real-valued function $f$ is measurable iff $f^+$ and $f^-$ are measurable.
 Moreover, if $f$ is measuable then so is $|f| = f^+ + f^-$.
 \end{thm}
 \begin{proof}
-The `if' part follows from the previous proposition \ref{c2s7}. Assume that
+The `if' part follows from the previous proposition \ref{s2p7}. Assume that
 $f$ is measurable. Then,
 \[
 {f^+}^{-1}((c, \infty]) = \begin{cases}
@@ -535,7 +537,7 @@ f^+ - f$, by the previous proposition, $f^-$ is also measurable. From this, the
 measuarability of $f^+ + f^- = |f|$ also follows.
 \end{proof}
 
-\begin{defn}\label{s2c3}
+\begin{defn}\label{s2d3}
 The characteristic function of a subset $A$ of a set $X$ is defined as
 $\chi_A: X \rightarrow \{0, 1\}$ and
 \[
@@ -822,4 +824,210 @@ are defined as in the proof of proposition \ref{s2p7} then
 \int_X f d\mu = \int_X f^+ d\mu - \int_X f^-d\mu
 \]
 \end{defn}
+
+\begin{prop}\label{s3p8}
+Let $a = \sup\{x_n\}, b = \sup\{y_n\}$ then $\sup\{x_n + y_n\} = a + b$.
+\end{prop}
+\begin{proof}
+Let $c = \sup\{x_n + y_n\}$. Then $a \ge x_n, b \ge y_n \Rightarrow a+ b \ge x_n + y_n
+\Rightarrow a + b \ge c$. 
+
+Let, if possible, $c > a + b$ or $c - b > a$. Since $a = \sup\{x_n\}$, there 
+exists $\delta > 0$ such that $c - b > x_n + \delta$ for all $n \in \son$.
+Therefore, $c - b + y_n > y_n + x_n + \delta \Rightarrow c - b + \sup\{y_n\}
+> \sup\{x_n + y_n\} + \delta \Rightarrow c > \sup\{x_n + y_n\} + \delta$, or
+that $c$ is not a supremum of $\{x_n + y_n\}$, a contradiction.
+\end{proof}
+
+\begin{prop}\label{s3p9}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f, g:X \rightarrow \sor^+$ be
+measurable functions. Then,
+\[
+\int_X(f + g)d\mu = \int_X f d\mu + \int_X g d\mu.
+\]
+\end{prop}
+\begin{proof}
+Let $\{s_n\}$ and $\{t_n\}$ be simple functions with $X$ as the domain such that
+\begin{eqnarray*}
+\int_X f d\mu &=& \sup\left\{\int_X s_n d\mu \;|\; s_n \le f\right\} \\
+\int_X g d\mu &=& \sup\left\{\int_X t_n d\mu \;|\; t_n \le f\right\} 
+\end{eqnarray*}
+If $s_n \le f$ and $t_n \le g$ then $s_n + t_n \le f + g$ and by proposition
+\ref{s3p8}, $\sup\{s_n + t_n\} = \sup\{s_n\} + \sup\{t_n\}$. Now,
+\[
+\int_X fd\mu + \int_X gd\mu = \sup\left\{\int_X s_n d\mu + \int_X t_nd\mu\right\}
+= \sup\left\{\int_X(s_n + t_n)d\mu\right\}
+\]
+where we used proposition \ref{s3p5}. The last term, by definition is the integral
+of $f+g$.
+\end{proof}
+
+\begin{cor}\label{s3c1}
+Proposition \ref{s3p9} holds good for $f, g: X \rightarrow \sor$.
+\end{cor}
+\begin{proof}
+Let $f = f^+ - f^-$ and $g = g^+ - g^-$ then $f + g = (f^+ + g^+) - (f^- + g^-)
+= (f+g)^+ - (f+g)^-$. From proposition \ref{s3p9},
+\begin{eqnarray*}
+\int_X(f^+ + g^+)d\mu &=& \int_X f^+ d\mu + \int_X g^+d\mu \\
+\int_X(f^- + g^-)d\mu &=& \int_X f^- d\mu + \int_X g^-d\mu
+\end{eqnarray*}
+so that
+\[
+\int_X(f^+ + g^+)d\mu - \int_X(f^- + g^-)d\mu = \int_X f^+ d\mu - \int_X f^-d\mu
++ \int_X g^+d\mu - \int_X g^-d\mu
+\]
+from which the corollary follows.
+\end{proof}
+
+\begin{prop}\label{s3p10}
+If $f \le g$, where $f$ and $g$ are non-negative valued measurable functions on 
+$(X, \Sigma_X, \mu)$ then
+\[
+\int_X fd\mu \le \int_X gd\mu.
+\]
+\end{prop}
+\begin{proof}
+Let $\{s_n\}$ and $\{t_n\}$ be sequences of simple functions which approximate
+$f$ and $g$. Then $s_n \le t_n$ for all but a finite number of $n$. For if not,
+then their limits will not be related as $f \le g$. Therefore, by proposition
+\ref{s3p4},
+\[
+\int_X s_n d\mu \le \int_X t_n d\mu
+\]
+for all but a finite number of $n$ so that
+\[
+\sup\left\{\int_X s_n d\mu\right\} \le \sup\left\{\int_X t_n d\mu\right\}
+\]
+which proves the proposition.
+\end{proof}
+
+\begin{cor}\label{s3c2}
+Proposition \ref{s3p10} is true for measurable $f, g: X \rightarrow \sor$.
+\end{cor}
+\begin{proof}
+If $f = f^+ - f^-$ and $g = g^+ - g^-$ then $f \le g \Rightarrow f^+ \le
+g^+ \text{ and } g^- \le f^-$ from which the corollary follows.
+\end{proof}
+
+\begin{prop}\label{s3p11}
+If $f: X \rightarrow \sor$ is a measurable function on the measure space $(X,
+\Sigma_X, \mu)$ then
+\[
+\left|\int_X fd\mu\right| \le \int_X |f|d\mu.
+\]
+\end{prop}
+\begin{proof}
+\[
+|f(x)| = \begin{cases}
+f(x) & \text{ if } f(x) \ge 0 \\
+-f(x) & \text{ if } f(x) < 0
+\end{cases}
+\]
+so that
+\[
+|f(x)| = \begin{cases}
+f^+(x) & \text{ if } f(x) \ge 0 \\
+f^-(x) & \text{ if } f(x) < 0
+\end{cases}
+\]
+where $f^+(x) = \max\{f(x), 0\}$ and $f^-(x) = -\min\{f(x), 0\}$, making
+both functions non-negative. From this it is clear that $|f| = |f^+| + |f^-|
+= f^+ + f^-$.
+Now,
+\[
+\left|\int_X f d\mu\right| = \left|\int_X f^+ d\mu - \int_X f^- d\mu\right|.
+\le \left|\int_X f^+ d\mu\right| + \left|\int_X f^- d\mu\right|.
+\]
+Since $f^+$ and $f^-$ are positive valued,
+\[
+\left|\int_X fd\mu\right| \le \int_X (f^+ + f^-)d\mu = \int_X|f| d\mu.
+\]
+\end{proof}
+
+\begin{defn}\label{s3d5}
+Let $(X, \Sigma_X, \mu)$ be a measure space. A set $E \in \Sigma_X$ is 
+said to be a measure-zero set if $\mu(E) = 0$.
+\end{defn}
+
+\begin{defn}\label{s3d6}
+A property $P$ over a set $X$ is set to be true almost everywhere if it is 
+false on a measure-zero set. That is, if $E = \{x \in X \;|\; P(x) \text{ is
+false}\}$ then $\mu(E) = 0$.
+\end{defn}
+
+\begin{prop}\label{s3p12}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $E \in \Sigma_X$ be a measure-zero
+set. Then, $\int_E fd\mu = 0$.
+\end{prop}
+\begin{proof}
+Let $f$ be approximated by the sequence $\{s_n\}$ of simple functions. Then the
+restriction of $f$ to $E$ too will be approximated the restriction of $s_n$ to
+$E$. If $E_1, \ldots, E_k$ partition $E$ then
+\[
+\int_E s_n d\mu = \sum_{k=1}^n a_k \mu(E_k).
+\]
+Since $E_1, \ldots, E_k$ partition $E$, $\mu(E) = \mu(E_1) + \cdots \mu(E_n)$.
+As $\mu(E) = 0$, so are $\mu(E_k)$ for $k=1, \ldots, n$ making
+\[
+\int_E s_n d\mu = 0.
+\]
+Since,
+\[
+\int_E f d\mu = \sup\left\{\int s_n d\mu \;|\; s_n \le f\right\}
+\]
+the integral of $f$ over $E$ vanishes.
+\end{proof}
+
+\begin{prop}\label{s3p13}
+Let $(X, \Sigma_X, \mu)$ be a measure space and the sets $A$ and $B$ partition
+$X$. Then,
+\[
+\int_X fd\mu = \int_A f d\mu + \int_B fd\mu.
+\]
+\end{prop}
+\begin{proof}
+Let $s$ be a simple function on the measure space and $E_1, \ldots, E_m, E_{m+1},
+\ldots, E_n$ partition $X$ in such a way that $E_1, \ldots, E_m$ partition $A$
+and the remaining ones partition $B$. Then
+\[
+\int_X sd\mu = \sum_{k=1}^n a_k \mu(E_k) = \sum_{k=1}^m a_k \mu(E_k) + 
+\sum_{k=m+1}^n a_k\mu(E_k) = \int_A sd\mu + \int_B sd\mu.
+\]
+Therefore,
+\begin{eqnarray*}
+\int_X fd\mu &=& \sup\left\{\int_X s_n d\mu\right\} \\
+ &=& \sup\left\{\int_A s_n d\mu + \int_B s_n d\mu\right\} \\
+ &=& \sup\left\{\int_A s_n d\mu\right\} + \sup\left\{\int_B s_n d\mu\right\} \\
+ &=& \int_A fd\mu + \int_B fd\mu.
+\end{eqnarray*} 
+\end{proof}
+
+\begin{prop}\label{s3p14}
+Let $(X, \Sigma_X, \mu)$ be a measure space. A measurable function $f:X 
+\rightarrow \sor+$ vanishes almost everywhere if $\int_X fd\mu = 0$.
+\end{prop}
+\begin{proof}
+Let $A$ be the set of points on which $f$ does not vanish. Then
+\[
+\int_X f d\mu = \int_A fd\mu + \int_{A^c}fd\mu.
+\]
+Since $\mu(A) = 0$, the first integral vanishes. Since $f = 0$ on $A^c$ the
+second one vanishes.
+
+Now let $\int_X f d\mu = 0$. Let $A$ be the subset of $X$ on which $f$ does
+not vanish. Then $f$ vanished on $A^c$. Further,
+\[
+\int_X fd\mu = \int_A fd\mu = 0.
+\]
+Now,
+\[
+\int_A fd\mu = \sup\left\{\int_A s_n d\mu\right\} =
+\sup\left\{\sum_{k=1}^n a_k\mu(E_k)\right\} = 0,
+\]
+for a suitable partition $E_1, \ldots E_n$ of $A$ and $a_k > 0$. The only way
+a supremum of non-negative points will be zero is when all points are zero,
+which can happen only if $\mu(E_k) = 0$ for all $k = 1, \ldots, n$, which in
+turn implies that $\mu(A) = 0$.
+\end{proof}
 \end{document}
