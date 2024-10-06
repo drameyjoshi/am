@@ -840,8 +840,8 @@ that $c$ is not a supremum of $\{x_n + y_n\}$, a contradiction.
 \end{proof}
 
 \begin{prop}\label{s3p9}
-Let $(X, \Sigma_X, \mu)$ be a measure space and $f, g:X \rightarrow \sor^+$ be
-measurable functions. Then,
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f, g:X \rightarrow [0, \infty]$ 
+be measurable functions. Then,
 \[
 \int_X(f + g)d\mu = \int_X f d\mu + \int_X g d\mu.
 \]
@@ -1005,7 +1005,7 @@ Therefore,
 
 \begin{prop}\label{s3p14}
 Let $(X, \Sigma_X, \mu)$ be a measure space. A measurable function $f:X 
-\rightarrow \sor^+$ vanishes almost everywhere if $\int_X fd\mu = 0$.
+\rightarrow [0, \infty]$ vanishes almost everywhere if $\int_X fd\mu = 0$.
 \end{prop}
 \begin{proof}
 Let $A$ be the set of points on which $f$ does not vanish. Then
@@ -1059,7 +1059,7 @@ Since $\lim f_n = f$, $\limsup f_n = \liminf f_n = f$.
 \end{proof}
 
 Analogous to this theorem, we have
-\begin{thm}[Monotone Convergence Theorem]Let $(X, \Sigma_X, \mu)$ be a 
+\begin{thm}[Monotone Convergence Theorem]\label{s4t2}Let $(X, \Sigma_X, \mu)$ be a 
 measure space and $\{f_n\}$ be a sequence of measurable functions which 
 converges to $f$. Then 
 \[
@@ -1074,8 +1074,6 @@ increasing sequence,
 \begin{equation}\label{s4e1}
 \int_X f_n d\mu \le \int_X fd\mu.
 \end{equation}
-\end{proof}
-
 Let 
 \[
 \int_X fd\mu = \sup\left\{\int_X s d\mu \;|\; s \in S_f\right\},
@@ -1139,4 +1137,90 @@ From equations \eqref{s4e1} and \eqref{s4e4}, we get
 \[
 \int_X f d\mu = \lim_{n \rightarrow \infty}\int_X f_n d\mu.
 \]
+\end{proof}
+
+\begin{prop}\label{s4p2}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f, g: X \rightarrow [0, \infty]$
+be measurable functions. Then
+\[
+\int_X(f + g)d\mu = \int_X f d\mu + \int_X g d\mu.
+\]
+\end{prop}
+\begin{proof}
+Using propositions \ref{s3p6} and \ref{s3p7} we know that for any measurable
+function we can find a monotonically increasing sequence of simple functions
+which converges to it. Let $\{s_n\}$ and $\{t_n\}$ be monotonically increasing
+functions such that $s_n \rightarrow f$ and $t_n \rightarrow g$. By monotone
+convergence theorem,
+\begin{eqnarray*}
+\int_X f d\mu &=& \lim_{n \rightarrow \infty} \int_X f_n \mu \\
+\int_X g d\mu &=& \lim_{n \rightarrow \infty} \int_X g_n \mu
+\end{eqnarray*}
+so that
+\[
+\int_X fd\mu + \int_X gd\mu = \lim_{n \rightarrow \infty} \int_X f_n d\mu +
+\int_X g_n d\mu.
+\]
+Using the linearity property of Lebesgue integral of simple functions proved in
+proposition \ref{s3p5}, we can write the above equation as
+\[
+\int_X fd\mu + \int_X gd\mu = \lim_{n \rightarrow \infty} \int_X (f_n + g_n) d\mu
+\]
+If $f_n \rightarrow f$ and $g_n \rightarrow g$ then, as the monotone convergence
+theorem permits us to interchange the order of the limit and the integral, the
+right hand side of the previous equation can be changed as
+\[
+\int_X fd\mu + \int_X gd\mu = \int_X (f + g)d\mu.
+\]
+\end{proof}
+
+\begin{cor}\label{s4c1}
+Let $f, g: X \rightarrow \sor$ be measurable on $(X, \Sigma_X, \mu)$ then
+\[
+\int_X(f + g)d\mu = \int_X f d\mu + \int_X g d\mu.
+\]
+\end{cor}
+\begin{proof}
+Follows immediately from proposition \ref{s2p1} after writing $f = f^+ - f^-$
+and $g = g^+ - g^-$.
+\end{proof}
+
+\begin{thm}[Beppo Levi]\label{s4t3}
+Let $\{f_n\}$ be a sequence of measurable, non-negtive functions on $(X, 
+\Sigma_X, \mu)$. Then
+\[
+\int_X \lim_{n \rightarrow \infty}f_n d\mu = 
+\lim_{n \rightarrow \infty}\int_X f_n d\mu.
+\]
+Note that $\{f_n\}$ need not be monotone increasing.
+\end{thm}
+\begin{proof}
+Define 
+\[
+g_n(x) = \sum_{k=1}^n f_n(x)
+\]
+so that $\{g_n\}$ is a monotone increasing sequence. Then,
+\[
+\lim_{n \rightarrow \infty}\sum_{k=1}^n f_nx(x) = \lim_{n \rightarrow \infty}g_n(x)
+\]
+so that by the monotone convergence theorem,
+\[
+\int_X \lim_{n \rightarrow \infty} g_n d\mu = \lim_{n \rightarrow \infty}\int_X
+g_n d\mu.
+\]
+Substituting for $g_n$ proves the theorem.
+\end{proof}
+
+\begin{prop}[Fatou's lemma] Let $f_n: X: [0, \infty]$ be measurable on $(X,
+\Sigma_X, \mu)$. Then,
+\[
+\liminf\int_X f_n d\mu \ge \int_X\liminf f_n d\mu.
+\]
+\end{prop}
+\begin{proof}
+Since $\liminf f_n = \sup_{n}\inf_{k \ge n} f_k$, define $g_n = \inf_{k \ge n}
+f_k$. This makes $g_n$ a monotonically increasing sequence such that $\lim g_n
+\le \liminf f_n$. By Beppo Levi's theorem \ref{s4t3},
+
+\end{proof}
 \end{document}
