@@ -1211,16 +1211,112 @@ g_n d\mu.
 Substituting for $g_n$ proves the theorem.
 \end{proof}
 
-\begin{prop}[Fatou's lemma] Let $f_n: X: [0, \infty]$ be measurable on $(X,
-\Sigma_X, \mu)$. Then,
+\begin{prop}[Fatou's lemma] Let $f_n: X \rightarrow [0, \infty]$ be measurable
+on $(X, \Sigma_X, \mu)$. Then,
 \[
 \liminf\int_X f_n d\mu \ge \int_X\liminf f_n d\mu.
 \]
 \end{prop}
 \begin{proof}
-Since $\liminf f_n = \sup_{n}\inf_{k \ge n} f_k$, define $g_n = \inf_{k \ge n}
-f_k$. This makes $g_n$ a monotonically increasing sequence such that $\lim g_n
-\le \liminf f_n$. By Beppo Levi's theorem \ref{s4t3},
-
+Since $\liminf f_n = \sup_n\inf{k \ge n} f_k(x)$, define $g_n(x) = \inf_{k \ge n}
+f_k(x)$ so that $\{g_n\}$ is a monotonically increasing sequence of functions. 
+Furthermore, from its definition, it immediately follows that $g_n \le f_n$ and
+$\liminf f_n = \sup_n g_n$. For a monotone bounded sequence (all monotone sequences
+if we are working with extended real numbers), the supremum is also the limit.
+Therefore, $\liminf f_n = \lim g_n$ and hence,
+\[
+\int_X\liminf f_n d\mu = \int_X\lim g_n d\mu.
+\]
+Since $\{g_n\}$ is monotone increasing, we can use the monotone convergence theorem
+to interchange the order of the integral and the limit so that
+\[
+\int_X\liminf f_n d\mu = \lim\int_X g_n d\mu.
+\]
+When a limit exists it is equal to $\liminf$ (and $\limsup$) so that
+\[
+\int_X\liminf f_n d\mu = \liminf\int_X g_n d\mu \le \liminf\int_X f_n d\mu.
+\]
 \end{proof}
+
+\begin{defn}\label{s4d1}
+A measurable function $f: X \rightarrow \sor$ on a measure space $(X, \Sigma_X, \mu)$
+is said to be integrable if
+\[
+\int_X|f|d\mu < \infty.
+\]
+\end{defn}
+
+\begin{cor}\label{s4c2}
+If $f$ is measurable and $|f| < K$, $K > 0$, then it is integrable.
+\end{cor}
+\begin{proof}
+If $f$ is measurable then $\int_X fd\mu$ exists, although it is permitted to have
+an infinite value. If $f$ is bounded then $\int_X |f| d\mu \le K\mu(X) < \infty$.
+\end{proof}
+\begin{rem}
+I think there is an implicit assumption that $\mu(X) < \infty$.
+\end{rem}
+
+\begin{thm}[Dominated Convergence Theorem]\label{s4t4} Let $(X, \Sigma_X, \mu)$
+be a measure space and $f_n:X \rightarrow \sor$ be measurable functions converging
+to $f$. If there is an integrable function $g: X \rightarrow \sor$ such that $|f_n|
+\le g$ then $f_n$ and $f$ are also integrable and 
+\[
+\lim_{n \rightarrow \infty}\int_X |f_n - f|d\mu = 0.
+\]
+\end{thm}
+\begin{proof}
+Since $f_n \rightarrow f$ and $|f_n| \le g$, by corollary \ref{s4c2}, $f_n$ and
+$f$ are integrable. Since $g$ too is integrable, so is $2g - |f_n - f|$. 
+Applying Fatou's lemma \ref{s3p4} to $\{2g - |f_n - f|\}$ we get
+\[
+\int_X\liminf (2g - |f_n - f|) d\mu \le \liminf\int_X (2g - |f_n - f|)d\mu.
+\]
+Since $f_n \rightarrow f$, $\liminf(2g - |f_n - f|) = 2g$ and
+\begin{eqnarray*}
+\int_X 2g d\mu &\le& \liminf\left(\int_X 2g d\mu - \int_X |f_n - f|d\mu\right) \\
+ &\le& \int_X 2g d\mu + \liminf\left(-\int_X|f_n - f|d\mu\right) \\
+ &\le& \int_X 2g d\mu - \limsup\int_X|f_n - f|d\mu.
+\end{eqnarray*}
+Since $g$ is integrable, $\int_X 2g d\mu$ is finite and hence, we have,
+\[
+0 \le -\limsup\int_X|f_n - f|d\mu \Rightarrow \limsup\int_X|f_n - f|d\mu <= 0.
+\]
+If $\limsup$ of a sequence of non-negative reals is less than or equal to $0$
+then the sequence converges to $0$. Therefore,
+\[
+\lim_{n \rightarrow \infty}\int_X |f_n - f|d\mu = 0.
+\]
+\end{proof}
+
+\begin{cor}\label{s4c3}
+Under the hypotheses of the dominated convergence theorem \ref{s4t4},
+\[
+\lim_{n \rightarrow \infty}\int_X f_n d\mu = \int_X fd\mu.
+\]
+\end{cor}
+\begin{proof}
+The dominated convergence theorem gives
+\[
+\lim_{n \rightarrow 0}\int_X |f_n - f|d\mu = 0.
+\]
+so that
+\[
+\lim_{n \rightarrow \infty}\left|\int_X (f_n - f)d\mu\right| \le 0.
+\]
+As the limit involves a sequence of non-negative numbers, we can as well write,
+\[
+\lim_{n \rightarrow \infty}\left|\int_X (f_n - f)d\mu\right| = 0.
+\]
+Therefore,
+\[
+\lim_{n \rightarrow \infty}\int_X (f_n - f)d\mu = 0 \text{ and }
+\lim_{n \rightarrow \infty}\int_X (f - f_n)d\mu = 0 
+\]
+both of which lead to
+\[
+\lim_{n \rightarrow \infty}\int_X f_n d\mu = \int_X fd\mu.
+\]
+\end{proof}
+
 \end{document}
