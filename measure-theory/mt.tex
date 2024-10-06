@@ -1030,4 +1030,113 @@ a supremum of non-negative points will be zero is when all points are zero,
 which can happen only if $\mu(E_k) = 0$ for all $k = 1, \ldots, n$, which in
 turn implies that $\mu(A) = 0$.
 \end{proof}
+
+\section{Convergence theorems}\label{c4}
+Before proving the monotone convergence theorem for Lebesgue integrals of a
+sequence of measurable functions, we will prove a similar theorem for sequences
+of numbers.
+\begin{thm}\label{c4t1}
+Let $\{a_n\}$ be a non-decreasing sequence of real numbers which is bounded 
+above. Then $\{a_n\}$ converges to its supremum.
+\end{thm}
+\begin{proof}
+Since $\{a_n\}$ is a sequence of real numbers that is bounded above, it has a
+supremum, say $A$. We will show that $\lim a_n = A$. Fix an $\epsilon > 0$.
+Since $A$ is the supremum of $\{a_n\}$, there exists an $N \in \son$ for which
+$|A - a_N| < \epsilon$. Since $\{a_n\}$ is a non-decreasing sequence, we also
+have $|A - a_n| < \epsilon$ for all $n \ge N$ so that $A$ is also the limit of
+the sequence.
+\end{proof}
+
+\begin{prop}\label{c4p1}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $\{f_n\}$ be a sequence of
+measurable functions on $X$. If $\lim f_n = f$ point-wise then $f$ is
+measurable.
+\end{prop}
+\begin{proof}
+By proposition \ref{s2p5}, $\limsup f_n$ and $\liminf f_n$ are measurable.
+Since $\lim f_n = f$, $\limsup f_n = \liminf f_n = f$.
+\end{proof}
+
+Analogous to this theorem, we have
+\begin{thm}[Monotone Convergence Theorem]Let $(X, \Sigma_X, \mu)$ be a 
+measure space and $\{f_n\}$ be a sequence of measurable functions which 
+converges to $f$. Then 
+\[
+\lim_{n\rightarrow\infty}\int_X f_n d\mu = \int_X fd\mu.
+\]
+\end{thm}
+\begin{proof}
+Given that $\lim f_n = f$, therefore, $\limsup f_n = \liminf f_n = \lim f_n = f$.
+Since $f_n$ are measurable, by proposition \ref{s2p5}, $f$ is measurable and
+we can define its Lebegue integral over $X$. As $\{f_n\}$ are a monotone
+increasing sequence,
+\begin{equation}\label{s4e1}
+\int_X f_n d\mu \le \int_X fd\mu.
+\end{equation}
+\end{proof}
+
+Let 
+\[
+\int_X fd\mu = \sup\left\{\int_X s d\mu \;|\; s \in S_f\right\},
+\]
+where $S_f$ is the set of simple functions $X \rightarrow \sor$ such that
+$0 \le s \le f$. Fix a function $s \in S_f$ and let $\lambda \in (0, 1)$. Define
+\[
+A_n = \{x \in X \;|\; f_n(x) - \lambda s(x) \ge 0\}.
+\]
+As $n$ increases, and since $\{f_n\}$ are an increasing sequence of functions
+whoe limit is $f$, the domain of $A_n$ increases with $n$, that is $\{A_n\}$ 
+is a sequence of sets such that $A_n \subseteq A_{n+1}$. Clearly,
+\begin{equation}\label{s4e2}
+\bigcup_n A_n \subseteq X.
+\end{equation}
+Let $x_0$ be any element of $X$. There will be an $m \in \son$ such that for
+all $n \ge m$, $f_n(x_0) - \lambda s(x_0) \ge 0$. This is because $f_n \rightarrow
+f$ and $s \in S_f$. Therefore, $x_0 \in A_n \forall n \ge m$ or that
+\[
+\bigcup_n A_n \subseteq X.
+\]
+\begin{equation}\label{s4e3}
+X \subseteq \bigcup_n A_n.
+\end{equation}
+From equations \eqref{s4e2} and \eqref{s4e3} we have
+\[
+X = \bigcup_n A_n.
+\]
+
+For $E \in \Sigma_X$, define
+\[
+\nu(E) = \int_E \lambda s d\mu.
+\]
+Clearly, $\nu$ is a measure on $(X, \Sigma_X)$. Now,
+\[
+\int_X \lambda s d\mu = \nu(X) = \nu\left(\bigcup_n A_n\right).
+\]
+As $\{A_n\}$ are in increasing sequnce of sets the last term in the above equation
+can be written as a limit and we get
+\[
+\int_X \lambda s d\mu = \lim_{n \rightarrow \infty}\nu(A_n)
+\]
+or
+\[
+\int_X \lambda s d\mu = \lim_{n \rightarrow \infty}\int_{A_n}\lambda s d\mu.
+\]
+Since $\lambda \in (0, 1)$ and $s \in S_f$, $\lambda s \le f_n$ so that
+\[
+\int_X \lambda s d\mu \le \lim_{n \rightarrow \infty}\int_{A_n}f_n d\mu
+\le \lim_{n \rightarrow \infty}\int_X f_n d\mu.
+\]
+In the limit $\lambda \rightarrow 1$, this equation is
+\[
+\int_X \lambda s d\mu \le \lim_{n \rightarrow \infty}\int_X f_n d\mu.
+\]
+Taking supremum over all $s \in S_f$, we see that
+\begin{equation}\label{s4e4}
+\int_X f d\mu \le \lim_{n \rightarrow \infty}\int_X f_n d\mu.
+\end{equation}
+From equations \eqref{s4e1} and \eqref{s4e4}, we get
+\[
+\int_X f d\mu = \lim_{n \rightarrow \infty}\int_X f_n d\mu.
+\]
 \end{document}
