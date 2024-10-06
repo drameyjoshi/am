@@ -383,8 +383,8 @@ Let $(X, \Sigma_X)$ be a measurable space. A function $f: X \rightarrow \sor$
 is measurable iff $f^{-1}((a, \infty]) \in \Sigma_X$ for all $a \in \sor$.
 \end{cor}
 \begin{proof}
-The $\sigma$-algebra on $\sor$ is the $\mathcal{B}$. The corollary follows
-immediately from \ref{s2p2} if we can show that the set of all open intervals
+The $\sigma$-algebra on $\sor$ is $\mathcal{B}$. The corollary follows immediately
+from proposition \ref{s2p2} if we can show that the set of all open intervals
 can be generated from the set of all semi-open intervals by set operations used
 to define a $\sigma$-algebra. If $a < b$, then $(a, b) = (a, \infty] \cap (b,
 \infty]$.
@@ -422,7 +422,7 @@ measurable.
 \end{prop}
 \begin{proof}
 Let $f_n: X \rightarrow \sor$ be a real-valued measurable functions for $n \in
-\son$. If $\Sigma_X$ is a $\sigma$-algrbra on $X$ then for all $(a, \infty]$,
+\son$. If $\Sigma_X$ is a $\sigma$-algebra on $X$ then for all $(a, \infty]$,
 $f_n^{-1}((a, \infty]) \in \Sigma_X$.
 \begin{itemize}
 \item Let $f = \sup f_n$. Then 
@@ -461,7 +461,8 @@ Let $A \subseteq \sor$. If $a \in A$ is the maximum element of $A$ then it is al
 the supremum of $A$.
 \end{prop}
 \begin{proof}
-Let $b$ be a supremum of $A$ then $a \le b$. Since $a$ is a maximum, $a \le b$.
+Let $b$ be a supremum of $A$ then $a \le b$. Since $a$ is a maximum, $a \ge b$.
+Therefore, $a = b$.
 \end{proof}
 
 \begin{prop}\label{s2p6}
@@ -504,7 +505,7 @@ p^{-1}((c, \infty]) = \bigcup_r f^{-1}((r, \infty]) \cap g^{-1}((c/r, \infty])
 \item Let $q = 1/g$ be the reciprocal of a positive valued function $g$. Then
 $q(x) > c$ iff $g(x) < 1/c$ for any positive real $c$. Thus,
 \[
-q^{-1}((c, \infty]) = g^{-1}([-\infty, c)).
+q^{-1}((c, \infty]) = g^{-1}([-\infty, c^{-1})).
 \]
 Since the right hand side is a measurable set, so is the left hand side, making
 $q$ a measurable function.
