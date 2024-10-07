@@ -2,6 +2,7 @@
 \usepackage{amsmath, amsthm, amssymb, amsfonts, graphicx, color}
 \usepackage{mathtools}
 \usepackage{hyperref}
+\usepackage{mathabx}
 
 \newcommand{\td}[2]{\frac{d{#1}}{d{#2}}}
 \newcommand{\sor}{\mathbb{R}}
@@ -565,7 +566,7 @@ a simple function. Then its Lebesuge integral over $X$ is defined as
 \[
 \int_Xs d\mu = \sum_{k=1}^na_k\mu(E_k),
 \]
-where $E_k \in \Sigma_X$ and $\cup_k E_k = X$.
+where $E_k \in \Sigma_X$ partition $X$.
 \end{defn}
 
 \begin{rem}
@@ -1314,4 +1315,160 @@ both of which lead to
 \]
 \end{proof}
 
+We will now prove some additional theorems whose validity depends on the convergence
+theorems.
+\begin{thm}\label{s4t5}
+Let $(X, \Sigma, \mu)$ be a measure space and $f_n: X \rightarrow \sor$ be measurable
+functions such that
+\[
+\int_X\sum|f_n| d\mu= \sum\int_X |f_n| d\mu < \infty.
+\]
+Then
+\[
+\int_X\sum f_n d\mu= \sum\int_X f_n d\mu.
+\]
+\end{thm}
+\begin{proof}
+Let 
+\[
+g_n = \sum_{k=1}^n f_n, g = \limsup g_n, h = \sum_{k=1}^\infty |f_k|.
+\]
+Since $\int h d\mu < \infty$ we must also have $|h| < \infty$ almost everywhere.
+Therefore, the series $\sum_k f_k$ is absolutely convergent almost everywhere so
+that the sequence $\{g_n\}$ converges to $g$ almost everywhere.
+
+We have an integrable function $h$ that dominates the sequence $\{g_n\}$ so that
+by corollary \ref{s4c3},
+\[
+\lim_{n \rightarrow \infty}\int_X g_n d\mu = \int_X gd\mu.
+\]
+Substituting for $g_n$ proves the theorem.
+\end{proof}
+
+We need a few propositions to prove the next theorem.
+\begin{prop}\label{s4p4}
+Let $(X, \Sigma, \mu)$ be a measure space and $s$ be a real-valued simple function
+on $X$. If $E_1$ and $E_2$ are disjoint subsets of $X$ and if $E = E_1 \cup E_2$
+then
+\[
+\int_E sd\mu = \int_{E_1} sd\mu + \int_{E_2}sd\mu.
+\]
+\end{prop}
+\begin{proof}
+\[
+\int_E sd\mu = \sum_{k=1}^n a_k\mu(F_k),
+\]
+where the sets $F_k \subset E$, partition $E$. Without loss of generality, choose
+the partition $\{F_k\}$ such that $F_1, \ldots, F_m$ partition $E_1$ and $F_{m+1},
+\ldots, F_n$ partition $E_2$. Then,
+\[
+\int_E sd\mu = \sum_{k=1}^m a_k\mu(F_k) + \sum_{k=m+1}^n a_k\mu(F_k) =
+\int_{E_1}sd\mu + \int_{E_2}sd\mu.
+\]
+\end{proof}
+
+\begin{prop}\label{s4p5}
+Let $(X, \Sigma, \mu)$ be a measure space and $f: X \rightarrow [0, \infty]$ be
+a function on $X$. If $E_1$ and $E_2$ are disjoint subsets of $X$ and if $E = 
+E_1 \cup E_2$ then
+\[
+\int_E fd\mu = \int_{E_1} fd\mu + \int_{E_2}fd\mu.
+\]
+\end{prop}
+\begin{proof}
+Let
+\[
+\int_E fd\mu = \sup\left\{\int_E sd\mu\;\Big|\; s \le f, s:X \rightarrow [0, \infty] 
+\text{ is simple.}\right\}
+\]
+By proposition \ref{s4p4},
+\begin{eqnarray*}
+\int_E fd\mu &=& \sup\left\{\int_{E_1}sd\mu + \int_{E_2}sd\mu\right\} \\
+ &=& \sup\left\{\int_{E_1}sd\mu\right\} + \sup\left\{\int_{E_2}sd\mu\right\} \\
+ &=& \int_{E_1} fd\mu + \int_{E_2}fd\mu.
+\end{eqnarray*}
+We used proposition \ref{s3p8} to get to the second step.
+\end{proof}
+
+\begin{cor}\label{s4c4}
+Proposition \ref{s4p5} is also true for $f: X \rightarrow \sor$.
+\end{cor}
+\begin{proof}
+Follows immediately after writing $f = f^+ - f^-$ where $f^{\pm}$ are defined as
+in the proof of proposition \ref{s2p6}.
+\end{proof}
+
+\begin{prop}\label{s4p6}
+Let $(X, \Sigma, \mu)$ be a measure space, $s$ be a simple function on $X$
+and $f: X \rightarrow [0, \infty]$ be a measurable function. If $E$ is an empty
+set then $\int_E sd\mu = 0$ and $\int_E fd\mu = 0$.
+\end{prop}
+\begin{proof}
+\[
+\int_E sd\mu = a\mu(E) = a \times 0,
+\]
+as $\mu(\varnothing) = 0$.
+For the same reason, $\int_E fd\mu = 0$.
+\end{proof}
+
+\begin{cor}\label{s4c5}
+Proposition \ref{s4p6} is also true for $f: X \rightarrow \sor$.
+\end{cor}
+\begin{proof}
+Follows immediately after writing $f = f^+ - f^-$ where $f^{\pm}$ are defined as
+in the proof of proposition \ref{s2p6}.
+\end{proof}
+
+\begin{thm}\label{s4t6}
+Let $(X, \Sigma, \mu)$ be a measure space and $g: X \rightarrow [0, \infty]$ be an
+integrable function. Define,
+\[
+\nu(E) = \int_E gd\mu,
+\]
+for $E \in \Sigma$. Then $\nu$ is a measure on $(X, \Sigma)$ and for any
+measurable function $f$ on $X$,
+\[
+\int_X fd\nu = \int_X fgd\mu.
+\]
+\end{thm}
+\begin{proof}
+By proposition \ref{s4p6}, $\nu(\varnothing) = 0$. Let $E_1, E_2, \ldots$ be
+pairwise disjoint. Then by extending proposition \ref{s4p5} to countable unions,
+we get 
+\[
+\nu(E) = \sum_{k=1}^\infty \mu(E_k).
+\]
+Thus, $\nu: \Sigma \rightarrow [0, \infty]$ is indeed a measure. Let $s:X \rightarrow
+[0, \infty]$ be a simple function
+\[
+s = \sum_{k=1}^\infty a_k\chi_{E_k},
+\]
+and
+\begin{eqnarray*}
+\int_X sd\nu &=& \sum_{k=1}^n a_k\nu(E_k) \\
+ &=& \sum_{k=1}^n a_k\int_{E_k}gd\mu \\
+ &=& \sum_{k=1}^n a_k\int_X \chi_{E_k}gd\mu \\
+ &=& \int_X\sum_{k=1}^na_k\chi_{E_k}gd\mu
+\end{eqnarray*}
+that is,
+\[
+\int_X sd\mu = \int_X sgd\mu.
+\]
+Let $S_f$ be the set of simple functions $X \rightarrow \sor$ such that
+$0 \le s \le f$. 
+\begin{eqnarray*}
+\int_X fd\nu &=& \sup\left\{\int_X s d\nu \;\Big|\; s \in S_f\right\} \\
+ &=& \sup\left\{\int_X s gd\mu \;\Big|\; s \in S_f\right\} \\
+ &=& \int_X fg d\mu.
+\end{eqnarray*}
+\end{proof}
+
+\begin{thm}(Change of variables)\label{s4t7}
+Let $(X, \Sigma_X, \mu)$ and $(Y, \Sigma_Y, \nu)$ be a measure spaces. If $g:X
+\rightarrow Y$ and $f: Y \rightarrow \sor$ are measurable functions then
+\[
+\int_X (f \circ g)d\mu = \int_Y fd\nu
+\]
+where $\nu(E) = \mu(g^{-1}(E))$ for any $E \in \Sigma_Y$.
+\end{thm}
 \end{document}
