@@ -1471,4 +1471,63 @@ Let $(X, \Sigma_X, \mu)$ and $(Y, \Sigma_Y, \nu)$ be a measure spaces. If $g:X
 \]
 where $\nu(E) = \mu(g^{-1}(E))$ for any $E \in \Sigma_Y$.
 \end{thm}
+\begin{proof}
+Let $f = \chi_F$ for $F \subset Y$. Then $(f \circ g)(x) = \chi_F(g(x)) = 1$ iff
+$g(x) \in F$. Therefore,
+\begin{equation}\label{s4e5}
+\int_X (f \circ g) d\mu = \int_X \chi_F(g(x))d\mu = \mu(g^{-1}(F))
+\end{equation}
+and
+\begin{equation}\label{s4e6}
+\int_Y fd\nu = \int_Y\chi_F d\nu = \nu(F).
+\end{equation}
+Since we are given that $\nu(F) = \mu(g^{-1}(F)$ for $F \in \Sigma_Y$, we have
+\begin{equation}\label{s4e7}
+\int_X (f \circ g) d\mu = \int_Y fd\nu,
+\end{equation}
+for $f = \chi_F, F \in \Sigma_Y$. Now consider a simple function,
+\[
+t = \sum_{k}b_k\chi_{F_k},
+\]
+where $\{F_k\}$ partition $Y$. Then,
+\begin{equation}\label{s4e8}
+\int_Y td\nu = \int_Y \sum_k b_k \chi_{F_k} = \sum_k b_k \nu(F_k) = 
+\sum_k b_k\mu(g^{-1}(F_k)),
+\end{equation}
+and
+\begin{equation}\label{s4e9}
+\int_X (t \circ g)d\mu = \sum_k b_k\int_X (\chi_{F_k} \circ g)f\mu = 
+\sum_k b_k\mu(g^{-1}(F_k))
+\end{equation}
+so that once again we have
+\begin{equation}\label{s4e10}
+\int_X (t \circ g) d\mu = \int_Y td\nu.
+\end{equation}
+Finally, let $\{t_n\}$ be a monotone increasing sequence of simple functions
+on $Y$ that converges point-wise to $f$. Then by the monotone convergence
+theorem \ref{s4t2}
+\[
+\int_Y fd\nu = \lim_{n \rightarrow \infty}\int_Y t_n d\nu = 
+\lim_{n \rightarrow \infty}\int_X (t_n \circ g)d\mu,
+\]
+where we used \eqref{s4e10} in the second step. Using \ref{s4t2} again, we get
+\[
+\int_Y fd\nu = \int_X\lim_{n \rightarrow \infty}(t_n \circ g)d\mu.
+\]
+If $t_n \rightarrow f$ then $t_n \circ g \rightarrow f \circ g$ so that
+\[
+\int_Y fd\nu = \int_X (f \circ g)d\mu.
+\]
+When the range of $f$ is a subset of $\sor$, we can apply the previous equation
+to $f^{\pm}$ separately and arrive at the same conclusion.
+\end{proof}
+
+\begin{thm}[Fundamental theorem of Calculus]\label{s4t8} Let $I \subset \sor$ be
+an interval and $f: I \rightarrow \sor$ be integrable. If $I(x) = [a, x]$ then 
+the function,
+\[
+F(x) = \int_{I(x)} fd\mu,
+\]
+is continuous and $F^\prime(x) = f(x)$. Here $\mu(I(x)) = x - a$.
+\end{thm}
 \end{document}
