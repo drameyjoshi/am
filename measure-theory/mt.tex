@@ -7,6 +7,7 @@
 \newcommand{\td}[2]{\frac{d{#1}}{d{#2}}}
 \newcommand{\sor}{\mathbb{R}}
 \newcommand{\son}{\mathbb{N}}
+\newcommand{\op}{\prime}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}
@@ -1522,12 +1523,70 @@ When the range of $f$ is a subset of $\sor$, we can apply the previous equation
 to $f^{\pm}$ separately and arrive at the same conclusion.
 \end{proof}
 
-\begin{thm}[Fundamental theorem of Calculus]\label{s4t8} Let $I \subset \sor$ be
+\begin{prop}\label{s4p7}
+Let $f: X \rightarrow \sor$ be continuous at $x \in X$. Then there is a sequence
+$\{x_n\}$ such that $f(x_n) \rightarrow f(x)$.
+\end{prop}
+\begin{proof}
+Fix $\epsilon > 0$. If $f$ is continuous at $x$ then there exists $\delta > 0$
+such that $|x - x^\op| < \delta \Rightarrow |f(x) - f(x^\op)| < \epsilon$. Since
+$\{x_n\} \rightarrow x$, for a given $\delta > 0$, there is an $n_0 \in \son$ 
+such that for all $n \ge n_0$, $|x_n - x| < \delta$. By continuity of $f$ at $x$
+this also means that $f(x_n) - f(x)| < \epsilon$ so that $\{f(x_n)\} \rightarrow
+f(x)$.
+\end{proof}
+
+\begin{prop}\label{s4p8}
+If $\{x_n\} \rightarrow x \Rightarrow \{f(x_n)\} \rightarrow f(x)$ then $f$ is 
+continuous at $x$.
+\end{prop}
+\begin{proof}
+$\{x_n\} \rightarrow x \Rightarrow \exists N \in \son$ such that for all $n \ge
+N$, $|x_n - x| \rightarrow \delta$. $\{f(x_n)\} \rightarrow f(x) \Rightarrow 
+\exists M \in \son$ such that for all $n \ge M$, $|f(x_n) - f(x)| < \epsilon$.
+If $N_0 = \max\{N, M\}$ then for all $n \ge N_0$, $|x_n - x| < \delta 
+\Rightarrow |f(x_n) - f(x)| < \epsilon$, that is $f$ is continuous at $x$.
+\end{proof}
+
+From propositions \ref{s4p7} and \ref{s4p8} it follows that
+\begin{thm}\label{s4t8}
+$\{x_n\} \rightarrow x \Rightarrow \{f(x_n)\} \rightarrow f(x)$ iff $f$ is 
+continuous at $x$.
+\end{thm}
+
+\begin{thm}[Fundamental theorem of Calculus]\label{s4t9} Let $I \subset \sor$ be
 an interval and $f: I \rightarrow \sor$ be integrable. If $I(x) = [a, x]$ then 
 the function,
 \[
 F(x) = \int_{I(x)} fd\mu,
 \]
-is continuous and $F^\prime(x) = f(x)$. Here $\mu(I(x)) = x - a$.
+is continuous and $F^\prime(x) = f(x)$. Here $\mu(I(x)) = x - a$. Moreover, if
+$f$ is continuous at $x$ then $F^\op(x) = f(x)$.
 \end{thm}
+\begin{proof}
+Let $\{x_n\} \rightarrow x$ and consider
+\[
+F(x_n) = \int_{I(x_n)}fd\mu = \int_\sor f\chi_{I(x_n)}d\mu.
+\]
+Since $|f\chi_{I(x_n)}| < f$, by the dominated convergence theorem \ref{s4t4},
+\[
+\lim_{n \rightarrow \infty}F(x_n) = \int_\sor\lim_{n \rightarrow \infty}
+f\chi_{I(x_n)}d\mu = \int_\sor f\chi_{I(x)} d\mu = \int_{I(x)}fd\mu = F(x).
+\]
+This proves continuity of $F$ using theorem \ref{s4t8}.
+
+Consider 
+\[
+\frac{F(x+h) - F(x)}{h} = \frac{1}{h}\int_{(x, x+h)}f d\mu,
+\]
+where we used proposition \ref{s4p5}. Since $f$ is continuous at $x$
+$|f(x^\op) - f(x)| < \epsilon$ for all $x^\op \in (x, x + h)$. Therefore,
+$-\epsilon < f(x^\op) - f(x) < \epsilon$ for all $x^\op \in (x, x+h)$ so that
+\[
+\frac{F(x+h) - F(x)}{h} < \frac{f(x) + \epsilon}{h}\int_{(x, x+h)} d\mu < f(x)
++ \epsilon.
+\]
+For a given $\epsilon > 0$. due to continuity of $f$, we can always choose $h>0$
+so that this is true. Therefore $F^\op(x) = f(x)$.
+\end{proof}
 \end{document}
