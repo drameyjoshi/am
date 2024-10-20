@@ -1589,4 +1589,22 @@ $-\epsilon < f(x^\op) - f(x) < \epsilon$ for all $x^\op \in (x, x+h)$ so that
 For a given $\epsilon > 0$. due to continuity of $f$, we can always choose $h>0$
 so that this is true. Therefore $F^\op(x) = f(x)$.
 \end{proof}
+
+\begin{prop}
+Let $f: X \rightarrow \sor$ be a measurable function and $(a, b) \subset X$. 
+Then,
+\[
+\int_{(a, b)} f(x + h) d\mu = \int_{(a+h, b+h)}f(x) d\mu.
+\]
+\end{prop}
+\begin{proof}
+Define $t: X \rightarrow X$ such that $t(x) = (x + h)$. Then $f(x + h) = f(t(x))
+= (f \circ t)(x)$. For any $(a, b) \in \Sigma_X$, $\mu(t^{-1}((a, b))) = \mu((
+a-h, b-h)) = b - h - a + h = b - a = \mu((a, b))$. Therefore, by theorem 
+\ref{s4t7},
+\[
+\int_{(a, b)} (f \circ t)d\mu = \int_{(a+h, b+h)} fd\nu = \int_{(a+h, b+h)}fd\mu
+\]
+as we just showed that $\mu$ is invariant under $t$.
+\end{proof}
 \end{document}
