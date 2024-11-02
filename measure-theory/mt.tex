@@ -1038,14 +1038,27 @@ be a measurable function. If $c \in \sor$ then,
 \end{prop}
 \begin{proof}
 Let $\{s_n\}$ be a sequence of simple functions which converge to $f$. Then
-$\{c s_n\}$ converges to $cf$. Using proposition \ref{c3p5},
+$\{c s_n\}$ converges to $cf$. Using proposition \ref{s3p5},
 \[
 \int_X cs_n d\mu = c\int_X s_n d\mu
 \]
 so that
 \begin{eqnarray*}
-\end{eqn
+c\int_X f d\mu &=& 
+    c\sup\left\{\int_X s_n d\mu\;|\; 0 \le s_n \le f\right\} \\
+&=& \sup\left\{c\int_X s_n d\mu\;|\; 0 \le s_n \le f\right\} \\
+&=& \sup\left\{\int_X cs_n d\mu\;|\; 0 \le s_n \le f\right\}
+\end{eqnarray*}
+where we used proposition \ref{s3p5}. If $\{s_n\} \rightarrow f$ then
+$\{cs_n\} \rightarrow cf$  so that the supremum in the last step is
+$\int_X (cf)d\mu$.
 \end{proof}
+
+From propositions \ref{s3p9} and \ref{s3p15} it follows that 
+\begin{thm}\label{s3t1}
+If $(X, \Sigma_X, \mu)$ is a measure space and $V$ is a set of measurable
+functions on $X$ then $V$ is a vector space.
+\end{thm}
 
 \section{Convergence theorems}\label{c4}
 Before proving the monotone convergence theorem for Lebesgue integrals of a
@@ -1755,9 +1768,9 @@ F^\op(t) = \int_X\lim_{h \rightarrow 0}\frac{f(x+h, t) - f(x, t)}{h} d\mu =
 \end{proof}
 
 \section{$L^p$ spaces}\label{s5}
-\begin{defn}\label{s5d1}Let $V$ be a vector space over the field of complex 
-numbers. Then a norm on $V$ is a function $p: V \rightarrow [0, \infty)$ such
-that
+\begin{defn}\label{s5d1}Let $V$ be a vector space over the field of 
+complex numbers. Then a norm on $V$ is a function $p: V \rightarrow 
+[0, \infty)$ such that
 \begin{enumerate}
 \item $p(x + y) \le p(x) + p(y)$ for all $x, y \in V$,
 \item $p(\alpha x) = |\alpha|p(x)$, for $\alpha \in \soc$,
@@ -1765,5 +1778,90 @@ that
 \end{enumerate}
 \end{defn}
 
-W
+\begin{defn}\label{s5d2}
+Let $(X, \Sigma_X, \mu)$ be a measure space. Then the set $L^p(X)$, $p \ge
+1$, is the set of measurable functions on $X \mapsto \sor$ for which
+\[
+\int_X |f|^p d\mu < \infty.
+\]
+\end{defn}
+
+From theorem \ref{s3t1} it is easy to conclude that $L^p$ is a vector
+space. Although the vector space can have $soc$ as its field, we will, for
+the moment, restrict the field to $\sor$. We now define a norm on it.
+\begin{defn}\label{s2d2}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f \in L^p(X)$. Then
+\[
+||f||_p = \left(\int_X |f|^p d\mu\right)^{1/p},
+\]
+is called the $L^p$ norm of $f$.
+\end{defn}
+The last property of the norm requires that $||f||_p = $ iff $f = 0$.
+We will relax this property to
+\begin{equation}\label{s5e1}
+||f||_p = 0 \Leftrightarrow \int_X fd\mu = 0.
+\end{equation}
+The function $f$ need not be zero. A measurable non-zero function for 
+which $\int_X fd\mu = 0$ is said to vanish almost everywhere. 
+
+It is easy to see that
+\[
+||cf_p|| = \left(\int_X (cf)^p d\mu\right)^{1/p} =
+\left(\int_X c^p f^p d\mu\right)^{1/p} = 
+\left(c^p \int_X f^p d\mu\right)^{1/p} = c||f||_p.
+\]
+
+To show that $||f||_p$ is a norm we must also prove that it satisfies
+the triangle inequality $||f + g||_p \le ||f||_p + ||g||_p$. In order
+to prove it, we need a few more propositions.
+
+\begin{defn}
+Let $p, q \in (1, \infty)$ be such that $1/p + 1/q = 1$. Then they are
+called conjugate exponents.
+\end{defn}
+
+\begin{prop}[H\"{o}lder inequality]\label{s5p1}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f, g$ be real-valued
+measurable functions on $X$. Then 
+\[
+\left|\int_X fgd\mu\right| \le \int_X |f||g| d\mu \le ||f||_p||g||_q
+\]
+where $p$ and $q$ are conjugate exponents.
+\end{prop}
+\begin{proof}
+By proposition \ref{s3p11}
+\[
+\left|\int_X fg d\mu\right| \le \int_X |fg| d\mu.
+\]
+Since $|fg| = |f||g|$, the first equality follow immediately. If $||f||_p
+= 0$ or $||g||_p = 0$ then the second inequality also follows immediately.
+This is because $||f||_p = 0$ iff $f = 0$ almost everywhere. The
+inequality is also true if any of the norms is infinite. Let us, therefore,
+consider the case where the norms are non-zero and finite and define the
+functions $F = |f|/||f||_p, G = |g|/||g||_q$. Clearly, $||F||_p = ||G||_q
+= 1$.  A real-valued function $f$ is said to be concave if 
+\[
+f(cx + (1 - c)y) \ge cf(x) + (1 - c)(y).
+\]
+Since the logarithm is a concave function, using $c = 1/p$, we get
+\[
+\log\left(\frac{1}{p}x + \frac{1}{q}y\right) \ge \frac{1}{p}\log x +
+\frac{1}{q}\log y.
+\]
+Let $x = F^p, y = G^q$ so that
+\[
+\log\left(\frac{F^p}{p} + \frac{G^q}{q}\right) \ge \log F + \log G
+= \log (FG)
+\]
+that is $FG \le F^p/p + G^q/q$ so that
+\[
+\int_X (FG) d\mu \le \frac{1}{p}\int_X F^p d\mu + \frac{1}{q}\int_X G^q
+d\mu = \frac{1}{p}(||F||_p)^p + \frac{1}{q}(||G||_q)^q
+\]
+Since $||F||_p = ||G||_q = 1$ and $p, q$ are conjugate exponents,
+\[
+\int_X (FG) d\mu \le 1 \Rightarrow \int_X fg d\mu \le ||f||_p ||g||_q.
+\]
+\end{proof}
+
 \end{document}
