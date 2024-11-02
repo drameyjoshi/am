@@ -5,6 +5,7 @@
 \usepackage{mathabx}
 
 \newcommand{\td}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\soc}{\mathbb{C}}
 \newcommand{\sor}{\mathbb{R}}
 \newcommand{\son}{\mathbb{N}}
 \newcommand{\op}{\prime}
@@ -1028,6 +1029,24 @@ which can happen only if $\mu(E_k) = 0$ for all $k = 1, \ldots, n$, which in
 turn implies that $\mu(A) = 0$.
 \end{proof}
 
+\begin{prop}\label{s3p15}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f: X \rightarrow [0, \infty]$
+be a measurable function. If $c \in \sor$ then,
+\[
+\int_X (cf) d\mu = x\int_X fd\mu.
+\]
+\end{prop}
+\begin{proof}
+Let $\{s_n\}$ be a sequence of simple functions which converge to $f$. Then
+$\{c s_n\}$ converges to $cf$. Using proposition \ref{c3p5},
+\[
+\int_X cs_n d\mu = c\int_X s_n d\mu
+\]
+so that
+\begin{eqnarray*}
+\end{eqn
+\end{proof}
+
 \section{Convergence theorems}\label{c4}
 Before proving the monotone convergence theorem for Lebesgue integrals of a
 sequence of measurable functions, we will prove a similar theorem for sequences
@@ -1155,15 +1174,15 @@ convergence theorem,
 \end{eqnarray*}
 so that
 \[
-\int_X fd\mu + \int_X gd\mu = \lim_{n \rightarrow \infty} \int_X f_n d\mu +
-\int_X g_n d\mu.
+\int_X fd\mu + \int_X gd\mu = \lim_{n \rightarrow \infty} \int_X s_n d\mu +
+\int_X t_n d\mu.
 \]
 Using the linearity property of Lebesgue integral of simple functions proved in
 proposition \ref{s3p5}, we can write the above equation as
 \[
-\int_X fd\mu + \int_X gd\mu = \lim_{n \rightarrow \infty} \int_X (f_n + g_n) d\mu
+\int_X fd\mu + \int_X gd\mu = \lim_{n \rightarrow \infty} \int_X (s_n + t_n) d\mu
 \]
-If $f_n \rightarrow f$ and $g_n \rightarrow g$ then, as the monotone convergence
+If $s_n \rightarrow f$ and $t_n \rightarrow g$ then, as the monotone convergence
 theorem permits us to interchange the order of the limit and the integral, the
 right hand side of the previous equation can be changed as
 \[
@@ -1734,4 +1753,17 @@ F^\op(t) = \int_X\lim_{h \rightarrow 0}\frac{f(x+h, t) - f(x, t)}{h} d\mu =
 \int_X \partial_t f d\mu.
 \]
 \end{proof}
+
+\section{$L^p$ spaces}\label{s5}
+\begin{defn}\label{s5d1}Let $V$ be a vector space over the field of complex 
+numbers. Then a norm on $V$ is a function $p: V \rightarrow [0, \infty)$ such
+that
+\begin{enumerate}
+\item $p(x + y) \le p(x) + p(y)$ for all $x, y \in V$,
+\item $p(\alpha x) = |\alpha|p(x)$, for $\alpha \in \soc$,
+\item $p(x) = 0$ iff $x = 0$.
+\end{enumerate}
+\end{defn}
+
+W
 \end{document}
