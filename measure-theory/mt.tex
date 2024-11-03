@@ -1853,7 +1853,11 @@ Let $x = F^p, y = G^q$ so that
 \log\left(\frac{F^p}{p} + \frac{G^q}{q}\right) \ge \log F + \log G
 = \log (FG)
 \]
-that is $FG \le F^p/p + G^q/q$ so that
+that is 
+\begin{equation}\label{s5e2}
+FG \le F^p/p + G^q/q
+\end{equation}
+so that
 \[
 \int_X (FG) d\mu \le \frac{1}{p}\int_X F^p d\mu + \frac{1}{q}\int_X G^q
 d\mu = \frac{1}{p}(||F||_p)^p + \frac{1}{q}(||G||_q)^q
@@ -1863,5 +1867,131 @@ Since $||F||_p = ||G||_q = 1$ and $p, q$ are conjugate exponents,
 \int_X (FG) d\mu \le 1 \Rightarrow \int_X fg d\mu \le ||f||_p ||g||_q.
 \]
 \end{proof}
+
+There is nothing in this proof that depends on measure theory and Lebesgue
+integrals. Therefore the proposition seems to be valid in a wider arena. Let us
+try to prove it for a finite dimenional inner product space with norm defined in
+terms of the inner product. To begin with, let's start with the vector space 
+over a real field. If $x, y \in \sor^n$, the inner product is $(x, y) = x_1y_1
++ \cdots + x_ny_n$ and the equivalent of $L^p$ norm is $||x||_p = (|x_1|^p + 
+\cdots + |x_n|^p)^{1/p}$. We first note that
+\[
+|(x, y)| \le |x_1y_1| + \cdots + |x_ny_n| = |x_1||y_1| + \cdots + |x_n||y_n|.
+\]
+If we define the vector $x^a := (|x_1|, \ldots, |x_n|)$ then we can write the 
+above equation as $|(x, y)| \le (x^a, y^a)$. This corresponds to the first 
+inequality in proposition \ref{s5p1}. We now have to prove that $(x^a, y^a) \le
+||x||_p||y||_q$ or equivalently,
+\[
+\left(\frac{x^a}{||x||_p}, \frac{y^a}{||y||_q}\right) \le 1.
+\]
+Define the vectors
+\[
+X = \frac{x^a}{||x||_p}, Y = \frac{y^a}{||y||_p}
+\]
+Using \eqref{s5e2},
+\[
+|X_i||Y_i| \le \frac{|X_i|^p}{p} + \frac{|X_i|^q}{q}, \forall i = 1, \ldots n
+\]
+so that
+\[
+|(X, Y)| \le \frac{1}{p}\sum_{i=1}^n |X_i|^p + \frac{1}{q}\sum_{i=1}^n |Y_i|^q
+= \frac{(||X||_p)^p}{p} + \frac{(||Y||_q)^q}{q}.
+\]
+Since $||X||_p = ||Y||_q = 1$, we have
+\[
+|(X, Y)| \le \frac{1}{p} + \frac{1}{q},
+\]
+which, if $p$ and $q$ are conjugate exponents, becomes $|(X, Y)| \le 1$, which
+is H\"{o}lder's inequality for for finite dimensional inner product spaces with
+a norm.
+
+\begin{rem}
+Often times, the integral,
+\[
+\int_X fgd\mu
+\]
+is called the inner product of functions $f$ and $g$ when they belong to a 
+suitably defined function space. It is then denoted by $(f, g)$. H\"{o}lder's
+inequality then becomes
+\begin{equation}\label{s5e3}
+(f, g) \le ||f||_p||g||_q, \text{ for } \frac{1}{p} + \frac{1}{q} = 1.
+\end{equation}
+\end{rem}
+
+A single variable function is convex in an interval if its second derivative is 
+non-zero in it. The function $x^p$ has the second derivative $p(p-1)x^{p-2}$. It
+is non-negative if $x \ge 0$ and $p > 1$. The function $|x|^p$ is convex for all
+$x$ and $p > 1$. Using this fact, we show that
+\begin{prop}\label{s5p2}
+For any functions $f, g$, $|f + g|^p \le 2^{p-1}(|f|^p + |g|^p)$.
+\end{prop}
+\begin{proof}
+Since the function $h(x) = |x|^p$ is convex, $h(cx_1 + (1 - c)x_2) \le ch(x_1) + 
+(1-c)h(x_2)$, that is,
+\[
+|cx_1 + (1 - c)x_2|^p \le c|x_1|^p + (1-c)|x_2|^p.
+\]
+Choose $c = 1/2, x_1 = f, x_2 = g$ so that
+\[
+\frac{1}{2^p}(|f + g|)^p \le \frac{|f|^p}{2} + \frac{|g|^p}{2}
+\Rightarrow |f + g|^p \le 2^{p-1}(|f|^p + |g|^p).
+\]
+\end{proof}
+
+We next show that 
+\begin{prop}\label{s5p3}
+If $f$ and $g$ have finite $L^p$ norms then so does $f + g$.
+\end{prop}
+\begin{proof}
+Using proposition \ref{s5p2}, $|f + g|^p \le 2^{p-1}(|f|^p + |g|^p)$, so that
+\begin{eqnarray*}
+(||f + g||_p)^p &=& \int_X |f + g|^p d\mu \\
+ &\le& 2^{p-1}\left(\int_X |f|^p d\mu + \int_X |g|^p d\mu\right) \\
+ &=& 2^{p-1}\left((||f||_p)^p + (||g||_p)^p\right)
+\end{eqnarray*}
+If the norms on the right hand side are finite then so is that on the left hand
+side.
+\end{proof}
+
+We can now prove the triangle inequality for $L^p$ norm,
+\begin{prop}[Minkowski inequality]\label{s5p4}
+Let $(X, \Sigma_X, \mu)$ be a measure space and $f, g$ be real-valued
+measurable functions on $X$. Then $||f + g||_p \le ||f||_p + ||g||_p$.
+\end{prop}
+\begin{proof}
+We start with
+\begin{eqnarray*}
+(||f + g||_p)^p &=& \int_X |f + g|^p d\mu \\
+ &=& \int_X |f + g||f + g|^{p-1} d\mu \\
+ &\le& \int_X (|f| + |g|)|f + g|^{p-1} d\mu \\
+ &\le& \int_X |f||f + g|^{p-1} d\mu + \int_X |g||f + g|^{p-1} d\mu.
+\end{eqnarray*}
+We now use H\"{o}lder's inequality to get
+\[
+\int_X f(f+g)^{p-1} d\mu \le \int_X |f||f + g|^{p-1} d\mu 
+\le ||f||_p||(f + g)^{p-1}||_q,
+\]
+where $q = p/(p - 1)$.
+Similarly,
+\[
+\int_X |g||f + g|^{p-1} d\mu \le ||g||_p||(f + g)^{p-1}||_q
+\]
+so that
+\begin{eqnarray*}
+(||f + g||_p)^p &\le& (|| f ||_p + || g ||_p||(f + g)^{p-1}||_q \\
+ &\le& (||f||_p + ||g||_p||\left(\int_X |f + g|^{q(p-1)}d\mu\right)^{1/q} \\
+ &\le& (||f||_p + ||g||_p||\left(\int_X |f + g|^{p}d\mu\right)^{1/q} \\
+ &\le& (||f||_p + ||g||_p||\left(||f + g||_p\right)^{p/q}
+\end{eqnarray*}
+and hence
+\[
+(||f + g||_p)^{p - p/q} \le ||f||_p + ||g||_p \Rightarrow 
+||f + g||_p \le ||f||_p + ||g||_p,
+\]
+where we used the fact that $p$ and $q$ are conjugate exponents.
+\end{proof}
+
+%\end{prop}
 
 \end{document}
