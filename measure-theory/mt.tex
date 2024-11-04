@@ -1240,8 +1240,8 @@ g_n d\mu.
 Substituting for $g_n$ proves the theorem.
 \end{proof}
 
-\begin{prop}[Fatou's lemma] Let $f_n: X \rightarrow [0, \infty]$ be measurable
-on $(X, \Sigma_X, \mu)$. Then,
+\begin{prop}[Fatou's lemma]\label{s4p3} Let $f_n: X \rightarrow [0, \infty]$ 
+be measurable on $(X, \Sigma_X, \mu)$. Then,
 \[
 \liminf\int_X f_n d\mu \ge \int_X\liminf f_n d\mu.
 \]
@@ -1297,7 +1297,7 @@ to $f$. If there is an integrable function $g: X \rightarrow \sor$ such that $|f
 \begin{proof}
 Since $f_n \rightarrow f$ and $|f_n| \le g$, by corollary \ref{s4c2}, $f_n$ and
 $f$ are integrable. Since $g$ too is integrable, so is $2g - |f_n - f|$. 
-Applying Fatou's lemma \ref{s3p4} to $\{2g - |f_n - f|\}$ we get
+Applying Fatou's lemma \ref{s4p3} to $\{2g - |f_n - f|\}$ we get
 \[
 \int_X\liminf (2g - |f_n - f|) d\mu \le \liminf\int_X (2g - |f_n - f|)d\mu.
 \]
@@ -1787,7 +1787,7 @@ Let $(X, \Sigma_X, \mu)$ be a measure space. Then the set $L^p(X)$, $p \ge
 \end{defn}
 
 From theorem \ref{s3t1} it is easy to conclude that $L^p$ is a vector
-space. Although the vector space can have $soc$ as its field, we will, for
+space. Although the vector space can have $\soc$ as its field, we will, for
 the moment, restrict the field to $\sor$. We now define a norm on it.
 \begin{defn}\label{s2d2}
 Let $(X, \Sigma_X, \mu)$ be a measure space and $f \in L^p(X)$. Then
@@ -1992,6 +1992,82 @@ and hence
 where we used the fact that $p$ and $q$ are conjugate exponents.
 \end{proof}
 
-%\end{prop}
+\begin{defn}\label{s5d5}
+A measure space $(X, \Sigma_X, \mu)$ has a finite measure if $\mu(X)$ is finite.
+\end{defn}
 
+\begin{prop}\label{s5p5}
+If $(X, \Sigma_X, \mu)$ has a finite measure then for $1 \le p < q < \infty$,
+$L^p \supseteq L^q$.
+\end{prop}
+\begin{proof}
+Since $1 \le p < q < \infty$, the exponent $r_1 = q/p$ is conjugate to $r_2$,
+where
+\[
+\frac{1}{r_2} = 1 - \frac{1}{r_1} = 1 - \frac{p}{q} = \frac{q-p}{p}
+\]
+Using H\"{o}lder inequality, $|(g, h)| \le ||g||_{r_1}||h||_{r_2}$ for 
+measurable functions $g, h$ on $X$. Choose $g = |f|^p$ and $h = \chi_X$, the
+indicator function for $X$. Then $(g, h) = \int_X g d\mu$ and hence
+\begin{equation}
+\int_X g d\mu = \int_X |f|^p d\mu = (||f||_p)^p \le 
+|| |f|^p ||_{r_1} || \chi_X ||_{r_2}.
+\end{equation}
+Now,
+\[
+|| |f|^p ||_{r_1} = \left(\int_X |f|^{pr_1}\right)^{1/r_1} = 
+\left(\int_X |f|^q\right)^{1/r_1} = (|| f ||_q)^{q/r_1}
+\]
+and
+\[
+||\chi_X||_{r_2} = \left(\int_X |\chi_X|^{r_2} d\mu\right)^{1/r_2} = 
+\left(\int_X d\mu\right)^{1/r_2} = \mu(X)^{1/r_2}.
+\]
+so that
+\[
+(||f||_p)^p \le (|| f ||_q)^{q/r_1}\mu(X)^{1/r_2} = 
+(|| f ||_q)^p\mu(X)^{1/r_2}
+\]
+or
+\[
+||f||_p \le ||f||_q \mu(X)^{1/(pr_2)} < \infty,
+\]
+if $\mu(X)$ is finite. Thus, if $||f||_q$ is finite then so is $||f||_p$ so that
+if $f \in L^q$ then $f \in L^p$ or that $L^q \supseteq L_p$.
+\end{proof}
+
+We next show 
+\begin{prop}\label{s5p6}
+Let $(X, \Sigma_X, \mu)$ be a measure space, $\{f_n\}$ be a sequence of 
+real-valued, measurable functions on $X$ which converges to $f$ point wise,
+almost everywhere. If $|f_n| \le g$ for some $g \in L^p(X)$ then $f, f_n \in
+L^p(X)$ and $\{f_n\}$ converges to $f$ in $L^p(X)$ norm. That is,
+\[
+\lim_{n \rightarrow \infty}||f - f_n||_p = 0.
+\]
+\end{prop}
+\begin{proof}
+Since $\{f_n\} \rightarrow f$ and $|f_n| \le g$, $f_n$ and $f$ belong to $L^p$.
+Furthermore, $|f - f_n| \le |f| + |f_n| \le 2g$. If $p \in [1, \infty)$, 
+$|f - f_n|^p \le 2^p g^p$. The sequence of functions $\{|f - f_n|^p\}$ is 
+dominated by $2^p g^p$ and its limit is zero. Therefore, by the dominated 
+convergence theorem \ref{s4t4},
+\[
+\lim_{n \rightarrow \infty}\int_X \Big||f - f_n|^p - 0\Big| d\mu = 0
+\Rightarrow
+\lim_{n \rightarrow \infty}\int_X|f - f_n|^p d\mu = 0.
+\]
+Therefore, for a given $\epsilon > 0$, we can find $n_0 \in \son$ such that
+\[
+\int_X|f - f_n|^p d\mu < \epsilon^p, \forall n \ge n_0,
+\]
+or that
+\[
+\left(\int_X|f - f_n|^p d\mu\right)^{1/p} < \epsilon, \forall n \ge n_0,
+\]
+which means that
+\[
+\lim_{n \rightarrow \infty}\left(\int_X |f - f_n|^p d\mu\right)^{1/p} = 0.
+\]
+\end{proof} 
 \end{document}
