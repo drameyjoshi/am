@@ -2107,7 +2107,7 @@ The proof for $E_y \in \Sigma_X$ runs along the same lines.
 \end{proof}
 
 \begin{prop}\label{s6p2}
-Let $(X \times Y, \Sigma_X \otimes \Sigma_Y)$ and $(Z, \Sigma_Z$ be measurable
+Let $(X \times Y, \Sigma_X \otimes \Sigma_Y)$ and $(Z, \Sigma_Z)$ be measurable
 spaces. If $f: X \times Y \rightarrow Z$ is measurable then so are $f_x: Y 
 \rightarrow Z$ and $f_y: X \rightarrow Z$, where $f_x(y) = f(x, y)$ and $f_y(x)
 = f(x, y)$.
@@ -2289,5 +2289,29 @@ A $\sigma$-algebra is also a monotone class. Therefore, $\mathcal{M}(\mathcal{A}
 \mathcal{A}\rangle \subseteq \mathcal{M}(\mathcal{A})$.
 \end{proof}
 
+The proos of Fubini's and Tonelli's theorem are quite technical and uninspiring.
+Therefore, I close this article by merely quoting them.
+\begin{thm}[Fubini's theorem]\label{s6t2}
+Let $(X, \Sigma_X, \mu)$ and $(Y, \Sigma_Y, \nu)$ be $\sigma$-finite measure 
+spaces. If $f: X \times Y \rightarrow \sor$ is $\mu \otimes \nu$ integrable then
+\[
+\int_{X \times Y} fd(\mu\otimes\nu) = \int_X\left(\int_Y f(x, y)d\nu\right)d\mu = 
+\int_Y\left(\int_X f(x, y)d\mu\right)d\nu.
+\]
+\end{thm}
 
+\begin{thm}[Tonelli's theorem]\label{s6t3}
+Let $(X, \Sigma_X, \mu)$ and $(Y, \Sigma_Y, \nu)$ be $\sigma$-finite measure 
+spaces. If $f: X \times Y \rightarrow \sor$ is $\mu \otimes \nu$ measurable
+then $f$ is $\mu\otimes\nu$ integrable iff
+\[
+\int_X\left(\int_Y |f(x, y)|d\nu\right)d\mu < \infty
+\]
+or equivalently,
+\[
+\int_Y\left(\int_X |f(x, y)|d\mu\right)d\nu < \infty
+\]
+\end{thm}
+If the conditions of Tonelli's theorem hold good then Fubini's theorem allows us
+to interchange the order of integration.
 \end{document}
