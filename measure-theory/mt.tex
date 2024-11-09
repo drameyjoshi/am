@@ -2206,16 +2206,66 @@ then $S^c$ is a member of $\mathcal{M}(\mathcal{A})$.
 \end{proof}
 
 \begin{prop}\label{s6p6}
-Let $\mathcal{A}$ be an algebra of subsets of $X$. Then $\mathcal{M}(\mathcal{A})$
-is closed under countable unions.
+Let $\mathcal{A}$ be an algebra of subsets of $X$. Define 
+\[
+K(F) = \{E \in \mathcal{M}(\mathcal{A})\;|\; E \cup F \in
+\mathcal{M}(\mathcal{A})\},
+\]
+for $F \in \mathcal{M}(\mathcal{A})$
+Then $K(G)$ is a monotone class.
 \end{prop}
 \begin{proof}
-Let $S_1, S_2, \ldots$ be an arbitrary sequence of members of 
-$\mathcal{M}(\mathcal{A})$. By arbitrary, we mean it is not required to be 
-monotonic.
+$K(F)$ is a collection of subsets of $X$ which themselves and their union
+with the fixed set $F$ belong to the monotone class. Clearly, $K(F) \subseteq
+\mathcal{M}(\mathcal{A})$.
+
+We will next show that $K(F)$ is a monotone class. Consider a sequence $A_1
+\subseteq A_2 \subseteq \ldots$ of classes in $K(F)$. For each of these, $A_k
+\cup F \in K(F)$. Therefore, $\cup_{k \ge 1}(A_k \cup K) \in K(F)$ so that
+$\cup_{k \ge 1}A_k \in K(F)$. Likewise, for a sequence $B_1 \supseteq B_2
+\supseteq \ldots$ of classes in $K(F)$. For each of these $B_k \cup F \in K(F)$
+so that $\cap_{k \ge 1}(B_k \cup F) \in K(F)$ or that $\cap_{k \ge 1}B_k \in 
+K(F)$.
 \end{proof}
 
 \begin{prop}\label{s6p7}
+Let $\mathcal{A}$ be an algebra of subsets of $X$ and $F \in \mathcal{A}$. 
+Continuing the definition of $K(F)$ in proposition \ref{s6p6}, $\mathcal{A}
+\subseteq K(F)$.
+\end{prop}
+\begin{proof}
+Let $G \in \mathcal{A}$ then $G \cup F$ is a member of $\mathcal{A}$ and also a
+member of $\mathcal{M}(\mathcal{A})$. Therefore, $G \in K(F)$ and hence 
+$\mathcal{A} \subseteq K(F)$.
+\end{proof}
+
+From propositions \ref{s6p6} and \ref{s6p7} we conclude that if $F \in 
+\mathcal{A}$ then $K(F)$ is a monotone class containing $\mathcal{A}$. However,
+as $\mathcal{M}(\mathcal{A})$ is the smallest monotone class containing 
+$\mathcal{A}$, we must have
+\begin{prop}\label{s6p8}
+$\mathcal{M}(\mathcal{A}) \subseteq K(F) \;\forall F \in \mathcal{A}$.
+\end{prop}
+
+However, by its definition, members of $K(F)$ also belong to 
+$\mathcal{M}(\mathcal{A})$. Using this observation with proposition \ref{s6p8}
+we get
+\begin{prop}\label{s6p9}
+$\mathcal{M}(\mathcal{A}) = K(F) \;\forall F \in \mathcal{A}$.
+\end{prop}
+
+Let $A_1, \ldots, A_k \in \mathcal{A}$. They need not form a monotonic, finite
+sequence. Since $\mathcal{A}$ is an algebra, $F = \cup_{i=1}^k A_i \in 
+\mathcal{A}$ and by proposition \ref{s6p9}, $F$ belongs to $\mathcal{M}(
+\mathcal{A}$. Thus, an arbitrary finite union of members of $\mathcal{A}$
+belongs to $\mathcal{M}(\mathcal{A})$. Taking the limit of the size of the union
+we conclude that
+\begin{prop}\label{s6p10}
+If $A_1, A_2, \ldots \in \mathcal{A}$, is a sequence of not necessarily monotoic
+sets then $\cup_{k \ge 1}A_k \in  \mathcal{M}(\mathcal{A})$.
+\end{prop}
+
+\begin{prop}\label{s6p11}
 Let $\mathcal{A}$ be an algebra of subsets of $X$. Then $\varnothing \in
 \mathcal{M}(\mathcal{A})$.
 \end{prop}
@@ -2224,15 +2274,19 @@ Since $\mathcal{M}(\mathcal{A}) \supseteq \mathcal{A}$ and $\varnothing \in
 \mathcal{A}$, it being an algebra, $\varnothing \in \mathcal{M}(\mathcal{A})$.
 \end{proof}
 
+Using propositions \ref{s6p5}, \ref{s6p10} and \ref{s6p11} we conclude that
+\begin{prop}\label{s6p12}
+$\mathcal{M}(\mathcal{A})$ is a $\sigma$-algebra containing $\mathcal{A}$.
+\end{prop}
+
 \begin{thm}[Monotone class theorem]\label{s6t1}
 Let $\mathcal{A}$ be an algebra on $X$. Then $\mathcal{M}(\mathcal{A}) = \langle
 \mathcal{A}\rangle$.
 \end{thm}
 \begin{proof}
 A $\sigma$-algebra is also a monotone class. Therefore, $\mathcal{M}(\mathcal{A})
-\subseteq \langle\mathcal{A}\rangle$.
-
-We will now show that $\langle\mathcal{A}\rangle\subseteq\mathcal{M}(\mathcal{A})$.
+\subseteq \langle\mathcal{A}\rangle$. From proposition \ref{s6p12} we have $\langle
+\mathcal{A}\rangle \subseteq \mathcal{M}(\mathcal{A})$.
 \end{proof}
 
 
