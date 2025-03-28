@@ -1,0 +1,146 @@
+\chapter{Measure Theory}\label{c1}
+\section{Introduction}\label{c1s1}
+A rigorous theory of probability assigns a probability to events of a sample
+space, $\Omega$. If the sample space is finite, one can assign a probability to 
+all subsets of $\Omega$. However, if $\Omega$ is infinite, countably or 
+uncountably, one cannot assign a probability to all subsets. A $\sigma$-field
+is a collection of subsets of $\Omega$, each member of which can be assigned a
+probability. Members of the $\sigma$-field over a sample space are called 
+events.
+
+\begin{defn}\label{c1s1d1}
+A $\sigma$-field, $\mathcal{F}$, over a set $\Omega$ is a collection of subsets 
+of $\Omega$ such that
+\begin{enumerate}
+\item $\mathcal{F}$ is non-empty,
+\item If $A \in \mathcal{F}$ then $A^c \in \mathcal{F}$,
+\item If $A_1, A_2, \ldots \in \mathcal{F}$ then $\cup_{i \ge 1}A_i \in
+\mathcal{F}$.
+\end{enumerate}
+\end{defn}
+
+\begin{rem}
+A $\sigma$-algebra is the same as $\sigma$-field.
+\end{rem}
+
+A few properties of a $\sigma$-field follow immediately from the definition.
+\begin{prop}\label{c1s1p1}
+If $\mathcal{F}$ is a $\sigma$-field over $\Omega$ then $\Omega, \varnothing
+\in \mathcal{F}$.
+\end{prop}
+\begin{proof}
+Since $\mathcal{F}$ is non-empty, there is at least one $A \subseteq \Omega$
+in it. Therefore, its complement $A^c$ is also a member of $\mathcal{F}$.
+Furthermore, their union $A \cup A^c = \Omega$ is a member of $\mathcal{F}$.
+Finally, $\varnothing = \Omega^c$ is also a member of $\mathcal{F}$.
+\end{proof}
+
+\begin{prop}\label{c1s1p2}
+If $A_1, A_2, \ldots \in \mathcal{F}$ then $\cap_{i \ge 1}A_i \in \mathcal{F}$.
+\end{prop}
+\begin{proof}
+Follows from the fact that
+$
+\cap_{i \ge 1}A_i = \left(\cup_{i \ge 1}A_i^c\right)^c
+$
+and that a $\sigma$-field is closed under complementation and countable unions.
+\end{proof}
+
+\begin{prop}\label{c1s1p3}
+If $A, B \in \mathcal{F}$ then $B - A \in \mathcal{F}$.
+\end{prop}
+\begin{proof}
+Follows from $B - A = B \cap A^c$.
+\end{proof}
+
+\begin{defn}\label{c1s1d2}
+The pair $(\Omega, \mathcal{F})$ is called a measurable space.
+\end{defn}
+
+\begin{defn}\label{c1s1d3}
+If $(\Omega, \mathcal{F})$ is a measurable space then $\mu: \mathcal{F} 
+\rightarrow \sor$ is a measure if
+\begin{enumerate}
+\item $\mu(A) \ge 0$ for all $A \in \mathcal{F}$,
+\item $\mu(\varnothing) = 0$,
+\item If $A_1, A_2, \ldots \in \mathcal{F}$ are pairwise disjoint then
+\[
+\mu\left(\bigcup_{i \ge 1}A_i\right) = \sum_{i \ge 1}\mu(A_i).
+\]
+\end{enumerate}
+\end{defn}
+
+\begin{defn}\label{c1s1d4}
+The triple $(\Omega, \mathcal{F}, \mu)$ is called a measure space.
+\end{defn}
+
+\begin{defn}\label{c1s1d5}
+A measure $\mu$ is on a measure space $(\Omega, \mathcal{F}, \mu)$ is called a
+probability measure if $\mu(\Omega) = 1$. We will denote a probability measure
+by $P$ and we will call $P(A)$ the probability of an event $A \in \mathcal{F}$.
+Furthermore, $(\Omega, \mathcal{F}, P)$ is called a probability space.
+\end{defn}
+
+A probability space $(\Omega, \mathcal{F}, P)$ has the following properties:
+\begin{enumerate}
+\item If members of $\mathcal{F}$ are called events then every event has a non-
+negative probability,
+\item $P(\Omega) = 1$,
+\item If $E_1, E_2, \ldots$ are pairwise disjoint, also called mutually 
+exclusive, events then 
+\[
+P\left(\bigcup_{i \ge 1}E_i\right) = \sum_{i \ge 1}P(E_i).
+\]
+\end{enumerate}
+
+These are precisely the three Kolmogorov axioms of probability. The mathematical
+structure of the theory of probability is that of a measure space.
+
+We will prove the following important properties of a measure space $(\Omega,
+\mathcal{F}, \mu)$.
+\begin{prop}\label{c1s1p4}
+$\mu$ is monotonic non-decreasing. That is, $A \subseteq B \Rightarrow \mu(A)
+\le \mu(B)$.
+\end{prop}
+\begin{proof}
+If $A \subseteq B$ then $B = A \cup (B - A)$ and $A$ and $B - A$ are disjoint.
+Therefore, $\mu(B) = \mu(A) + \mu(B - A) \ge \mu(A)$.
+\end{proof}
+
+\begin{prop}\label{c1s1p5}
+$\mu$ is countably sub-additive. That is, $A \subseteq \cup_{n \ge 1}A_n
+\Rightarrow \mu(A) \le \sum_{n \ge 1}\mu(A_n)$.
+\end{prop}
+\begin{proof}
+Let $A_n^\op = A_n \cap A$. Then, $A_n^\op \subseteq A_n$ and
+\[
+A = \cup_{n \ge 1}A_n^\op.
+\]
+Define the sequence $\{B_n\}$ as $B_1 = A_1^\op$
+and 
+\[
+B_n = A_n^\op - \cup_{m=1}^{n-1}B_m.
+\]
+The sequence $\{B_n\}$ are thus pairwise disjoint and
+\[
+\cup_{n \ge 1}B_n = \cup_{n \ge 1}A_n^\op = A.
+\]
+Therefore,
+\[
+\mu(A) = \sum_{n \ge 1}\mu(B_n).
+\]
+Since $A_n^\op \subseteq A_n$, from proposition \ref{c1s1p4}, $\mu(A_n^\op)
+\le \mu(A_n)$. Putting this in the above equation, we get
+\[
+\mu(A) \le \sum_{n \ge 1}\mu(A_n).
+\]
+\end{proof}
+
+\begin{prop}\label{c1s1p6}
+$\mu$ is continuous from below. That is, if $\{A_n\}$ is a sequence of members
+of $\mathcal{F}$ such that $A_n \uparrow A$ then $\mu(A_n) \uparrow \mu(A)$.
+\end{prop}
+\begin{proof}
+Define
+\end{proof}
+
