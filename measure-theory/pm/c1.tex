@@ -1,0 +1,335 @@
+\chapter{Probability}\label{c1}
+\section{Borel's Normal Number Theorem}\label{c1s1}
+\begin{itemize}
+\item Text in small type on page 2 mentions that the definition (1.3) of the
+probability of a set is unambiguous. The probability of an interval $I = (a, b]$
+is defined to be $P(I) = b - a$. If we write $I = (a, c] \cup (c, b]$ then by
+(1.3), $P(I) = P((a, c]) + P((c, b]) = c - a + b - c = b - a$. Thus, it does not
+matter how we decompose an interval as long as the decomposition is correct.
+
+\item To understand the figure on page 3, note that as we increase $\omega$ 
+from $0$ to $1$, $d_i(\omega)$ will change faster than $d_j(\omega)$ for all
+$i > j$. The left most digit on the counter of a petrol pump runs fastest.
+
+\item While developing a binary expression for $\omega$ we rejected an 
+expression that ends with zeros. Therefore, if write
+\[
+\omega = \sum_{i=1}^\infty \frac{d_i(\omega)}{2^i} = 
+\sum_{i=1}^n\frac{d_i(\omega)}{2^i} + \sum_{i=n+1}^\infty\frac{d_i(\omega)}{2^i}
+\]
+then it is impossible that $d_i(\omega) = 0$ for all $i \ge n + 1$. Therefore,
+\begin{equation}\label{c1s1e1}
+\omega > \sum_{i=1}^n\frac{d_i(\omega)}{2^i}.
+\end{equation}
+It is, however, possible that $d_i(\omega) = 1$ for all $i \ge n + 1$. The
+second term, in this case, can be easily evaluated as a sum of a geometric
+series with first term $1/2^{n+1}$ and common ratio $1/2$. It is
+\[
+\lim_{m \rightarrow \infty}\frac{1}{2^{n+1}}\frac{1 - 2^{-m}}{1 - 1/2} = 
+\frac{1}{2^n}.
+\]
+Therefore, the numbers $\omega$ for which the first $n$ bits must obey the 
+inequality
+\begin{equation}\label{c1s1e2}
+\omega \le \sum_{i=1}^n\frac{d_i(\omega)}{2^i} + \frac{1}{2^n}.
+\end{equation}
+Equation (1.9) of the book follows immediately from \eqref{c1s1e1} and 
+\eqref{c1s1e2}.
+
+\item The notation on lhs of equation (1.9) of the book is an alternative 
+definition of a set. $[\omega : d_i(\omega) = u_i, i = 1, \ldots, n] = \{
+\omega : d_i(\omega) = u_i, i = 1, \ldots, n\}$.
+
+\item The rhs of equation (1.9) is the interval
+\[
+\left(\sum_{i=1}^n\frac{u_i}{2^i}, \sum_{i=1}^n\frac{u_i}{2^i} + \frac{1}{2^n}
+\right]
+\]
+It arises from the two inequalities \eqref{c1s1e1} and \eqref{c1s1e2}. The first
+inequality is strict only because we forbade terminating binary representations.
+The second inequality is not strict because every terminating binary 
+representation has a corresponding non-terminating representation will all
+bits one.
+
+\item The probability of the event described in equation (1.9) follows from
+the equation (1.3). It is $1/2^n$. Indeed, a given sequence of $n$ coin tosses
+occurs with this probability.
+
+\item Consider the particular sequence $(1, 0, 1, 0, 0, 0, 0, 1)$. The lhs of
+equation (1.9) is
+\[
+\frac{1}{2} + \frac{1}{8} + \frac{1}{64} = \frac{41}{64}
+\]
+and rhs is
+\[
+\frac{1}{2} + \frac{1}{8} + \frac{1}{64} + \frac{1}{64} = \frac{42}{64}.
+\]
+Thus the two integers of the dyadic intervals are $41$ and $42$. In general,
+they can be written as $k$ and $k + 1$, where 
+\begin{equation}\label{c1s1e3}
+k = \sum_{i} u_i2^{n-i}.
+\end{equation}
+
+\item If the $n + 1$st toss results in a $0$, then $d_{n+1}(\omega) = 0$ and
+the $n$-th partition narrows to its left half. Otherwise, it narrows to its
+right half. The width of the partitions representing the sequence of tosses
+narrows as the tosses occur, halving at each stage, choosing the left or the
+right half depending on the toss.
+
+We can understand this process as a binary search of a randomly chosen point in
+$(0, 1]$. Before reading it, we just know that it could be somewhere in the
+interval. After reading the first bit, we know in which half it lies. After
+reading the second bit, we know the quarter portion to search. This process
+continues \emph{ad infinitum}.
+
+\item The probability of the event described in equation (1.9) occurs with a
+probability $1/2^n$. Let is now calculate the probability of the next coin toss
+producing a $1$. For a given sequence of $n$ bits, the width of the interval 
+with the next bit $1$ is $1/2^{n+1}$. However, there are $2^n$ different $n$-bit
+sequences whose $n+1$st bit is $1$. Therefore, the probability of getting $1$
+in the $n + 1$st toss is $2^n \times 1/2^{n+1} = 1/2$. We knew this already but
+it builds our confidence in our analytical structure when we get it anew.
+
+\item Chebyshev's inequality can be proved as a special case of Markov's
+inequality. If $X$ is a non-negative random variable then Markov's inequality
+is
+\begin{equation}\label{c1s1e4}
+P(X \ge a) \le \frac{E(X)}{a}.
+\end{equation}
+It is easy to prove it.
+\[
+E(X) = \int_0^\infty xf_X(x)dx \ge \int_a^\infty xf_X(x)dx \ge a\int_a^\infty
+f_X(x)dx = aP(X \ge a).
+\]
+Chebyshev's inequality needs us to estimate $P(|X - \mu| > k\sigma) =
+P((X - \mu)^2 > k^2\sigma^2) \le E(X - \mu)^2/k^2\sigma^2$. Now, $E(X - \mu)^2
+= E(X^2) - 2\mu E(X) + \mu^2 = E(X^2) - \mu^2 = \sigma^2$, so that
+\begin{equation}\label{c1s1e5}
+P(|X - \mu| > k\sigma) \le \frac{1}{k^2}.
+\end{equation}
+
+\item It is possible to prove (1.12) using Chebyshev's inequality. The random
+variable in it is the mean of a sample of size $n$. As the parametric variance
+is $1/4$, the variance of the sampling distribution of means is $(4n)^{-1}$.
+If $\epsilon = k\sigma = k/(2\sqrt{n})$ then $1/k = 1/(2\epsilon\sqrt{n})$. 
+For a fixed $\epsilon$,
+\[
+P\left[\omega: \left|\frac{1}{n}\sum_{i=1}^n d_i(\omega) - \frac{1}{2}\right|
+\ge \epsilon\right] \le \frac{1}{4n\epsilon^2}.
+\]
+As $n \rightarrow \infty$, the probability tends to zero.
+
+\item Strictly speaking, the book has not yet progressed enough to apply
+Chebyshev's inequality to the problem. Informally one can as shown in the
+previous point and as the book does while deriving equation (1.19). However,
+the legit proof follows from the lemma that includes (1.20) in its statement.
+I will write its proof in my way here.
+
+We want to show that if $f$ is a non-negative step function, then $\{\omega:
+f(\omega) > \alpha\}$ is a finite union of intervals for $\alpha > 0$ and
+\[
+P\left[\omega: f(\omega) > \alpha\right] \le \frac{1}{\alpha}\int_0^1 f(\omega)
+d\omega.
+\]
+
+Since $f$ is a step function, it can be expressed in the form
+\[
+f(x) = \begin{cases} c_1 & \text{ if } x \in (0=x_0, x_1] \\
+c_2 & \text{ if } x \in (x_1, x_2] \\
+\vdots \\
+c_n & \text{ if } x \in (x_n, x_{n+1}=1]
+\end{cases}
+\]
+$P[\omega: f(\omega) > \alpha]$ is the sum of probabilities assigned to 
+intervals $(x_i, x_{i + 1}]$ in which $f(x) = c_i > \alpha$. If a $\Sigma^\op$
+denotes the sum over only those partitions for which $c_i > \alpha$ then
+\[
+P[\omega: f(\omega) > \alpha] = \Sigma^\op |x_i - x_{i-1}|
+\]
+Since $\alpha > 0$,
+\begin{eqnarray*}
+\alpha P[\omega: f(\omega) > \alpha] &=& \alpha \Sigma^\op |x_i - x_{i-1}| \\
+ &\le& \Sigma^\op c_i |x_i - x_{i-1}| \\
+ &\le& \Sigma c_i |x_i - x_{i-1}| \\ 
+ &\le& \int_0^1 f(\omega)d\omega,
+\end{eqnarray*}
+which the lemma follows immediately.
+
+\item A set consisting of a single point is negligible because it can be 
+enclosed in an interval of the form $(x - \epsilon/2, x + \epsilon/2]$.
+
+\item A proof of Borel's normal number theorem would have been extremely simple
+had $N^c$ been a countable set. Since it is not, we need more analysis.
+
+\item The final argument leading to (1.28) needs a combinatorial reasoning. It
+is clear that there are $n$ terms of the form $r_i^4(\omega)$. To count the
+number of terms of the form $r_i^2(\omega)r_j^2(\omega)$ with $i \ne j$, we 
+first note that $i$ has $n$ choices while $j$ has $n - 1$ choices. However, $i$
+and $j$ also come from the set of labels $\{\alpha, \beta, \gamma, \delta\}$. If
+$i$ comes from one of them, $j$ has three choices. Therefore, the total number
+of possibilities is $3n(n - 1)$.
+
+\item I will elaborate the analysis beneath (1.29). The set
+\[
+A_n = \left[\omega: \left|\frac{s_n(\omega)}{n}\right| \ge \epsilon_n\right]
+\]
+is a candidate interval to find a non-normal $\omega$. It has a sample average
+beyond an interval of size $\epsilon_n$ around $1/2$. By (1.29),
+\[
+P(A_n) \le \frac{3}{n^2\epsilon_n^4}
+\]
+so that
+\[
+\sum_{n}P(A_n) \le \sum_n\frac{3}{n^2\epsilon_n^4} < \infty,
+\]
+because the sequence $\{\epsilon_n\}$ was chosen carefully. It is not clear to
+me why $\sum_n P(A_n) < \infty$ is important.
+
+\item The complement of $A_n$ is
+\[
+A_n^c = \left[\omega: \left|\frac{s_n(\omega)}{n}\right| < \epsilon_n\right].
+\]
+Therefore, if $\omega \in A_m^c$ for one $m \in \son$ then $\omega \in A_n^c$
+for all $n >= m$. Such an $\omega$ is clearly normal. That is, $A_n^c \subset N$
+and this is true for all $n \ge m$. Therefore,
+\[
+\cap_{n=m}^\infty A_n^c \subset N \Rightarrow 
+\left(\cap_{n=m}^\infty A_n^c\right)^c \supset N^c \Rightarrow 
+\cup_{n=m}^\infty A_n \supset N^c.
+\]
+
+\item $A_n$ is a finite union of disjoint intervals of the form (1.9). If we
+denote the intervals $I^n_k$ then
+\[
+A_n = \cup_{k} I^n_k
+\]
+and hence $P(A_n) = \sum_k |I_k^n|$. Since $\cup_{n=m}^\infty A_n \supset N^c$,
+\[
+\bigcup_{n=m}^\infty\bigcup_{k} I_n^k \supset N^c
+\]
+and
+\[
+P(N^c) \le \sum_{n=m}^\infty\sum_k |I_n^k| = \sum_{n=m}^\infty P(A_n).
+\]
+If we choose $m$ such that sum on the rhs of the above equation is less than
+a given $\epsilon$ then it would make $N^c$ a negligible set.
+
+\item The argument hinges on our ability to choose an $m$ so that
+\[
+\sum_{n=m}^\infty P(A_n) < \epsilon.
+\]
+For a fixed $\epsilon$, it is possible to do so because we showed that 
+\[
+P(A_n) \le \frac{3}{n^2\epsilon_n^4}
+\]
+and that $\epsilon_n$ were chosen such that the series 
+\[
+\sum_n\frac{1}{n^2\epsilon_n^4}
+\]
+converges. Suppose that the limit of the series is $L$. Then,
+\[
+\sum_{n=1}^\infty P(A_n) \le 3L
+\]
+Recall that $A_n$ is a set where one can potentially find a non-normal $\omega$.
+As $n$ increases, $P(A_n)$ will go down. Therefore, we can find $m$ using the
+equation
+\[
+m = \argmax_k \sum_{i=1}^k P(A_i) <= 3L - \epsilon.
+\]
+
+\item I did not understand the comparison between strong and weak laws. Answers
+on Stack Exchange suggest that the difference lies in the two notions of 
+convergence. Weak law is a statement of convergence in probability while the
+strong long is almost sure convergence. This topic will be discussed later on.
+I will not agonise if I do not understand it well here.
+
+\item I will write a proof of theorem 1.3
+\begin{thm}
+Let $I = (a, b]$, $I_k = (a_k, b_k]$ be intervals. The sequence $\{I_k\}$
+can be finite or infinite. The following statements are true:
+\begin{enumerate}
+\item If $\cup_k I_k \subset I$ and $I_k$ are disjoint then $\sum_k|I_k| \le 
+|I|$.
+\item If $I \subset \cup_k I_k$ and $\{I_k\}$ not necessarily disjoint, then
+$|I| \le \sum_k |I_k|$.
+\item If $I = \cup_k I_k$ and $\{I_k\}$ are disjoint then $|I| = \sum_k|I_k|$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+\begin{enumerate}
+\item We will use induction on the number of intervals. If there is only one
+such, then $I_1 \subset I$ then $a \le a_1 \le b_1 \le b$ so that $|b_1 - a_1| 
+\le |b - a|$, which proves the base case. Consider the case of $n$ intervals.
+Arrange the intervals so that $a_1 < a_2 < \ldots < a_n$. As the intervals are 
+also disjoint, we have $a_1 < b_1 < a_2 < b_2 < \ldots < a_n < b_n$. Since 
+$\cup I_k \subset I$, $a < a_1$ and $b_n < b$. Furthermore,
+\[
+\cup_{k=1}^{n-1}I_k \subset (a, a_n].
+\]
+By induction hypothesis, 
+\[
+\sum_{k=1}^{n-1} |I_k| \le a_n - a.
+\]
+Adding the length of the $n$-th interval $b_n - a_n$ to both sides of the
+previous equation,
+\[
+\sum_{k=1}^n |I_k| \le a_n - a + b_n - a_n = b_n - a \le b - a = |I|.
+\]
+This proves the statement for any number $n$ of intervals, as long as $n \in
+\son$. That is, we proved the statement for every finite $n$.
+
+If there is an infinite collection of interval $I_k$ whose union is a subset
+of $I$ then it is true that a union of any finitely many sub-collection of
+intervals is also a subset of $I$. For this later subcollection, we showed
+that $\sum_{k=1}^n (b_k - a_k) \le b - a$. Since the size of the subcollection
+$n$ is arbitrary, our claim holds for the (countably) infinite collection as 
+well.
+
+\item In this case, the intervals $\{I_k\}$ are not necessarily disjoint. 
+Consider for the case then the number of $I_k$ is finite. We will prove the 
+statement using induction on the number of intervals. If there is only one,
+then $(a, b] \subseteq (a_1, b_1]$ and clearly $(b - a) \le (b_1 - a_1)$. 
+Rename the intervals such that $a_1 \le a_2 \le a_n$. If $b < a_n$ then $I$ is
+covered by $n - 1$ intervals $I_1, \ldots, I_{k-1}$ and by induction hypothesis
+$|I| \le |I_1| + \cdots + |I_{k-1}| \le |I_1| + \cdots + |I_k|$. If $a_n < b \le
+b_n$. If $a_n \le a$, then $I$ is covered by $I_n$ alone and the statement
+follows immediately. If $a \le a_n < b < b_n$ then the set $(a, a_n]$ is 
+covered by the $n - 1$ intervals $I_1, \ldots I_{k-1}$ for which the induction
+hypothesis gives us $|(a, a_n]| \le |I_1| + \cdots + |I_{k-1}|$. The portion
+$(a_n, b]$ is entirely in $(a_n, b_n]$ so that $|(a_n, b]| \le |b_n - a_n|$.
+Summing the two inequalities proves the induction.
+
+Now suppose that $(a, b] \subset \cup_{k \ge 1}(a_k, b_k]$. Choose a positive
+$\epsilon$ such that $\epsilon < b - a$. Define open intervals
+\[
+\left(a_k, b_k + \frac{\epsilon}{2^k}\right], k \in \son.
+\]
+Their length is $b_k - a_k + \epsilon/2^k > b_k - a_k$. They are wider than
+$(a_k, b_k]$. The interval $[a + \epsilon, b]$ is narrower than $(a, b]$.
+Therefore, if $\cup_{k \ge 1}(a_k, b_k]$ cover $(a, b]$ then a union of wider
+intervals $\cup_{k \ge 1}(a_k, b_k + \epsilon/2^k]$ definitely covers the 
+narrower interval $[a + \epsilon, b]$. We thus have an instance of a closed
+bounded set $[a + \epsilon, b]$ and its covering by open intervals. Since a 
+closed, bounded set of reals is compact, every open covering has a finite 
+sub-cover. Therefore, there are finitely many intervals of the type $(a_k,
+b_k + \epsilon/2^k]$ which cover $[a + \epsilon, b]$. Using the statement
+we proved for a finite cover,
+\[
+|[a+\epsilon, b]| = b - a - \epsilon \le \sum_k b_k - a_k + \frac{\epsilon}{2^k}
+\]
+where the sum runs over the finite subcover. We can always add the remaining
+subsets on the rhs and let the sum run over all intervals, in which case we
+get
+\[
+b - a + \epsilon \le \sum_k(b_k - a_k) + \epsilon = \sum_k |I_k| + \epsilon.
+\]
+The statement follows immediately.
+
+\item If $I = \cup_k I_k$ then $I \subset \cup_k I_k$ so that $|I| \le \sum_k
+|I_k|$ and $\cup_k I_k \subset I$ so that $\sum_k |I_k| \le I$.
+\end{enumerate}
+\end{proof}
+
+
+
+\end{itemize}
