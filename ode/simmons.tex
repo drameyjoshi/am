@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\begin{document}
+The miscellaneous problem in Simmons' book are like problems in combinatorics.
+It is easy to understand the statement but it takes some effort to get the
+solution. They are not hard but neither are they trivial. I had to spend quite
+some time on each one of them to get a headway. The challenge was in getting 
+the correct differential equation. As a physicist, I think that translating a
+problem statement into a mathematical one is as important as solving the 
+mathematical problem.
+
+\begin{enumerate}
+\item[Prob 1:] It began to snow on a certain morning and the snow continued 
+to fall at a steady rate through out the day. At noon the snowplough started 
+to clear a road at a constant rate in terms of volume of snow removed in an 
+hour. It cleared 2 miles by 2 PM and another mile by 4 PM. When did it start 
+snowing?
+\item[Soln: ] Let $t = 0$ be the time at which it started snowing and $t = T$
+be when the ploughing began. The snow plougher clears snow at a constant rate.
+That is, the volume of snow cleared per unit time is constant. Let the plough
+be at a position $x$ at time $t$. In a time interval $\delta t$, let $\delta V$
+be the volume cleared. If $h$ is the height of snow at $x(t)$ then it is $h(t)
++ r\delta t$ at at the position $x(t + \delta t)$. If $w$ is the width of the
+road then 
+\begin{equation}\label{e1}
+\delta V = (\delta x)ah(t) + \frac{1}{2}(\delta x)a\delta h.
+\end{equation}
+In this expression, the first term is the volume of a slice of thickness 
+$\delta x$, width $a$ and height $h$. The second term is the wedge of the snow
+accumulated on top of this slice as the plough was at work. The cross section 
+of the wedge is a triangle of base $\delta x$ and height $h(t + \delta t) - 
+h(t)$. If the snow falls at a constant rate $\lambda$, $\delta h = \lambda
+\delta t$ so that
+\begin{equation}\label{e2}
+\delta V = (\delta x)ah(t) + \frac{1}{2}(\delta x)a\lambda(\delta t).
+\end{equation}
+Dividing both sides by $\delta t$, and taking the limit $\delta t \rightarrow 
+0$,
+\begin{equation}\label{e3}
+\frac{dV}{dt} = ah\frac{dx}{dt} + \frac{\lambda}{2} a\delta x.
+\end{equation}
+As $\delta t \rightarrow 0, \delta x \rightarrow 0$ so that
+\begin{equation}\label{e4}
+\mu = ah\frac{dx}{dt}
+\end{equation}
+Now, $h(t) = \lambda t$, so that
+\begin{equation}\label{e5}
+\frac{dx}{dt} = \frac{\mu}{a\lambda t} = \frac{\nu}{t},
+\end{equation}
+where 
+\begin{equation}\label{e6}
+\nu = \frac{\mu}{a\lambda}
+\end{equation}
+is a constant. The solution of \eqref{e5} is
+\begin{equation}\label{e7}
+x(t) = \nu\ln t + \nu\ln\alpha = \nu\ln(\alpha t),
+\end{equation}
+where $\alpha$ is a constant of integration. Since $x(T) = 0$, $\alpha = 1/T$.
+We now use the two observations,
+\begin{eqnarray}
+x(T + 2) &=& \nu\ln\left(\frac{T + 2}{T}\right) = 2 \label{e8} \\
+x(T + 4) &=& \nu\ln\left(\frac{T + 4}{T}\right) = 3 \label{e9}
+\end{eqnarray}
+The ratio of these equations gives
+\begin{equation}\label{e10}
+2\ln\frac{T + 4}{T} - 3\ln\frac{T + 2}{T} = 0.
+\end{equation}
+This equation can be solved numerically or graphically to get $T$. A graph of
+the left hand side is shown in figure \ref{f1}.
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{simmons-p1.png}
+\caption{Graphical solution of equation \eqref{e10}}
+\label{f1}
+\end{figure}
+A numerical solution to the equation gives $T \approx 1.236$. As the snow 
+plough started working at noon, it started snowing roughly $1.236$ hours prior
+to noon, that is around $10:46$ AM.
+
+\end{enumerate}
+\end{document}
