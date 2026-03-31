@@ -1,0 +1,166 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+\title{Sequences and Series}
+\author{Amey Joshi}
+\maketitle
+\section{Sequences of real numbers}\label{s1}
+\begin{defn}\label{s1d1}
+A sequence is a mapping $\mathbb{N} \mapsto \mathbb{R}$.
+\end{defn}
+
+\begin{defn}\label{s1d2}
+A sequence $\{x_n\}$ is said to converge to a limit $L$ if for a given 
+$\epsilon > 0$, we can find $N \in \mathbb{N}$ such that for all $n > N$, 
+$|x_n - L| < \epsilon$.
+\end{defn}
+
+\begin{defn}\label{s1d3}
+A sequence $\{x_n\}$ is said to be bounded from above (below) if there exists
+$M$ ($m$) such that $x_n \le M$ ($x_n \ge m$) for all $n \in N$.
+\end{defn}
+
+\begin{defn}\label{s1d4}
+A sequence $\{x_n\}$ is said to be bounded if it is bounded from above and below.
+\end{defn}
+
+\begin{defn}\label{s1d5}
+A sequence $\{x_n\}$ is said to be monotone increasing if $x_n \le x_{n+1}$ for
+all $n \in \mathbb{N}$. It is said to be strictly monotone increasing if $x_n <
+x_{n+1}$ for all $n \in \mathbb{N}$.
+\end{defn}
+
+\begin{defn}\label{s1d6}
+A sequence $\{x_n\}$ is said to be monotone decreasing if $x_n \ge x_{n+1}$ for
+all $n \in \mathbb{N}$. It is said to be strictly monotone decreasing if $x_n >
+x_{n+1}$ for all $n \in \mathbb{N}$.
+\end{defn}
+
+\begin{defn}\label{s1d7}
+A sequence $\{x_n\}$ is said to be a Cauchy sequence if for a given $\epsilon
+> 0$, we can find $N \in \mathbb{N}$ such that for all $m, n > N$, $|x_m - x_n| <
+\epsilon$.
+\end{defn}
+
+\begin{defn}\label{s1d8}
+If $\{n_1, n_2, \ldots\}$ is a subset of natural numbers such that $n_1 < n_2
+< \ldots$ then $\{x_{n_1}, x_{n_2}, \ldots\}$ is said to be a subsequence of 
+$\{x_n\}$.
+\end{defn}
+
+\begin{defn}\label{s1d9}
+If $\{x_n\}$ is a sequence of reals then
+\[
+\limsup x_n = \inf_{n \ge 1}(\sup_{m \ge n} x_m)
+\]
+and
+\[
+\liminf x_n = \sup_{n \ge 1}(\inf_{m \ge n} x_m)
+\]
+\end{defn}
+
+\begin{prop}\label{s1p1}
+If $\{x_n\}$ is convergent then it has a unique limit.
+\end{prop}
+\begin{proof}
+Let if possible, $\lim x_n = L$ and $\lim x_n = M$. Then for a given $\epsilon
+> 0$, we can find, $N_1, N_2 \in \mathbb{N}$ such that for all $n > N_1$, 
+$|x_n - L| < \epsilon/2$ and for all $n > N_2$, $|x_n - M| < \epsilon/2$. Then, 
+if $N = \max(N_1, N_2)$, $|L - M| = |L - x_n + x_n - M| \le |L - x_n| + 
+|M - x_n| < \epsilon$.
+\end{proof}
+
+\begin{thm}[Monotone Convergence Theorem]\label{s1t1}
+If $\{x_n\}$ is a monotone increasing (decreasing) sequence that is bounded
+above (below) then $\{x_n\}$ is convergent and its limit is its supremum 
+(infimum).
+\end{thm}
+\begin{proof}
+If $\{x_n\}$ is a monotone increasing functions that is bounded above then the
+set of the sequence values is a set of real numbers that is bounded above. By 
+the completeness property of real numbers, it has a supremum $M \in \mathbb{R}$.
+Fix an $\epsilon > 0$. Then there is at least one $x_m$ such that $M - \epsilon
+< x_m$. For if there were none such then $M$ would not be the supremum. Since
+our sequence is monotone increasing, this means that for all $n > m$, $|M - x_n|
+< \epsilon$ so that $M = \lim x_n$.
+
+The proof for monotone decreasing sequence is similar.
+\end{proof}
+
+\begin{thm}[Bolzano-Weierstrass Theorem]\label{s1t2}
+Every bounded sequence has a convergent subsequence.
+\end{thm}
+\begin{proof}
+Let $\{x_n\}$ be such that $m \le x_n \le M$ for all $n \in \mathbb{N}$. An 
+index $n$ of the sequence is called a peak if $x_n > x_m$ for all $m > n$. 
+Likewise, an index $n$ of the sequence is called a trough if $x_n \le x_m$
+for all $m > n$. Build a subsequence $\{x_{n_k}\}$ inductively as follows. Let 
+$n_1 = 1$ and having chosen $n_k$, let $n_{k+1}$ be the peak among indices 
+strictly beyond $n_k$. If we can always get a peak at all stages then 
+$\{x_{n_k}\}$ is a monotone decreasing sequence that is bounded from below. 
+Therefore, by monotone convergence theorem, it converges to its infimum. If, 
+after $x_{n_k}$ we cannot find a peak then among the remaining terms we can find
+a subsequence of troughs in the same way. It is a monotone increasing sequence
+that is bounded from above and hence convergent to its supremum.
+\end{proof}
+
+\begin{prop}\label{s1p2}
+Every convergent sequence is a Cauchy sequence.
+\end{prop}
+\begin{proof}
+Let $\{x_n\}$ be such that $\lim x_n = L$. Then for a fixed $\epsilon > 0$, we
+can find $N \in \mathbb{N}$ such that for all $n > N$, $|x_n - L| < \epsilon/2$.
+Therefore, if $m, n > N$, $|x_m - x_n| = |x_m - L + L - x_n| \le |x_m - L| + 
+|x_n - L| < \epsilon$, making $\{x_n\}$ a Cauchy sequence.
+\end{proof}
+
+\begin{prop}\label{s1p3}
+Every Cauchy sequence is bounded.
+\end{prop}
+\begin{proof}
+Let $\{x_n\}$ be a Cauchy sequence. Fix an $\epsilon > 0$. There exists $N \in
+\mathbb{N}$ such that for all $m, n \ge N$, $|x_m - x_n| < \epsilon$. In 
+particular, for all $m > N$, $|x_m - x_N| < \epsilon$ so that for the tail of
+the sequence beyond $x_N$, $x_N - \epsilon$ is the lower bound and $x_N +
+\epsilon$ is the upper bound. For the finite set $\{x_1, \ldots, x_{N-1}\}$, let
+$m$ and $M$ be the minimum and the maximum. Then $\min(m, x_N - \epsilon)$ is
+a lower bound of the entire sequence and $\max(M, x_N + \epsilon)$ is its upper
+bound, making $\{x_n\}$ a bounded sequence.
+\end{proof}
+
+\begin{prop}\label{s1p4}
+Every Cauchy sequence is convergent.
+\end{prop}
+\begin{proof}
+By proposition \ref{s1p3} a Cauchy sequence is bounded. Using Bolzano-Weierstrass
+theorem, \ref{s1t2}, it has a convergent subsequence $\{x_{n_k}\}$. Let $L$ be
+the limit of this subsequence. For a given $\epsilon > 0$, we can find $N_1 \in
+\mathbb{N}$ such that for all $n_k > N_1$, $|x_{n_k} - L| < \epsilon/2$. For the
+same $\epsilon$, since $\{x_n\}$ is a Cauchy sequence, there exists $N_2 \in
+\mathbb{N}$ such that for all $m, n > N_2$, $|x_m - x_n| < \epsilon/2$. Let
+$N = \max(N_1, N_2)$. Then for $m > N$ and $k$ such that $n_k > N$, $|x_m - L| 
+= |x_m - x_{n_k} + x_{n_k} - L| \le |x_m - x_{n_k}| + |x_{n_k} - L| < \epsilon$.
+In the last inequality $|x_m - x_{n_k}| < \epsilon/2$ by the Cauchy property
+and $|x_{n_k} - L| < \epsilon/2$ because $L$ is the limit of the convergent
+subsequence.
+\end{proof}
+\end{document}
