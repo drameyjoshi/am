@@ -110,17 +110,21 @@ The proof for monotone decreasing sequence is similar.
 Every bounded sequence has a convergent subsequence.
 \end{thm}
 \begin{proof}
-Let $\{x_n\}$ be such that $m \le x_n \le M$ for all $n \in \mathbb{N}$. An 
-index $n$ of the sequence is called a peak if $x_n > x_m$ for all $m > n$. 
-Likewise, an index $n$ of the sequence is called a trough if $x_n \le x_m$
-for all $m > n$. Build a subsequence $\{x_{n_k}\}$ inductively as follows. Let 
-$n_1 = 1$ and having chosen $n_k$, let $n_{k+1}$ be the peak among indices 
-strictly beyond $n_k$. If we can always get a peak at all stages then 
-$\{x_{n_k}\}$ is a monotone decreasing sequence that is bounded from below. 
-Therefore, by monotone convergence theorem, it converges to its infimum. If, 
-after $x_{n_k}$ we cannot find a peak then among the remaining terms we can find
-a subsequence of troughs in the same way. It is a monotone increasing sequence
-that is bounded from above and hence convergent to its supremum.
+Let $m$ and $M$ be such that $m \le x_n \le M$ for all $n$ in a sequence 
+$\{x_n\}$. An index $n$ is called a peak if $x_n > x_{n + i}$ for all $i \in
+\mathbb{N}$.If there are an infinite number of peaks $n_1 < n_2 < \ldots$ then
+$x_{n_1} > x_{n_2} > x_{n_3} \ldots$. If there are an infinite number of peaks 
+then $\{x_{n_1}, x_{n_2}, x_{n_3}, \ldots$ forms a monotone decreasing sequence
+that is bounded from below. By monotone convergence theorem, \ref{s1t1}, it 
+converges to its infimum. 
+
+If the process terminates at say $n_k = N$ or if there are no peaks, in which 
+casei $N=0$, pick any $n_1 > N$. Since $n_1$ is not a peak, there exists $n_2 
+> n_1$ such that $x_{n_2} > x_{n_1}$. Since $n_2$ is not a peak, we can find 
+$n_3 > n_2$ such that $x_{n_3} > x_{n_2}$. This gives us a monotone increasing
+sequence that is bounded from above.(This process will not terminate because
+we are already past the last peak in the sequence, if there was one.) By the 
+monotone convergence theorem, it converges to its supremum.
 \end{proof}
 
 \begin{prop}\label{s1p2}
