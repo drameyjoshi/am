@@ -167,4 +167,232 @@ In the last inequality $|x_m - x_{n_k}| < \epsilon/2$ by the Cauchy property
 and $|x_{n_k} - L| < \epsilon/2$ because $L$ is the limit of the convergent
 subsequence.
 \end{proof}
+
+\section{Tests of convergence}\label{s2}
+\begin{prop}[Comparison Test]\label{s2p1}
+Let $\{x_n\}$ and $\{y_n\}$ be sequences such that $x_n \le y_n$ for all $n$. 
+Then:
+\begin{enumerate}
+\item If both sequences converge then $\lim x_n \le lim y_n$.
+\item If $a_n \rightarrow \infty$ then so does $b_n$.
+\item If $b_n \rightarrow -\infty$ then so does $a_n$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let $\lim x_n = X$ and $\lim y_n = Y$. Let, if possible, $X > Y$. Choose 
+\[
+\epsilon = \frac{X - Y}{2}.
+\]
+We can find $N_1 \in \mathbb{N}$ such that for all $n > N_1$, $|x_n - X| <
+\epsilon$, that is, $X - \epsilon < x_n < X + \epsilon$. For our choice of 
+$\epsilon$, this gives,
+\[
+x_n > \frac{X + Y}{2}.
+\]
+Likewise, we can find $N_2 \in \mathbb{N}$ such that for all $n > N_2$, $|y_n -
+Y| < \epsilon$ or
+\[
+y_n < \frac{X + Y}{2}.
+\]
+If $N = \max(N_1, N_2)$, we have
+\[
+y_{N+1} < \frac{X + Y}{2} < x_{N+1}
+\]
+contradicting the assumption $x_n \le y_n$ for all $n$.
+
+Now suppose $\lim x_n = \infty$. Then for any $M > 0$, we can get $N \in 
+\mathbb{N}$ such that $x_N > M$. For this choice of $N$, we also have $y_N > M$. 
+Since this is true for any $M$, $\lim y_n = \infty$
+
+If $\lim y_n = -\infty$. Then for any $m < 0$, we can find $N \in \mathbb{N}$
+such that $y_N < m$. For this choice of $N$, we also have $x_N < m$. Since this
+is true for any negative $m$, $\lim x_n = -\infty$.
+\end{proof}
+
+\begin{prop}[The Ratio Test]\label{s2p2}
+If $\{a_n\}$ is a sequence such that 
+\[
+\lim_{n \rightarrow \infty}\frac{a_{n+1}}{a_n} = L
+\]
+when $\{a_n\}$ converges if $L < 1$, diverges if $L > 1$ and the test is 
+inconclusive if $L = 1$.
+\end{prop}
+\begin{proof}
+Given an $\epsilon > 0$, we can find $N \in \mathbb{N}$ such that for $n > 
+N$, 
+\[
+\Big|\frac{a_{n+1}}{a_n} - L\Big| < \epsilon \Rightarrow a_{n+1} < 
+a_n(L + \epsilon).
+\]
+In particular, $a_{N + k} < a_{N}(L + \epsilon)^k$ for $k \ge 0$. Choose
+$\epsilon = (1 - L)/2$ so that $L + \epsilon = (1 + L)/2 < 1$. As $k \rightarrow
+\infty$, $a_{N + k} \rightarrow 0$.
+
+If $L > 1$, the limit condition gives $a_{n+1} > a_n(L - \epsilon)$. Choose 
+$\epsilon = (L - 1)/2$ so that $a_{n + 1} > a_n(L + 1)/2$. For $L > 1$, $(L+1)/2
+> 1$. Furthermore, we have 
+\[
+a_{N+k} > a_N\left(\frac{1 + L}{2}\right)^k.
+\]
+As $k \rightarrow \infty$, $a_{N+k} \rightarrow \infty$.
+
+The test is inconclusive for $L = 1$ because of:
+\begin{enumerate}
+\item The sequence $\{1/n\}$ converges to $0$.
+\item The sequence $\{n^p\}$ diverges for any $p > 0$.
+\end{enumerate}
+\end{proof}
+
+\section{Series}\label{s3}
+\begin{defn}\label{s3d1}
+Given a sequence $\{x_n\}$, the series $\sum x_n$ is a sequence of the partial
+sums $S_n = x_1 + \cdots + x_n$. $\sum x_n$ converges or diverges according as
+the sequence $\{S_n\}$ converges or diverges.
+\end{defn}
+
+\begin{defn}\label{s3d2}
+A series $\sum x_n$ converges absolutely if $\sum |x_n|$ converges.
+\end{defn}
+
+\begin{prop}\label{s3p1}
+An absolutely convergent series converges.
+\end{prop}
+\begin{proof}
+Let $A_n = |x_1| + \cdots + |x_n|$ be partial sums of the series $\sum |x_n|$.
+Since $\{A_n\}$ converges, for a given $\epsilon > 0$, we can find $N \in 
+\mathbb{N}$ such that for $n > m > N$, $|A_n - A_m| < \epsilon \rightarrow
+||x_n| + |x_{n-1}| + \cdots + |x_{m+1}|| < \epsilon \Rightarrow |x_n| + 
+|x_{n-1}| + \cdots + |x_{m+1}| < \epsilon < |x_n + x_{n-1} + \cdots + x_{m+1}|
+< \epsilon \Rightarrow |S_n - S_m| < \epsilon$ so that $\{S_n\}$ is a Cauchy
+sequence, where $S_n$ is the partial sum of $\sum x_n$.
+\end{proof}
+
+\begin{prop}\label{s3p2}
+If $\sum x_n$ converges them $\lim x_n = 0$.
+\end{prop}
+\begin{proof}
+If $S_n = x_1 + \cdots + x_n$, convergence of $\{S_n\}$ implies that for any
+$\epsilon > 0$, we can find $n > m > N$ such that $|S_n - S_m| < \epsilon$.
+Choose $n = m + 1$ so that $|x_{m+1}| < \epsilon$.
+\end{proof}
+
+The contrapositive of this proposition is
+\begin{prop}\label{s3p3}
+If $\lim x_n = L \ne 0$, $\sum x_n$ diverges.
+\end{prop}
+
+We will now show that
+\begin{prop}[Geometric series]\label{s3p4}
+The geometric series $\sum r^n$ converges if $|r| < 1$ and diverges 
+otherwise.
+\end{prop}
+\begin{proof}
+If $|r| > 1, \lim |r|^n \ne 0$ so that $\sum r^n$ diverges. If $0 < r < 1$, 
+\[
+S_n = \frac{1 - r^n}{1 - r}
+\]
+and $\lim S_n = 1/(1 - r)$. If $-1 < r < 0$, $\sum r^n$ converges because 
+$\sum |r|^n$ converges.
+\end{proof}
+
+\section{Tests of convergence}\label{s4}
+\begin{prop}[The comparison test]\label{s4p1}
+Let $\sum a_n$ and $\sum b_n$ be series of positive terms. If $a_n \le b_n$,
+then $\sum a_n$ converges if $\sum b_n$ converges and $\sum b_n$ diverges if
+$\sum a_n$ diverges.
+\end{prop}
+\begin{proof}
+If $\sum b_n$ converges then for a given $\epsilon > 0$, we can find $N \in
+\mathbb{N}$ such that for all $n > m > N$, $|b_n + b_{n-1} + \cdots + b_{m+1}| 
+< \epsilon$. Since $0 \le a_n \le b_n$, $|a_n + a_{n-1} + \cdots + a_{m+1}| \le
+|b_n + b_{n-1} + \cdots + b_{m+1}| < \epsilon$. That is $\sum a_n$ converges.
+
+If $\sum a_n$ diverges, then for any $M > 0$ we can find $N \in \mathbb{N}$ 
+such that $a_1 + \cdots + a_N > M$. Since $a_n \le b_n$, this also means that
+$b_1 + \cdots + b_N \ge a_1 + \cdots + a_N > M$. Since this is true for any $M
+> 0$, we see that $\sum b_n$ diverges.
+\end{proof}
+
+\begin{prop}[The $p$-series]\label{s4p2}
+The $p$-series $\sum n^{-p}$ converges if $p > 1$ and diverges of $p \le 1$.
+\end{prop}
+\begin{proof} Consider the case $p > 1$.
+\begin{eqnarray*}
+\sum\frac{1}{n^p} &=& 1 + \left(\frac{1}{2^p} + \frac{1}{3^p}\right) + \\
+ & & \left(\frac{1}{4^p} + \cdots + \frac{1}{7^p}\right) +
+     \left(\frac{1}{8^p} + \cdots + \frac{1}{15^p}\right) + \ldots \\
+ &<& 1 + \frac{1}{2^{p-1}} + \frac{1}{4^{p-1}} + \frac{1}{8^{p-1}} + \ldots
+\end{eqnarray*}
+This is a geometric series with first term $r = 1/2^{p-1} < 1$ whose limit is
+$2^{p-1}/(2^{p-1} - 1)$. Thus $\sum n^{-p}$ converges by the comparison test.
+
+Now consider the case $p = 1$.
+\begin{eqnarray*}
+\sum\frac{1}{n^p}&=&1 + \frac{1}{2} + \left(\frac{1}{3} + \frac{1}{4}\right)+\\
+ & & \left(\frac{1}{5} + \cdots + \frac{1}{8}\right) +
+     \left(\frac{1}{9} + \cdots + \frac{1}{16}\right) + \ldots \\
+ &>& 1 + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \ldots
+\end{eqnarray*}
+Clearly, the series $\sum n^{-1}$ diverges. If $p < 1$, $n^{-p} > n^{-1}$ so 
+that by the comparison test we can conclude that $\sum n^{-p}$ diverges.
+\end{proof}
+
+\begin{prop}[The limit comparison test]\label{s4p3}
+Let $\sum a_n$ and $\sum b_n$ be two series of positive terms. If
+\[
+\lim_{n \rightarrow \infty} \frac{a_n}{b_n} = L
+\]
+then
+\begin{enumerate}
+\item If $0 < L \infty$, either both series converge or both diverge.
+\item If $L = 0$ and $\sum b_n$ converges then so does $\sum a_n$.
+\item If $L = \infty$ and $\sum b_n$ diverges then so does $\sum a_n$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+We will first consider the case $0 < L < \infty$. For a given $\epsilon > 0$,
+we can find $N \in \mathbb{N}$ such that for $n > N$,
+\[
+\Big|\frac{a_n}{b_n} - L\Big| < \epsilon \Rightarrow
+b_n(L - \epsilon) < a_n < b_n(L + \epsilon).
+\]
+For $n > m > N$, we also have 
+\[
+(b_n + \cdots + b_{m+1})(L - \epsilon) < (a_n + \cdots + a_{m+1}) <
+(b_n + \cdots + b_{m+1})(L + \epsilon)
+\]
+If $\sum b_n$ converges, for a given $\epsilon_1(L + \epsilon)$, we can find
+$N_1 \in \mathbb{N}$ such that for all $n > m > N_1$, $b_n + \cdots + b_{m+1}
+< \epsilon_1/(L + \epsilon)$ or that $a_n + \cdots + a_{m+1} < \epsilon_1$.
+Thus if $\sum b_n$ converges then so does $\sum a_n$.
+
+If $\sum a_n$ converges then for a given $\epsilon_1/(L - \epsilon)$ we can find
+$N_2 \in \mathbb{N}$ such that for all $n > m > N_2$, $a_n + \cdots + a_{m+1}
+< \epsilon_1/(L - \epsilon)$ or that $b_n + \cdots + b_{m+1} < \epsilon_1$.
+Thus if $\sum a_n$ converges then so does $\sum b_n$. Since $L > 0$, we can 
+always choose $\epsilon$ such that $L - \epsilon > 0$ and $\epsilon_1/(L - 
+\epsilon) > 0$.
+
+Now suppose $\sum b_n$ diverges. Then for any $M/(L - \epsilon) > 0$, we can
+find $N \in \mathbb{N}$ such that for all $n>m > N$, $(b_n + \cdots + b_{m+1} > 
+M/(L - \epsilon)$ or $a_n + \cdots + a_{m+1} > M$. Since $M$ is arbitrary, this 
+means that $\sum a_n$ diverges.
+
+If $\sum a_n$ diverges then for any $M(L + \epsilon) > 0$, we can find $N \in
+\mathbb{N}$ such that for all $n > m >N$, $a_n + \cdots + a_{m+1} > M(L + 
+\epsilon)$ or $b_n + \cdots + b_{m+1} > M$. Since $M$ is arbitrary, this means 
+that $\sum b_n$ diverges.
+
+If $L = 0$, for $\epsilon = 1$, we can find $N \in \mathbb{N}$ such that
+for all $n > N$, $a_n < b_n$. Therefore, $\sum_{n > N} a_n < \sum_{n > N} b_n$.
+By comparison test, $\sum_{n > N} a_n$ converges. Since $a_1 + \cdots + a_N$
+is finite, $\sum a_n$ converges.
+
+If $L = \infty$, for any $M > 1$, we can find $N \in \mathbb{N}$ such that
+$a_n/b_n > M$ for all $n > N$. That is $a_n > b_nM$ for all $n > N$. Then, for
+$n > m > N$, $a_n + \cdots + a_{m+1} > (b_n + \cdots + b_{m+1})M$. Since $\sum
+b_n$ diverges, the left hand side of the inequality cannot be made as small
+as we wish. As a result, neither can the right hand side. Therefore, $\sum a_n$
+diverges.
+\end{proof}
 \end{document}
