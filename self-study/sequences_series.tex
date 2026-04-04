@@ -337,14 +337,14 @@ Clearly, the series $\sum n^{-1}$ diverges. If $p < 1$, $n^{-p} > n^{-1}$ so
 that by the comparison test we can conclude that $\sum n^{-p}$ diverges.
 \end{proof}
 
-\begin{prop}[The limit comparison test]\label{s4p3}
+\begin{prop}[The Limit Comparison Test]\label{s4p3}
 Let $\sum a_n$ and $\sum b_n$ be two series of positive terms. If
 \[
 \lim_{n \rightarrow \infty} \frac{a_n}{b_n} = L
 \]
 then
 \begin{enumerate}
-\item If $0 < L \infty$, either both series converge or both diverge.
+\item If $0 < L < \infty$, either both series converge or both diverge.
 \item If $L = 0$ and $\sum b_n$ converges then so does $\sum a_n$.
 \item If $L = \infty$ and $\sum b_n$ diverges then so does $\sum a_n$.
 \end{enumerate}
@@ -395,4 +395,206 @@ b_n$ diverges, the left hand side of the inequality cannot be made as small
 as we wish. As a result, neither can the right hand side. Therefore, $\sum a_n$
 diverges.
 \end{proof}
+
+\begin{prop}[The Ratio Test]\label{s4p4}
+Let $\sum a_n$ be a series of positive terms. If
+\[
+\lim_{n \rightarrow \infty}\frac{a_{n+1}}{a_n} = L.
+\]
+Then 
+\begin{enumerate}
+\item If $L < 1$, $\sum a_n$ converges.
+\item If $L > 1$, $\sum a_n$ diverges.
+\item If $L = 1$, the test is inconclusive.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+If $L < 1$, we can find $r$ such that $L < r < 1$. For a given $\epsilon > 0$,
+such that $\epsilon < r - L$, we can find $N \in \mathbb{N}$ such that for all 
+$n > N$,
+\[
+\Big|\frac{a_{n+1}}{a_n} - L\Big| < \epsilon \Rightarrow a_{n+1} < 
+a_n(L + \epsilon) < a_n r
+\]
+For $n > N$, $\sum_{n > N} a_n < \sum_{n > N} r_n$ with $r < 1$. By comparison 
+test, $\sum_{n > N} a_n$ converges. Since $\sum a_n = (a_1 + \cdots + a_N) + 
+\sum_{n > N} a_n$, $\sum a_n$ converges.
+
+If $L > 1$, then for a given $\epsilon > 0$, we can find $N \in \mathbb{N}$ such
+that for all $n > N$, $a_{n + 1} > a_n(L - \epsilon)$. If we choose $\epsilon$
+such that $L - \epsilon > 1$, then for all $k \in \mathbb{N}$, $a_{n+k} > a_n
+(L - \epsilon)^k$ for all $n > N$. Thus, the limit of $a_n$ as $n \rightarrow
+\infty$ does not vanish, as a result $\sum a_n$ diverges.
+
+If $a_n = n^{-p}$, where $p \ge 0$, 
+\[
+\lim_{n \rightarrow \infty}\frac{a_{n+1}}{a_n} = \lim_{n \rightarrow \infty}
+\frac{n^p}{(n + 1)^p} = \lim_{n \rightarrow \infty} \frac{1}{(1 + 1/n)^p} = 1
+\]
+But we know that the $p$-series converges for $p > 1$ and diverges otherwise.
+This illustrates the inconclusivity of the ratio test if $L = 1$.
+\end{proof}
+
+\begin{prop}[The Root Test]\label{s4p5}
+Let $\sum a_n$ be a series of positive terms and $L = \limsup \sqrt[n]{a_n}$.
+Then $\sum a_n$ converges if $L < 1$, diverges if $L > 1$ and is inconsludive
+if $L = 1$.
+\end{prop}
+\begin{proof}
+By the definition of $\limsup$, $L = \inf_{k \ge 1}\sup_{n > k}a_n^{1/n}$. If
+$L < 1$, choose $\epsilon > 0$ and $r \in (L + \epsilon, 1)$. We can then find
+$N \in \mathbb{N}$ such that for all $k > N$, $|\sup_{n>k}a_n^{1/n} - L| <
+\epsilon \Rightarrow \sup_{n>k}a_n^{1/n} < L + \epsilon < r < 1$. Therefore,
+for all $n > k > N$, $a_n^{1/n} < r < 1 \Rightarrow a_n < r^n < 1$. Thus, for 
+all $k > N$, $a_k < r^k$ so that by comparison test, $\sum_{k > N}a_k$ 
+converges. Since $a_1 + \cdots + a_N$ is finite, $\sum_{k \ge 1} a_k$ converges.
+
+If $L > 1$, choose $\epsilon > 0$ and $r \in (1, L + \epsilon)$. We can then
+find $N \in \mathbb{N}$ such that for all $k > N$, $|\sup_{n > k} a_n^{1/n} -
+L| < \epsilon \rightarrow 1 < r < L + \epsilon < \sup_{n>k} a_n^{1/n}$. 
+Therefore, $1 < r < a_n^{1/n}$ is true for infinitely many $n > k > N$, or
+$1 < r^n < a_n$ is true for infinitely many $n > k > N$. This means that
+$\lim a_n \ne 0$ and hence $\sum a_n$ diverges.
+
+Once again consider the $p$-series with $a_n = n^{-p}$ so that $a_n^{1/n} = 
+n^{-p/n} = (n^{1/n})^{-p}$ so that $\limsup\sqrt[n]{a_n} = 1$ irrespective of
+$p$ because $\lim\sqrt[n]{n} = 1$. Thus, the root test is inconclusive if $L=1$.
+\end{proof}
+
+\begin{prop}[The Integral Test]\label{s4p6}
+Let $f:[1, \infty) \rightarrow \mathbb{R}^+$ be a decreasing, postive-valued,
+continuous function of $x$ and $a_n = f(n)$. The $\sum a_n$ converges if the 
+integral
+\[
+\int_1^\infty f(x)dx < \infty.
+\]
+\end{prop}
+\begin{proof}
+Since $f$ is continuous, the integral can be constructed as an improper Riemann
+integral. If the mesh consists of the intervals $[n, n+1]$ for all $n \ge 1$,
+then
+\[
+a_2 + a_3 + \cdots < \int_1^\infty f(x)dx < a_1 + a_2 + a_3 + \cdots
+\]
+If the integral is finite, $\sum_{n \ge 2}$ is finite and hence $a_1 + \sum_{n
+\ge 2} = \sum_{n \ge 1}a_n$ is finite. That is $\sum a_n$ converges.
+\end{proof}
+
+\begin{prop}[The Alternating Series Test]\label{s4p7}
+The alternating series $\sum (-1)^{n+1}a_n$, where $a_n$ are all positive,
+$a_{n+1} < a_n$ for all $n$ and $\lim a_n \rightarrow 0$, converges.
+\end{prop}
+\begin{proof}
+Let $S_n$ denote the $n$th partial sum. Then $S_{2m+2} = S_{2m} + a_{2m+1} -
+a_{2m+2} > S_{2m}$ as $a_n$ are monotone decreasing positive terms. Thus, the
+subsequence of even terms is monotone increasing. Likewise, $S_{2m+3} = S_{2m+1}
+- a_{2m+2} + a_{2m+3} < S_{2m+1}$ so that the subsequence of odd terms is
+monotone decreasing. We also have $S_{2m+1} = S_{2m} + a_{2m+1} > S_{2m}$. Thus,
+\[
+a_1 - a_2 \le S_{2m} < S_{2m + 1} < a_1.
+\]
+Thus, the subsequence of even and odd terms are monotone and bounded. Therefore,
+they converge. Let $L_e$ and $L_o$ be their limits. Since $|L_o - L_e| = 
+\lim_{k \rightarrow \infty} a_{2k+1} = 0$. Thus, the two limits are identical.
+\end{proof}
+
+\section{Sequences and series of functions}\label{s6}
+In this section, we let $f_n$ be real-valued functions defined on a set $A$ for
+every $n \in \mathbb{N}$.
+
+\begin{defn}\label{s6d1}
+The sequence $\{f_n\}$ converges to a function $f: A \mapsto \mathbb{R}$ 
+pointwise if for any $x \in A$ and a given $\epsilon > 0$, we can find 
+$N(x, \epsilon) \in \mathbb{N}$ such that for all $n > N(x, \epsilon)$,
+$|f_n(x) - f(x)| < \epsilon$.
+\end{defn}
+
+\begin{defn}\label{s6d2}
+The sequence $\{f_n\}$ converges to a function $f: A \mapsto \mathbb{R}$
+uniformly if for a fixed $\epsilon > 0$, we can find $N(\epsilon) \in \mathbb{R}
+$ such that for all $x \in A$ and $n > N(\epsilon)$, $|f_n(x) - f(x)| < 
+\epsilon$.
+\end{defn}
+
+\begin{defn}\label{s6d3}
+Let $g$ be a bounded real-valued function on $A$. Its sup-norm is defined as
+\[
+||f||_A = \sup{|g(x)|: x \in A}
+\]
+\end{defn}
+
+In terms of the sup-norm, we can express the definition of uniform convergence
+as: $\{f_n\}$ converges uniformly to $f$ if 
+\[
+\lim_{n \rightarrow \infty} ||f_n - f||_A = 0.
+\]
+
+\begin{defn}\label{s6d4}
+Given a sequence $\{f_n\}$ of functions, the series $\sum f_n$ converges if
+the sequence of its partial sums $S_n(x)$ converges. The series converges
+pointwise or uniformly accordingly as the sequence $\{S_n(x)\}$ converges 
+pointwise or uniformly.
+\end{defn}
+
+To illustrate these ideas, we consider $A = [0, 1]$ and $f_n = x^n$. The
+functions $f_n$ are bounded and continuous over their domain $A$. For all $x < 1$
+$f_n(x)$ coverge pointwise to $0$ while for $x=1$ they all converge to $x=1$.
+Thus, if we define $f: A \mapsto \mathbb{R}$ such that
+\[
+f(x) = \begin{cases}
+0 & \text{ if } 0 \le x < 1 \\
+1 & \text{ if } x = 1
+\end{cases}
+\]
+then $f_n(x)$ converge to $f$. Although all $f_n$ are continuous, $f$ is not.
+Thus, pointwise convergence does not preserve uniformity of the functions. It
+is also evident that $||f_n - f|| = 1$.
+
+\begin{thm}[Uniform Limit Theorem]\label{s6t1}
+Let $\{f_n\}$ converge to $f$ uniformly. Then if $f_n$ are continuous so is $f$.
+\end{thm}
+\begin{proof}
+Fix an $\epsilon > 0$. Since $\{f_n\}$ converge to $f$ uniformly, we can find
+$N(\epsilon) \in \mathbb{N}$ such that for all $n > N$, $|f_n(x) - f(x)| < 
+\epsilon/3$ and $|f_n(x_0) - f(x_0)| < \epsilon/3$. Choose a natural number $m$
+greater than $N(\epsilon)$. For this choice, $f_m$ is continuous. Therefore, we
+can find $\delta > 0$ such that $|x - x_0| < \delta \Rightarrow |f(x) - f(x_0)|
+< \epsilon/3$. Thus, if $|x - x_0| < \delta$,
+\[
+|f(x) - f(x_0)| < |f(x) - f_m(x)| + |f_m(x) - f_m(x_0)| + |f_m(x_0) - f(x_0)|
+< \epsilon,
+\]
+\end{proof}
+\begin{rem}
+In this proof, we choose $\delta$ for a particular $m$. Therefore, it should
+be chosen after we find $N(\epsilon)$ and select an $m$ greater than it. If all
+$f_n$ have the same $\delta$ for an $\epsilon$, the sequence of functions is 
+called \emph{equicontinuous}. We do not want to assume equicontinuity at this
+stage.
+\end{rem}
+
+\begin{defn}[Cauchy Criterion]\label{s6d5}
+Let $\{f_n\}$ be a sequence of functions. If for a given $\epsilon > 0$, we
+can find $N(\epsilon) \in \mathbb{N}$ such that for all $n > m > N(\epsilon)$,
+$||f_n - f_m||_A < \epsilon$ then $\{f_n\}$ converges uniformly.
+\end{defn}
+
+We will use the Cauchy criterion to prove,
+\begin{thm}[The Weierstrass M-test]\label{s6t2}
+Suppose we have a series of functions $\sum f_n$ on a set $A$. If there exist
+constants $M_n$ such that $|f_n(x)| < M_n$ for all $x \in A$ and $\sum M_n$
+converges then $\sum f_n$ converges uniformly and absolutely on $A$.
+\end{thm}
+\begin{proof}
+Let $S_n(x) = f_1(x) + \cdots + f_n(x)$. Then $\sum f_n(x)$ converges if the
+sequence $\{S_n(x)\}$ converges. That, $\{S_n(x)\}$ is a Cauchy sequence. Now,
+if $n > m$, $|S_n(x) - S_m(x)| = |\sum_{k=m+1}^n f_k(x)| \le \sum_{k=m+1}^n
+|f_k(x)| \le \sum_{k=m+1}^n M_k$. Since $\{\sum M_n\}$ converges, for a given
+$\epsilon > 0$, we can find $N(\epsilon) \in \mathbb{N}$ such that for $n > m
+> N(\epsilon)$, $|\sum_{k={m+1}}^n M_k| < \epsilon$. Since $\sum_{k=m+1}^n M_k 
+\le |\sum_{k={m+1}}^n M_k| < \epsilon$, we have proved that for any $\epsilon 
+> 0$, we can find $N(\epsilon) \in \mathbb{N}$ such that for all $n > m > 
+N(\epsilon)$, $|S_n(x) - S_m(x)| < \epsilon$.
+\end{proof}
 \end{document}
+
