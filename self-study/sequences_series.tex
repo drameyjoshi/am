@@ -19,6 +19,7 @@
 
 \numberwithin{equation}{section}
 
+\newcommand{\op}{\prime}
 \begin{document}
 \title{Sequences and Series}
 \author{Amey Joshi}
@@ -437,7 +438,7 @@ This illustrates the inconclusivity of the ratio test if $L = 1$.
 
 \begin{prop}[The Root Test]\label{s4p5}
 Let $\sum a_n$ be a series of positive terms and $L = \limsup \sqrt[n]{a_n}$.
-Then $\sum a_n$ converges if $L < 1$, diverges if $L > 1$ and is inconsludive
+Then $\sum a_n$ converges if $L < 1$, diverges if $L > 1$ and is inconslusive
 if $L = 1$.
 \end{prop}
 \begin{proof}
@@ -476,8 +477,8 @@ then
 \[
 a_2 + a_3 + \cdots < \int_1^\infty f(x)dx < a_1 + a_2 + a_3 + \cdots
 \]
-If the integral is finite, $\sum_{n \ge 2}$ is finite and hence $a_1 + \sum_{n
-\ge 2} = \sum_{n \ge 1}a_n$ is finite. That is $\sum a_n$ converges.
+If the integral is finite, $\sum_{n \ge 2}a_n$ is finite and hence $a_1+\sum_{n
+\ge 2} a_n = \sum_{n \ge 1}a_n$ is finite. That is $\sum a_n$ converges.
 \end{proof}
 
 \begin{prop}[The Alternating Series Test]\label{s4p7}
@@ -498,38 +499,38 @@ they converge. Let $L_e$ and $L_o$ be their limits. Since $|L_o - L_e| =
 \lim_{k \rightarrow \infty} a_{2k+1} = 0$. Thus, the two limits are identical.
 \end{proof}
 
-\section{Sequences and series of functions}\label{s6}
+\section{Sequences and series of functions}\label{s5}
 In this section, we let $f_n$ be real-valued functions defined on a set $A$ for
 every $n \in \mathbb{N}$.
 
-\begin{defn}\label{s6d1}
+\begin{defn}\label{s5d1}
 The sequence $\{f_n\}$ converges to a function $f: A \mapsto \mathbb{R}$ 
 pointwise if for any $x \in A$ and a given $\epsilon > 0$, we can find 
 $N(x, \epsilon) \in \mathbb{N}$ such that for all $n > N(x, \epsilon)$,
 $|f_n(x) - f(x)| < \epsilon$.
 \end{defn}
 
-\begin{defn}\label{s6d2}
+\begin{defn}\label{s5d2}
 The sequence $\{f_n\}$ converges to a function $f: A \mapsto \mathbb{R}$
 uniformly if for a fixed $\epsilon > 0$, we can find $N(\epsilon) \in \mathbb{R}
 $ such that for all $x \in A$ and $n > N(\epsilon)$, $|f_n(x) - f(x)| < 
 \epsilon$.
 \end{defn}
 
-\begin{defn}\label{s6d3}
+\begin{defn}\label{s5d3}
 Let $g$ be a bounded real-valued function on $A$. Its sup-norm is defined as
 \[
-||f||_A = \sup{|g(x)|: x \in A}
+\lVert f\rVert_A = \sup{|g(x)|: x \in A}
 \]
 \end{defn}
 
 In terms of the sup-norm, we can express the definition of uniform convergence
 as: $\{f_n\}$ converges uniformly to $f$ if 
 \[
-\lim_{n \rightarrow \infty} ||f_n - f||_A = 0.
+\lim_{n \rightarrow \infty} \lVert f_n - f \rVert_A = 0.
 \]
 
-\begin{defn}\label{s6d4}
+\begin{defn}\label{s5d4}
 Given a sequence $\{f_n\}$ of functions, the series $\sum f_n$ converges if
 the sequence of its partial sums $S_n(x)$ converges. The series converges
 pointwise or uniformly accordingly as the sequence $\{S_n(x)\}$ converges 
@@ -548,9 +549,9 @@ f(x) = \begin{cases}
 \]
 then $f_n(x)$ converge to $f$. Although all $f_n$ are continuous, $f$ is not.
 Thus, pointwise convergence does not preserve uniformity of the functions. It
-is also evident that $||f_n - f|| = 1$.
+is also evident that $\lVert f_n - f \rVert_A = 1$.
 
-\begin{thm}[Uniform Limit Theorem]\label{s6t1}
+\begin{thm}[Uniform Limit Theorem]\label{s5t1}
 Let $\{f_n\}$ converge to $f$ uniformly. Then if $f_n$ are continuous so is $f$.
 \end{thm}
 \begin{proof}
@@ -573,14 +574,14 @@ called \emph{equicontinuous}. We do not want to assume equicontinuity at this
 stage.
 \end{rem}
 
-\begin{defn}[Cauchy Criterion]\label{s6d5}
+\begin{defn}[Cauchy Criterion]\label{s5d5}
 Let $\{f_n\}$ be a sequence of functions. If for a given $\epsilon > 0$, we
 can find $N(\epsilon) \in \mathbb{N}$ such that for all $n > m > N(\epsilon)$,
-$||f_n - f_m||_A < \epsilon$ then $\{f_n\}$ converges uniformly.
+$\lVert f_n - f_m \rVert_A < \epsilon$ then $\{f_n\}$ converges uniformly.
 \end{defn}
 
 We will use the Cauchy criterion to prove,
-\begin{thm}[The Weierstrass M-test]\label{s6t2}
+\begin{thm}[The Weierstrass M-test]\label{s5t2}
 Suppose we have a series of functions $\sum f_n$ on a set $A$. If there exist
 constants $M_n$ such that $|f_n(x)| < M_n$ for all $x \in A$ and $\sum M_n$
 converges then $\sum f_n$ converges uniformly and absolutely on $A$.
@@ -595,6 +596,177 @@ $\epsilon > 0$, we can find $N(\epsilon) \in \mathbb{N}$ such that for $n > m
 \le |\sum_{k={m+1}}^n M_k| < \epsilon$, we have proved that for any $\epsilon 
 > 0$, we can find $N(\epsilon) \in \mathbb{N}$ such that for all $n > m > 
 N(\epsilon)$, $|S_n(x) - S_m(x)| < \epsilon$.
+\end{proof}
+
+\begin{thm}\label{s5t3}
+Let $\{f_n\}$ be a sequence of functions Riemann-integrable on $[a, b]$. If
+$f_n \rightarrow f$ uniformly then $f$ is Riemann-integrable and
+\[
+\int_a^b\lim_{n \rightarrow \infty} f_n(x)dx = 
+\lim_{n \rightarrow \infty}\int_a^b f_n(dx).
+\]
+\end{thm}
+\begin{proof}
+Since $f_n \rightarrow f$ uniformly, for a given $\epsilon > 0$, we can find 
+$N(\epsilon) \in \mathbb{N}$ such that for all $n > N(\epsilon)$, $|f_n - f| < 
+\epsilon/(b - a)$ or 
+\[
+f - \frac{\epsilon}{b - a} < f_n < f - \frac{\epsilon}{b - a}
+\]
+Integrating from $a$ to $b$,
+\[
+\int_a^b f(x)dx - \epsilon < \int_a^b f_n(x)dx < \int_a^b f(x)dx + \epsilon
+\]
+for all $n > N(\epsilon)$. Therefore,
+\[
+\lim_{n \rightarrow \infty}\int_a^b f_n(x)dx = \int_a^b f(x)dx = 
+\int_a^b \lim_{n \rightarrow \infty}f_n(x)dx.
+\]
+\end{proof}
+
+\begin{rem}
+Supposing the convergence was not uniform then we would have had $N$ depend on
+$x$ as well as $\epsilon$. In order that $|f_n - f| < \epsilon/(b - a)$ we 
+would have had to choose $N^\ast = \max(\{N(\epsilon, x) | x \in [a, b]\})$. 
+The set $\mathcal{N} = \{N(\epsilon, x) | x \in [a, b]\}$ can be bounded or 
+unbounded. In the former case, we can take $N^\ast=\lceil\sup\mathcal{N}\rceil$,
+but then the convergence is uniform. In the latter case, no such natural number
+exists and out proof cannot proceed.
+\end{rem}
+
+\begin{thm}\label{s5t5}
+Let $f_n$ be a sequence of differentiable functions on $[a, b]$ such that
+\begin{enumerate}
+\item $f_n^\op \rightarrow g$ uniformly on $[a, b]$ and 
+\item there exists at least one $x_0 \in [a, b]$ at which the sequence 
+$\{f_n(x_0)\}$ of numbers converges.
+\end{enumerate}
+Then $f_n \rightarrow f$ uniformly and $f^\op = g$.
+\end{thm}
+\begin{proof}
+We will first show that $\{f_n\}$ converges uniformly. Consider,
+\begin{eqnarray*}
+|f_n(x)-f_m(x)|&=&|f_n(x)-f_n(x_0)-f_m(x)+f_m(x_0)+f_n(x_0)-f_m(x_0)| \\
+ &\le& |f_n(x) - f_n(x_0)| + |f_m(x) - f_m(x_0)| + |f_n(x_0) - f_m(x_0)|.
+\end{eqnarray*}
+Since the numerical sequence $\{f_n(x_0)\}$ converges, we can find $N_1 \in
+\mathbb{N}$ such that for all $n, m > N_1$, $|f_n(x_0) - f_m(x_0)| < 
+\epsilon/2|$. Applying the mean value theorem to $f_n - f_m$, we get
+\[
+|f_n(x) - f_n(x_0)| =  |f_n^\op(x^\op) - f_m^\op(x^\op)||x - x_0|
+\]
+for some $x^\op \in [x, x_0] (\text{ or } [x_0, x])$. Since $\{f_n^\op\}$
+converge uniformly on $[a, b]$ for a given $\epsilon$, we can find $N_2 \in
+\mathbb{N}$ such that for all $n, m > N_2$,
+\[
+|f_n^\op(x^\op) - f_m^\op(x^\op)| < \frac{\epsilon}{2|x - x_0|}
+\]
+We thus have,
+\[
+|f_n(x) - f_m(x)| < \epsilon
+\]
+for all $n, m > \max(N_1, N_2)$, or that $\{f_n\}$ is a Cauchy sequence. It is
+uniformly convergent convergent because $N_1$ is independent of $x_0$ and $N_2$
+is independent of $x^\op$ because of uniform convergence of $\{f_n^\op\}$.
+
+Assume that $f_n \rightarrow f$. We will now show that $f^\op = g$. To that end,
+consider
+\begin{eqnarray*}
+\Big|\frac{f(x+h) - f(x)}{h} - g(x)\Big| &=& \Big|\frac{f(x+h)-f(x)}{h} -
+\frac{f_n(x+h)-f_n(x)}{h} + \\
+ & & \frac{f_n(x+h)-f_n(x)}{h} - f_n^\op(x) + f_n^\op(x) - g(x)\Big| \\
+  &\le& \Big|\frac{f(x+h)-f_n(x+h)}{h}\Big| + \Big|\frac{f(x)-f_n(x)}{h}\Big|\\
+  & & \Big|\frac{f_n(x+h)-f_n(x)}{h} - f_n^\op(x)\Big| + |f_n^\op(x)-g(x)|
+\end{eqnarray*}
+Consider the term
+\[
+\Big|\frac{f(x+h)-f_n(x+h)}{h}\Big| + \Big|\frac{f(x)-f_n(x)}{h}\Big|.
+\]
+We will replace it with
+\[
+\Big|\frac{f_m(x+h)-f_n(x+h)}{h}\Big| + \Big|\frac{f_m(x)-f_n(x)}{h}\Big|
+\]
+and let $m \rightarrow \infty$. We do this because we still have not proved 
+the differentiability of $f$. If $\tilde{f} = f_m - f_n$ then the above term
+becomes
+\[
+\Big|\frac{\tilde{f}(x+h) - \tilde{f}}{h}\Big|.
+\]
+Since $f_n$ and $f_m$ are differentiable, so is $\tilde{f}$. Applying the mean
+value theorem, this term is equal to $\tilde{f}^\op(\tilde{x})$ for some 
+$\tilde{x} \in [x, x+h]$. Choose $N_1 \in \mathbb{N}$ such that for all 
+$n, m > N_1$, 
+\[
+|f_n^\op(\tilde{x}) - f_m^\op(\tilde{x})| = |\tilde{f}^\op(
+\tilde{x})| < \frac{\epsilon}{3}.
+\]
+In the limit $m \rightarrow \infty$, we have
+\[
+\Big|\frac{f(x+h)-f_n(x+h)}{h}\Big| + \Big|\frac{f(x)-f_n(x)}{h}\Big| < 
+\frac{\epsilon}{3}.
+\]
+
+Since $f_n$ is differentiable in $[a, b]$, we can find $h$ such that
+\begin{equation}\label{s5e1}
+\Big|\frac{f_n(x+h)-f_n(x)}{h} - f_n^\op(x)\Big| < \frac{\epsilon}{3}.
+\end{equation}
+Finally, since $f_n^\op \rightarrow g$, we can find $N_2 \in \mathbb{N}$ such
+that for all $n > N_2$, $|f_n^\op(x) - g(x)| < \epsilon/3$.
+
+If we now choose $N = \max(N_1, N_2)$ and $h$ such that \eqref{s5e1} is 
+satisfied then
+\[
+\Big|\frac{f(x+h) - f(x)}{h} - g(x)\Big| < \epsilon.
+\]
+\end{proof}
+
+\section{Power Series}\label{s6}
+\begin{defn}\label{s6d1}
+A power series centred at a point $c \in \mathbb{R}$ is a function of the form
+\[
+\sum_{n \ge 0}a_n(x - c)^n,
+\]
+where $a_n \in \mathbb{R}$.
+\end{defn}
+
+\begin{defn}\label{s6d2}
+The radius of convergence $R$ of a power series is a non-negative real number
+such that it converges for all $|x - c| < R$ and diverges for $|x - c| > R$.
+\end{defn}
+
+\begin{thm}[Cauchy-Hadamard]\label{s6t1}
+Let $\sum a_nx^n$ be a power series and let 
+\[
+L = \limsup \sqrt[n]{|a_n|}.
+\]
+Define 
+\[
+R = \begin{cases}
+1/L & \text{ if } 0 < L < \infty \\
+\infty & \text{ if } L = 0 \\
+0 & \text{ if } L = \infty
+\end{cases}
+\]
+The power series converges absolutely for $|x| < R$ and diverges for $|x| > R$.
+\end{thm}
+\begin{proof}
+For a fixed $x_0$, let $b_n = a_n x_0^n$. Applying the root test \ref{s4p5}
+to the series $\sum |b_n|$ we conclude that if $L^\op = \limsup\sqrt[n]{b_n}
+= |x_0|\limsup\sqrt[n]{|a_n|}$ then the series converges if $L^\op < 1$. If
+$L = \limsup\sqrt[n]{|a_n|}$ then the series converges for all $x_0$ for which
+$L^\op = L|x_0| < 1$ of $|x_0| < 1/L$. 
+
+The numerical series converges if $L^\op > 1$, that is for $|x_0| > 1/L$.
+\end{proof}
+
+\begin{thm}\label{s6t2}
+If a power series $\sum a_nx^n$ has a radius of convergence $R > 0$, then for
+$0 < r < R$, then the series converges uniformly in $[-r, r]$.
+\end{thm}
+\begin{proof}
+Choose $r$ such that $0 < r < R$ and define $M_n = |a_n|r^n$. $\sum M_n$ 
+converges. Since $a_nx^n \le |a_n|x^n < |a_n|r^n = M_n$ by Weierstrass M-test, 
+$\sum a_nx^n$ converges uniformly for any $x \in [-r, r]$.
 \end{proof}
 \end{document}
 
