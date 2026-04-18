@@ -22,6 +22,7 @@
 \newcommand{\op}{\prime}
 \DeclareMathOperator{\re}{Re}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\curl}{curl}
 \begin{document}
 \title{Sequences and Series}
 \author{Amey Joshi}
@@ -82,37 +83,6 @@ Expressing the norms and inner products in terms of components, we get
 \]
 \begin{eqnarray*}
 \end{eqnarray*}
-\end{proof}
-
-\begin{prop}[The ML inequality]\label{s1p4}
-If $|f(z)| \le M$ for all $z$ on a contour of length $L$ then 
-\[
-\int_C f(z)dz \le ML.
-\]
-\end{prop}
-\begin{proof}
-Using the definition of the  Riemann integral
-\[
-\int_C f(z)dz = \lim_{N \rightarrow \infty}\sum_{k=1}^Nf(z_k)\delta z_k,
-\]
-where we split the contour $C$ into segments joining the points $\{z_k\}$ with
-$k = 1, \ldots, N$. We denote the length of the segment joining $z_k$ and 
-$z_{k+1}$ by $\delta z_k$. Thus,
-\[
-\Big|\int_C f(z)dz\Big| = 
-\lim_{N \rightarrow \infty}\Big|\sum_{k=1}^N f(z_k)\delta z_k\Big|,
-\]
-where we used the continuity of the modulus function to interchange the limit
-and the modulus operations. Using the triangle inequality of \ref{s1p1}, we get
-\[
-\Big|\int_C f(z)dz\Big| \le 
-\lim_{N \rightarrow \infty}\sum_{k=1}^N|f(z_k)|\delta z_k
-\le \lim_{N \rightarrow \infty}M \sum_{k=1}^N |\delta z_k| = ML,
-\]
-where we used the fact that
-\[
-\lim_{N \rightarrow \infty}\sum_{k=1}^N |\delta z_k| = L.
-\]
 \end{proof}
 
 \section{Limits, continuity and derivatives}\label{s2}
@@ -305,8 +275,94 @@ is taken as the segment $[a, b]$ or the disjoint segments $[\infty, a] \cup [b,
 mapped to the north pole of the Riemann sphere.
 \end{enumerate}
 
+Multi-valued functions are discontinuous across a branch cut. As a result, they
+are not differentiable and hence not holomorphic.
 
-\section{Singularities}\label{s4}
+\section{Integration}\label{s4}
+Integration of a complex-valued function along a contour $C$ in the complex
+plane is defined as the usual Riemann line integral. That is,
+\[
+\int_C f(z)dz = \lim_{n \rightarrow \infty}\sum_{k=1}^n f(z_k)\delta z_k,
+\]
+where the contour $C$ is divded into linear segments at points $z_1, \ldots,
+z_n$ and $\delta z_k = |z_{k+1} - z_k|$. The integral is said to exist when the 
+limit does. Using this definition, we can easily get an estimate of the 
+magnitude of the integral in the following proposition.
+
+\begin{prop}[The ML inequality]\label{s4p1}
+If $|f(z)| \le M$ for all $z$ on a contour of length $L$ then 
+\[
+\int_C f(z)dz \le ML.
+\]
+\end{prop}
+\begin{proof}
+Using the definition of the  Riemann integral
+\[
+\int_C f(z)dz = \lim_{N \rightarrow \infty}\sum_{k=1}^Nf(z_k)\delta z_k,
+\]
+where we split the contour $C$ into segments joining the points $\{z_k\}$ with
+$k = 1, \ldots, N$. We denote the length of the segment joining $z_k$ and 
+$z_{k+1}$ by $\delta z_k$. Thus,
+\[
+\Big|\int_C f(z)dz\Big| = 
+\lim_{N \rightarrow \infty}\Big|\sum_{k=1}^N f(z_k)\delta z_k\Big|,
+\]
+where we used the continuity of the modulus function to interchange the limit
+and the modulus operations. Using the triangle inequality of \ref{s1p1}, we get
+\[
+\Big|\int_C f(z)dz\Big| \le 
+\lim_{N \rightarrow \infty}\sum_{k=1}^N|f(z_k)|\delta z_k
+\le \lim_{N \rightarrow \infty}M \sum_{k=1}^N |\delta z_k| = ML,
+\]
+where we used the fact that
+\[
+\lim_{N \rightarrow \infty}\sum_{k=1}^N |\delta z_k| = L.
+\]
+\end{proof}
+
+Green's theorem in vector calculus says that
+\[
+\oint_C \vec{u}.\cdot d\vec{x} = \iint_S \curl\vec{u}\cdot d\vec{a},
+\]
+where $C$ is a closed curve enclosing an area $S$, $d\vec{x}$ is the line 
+element and $d\vec{a}$ the area element. If $\vec{u} = u\vec{e}_x + v\vec{e}_y$
+then 
+\[
+\curl\vec{u} = \left(\frac{\partial v}{\partial x} - 
+\frac{\partial u}{\partial y}\right)\vec{e}_z
+\]
+and Green's theorem becomes
+\[
+\oint_C (udx + vdy) = \iint_S\left(\frac{\partial v}{\partial x} - 
+\frac{\partial u}{\partial y}\right)dxdy.
+\]
+We will apply this to the contour integral of a complex-valued function and
+prove an important theorem.
+\begin{thm}[Cauchy]\label{c4t1}
+If $f$ is analytic on and inside a simple closed curve $C$ then
+\[
+\oint_C f(z)dz = 0.
+\]
+\end{thm}
+\begin{proof}
+Let $f(z) = u(x, y) + iv(x, y)$ and $dz = dx + idy$. Then $fdz = (udx - vdy) +
+i(udy + vdx)$. Applying Green's theorem in two dimensions to the integrals on 
+the right,
+\[
+\oint_C (udx - vdy) = \iint_S\left(-\frac{\partial v}{\partial x} - 
+\frac{\partial u}{\partial y}\right)dxdy = 0,
+\]
+using the Cauchy-Riemann condtion. Similarly,
+\[
+\oint_C (vdx + udy) = \iint_S\left(\frac{\partial u}{\partial x} - 
+\frac{\partial v}{\partial y}\right)dxdy = 0,
+\]
+once again due to Cauchy-Riemann condition. Thus,
+\[
+\oint_C f(z)dz = 0.
+\]
+\end{proof}
+\section{Singularities}\label{s5}
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
 kind of a singularity.
