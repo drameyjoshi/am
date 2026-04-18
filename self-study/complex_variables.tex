@@ -271,7 +271,42 @@ A point at which a function fails to be analytic is called its singular point.
 A function analytic at all points in the finite complex plane is called entire.
 \end{defn}
 
-\section{Singularities}\label{s3}
+\section{Multi-valued functions}\label{s3}
+Consider the function $f(z) = \log z$. If $z = re^{i\theta}$ then adding an
+integral multiple of $2\pi$ to $\theta$ brings us to the same point. However,
+$\log(re^{i(\theta + 2\pi m)}) = \log r + i\theta + 2\pi i m$. Thus, each time
+one goes around the origin along a circle $|z| = r$, one comes back to same $z$
+but has a different value of $\log z$. The point $z = 0$ is called a 
+\emph{branch point} of the function $\log$. The function $\log$ fails to be
+analytic unless we stay on a single branch of the function specified by a 
+particular value of $m$. The branch $m = 0$ is called its \emph{principal
+branch} and the function $\log$ is said to be \emph{multi-valued}.
+
+The function $f(z) = \sqrt{z}$ is also multi-valued and has $z = 0$ as its
+branch point because if $z = r\exp(i(\theta + 2\pi m))$ then $\sqrt{z} = 
+\sqrt{r}\exp(i(\theta/2 + \pi m))$. If $m$ is even, we stay on one branch but
+move to another one if $m$ is odd. Once again, the principal branch is the one
+on which $m = 0$.
+
+It is easy to see that the branch point of $\log(z - z_0)$ and $\sqrt{z - z_0}$
+is $z = z_0$ and not the origin. The points $z_0 + re^{i(\theta + 2\pi m)}$
+reveals the multi-valuedness.
+
+A function remains single-valued if we go aroung a branch point as long as we
+do not cross a \emph{branch cut}. A branch cut is an arbitrarily chosen line 
+used to mark the boundary of different branches of a multi-valued function.
+It is chosen out of convenience. For example:
+\begin{enumerate}
+\item The branch cut of $\log$ is often taken to be the positive real axis.
+\item The branch cut of $\sqrt{z}$ is also taken to be the positive real axis.
+\item The function $f(z) = \sqrt{(z - a)(z - b)}$, where $a < b \in \mathbb{R}$
+is taken as the segment $[a, b]$ or the disjoint segments $[\infty, a] \cup [b,
+\infty]$. Note that in the complex plane we have only one infinity, which is
+mapped to the north pole of the Riemann sphere.
+\end{enumerate}
+
+
+\section{Singularities}\label{s4}
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
 kind of a singularity.
