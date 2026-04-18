@@ -216,7 +216,59 @@ and $\Delta v = 0$.
 
 We will next prove the converse of proposition \ref{s2p3}, that is,
 \begin{prop}\label{s2p5}
-If $f(z) = u(x, y) + iv(x, y)$ and if $u_x = v_y$ and $u_y = -v_x$ at a point
-$z = x + iy$ then $f$ is differentiable at $z$.
+If $f(z) = u(x, y) + iv(x, y)$, $u_x = v_y$ and $u_y = -v_x$ at a point
+$z = x + iy$ and the four partial derivatives are continuous then $f$ is 
+differentiable at $z$.
 \end{prop}
+\begin{proof}
+Let $h = k + il$. Since $u$ and $v$ are differentiable, for $|h| \rightarrow 0$,
+we have
+\begin{eqnarray*}
+u(x + k, y + l) &=& u(x, y) + ku_x + lu_y \\
+v(x + k, y + l) &=& v(x, y) + kv_x + lv_y
+\end{eqnarray*}
+so that $f(z + h) - f(z) = k(u_x + iv_x) + l(u_y + iv_)$ and
+\[
+\frac{f(z + h)-f(z)}{h} = \frac{(k - il)k(u_x + iv_x) + l(u_y + iv_)}{k^2+l^2}.
+\]
+Using $u_x = v_y$ and $u_y = -v_x$, we get
+\[
+\frac{f(z + h) - f(z)}{h} = \frac{(k^2 + l^2)(u_x + iv_x)}{k^2+l^2} =
+u_x + iv_y.
+\]
+as $|h| \rightarrow 0$.
+\end{proof}
+
+From propositions \ref{s2p3} and \ref{s2p5}, we have
+\begin{thm}\label{s2t1}
+The necessary and sufficient conditions for $f(z) = u(x, y) + iv(x, y)$ to be
+differentiable at a point is that the Cauchy-Riemann conditions are true at
+that point and the four partial derivatives are continuous at it.
+\end{thm}
+
+\begin{defn}
+A function $f$ is said to be holomorphic or analytic at a point $z_0$ if it is 
+differentiable in a neighbourhood of $z_0$. $f$ is holomorphic in a domain $D$
+if it is holomorphic at all points in $D$.
+\end{defn}
+Recall that a domain is an open, connected set. Therefore, $f$ is holomorphic
+in $D$ means that for every $z_0 \in D$, we can find a neighbourhood $|z - z_0|
+< \epsilon$ in which $f$ is differentiable. The term \emph{analytic} is also
+used in the context of real-valued functions. However, it means that the 
+function can be expressed as a power series in the neighbourhood of that point.
+A real-valued function can be in $C^\infty$ and yet not be analytic. For example,
+$\exp(-1/x^2)$ has all derivatives but it does not have a power series 
+representation in the neighbourhood of $x = 0$ because all derivatives vanish.
+Because differentiability and existence of a power series are not synonymous
+outside complex-valued functions, we will prefer the term holomorphic which 
+implies synonymity over analytic which does not.
+
+\begin{defn}\label{s2d5}
+A point at which a function fails to be analytic is called its singular point.
+\end{defn}
+
+\begin{defn}\label{s2d6}
+A function analytic at all points in the finite complex plane is called entire.
+\end{defn}
+
 \end{document}
