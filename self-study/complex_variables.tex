@@ -1,0 +1,222 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+
+\numberwithin{equation}{section}
+
+\newcommand{\op}{\prime}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\begin{document}
+\title{Sequences and Series}
+\author{Amey Joshi}
+\maketitle
+\section{Important inequalities}\label{s1}
+\begin{prop}[Triangle inequality]\label{s1p1}
+If $z_1, z_2 \in \mathbb{C}$ then $|z_1 + z_2| \le |z_1| + |z_2|$.
+\end{prop}
+\begin{proof}
+$|z_1 + z_2|^2 = |z_1|^2 + |z_2|^2 + \bar{z}_1z_2 + z_1\bar{z_2} = |z_1|^2 +
+|z_2|^2 + 2\re(\bar{z}_1z_2) \le |z_1|^2 + |z_2|^2 + 2|z_1||z_2|$, from which
+the inequality follows immediately.
+\end{proof}
+
+\begin{prop}[Reverse triangle inequality]\label{s1p2}
+If $z_1, z_2 \in \mathbb{C}$ then $||z_1| - |z_2|| \le |z_1 - z_2|$.
+\end{prop}
+\begin{proof}
+$|z_1| = |z_1 - z_2 + z_2| \le |z_1 - z_2| \le |z_2|$ so that $|z_1| - |z_2| 
+\le |z_1 - z_2|$. Similarly, $|z_2| - |z_1| \le |z_1 - z_2|$, so that $||z_1| - 
+|z_2|| \le |z_1 - z_2|$.
+\end{proof}
+
+\begin{prop}[Cauchy-Schwarz inequality]\label{s1p3}
+If $\{a_n\}$ and $\{b_n\}$ are sequences of complex numbers then
+\[
+\Big|\sum_{n=1}^Na_n\bar{b}_n\Big|^2 \le \Big|\sum_{n=1}^Na_n\Big|^2 
+\Big|\sum_{n=1}^Nb_n\Big|^2
+\]
+\end{prop}
+\begin{proof}
+Consider two $N$-dimensional complex vectors $a = (a_1, \ldots, a_N)$ and 
+$b = (b_1, \ldots, b_N)$. Let $c = a - \lambda b$ for a complex number 
+$\lambda$. The norm of a complex vector is defined as $\lVert a \rVert^2 = 
+\sum_{k=1}^n |a_k|^2$. Clearly, $\lVert a \rVert^2 \ge 0$. Consider $\lVert c
+\rVert^2 = \lVert a - \lambda b\rVert^2 = (a - \lambda b, \bar{a} - 
+\bar{\lambda}\bar{b}) = \lVert a \rVert^2 - \bar{\lambda}(a, b) - \lambda(b, a)
++ \lVert b \rVert^2$, where the inner product $(a, b)$ is
+\[
+\sum_{k=1}^N a_k \bar{b}_k.
+\]
+Clearly, $(b, a) = \overline{(a, b)}$. Choose $\lambda = (a, b)/r$ so that
+\[
+\lVert a \rVert^2 + \lVert b \rVert^2 \ge \frac{2|(a, b)|^2}{r}
+\]
+Now choose 
+\[
+r = \frac{2\lVert a \rVert^2 \lVert b \rVert^2}{\lVert a \rVert^2 + \lVert b \rVert^2}
+\]
+so that
+\[
+\lVert a \rVert^2 \lVert b \rVert^2 \ge |(a, b)|^2.
+\]
+Expressing the norms and inner products in terms of components, we get
+\[
+\Big|\sum_{k=1}^N |a_k|^2\Big|\Big|\sum_{k=1}^N |b_k|^2\Big| \ge 
+\Big|\sum_{k=1}^N a_k\bar{b}_k\Big|^2
+\]
+\begin{eqnarray*}
+\end{eqnarray*}
+\end{proof}
+
+\begin{prop}[The ML inequality]\label{s1p4}
+If $|f(z)| \le M$ for all $z$ on a contour of length $L$ then 
+\[
+\int_C f(z)dz \le ML.
+\]
+\end{prop}
+\begin{proof}
+Using the definition of the  Riemann integral
+\[
+\int_C f(z)dz = \lim_{N \rightarrow \infty}\sum_{k=1}^Nf(z_k)\delta z_k,
+\]
+where we split the contour $C$ into segments joining the points $\{z_k\}$ with
+$k = 1, \ldots, N$. We denote the length of the segment joining $z_k$ and 
+$z_{k+1}$ by $\delta z_k$. Thus,
+\[
+\Big|\int_C f(z)dz\Big| = 
+\lim_{N \rightarrow \infty}\Big|\sum_{k=1}^N f(z_k)\delta z_k\Big|,
+\]
+where we used the continuity of the modulus function to interchange the limit
+and the modulus operations. Using the triangle inequality of \ref{s1p1}, we get
+\[
+\Big|\int_C f(z)dz\Big| \le 
+\lim_{N \rightarrow \infty}\sum_{k=1}^N|f(z_k)|\delta z_k
+\le \lim_{N \rightarrow \infty}M \sum_{k=1}^N |\delta z_k| = ML,
+\]
+where we used the fact that
+\[
+\lim_{N \rightarrow \infty}\sum_{k=1}^N |\delta z_k| = L.
+\]
+\end{proof}
+
+\section{Limits, continuity and derivatives}\label{s2}
+\begin{defn}\label{s2d1}
+Let $f: \mathbb{C} \mapsto \mathbb{C}$ be defined at least in the deleted
+$\delta$-neighbourhood of $z_0 \in \mathbb{C}$. Then 
+\[
+\lim_{z \rightarrow z_0} = w_0
+\]
+if for a given $\epsilon > 0, \exists\;\delta > 0$ such that for all $|z - z_0| 
+< \delta$, $|f(z) - w_0| < \epsilon$.
+\end{defn}
+\begin{rem}
+The definition does not require $f$ to be defined at $z_0$. Furthermore, $|z -
+z_0| < \delta$ allows $z$ to approach $z_0$ from any point on the circle 
+defined by $|z - z_0| = \delta$.
+\end{rem}
+
+\begin{defn}\label{s2d2}
+A function $f:A \mapsto \mathbb{C}$ is continuous at a point $z_0 \in A 
+\subset \mathbb{C}$ if
+\[
+\lim_{z \rightarrow z_0} = f(z_0).
+\]
+Equivalently, for a given $\epsilon > 0, \exists\;\delta > 0$ such that 
+$|z - z_0| < \delta \Rightarrow |f(z) - f(z_0)| < \epsilon$.
+\end{defn}
+
+A useful application of this definition is the fact
+\begin{prop}\label{s2p1}
+The modulus function is continuous.
+\end{prop}
+\begin{proof}
+Fix an $\epsilon > 0$. Then $||z| - |z_0|| \le \epsilon$ if $|z - z_0| <
+\epsilon$, where we used the reverse triangle inequality \ref{s1p2}.
+\end{proof}
+
+\begin{defn}\label{s2d3}
+The derivative of a function $f: A \mapsto \mathbb{C}$ at $z_0 \in A \subset
+\mathbb{C}$ is the limit,
+\[
+Df = \lim_{|h| \rightarrow 0}\frac{f(z_0 + h) - f(z_0)}{h}.
+\]
+The function $f$ is said to be differentiable at $z_0$. $f$ is differentiable
+in $A$ if it is differentiable at all points in $A$.
+\end{defn}
+\begin{rem}
+The point $z_0 + h$ could be any point on the circle centred at $z_0$ and with
+radius $|h|$.
+\end{rem}
+
+\begin{prop}\label{s2p2}
+If $f$ is differentiable at $z$ then it is continous at $z$.
+\end{prop}
+\begin{proof}
+Denote by $L$ the derivative of $f$ at $z$. Then for a given $1 > \epsilon_1 > 0$,
+there exists $\delta_1 > 0$ such that 
+\[
+|h| < \delta_1 \Rightarrow \Bigg|L - \frac{f(z+h) - f(z)}{h}\Bigg| < \epsilon_1.
+\]
+That is, $|Lh - f(z+h) + f(z)| < \epsilon_1 |h|$. Using the reverse triangle
+inequality, we get
+\[
+||Lh| - |f(z+h) - f(z)|| < \epsilon_1 |h| \Rightarrow -\epsilon_1 |h| < 
+|f(z+h)-f(z)| - |Lh| < \epsilon_1 |h| 
+\]
+or,
+\[
+(|L| - \epsilon_1)|h| < |f(z+h) - f(z)| < (|L| + \epsilon_1)|h| < (|L| + 1)|h|.
+\]
+Thus, we have $|h| < \delta_1 \Rightarrow |f(z+h) - f(z)| < (|L| + 1)|h| <
+(|L| + 1)\delta_1$. For a given $\epsilon > 0$, choose 
+\[
+\delta = \min\left(\delta_1, \frac{\epsilon}{(|L|+1)}\right)
+\]
+so that $|h| < \delta \Rightarrow |f(z+h) - f(h)| < \epsilon$.
+given $\epsilon$, choose
+\end{proof}
+
+\begin{prop}\label{s2p3}
+If $f(z) = u(x, y) + iv(x, y)$ is differentiable at a point $z$ then $u_x = v_y$
+and $u_y = -v_x$, where the subscripts denote the partial derivatives.
+\end{prop}
+\begin{proof}
+If we take the limit in the definition of the derivative along the real axis 
+then $Df = u_x + iv_x$. If we take is along the imaginary axis then $Df = -iu_y
++ v_y$. Since the limit taken from all directions is identical if it exists,
+we have $u_x = v_y$ and $u_y = -v_x$.
+\end{proof}
+
+\begin{rem}
+The relations $u_x = v_y$ and $u_y = -v_x$ on the real and imaginary parts of
+a differentiable function are called the \emph{Cauchy-Riemann} conditions.
+\end{rem}
+
+An immediate conseqence of the Cauchy-Riemann conditions is 
+\begin{prop}\label{s2p4}
+$u$ and $v$ are harmonic, that is, they satisfy Laplace's equation $\Delta u=0$
+and $\Delta v = 0$.
+\end{prop}
+
+We will next prove the converse of proposition \ref{s2p3}, that is,
+\begin{prop}\label{s2p5}
+If $f(z) = u(x, y) + iv(x, y)$ and if $u_x = v_y$ and $u_y = -v_x$ at a point
+$z = x + iy$ then $f$ is differentiable at $z$.
+\end{prop}
+\end{document}
