@@ -366,4 +366,45 @@ once again due to Cauchy-Riemann condition. Thus,
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
 kind of a singularity.
+
+\section{Interesting theorems and problems}\label{s1a}
+\section{Theorems}
+\begin{thm}\label{s1at1}
+Let $f$ be a meromorphic function with $N$ simple zeros and $M$ simple poles
+inside a circle $C$. Then
+\[
+\frac{1}{2\pi i}\oint_C \frac{Df}{f}dz = N - M.
+\]
+\end{thm}
+\begin{proof}
+If $a$ is a simple zero of $f$ then $f = (z - a)g(z)$ where $g(a) \ne 0$. Its
+derivative is $Df = g(z) + (z - a)Dg$ so that
+\[
+\frac{Df}{f} = \frac{g}{f} + \frac{Dg}{g} = \frac{1}{z - a) + \frac{Dg}{g}.
+\]
+If $C_a$ is a small enough contour centred at $z = a$ which encloses no other
+pole or zero of $f$,
+\[
+\oint_{C_a}\frac{Df}{f}dz = 2\pi i.
+\]
+If $p$ is a simple pole of $f$ then $f = h(z)/(z - p)$ and 
+\[
+Df = \frac{Dh}{z - p} - \frac{h}{(z - p)^2}
+\]
+so that
+\[
+\frac{Df}{f} = \frac{Dh}{h} - \frac{1}{z - p}
+\]
+and hence
+\[
+\oint_{C_p}\frac{Df}{f}dz = -2\pi i,
+\]
+where $C_p$ is a small enough contour centred at $z = p$ that encloses no other
+pole or zero of $f$.
+
+If we now distort $C$ with a key hole for each zero and pole so that it encloses
+only one at a time, each zero contributes $+2\pi i$ and each pole contributes
+$-2\pi i$.
+
+\end{proof}
 \end{document}
