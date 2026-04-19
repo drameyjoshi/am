@@ -339,7 +339,7 @@ and Green's theorem becomes
 We will apply this to the contour integral of a complex-valued function and
 prove an important theorem.
 \begin{thm}[Cauchy]\label{c4t1}
-If $f$ is analytic on and inside a simple closed curve $C$ then
+If $f$ is holomorphic on and inside a simple closed curve $C$ then
 \[
 \oint_C f(z)dz = 0.
 \]
@@ -362,10 +362,153 @@ once again due to Cauchy-Riemann condition. Thus,
 \oint_C f(z)dz = 0.
 \]
 \end{proof}
+
+\begin{thm}[Cauchy integral formula]\label{s4t2}
+Let $f$ be holomorphic on and inside a simple, closed contour $C$. Then for any
+interior point $z_0$,
+\[
+f(z_0) = \frac{1}{2\pi i}\oint_C \frac{f(z)}{z - z_0}dz.
+\]
+\end{thm}
+\begin{proof}
+Modify the contour $C$ to create a key-hole $C_r$ of small radius $r$ around the 
+point $z_0$. In the interior of the modified contour, the integrand is 
+holomorphic and therefore the contour integral is zero. The integral over the
+modified contour can be written as a sum of the integral along $C$ traversed
+anti clockwise and that round $C_r$ traversed clock-wise. Thus, if $C^\op$ is
+the modified contour,
+\[
+\oint_{C^\op} = \oint_C - \oint_{C_r}
+\]
+As the lhs is zero, we have
+\[
+\oint_C \frac{f(z)}{z - z_0}dz = \oint_{C_r}\frac{f(z)}{z - z_0}dz.
+\]
+Along $C_r$, $z = z_0 + r\exp(i\theta)$ so that $dz = ir\exp(i\theta)$ and
+the integral is from $0$ to $2\pi$. Thus,
+\[
+\oint_C \frac{f(z)}{z - z_0}dz = i\int_0^{2\pi}f(z_0 + re^{i\theta})d\theta.
+\]
+If we now let $r \rightarrow 0$, the rhs evaluates to $2\pi if(z_0)$.
+\end{proof}
+
+\begin{thm}\label{s4t3}
+If $f$ is holomorphic on and inside a simple closed contour $C$ it has 
+derivatives of all orders inside $C$. Furthermore,
+\[
+(D^k f)(z) = \frac{k!}{2\pi i}\oint_C\frac{f(\zeta)}{(\zeta - z)^{k+1}}d\zeta.
+\]
+\end{thm}
+\begin{proof}
+From theorem \ref{s4t2},
+\[
+f(z) = \frac{1}{2\pi i}\oint_C \frac{f(\zeta)}{\zeta - z}d\zeta.
+\]
+so that
+\[
+f(z + h) = \frac{1}{2\pi i}\oint_C \frac{f(\zeta)}{\zeta - z - h}d\zeta.
+\]
+and
+\[
+\frac{f(z + h) - f(z)}{h} = \frac{1}{2\pi i}\oint_C \frac{f(\zeta)}{(\zeta - z)
+(\zeta - z - h)} d\zeta.
+\]
+Upon taking the limit $h \rightarrow 0$, we get
+\[
+(Df)(z) = \frac{1}{2\pi i}\oint_C \frac{f(\zeta)}{(\zeta - z)^2}d\zeta.
+\]
+If we assume that
+\[
+(D^k f)(z) = \frac{k!}{2\pi i}\oint_C \frac{f(\zeta)}{(\zeta - z)^{k+1}}d\zeta
+\]
+then we the expression for $(Df)(z)$ serves as the base case and by substituting
+\[
+g_k = \frac{f(\zeta)}{(\zeta - z)^k}
+\]
+we can show that
+\[
+(Dg_k)(z) = \frac{1}{2\pi i}\oint_C \frac{g_k(\zeta)}{(\zeta - z)^2}d\zeta
+\]
+which proves the induction hypothesis. 
+\end{proof}
+
+Being holomorphic is a very stringent condition on a function. It ensures that
+existence of the first derivative guarantees the existence of all higher order
+derivatives.
+
+Theorem \ref{s4t3} gives us an expression for the $k$th derivative of a 
+holomorphic function as an integral. This allows us to get an estiamte of its
+magnitude.
+\begin{prop}\label{s4p2}
+If $f$ is holomorphic on and inside a simple, closed contour $C$ then
+\[
+|(D^n f)(z)| \le \frac{n! M}{R^n}
+\]
+where $M$ is an upper bound of $|f|$ and $R$ is an upper bound of $|\zeta - z|$.
+\end{prop}
+\begin{proof}
+From the expression of the $n$-th derivative,
+\[
+|(D^n f)(z)| \le 
+\frac{n!}{2\pi}M\Big|\oint_C\frac{d\zeta}{(\zeta - z)^{n+1}}\Big|
+\]
+If $R > |\zeta - z|$ then
+\[
+|(D^n f)(z)| \le \frac{Mn!}{2\pi R^{n+1}}\Big|\oint_C d\zeta\Big|
+\]
+Since $R$ is an upper bound to $|\zeta - z|$, $C$ is enclosed by a circle of
+radius $R$ centred at $z$. Therefore, the length of the contour are at most
+$2\pi R$. Therefore,
+\[
+|(D^n f)(z)| \le \frac{Mn!}{R^n}
+\]
+\end{proof}
+
+This proposition has a severe consequence.
+\begin{thm}[Liouville]\label{s4t4}
+If $f$ is entire and bounded then it is a constant.
+\end{thm}
+\begin{proof}
+If $f$ is entire then the magnitude of its first derivative is bounded by
+\[
+|Df(z)| \le \frac{M}{R}
+\]
+where $R$ can be allowed to take as large a value as we wish so that $Df = 0$
+and hence $f$ is a constant.
+\end{proof}
+
+We can use Liouville's theorem to prove
+\begin{thm}[Fundamental theorem of algebra]\label{s4t5}
+A polynomial in $z$ of a finite degree $n > 0$ and constant coefficients has 
+$n$ roots.
+\end{thm}
+\begin{proof}
+Let $P$ be a polynomial in $z$ with constant coefficients. Let, if possible, $f$
+have no zeros. Therefore the function $f = 1/P$ is entire. Furthermore, as $|z|
+\rightarrow \infty$, $|P| \rightarrow \infty$ if $n > 0$. Therefore 
+\[
+\lim_{|z| \rightarrow \infty} f(z) = 0.
+\]
+Therefore, by Liouville's theorem $f$ must be a constant equal to zero although
+$P$ has no zeros. This is a contradiction. Therefore, $P$ must have at least
+one zero, say $z_1$. Now write $P = (z - z_1)P_1$, where $P_1$ is a polynomial 
+of degree $n - 1$. Conside $f_1 = 1/P_1$. If $P_1$ has no zeros, we once again
+arrive at the contradiction that $f_1 = 0$. Therefore, $P_1$ too has at least
+one root, say $z_2$. If we continue this way, in the $k$th step, we are left
+with a polynomial of degree $n - k$. Since $n$ is finite, this procedure 
+terminates in $n$ steps giving $n$ roots.
+\end{proof}
+
+It is important to note that the degree of a polynomial is finite. This allows
+us to conclude that $|P| \rightarrow \infty$ as $|z| \rightarrow \infty$. If
+we decide to treat the power series of $e^z$ as a polynomial, we cannot say
+that because we know that $|e^z| \rightarrow 0$ as $\re(z) \rightarrow -\infty$.
+
 \section{Singularities}\label{s5}
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
 kind of a singularity.
+
 
 \section{Sequences and series}\label{s6}
 
@@ -407,6 +550,76 @@ pole or zero of $f$.
 If we now distort $C$ with a key hole for each zero and pole so that it encloses
 only one at a time, each zero contributes $+2\pi i$ and each pole contributes
 $-2\pi i$.
+\end{proof}
 
+\begin{thm}[Riemann theorem of removable singularity]\label{s1at2}
+Let $f$ be a bounded, holomorphic function on a punctured disc $0 < |z - z_0|
+< \delta$ the $z_0$ is a removable singularity.
+\end{thm}
+\begin{proof}
+Since $f$ is bounded and holomorphic on a puctured disc centered at $z_0$, it
+has a Laurent series expansion of the form
+\[
+f(z) = \sum_{n = -\infty}^\infty a_n(z - z_0)^n.
+\]
+The coefficients $a_n$ are obtained using the formula
+\[
+a_n = \frac{1}{2\pi i}\oint_C \frac{f(z)}{(z - z_0)^{n + 1}}dz,
+\]
+where $C$ is a simple, closed curve inside the punctured disc. For a fixed
+$k > 0$,
+\[
+a_{-k} = \frac{1}{2\pi i}\oint_C f(z)(z - z_0)^{k - 1}dz
+\]
+so that if $C$ is a circle of radius $0 < r < \delta$,
+\[
+|a_{-k}| \le \frac{1}{2\pi}Mr^{k - 1}2\pi r = Mr^k,
+\]
+where $M$ is an upper bound of $f$ on the punctured disc. Now, $a_{-k}$ is
+a constant and therefore should be independent of the contour's radius. The
+only way that can happen is $a_{-k} = 0$ for all $k > 0$ so that the Laurent
+series becomes a Taylor series, making $z = z_0$ a removable singularity.
+\end{proof}
+
+\begin{thm}[Casorati-Weierstrass]\label{s1at3}
+Let $z_0$ be an essential singularity of a function $f$. Define the punctured
+disc centred at $z_0$ as $D^\op = \{z \in \mathbb{C}\;:\; 0 < |z - z_0| < 
+\delta\}$. For any $\delta > 0$, howsoever small, the image of $D^\op$ is dense
+in $\mathbb{Z}$.
+\end{thm}
+\begin{proof}
+Let, if possible, the image of $D^\op$ not be dense in $\mathbb{C}$. Therefore,
+there is at least one point $w_0 \in \mathbb{Z}$ and an $\epsilon > 0$ such that
+no point of $D^\op$ is mapped into $|w - w_0| < \epsilon$ under $f$. Define a
+function $g: D^\op \rightarrow \mathbb{C}$ as 
+\[
+g(z) = \frac{1}{f(z) - w_0}.
+\]
+Since $z \in D^\op$, the function is defined for all points in $D^\op$. Since
+$|f(z) - w_0| > \epsilon$ for all $z \in D^\op$, 
+\[
+|g(z)| = \frac{1}{|f(z) - w_0|} < \frac{1}{\epsilon}.
+\]
+Thus $g$ is bounded and entire in $D^\op$. By Riemann's theorem of removable
+singularities, the point $z_0$ is a removable singularity of $g$. Therefore,
+$g$ has a power series of the form
+\[
+g(z) = \sum_{k \ge 0}a_k(z - z_0)^k
+\]
+Since
+\[
+f(z) = w_0 + \frac{1}{g(z)}
+\]
+we have three possibilities:
+\begin{enumerate}
+\item If $g(z_0) \ne 0$, $z_0$ is a removable singularity of $f$.
+\item If $g(z_0) = 0$ but not all its derivatives at $z = z_0$ are not zero.
+If $k$ is the derivative of lowest order which does not vanish at $z = z_0$
+then $z_0$ is a pole of order $k$ of the function $f$.
+\item $g = 0$ identically for all $z \in D^\op$. This is impossible since 
+$g = 1/(f - w_0)$.
+\end{enumerate}
+Since $z_0$ was an essential singularity the first two possibilities are 
+contradictory. Therefore, our assumption that image of $f$ is not dense is false.
 \end{proof}
 \end{document}
