@@ -8,6 +8,10 @@
 \newtheorem{prop}{Proposition}
 \numberwithin{prop}{section}
 
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma}
+\numberwithin{prop}{section}
+
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
 \numberwithin{defn}{section}
@@ -24,7 +28,7 @@
 \DeclareMathOperator{\im}{Im}
 \DeclareMathOperator{\curl}{curl}
 \begin{document}
-\title{Sequences and Series}
+\title{Complex Analysis}
 \author{Amey Joshi}
 \maketitle
 \section{Important inequalities}\label{s1}
@@ -338,7 +342,7 @@ and Green's theorem becomes
 \]
 We will apply this to the contour integral of a complex-valued function and
 prove an important theorem.
-\begin{thm}[Cauchy]\label{c4t1}
+\begin{thm}[Cauchy]\label{s4t1}
 If $f$ is holomorphic on and inside a simple closed curve $C$ then
 \[
 \oint_C f(z)dz = 0.
@@ -504,6 +508,50 @@ us to conclude that $|P| \rightarrow \infty$ as $|z| \rightarrow \infty$. If
 we decide to treat the power series of $e^z$ as a polynomial, we cannot say
 that because we know that $|e^z| \rightarrow 0$ as $\re(z) \rightarrow -\infty$.
 
+\begin{thm}\label{s4t6}
+Let $f$ be continuous in a simply connected domain $D$ and $\oint_C f(z)dz = 0$
+for every simple, closed contour in $D$. Then there exists a function $F$ such
+that $Df = f$.
+\end{thm}
+\begin{proof}
+Consider three points $z_0, z, z+h$ in $D$. Join them by arbitrary curves lying
+entirely in $D$ so that the curve $z_0 \rightarrow z \rightarrow z + h 
+\rightarrow z_0$ is a simple closed curve in $D$. Therefore,
+\[
+\int_{z_0}^z f(z)dz + \int_z^{z + h}f(z)dz + \int_{z+h}^{z_0}f(z)dz = 0.
+\]
+Therefore,
+\[
+\left(\int_{z_0}^{z + h} - \int_{z_0}^z\right)f(z)dz = \int_z^{z + h}f(z)dz.
+\]
+Define
+\[
+F(z) = \int_{z_0}^z f(z)dz
+\]
+so that we have 
+\[
+\frac{F(z + h) - F(z)}{h} = \frac{1}{h}\int_z^{z+h}f(z)dz.
+\]
+Taking the limit of the above equation as $h \rightarrow 0$, we get $DF = f$.
+\end{proof}
+
+\begin{thm}[Morera]\label{s4t7}
+If $f$ is continuous in a domain $D$ and if $\oint_C f(z)dz = 0$ for every
+simple, closed curve in $D$ then $f$ is analytic in $D$.
+\end{thm}
+\begin{proof}
+By theorem \ref{s4t6}, there exists a function $F$ such that $DF = f$. That is,
+$F$ is an analytic function. By theorem \ref{s4t3}, $DF = f$ is analytic.
+\end{proof}
+
+Cauchy theorem \ref{s4t1} and Morera theorem \ref{s4t7} are converse of each
+other. Therefore, we have
+\begin{thm}\label{s4t8}
+The necessary and sufficient condition for a function $f$ continuous in a domain
+$D$ to be analytic in $D$ is that for any simple, closed contour $C$ in $D$,
+$\oint_c f(z)dz = 0$.
+\end{thm}
+
 \section{Singularities}\label{s5}
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
@@ -621,5 +669,23 @@ $g = 1/(f - w_0)$.
 \end{enumerate}
 Since $z_0$ was an essential singularity the first two possibilities are 
 contradictory. Therefore, our assumption that image of $f$ is not dense is false.
+\end{proof}
+
+The next lemma is used in evaluating contour integrals.
+\begin{lem}\label{s1al1}
+For all $x \in [0, \pi/2]$, $\sin x \ge 2x/\pi$.
+\end{lem}
+\begin{proof}
+Consider the function $f(x) = \sin x/x$. We have $f(0) = 1$ and $f(\pi/2) = 
+2/\pi < 1$. Furthermore,
+\[
+Df = \frac{\cos x}{x} - \frac{\sin x}{x^2} = \frac{x\cos x - \sin x}{x^2}
+\]
+For all $x \in \pi/2$, $\tan x \ge x$, that is $x\cos x - \sin x \le 0$ so that
+$Df < 0$.
+
+Thus, we have $f(0) > f(\pi/2)$ and $Df < 0$ for all $x \in [0, \pi/2]$ so that
+$f$ is a decreasing function of $x$. That is $f(x) \ge f(\pi/2)$ for all $x \in
+[0, \pi/2]$ or that $\sin x/x \ge 2/\pi$.
 \end{proof}
 \end{document}
