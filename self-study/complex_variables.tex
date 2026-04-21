@@ -27,6 +27,7 @@
 \DeclareMathOperator{\re}{Re}
 \DeclareMathOperator{\im}{Im}
 \DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\res}{Res}
 \begin{document}
 \title{Complex Analysis}
 \author{Amey Joshi}
@@ -552,6 +553,87 @@ $D$ to be analytic in $D$ is that for any simple, closed contour $C$ in $D$,
 $\oint_c f(z)dz = 0$.
 \end{thm}
 
+We will now prove a few theorems that are useful in evaluating integrals.
+\begin{thm}\label{c4t9}
+Let $f(z) = N(z)/D(z)$ where $N$ and $D$ are polynomials in $z$ such that
+degree of $D$ exceeds that of $N$ by at least $2$. If $C_r$ is circle of 
+radius $r$ centred at the origin,
+\[
+\oint_{C_r} f(z)dz = 0.
+\]
+\end{thm}
+\begin{proof}
+Let $N(z) = a_0 + a_1z + \cdots + a_nz^n$ and $D(z) = b_0+b_1z+\cdots+b_mz^m$,
+where $m \ge n + 2$. As $|z| \rightarrow \infty$. Now,
+\[
+\Big|\oint_{C_r} f(z)dz\Big| \le |f(re^{i\theta})|2\pi r.
+\]
+Since,
+\[
+\Big|f(re^{i\theta})\Big| = \frac{a_0/r^m + a_1/r^{m-1} + \cdots + a_n/r^{m-n}}
+{b_0/r^m + b_1/r^{m-1} + \cdots + b_m}
+\]
+we have
+\[
+|f(re^{i\theta})|2\pi r \le \frac{a_0/r^{m+1}+a_1/r^m1+\cdots+a_n/r^{m-n+1}}
+{b_0/r^m + b_1/r^{m-1} + \cdots + b_m}.
+\]
+Since $m \ge n + 2$, $m - n + 1 \ge 1$ so that as $r \rightarrow \infty$,
+$|f(re^{i\theta})|2\pi r \rightarrow 0$.
+\end{proof}
+
+Computations of residues can be made significantly easier by the next theorem.
+\begin{thm}\label{s4t10}
+If $f(z) = N(z)/D(z)$ where $N$ and $D$ are polynomials in $z$ such that the
+degree of $D$ is at least two more than that of $N$ then the residue of $f$ at
+a simple pole $z_p$ is $N(z_p)/D^\op(z_p)$.
+\end{thm}
+\begin{proof}
+\[
+\res(f; z_p) = \lim_{z \rightarrow z_p}(z - z_p)\frac{N(z)}{D(z)}.
+\]
+In the neighbourhood of $z_p$, $D(z) = D(z_p) + (z - z_p)D^\op(z_p) + 
+O((z - z_p)^2)$. $z_p$ is a pole of $f$ because it is a zero of $D$. Therefore,
+$D(z) = (z - z_p)D^\op(z_p)$ and hence,
+\[
+\res(f; z_p) = \lim_{z \rightarrow z_p} \frac{N(z)}{D^\op(z_p) + O((z - z_p))}
+= \frac{N(z_p)}{D^\op(z_p)}.
+\]
+\end{proof}
+
+\begin{lem}[Jordan's lemma]\label{s4l1}
+If on the upper semi-circular arc of radius $R$ and centred at the origin the
+function $f \rightarrow 0$ uniformly as $R \rightarrow \infty$ then
+\[
+\lim_{R \rightarrow 0}\int_{C_R}e^{ikz}f(z)dz = 0, \text{ if } k > 0.
+\]
+\end{lem}
+\begin{proof}
+
+$f \rightarrow 0$ uniformly as $R \rightarrow \infty$ implies that for a 
+given $\epsilon > 0$, there exists $R_0 > 0$ such that for all $|z| > R_0$,
+$|f(z)| < \epsilon$ at all points $z$ on the semi-circular arc of radius $R >
+R_0$. That is $|f(z)| < K_R$ where $K_R$ is independent of $\theta$ and 
+$K_R \rightarrow 0$ as $R \rightarrow \infty$. Now,
+\begin{eqnarray*}
+\Big|\int_{C_R}e^{ikz}f(z)dz\Big| &\le& \int_{C_R}e^{-ky}|f(z)|dz| \\
+ &\le& \int_0^\pi e^{-kR\sin\theta}K_R d\theta \\
+ &\le& 2K_R\int_0^{\pi/2}e^{-kR\sin\theta} d\theta.
+\end{eqnarray*}
+Using lemma \ref{s1al1}, in the range of the integral,
+\[
+\sin\theta \ge \frac{2\theta}{\pi} \Rightarrow e^{-kR\sin\theta} \le
+e^{-2kR\theta/\pi}
+\]
+so that
+\[
+\Big|\int_{C_R}e^{ikz}f(z)dz\Big| \le 2K_R\int_0^{\pi/2}e^{-2kR\theta/\pi}d
+\theta = \frac{K_R\pi}{k}\left(1 - e^{-kR}\right).
+\]
+Since $K_R \rightarrow 0$ as $R \rightarrow \infty$ and $k > 0$, the integral 
+vanishes.
+\end{proof}
+
 \section{Singularities}\label{s5}
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
@@ -687,5 +769,11 @@ $Df < 0$.
 Thus, we have $f(0) > f(\pi/2)$ and $Df < 0$ for all $x \in [0, \pi/2]$ so that
 $f$ is a decreasing function of $x$. That is $f(x) \ge f(\pi/2)$ for all $x \in
 [0, \pi/2]$ or that $\sin x/x \ge 2/\pi$.
+\end{proof}
+\begin{proof}
+There is another way to prove the lemma. The function $f(x) = \sin x$ is concave
+for $x \in [0, \pi]$ so that a chord joining any two of its points is always
+below the curve. The chord joining the points $(0, 0)$ and $(\pi/2 ,1)$ has
+the equation $y_c = 2x/\pi$. Concavity of $f$ imples $f(x) \ge y_c$.
 \end{proof}
 \end{document}
