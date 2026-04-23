@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\newcommand{\op}{\prime}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\res}{Res}
+\begin{document}
+\title{Some Contour Integrals}
+\author{Amey Joshi}
+\maketitle
+\begin{enumerate}
+\item Let
+\begin{equation}\label{e1}
+I = \int_0^\infty \frac{dx}{(1 + x^n)} \text{ where } n \in \mathbb{N}, n \ge 2.
+\end{equation}
+The zeroes of $z^n + 1 = 0$ are at $z = \exp(i\pi/n + 2\pi m i/n)$ for $m = 0,
+1, \ldots, n - 1$. They are separated by an angle of $2\pi/n$. Consider a wedge
+contour formed by considering the sector of a circle of angle $2\pi/n$ and 
+radius $R$ whose one arm along the real axis. It encloses only one pole $z = 
+\exp(i\pi/n)$. The integral along the contours arc vanishes as $R \rightarrow
+\infty$. If $S_R$ denotes the wedge contour then,
+\begin{eqnarray*}
+\oint_{S_R}\frac{dz}{1 + z^n} &=& \int_0^R\frac{dx}{1 + x^n} + 
+\int_R^0\frac{e^{2\pi i/n}dr}{1 + r^n} \\
+&=& (1 - e^{2\pi i/n})\int_0^R\frac{dx}{1 + x^n}
+\end{eqnarray*}
+If $f(z) = 1/(1 + z^n)$ then the left hand side can be evaluated by residue
+theorem to be
+\[
+2\pi i\res(f; e^{\pi i/n}) = 2\pi i\frac{1}{nz^{n-1}}\Big|_{e^{\pi i/n}}
+= \frac{2\pi i}{ne^{(n-1)\pi i/n}} = \frac{-2\pi i}{n}e^{i\pi/n}.
+\]
+Therefore,
+\[
+I = -\frac{2\pi i}{n}\frac{e^{i\pi/n}}{1 - e^{2\pi i/n}} = 
+-\frac{\pi}{n}\frac{2\pi}{e^{-i\pi/n} - e^{\pi i/n}}
+\]
+or that
+\begin{equation}\label{e2}
+\int_0^\infty \frac{dx}{1 + x^n} = \frac{(\pi/n)}{\sin(\pi/n)}.
+\end{equation}
+\end{enumerate}
+\end{document}
