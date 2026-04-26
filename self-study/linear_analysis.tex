@@ -173,7 +173,123 @@ such that
 \end{enumerate}
 \end{defn}
 
-\begin{defn}[Equivalence of norms]\label{s2d2}
+Consider the space $C^0[0, 1]$ of continuous functions on $[0, 1]$ and define 
+the function $\lVert\cdot\rVert_1$ as
+\begin{equation}\label{s2e1}
+\lVert f \rVert_1 = \int_0^1 |f(x)|dx.
+\end{equation}
+\begin{prop}\label{s2p1}
+The function defined by \eqref{s2e1} is a norm.
+\end{prop}
+\begin{proof}
+Let $f \in C^0[0, 1]$. Since $f$ is continuous in a bounded interval, it is
+bounded. That is, $\exists\;m, M \in \mathbb{R}$ such that $m \le f(x) \le M$
+for all $x \in [0, 1]$. Choose $M^\ast = \max(M, -m)$ then $|f(x)| \le M^\ast$
+for all $x \in [0, 1]$. Therefore, $\lVert f \rVert|_1 \le M\int_0^1dx = M^\ast
+\ge 0$. If $f = 0$ then $\lVert f \rVert_1 = 0$. If $\lVert f \rVert_1 = 0$
+then $\int_0^1|f|dx = 0$. Since $f$ is continuous, this implies that $|f| = 0$.
+
+Consider the second property,
+\[
+\lVert\alpha f\rVert_1 = \int_0^1|\alpha f(x)|dx = |\alpha|\int_0^1|f(x)|dx
+= |\alpha|\lVert f \rVert_1.
+\]
+
+Finally,
+\begin{eqnarray*}
+\lVert f + g\rVert_1 &=& \int_0^1|f(x) + g(x)|dx \\
+    &\le& \int_0^1|f(x)|dx + \int_0^1|g(x)|dx \\
+    &\le& \lVert f \rVert_1 + \lVert g \rVert_1
+\end{eqnarray*}    
+\end{proof}
+\begin{rem}
+The norm defined by \eqref{s2e1} is called the $L^1$ norm.
+\end{rem}
+
+\begin{defn}[A metric]\label{s2d2}
+A metric on a vector space $V$ is a mapping $d: V \times V \mapsto \mathbb{R}$
+with the following properties:
+\begin{enumerate}
+\item $d(x, y) \ge 0$. $d(x, y) = 0 \Leftrightarrow x = y$.
+\item $d(x, y) = d(y, x)$,
+\item $d(x, z) \le d(x, y) + d(y, z)$,
+\end{enumerate}
+for all $x, y, z \in V$.
+\end{defn}
+
+Every norm introduces a metric $d(x, y) = \lVert x - y\rVert$. Observe that
+the addition in the definition of a norm is an operation on the members of
+a vector space while that in the definition of a metric is the addition of real
+numbers. Thus, a metric is a broader concept than a norm. If a metric is
+induced by a norm then it has the following properties.
+\begin{prop}\label{s2p2}
+Let $V$ be a vector space with a norm $\lVert\cdot\rVert$ and let $d$ be a 
+metric on $V$. If $d$ is induced by the norm then,
+\begin{enumerate}
+\item $d(x + u, y + u) = d(x, y)$, that is $d$ is translation invariant and
+\item $d(\alpha x, \alpha y) = |\alpha|d(x, y)$, that is, $d$ is homogeneous.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+$d(x + u, y + u) = \lVert x + u - (y + u)\rVert=\lVert x - y \rVert = d(x, y)$.
+Likewise, $d(\alpha x, \alpha y) = \lVert\alpha x - \alpha y\rVert = \lVert
+\alpha(x - y)\rVert = |\alpha|\lVert x - y\rVert = |\alpha|d(x, y)$.
+\end{proof}
+
+Define the discrete metric as
+\[
+d(x, y) = \begin{cases}
+0 \text{ if }x = y \\
+1 \text{ otherwise.}
+\end{cases}
+\]
+If $x \ne y$ and $y \ne z$, $d(x, y) + d(y, z) = 2 \ge d(x, z) = 1$. Thus, $d$
+is indeed a metric. However, it is not induced by a norm because $d(\alpha x,
+\alpha y) = 1 = d(x, y)$ whenever $x \ne y$.
+
+\begin{defn}[Complete space]\label{s2d3}
+A $V$ be a vector space with a norm $\lVert\cdot\rVert$ and $\{x_n\}$ be a
+Cauchy sequence of vectors in it. $V$ is said to be complete if $\{x_n\}$ 
+converges to a point in $V$.
+\end{defn}
+
+\begin{defn}[Banach space]\label{s2d4}
+A complete, normed vector space is called a Banach space.
+\end{defn}
+
+Not all normed-vector spaces are complete. For example,
+\begin{prop}
+The space $C^0[0, 1]$ with the norm defined by \eqref{s2e1} is not complete.
+\end{prop}
+\begin{proof}
+Construct the sequence of functions $f_n$ on $[0, 1]$ as
+\[
+f_n(x) = \begin{cases} 0 \text{ if } x \in [0, 1/2] \\
+n\left(x - \frac{1}{2}\right) \text{ if } x \in [1/2, 1/2 + 1/n] \\
+1 \text{ if } x \in [1/2 + 1/n, 1].
+\end{cases}
+\]
+Clearly, $f_n \in C^0[0, 1]$. Fix an $\epsilon > 0$. Then, for $n > m$,
+\begin{eqnarray*}
+\lVert f_n - f_m\rVert_1 &=& \int_0^1|f_n(x) - f_m(x)|dx \\
+ &=& \int_{1/2}^{1/2+1/n}(n - m)\left(x - \frac{1}{2}\right)dx + \\
+ & &  \int_{1/2 + 1/n}^{1/2 + 1/m} 1 - m\left(x - \frac{1}{2}\right)dx \\
+ &=& \frac{1}{2}\left(\frac{1}{m} - \frac{1}{n}\right).
+\end{eqnarray*}
+If $N = \lceil 1/(2\epsilon)\rceil$ then for $n > m > N$,
+\[
+\lVert f_n - f_m\rVert_1 < \epsilon
+\]
+so that $\{f_n\}$ is a Cauchy sequence under $L^1$ norm. However, as $n
+\rightarrow \infty$, $f_n$ becomes the step function
+\[
+f(x) = \begin{cases} 0 \text{ if } x \in [0, 1/2] \\ 1 \text { if } x \in [1/2,
+1]. \end{cases}
+\]
+Clearly, $f$ being discontinous, does not belong to the vector space $C^0[0,1]$.
+\end{proof}
+
+\begin{defn}[Equivalence of norms]
 Two norms $\lVert\cdot\rVert_a$ and $\lvert\cdot\rVert_b$ on a vector space
 $V$ are said to be equivalent if there are constants $c_1, c_2 > 0$, such that
 for all $v \in V$, $c_1\lVert v \rVert_b \le \lVert v \rVert_a \le c_2\lVert v
@@ -181,8 +297,148 @@ for all $v \in V$, $c_1\lVert v \rVert_b \le \lVert v \rVert_a \le c_2\lVert v
 \end{defn}
 
 Equivalent norms define the same open sets, convergence and continuity. 
+
+Let $V$ be a vector space of dimension $n \in \mathbb{N}$. Let $\{e_1, \ldots,
+e_n\}$ be its standard basis. Then the coordinate-norm of a vector $v = 
+\alpha_1e_1 + \cdots + \alpha_ne_n$ is 
+\[
+\lVert v \rVert_0 = \sum_{i=1}^n|\alpha_i|.
+\]
+We will show that any norm is equivalent to the coordinate norm through a
+series of propositions.
+\begin{prop}\label{s2p4}
+Let $\lVert\cdot\rVert$ be an arbitrary norm on $V$ then there exists a constant
+$c_1 > 0$ such that for all $v \in V$, $\lVert v \rVert \le c_1\lVert v \rVert_0
+$.
+\end{prop}
+\begin{proof}
+If $v = \sum_{i=1}^n \alpha_i e_i$, $\lVert v \rVert \le \sum_{i=1}^n\lVert 
+\alpha_i e_i\rVert = \sum_{i=1}^n|\alpha_i|\lVert e_i \rVert$. Let 
+\[
+c_1 = \max(\{\lVert e_i \rVert\;:\; i = 1, 2, \ldots n\})
+\]
+then $\lVert v \rVert \le c_1\sum_{i=1}^n|\alpha_i| = c_1\lVert v \rVert_0$.
+\end{proof}
+\begin{rem}
+We cannot assume an orthonormal basis at this stage because we do not yet have
+an inner product on this space.
+\end{rem}
+
+Define a unit sphere on $V$ under the coordinate norm. It is
+\[
+S = \{v \in V \;:\; \lVert v \rVert_0 = 1\}.
+\]
+
+\begin{prop}\label{s2p5}
+The unit sphere $S$ in the vector space $V$ under the coordinate norm is 
+bounded and closed.
+\end{prop}
+\begin{proof}
+$S$ is bounded because all its elements have a unit norm. To prove that it is
+closed, we show that its complement $S^c = \{v \in V \;;\; \lVert v \rVert_0
+\ne 1\}$ is open. Fix a point $u \in S^c$ and a sufficiently small $\epsilon >
+0$. Define an open ball of radius $\epsilon$ centred at $u$. It is the set 
+$B_\epsilon(u) = \{w \in V \;;\; d_0(u, w) < \epsilon\}$. For any $w \in 
+B_\epsilon(u)$, $|\lVert w \rVert_0 - \lVert u \rVert_0| \le \lVert u - 
+w\rVert_0 = d_0(u, w) < \epsilon$, by the reverse triangle inequality. 
+Therefore, $-\epsilon < \lVert w \rVert_0 - \lVert u \rVert_0 < \epsilon$ or 
+that $\lVert u \rVert_0 - \epsilon < \lVert w \rVert_0 < \lVert u \rVert_0 + 
+\epsilon$. Since $u \in S^c$, $\lVert u \rVert_0 \ne 1$. Let $|\lVert u 
+\rVert_0 - 1| = \delta$. Choose $\epsilon = \delta/2$. If $\lVert u \rVert_0 =
+1 + \delta$ then we have $\lVert u \rVert_0 - \epsilon = 1 + \delta/2 < \lVert
+w \rVert_0$ so that $w \in S^c$. On the other hand, if $\lVert u \rVert_0 = 1 
+- \delta$ then $\lVert w \rVert_0 < 1 - \delta/2$ so that $w$ is once again
+a member of $S^c$. This makes $S^c$ and $S$ closed.
+\end{proof}
+
+\begin{prop}\label{s2p6}
+If $V$ is finite dimensional then the unit sphere defined under the coordinate
+norm is compact.
+\end{prop}
+\begin{proof}
+Heine-Borel theorem is applicable only to subsets of $\mathbb{R}^n$. Therefore,
+for only finite dimensional vector spaces is the closed and bounded unit sphere
+compact.
+\end{proof}
+\begin{rem}
+There is a lemma attributed to F. Reisz which states that a normed vector 
+space is finite dimensional if and only if the unit ball in it is compact.
+\end{rem}
+
+\begin{prop}\label{s2p7}
+Any norm is a continuous function over $V$.
+\end{prop}
+\begin{proof}
+Fix an $\epsilon > 0$ and let $|\lVert u \rVert - \lVert v \rVert| < \epsilon$.
+Then $\lVert u - v\rVert < \delta = \epsilon \Rightarrow |\lVert u \rVert - 
+\lVert v \rVert| < \epsilon$.
+\end{proof}
+
+\begin{prop}\label{s2p8}
+For an arbitrary norm $\lVert\cdot\rVert$, there exits $c_2 > 0$ such that
+$c_2\lVert u \rVert_0 \le \lVert u \rVert$.
+\end{prop}
+\begin{proof}
+Define $f: S \rightarrow \mathbb{R}$ such that $f(v) = \lVert v \rVert$. From
+propositions \ref{s2p6} and \ref{s2p7}, $f$ is a continuous function on a 
+compact set. Therefore, it attains its extremal values. In particular, it
+attains its minimal value, say $c_2$. That is, there exists $v^\ast \in S$
+such that $f(v^\ast) = c_2$. Since $v^\ast \in S$, $\lVert v^\ast \rVert_0 \ne
+0$ so that $v^\ast \ne 0$. Since $v^\ast \ne 0, f(v^\ast) = \lVert v^\ast
+\rVert \ne 0$ or that $c_2 > 0$.
+
+Let $x$ be an arbitrary vector in $V$. Then $x/\lVert x \rVert_0 \in S$ and
+hence $f(x) \ge c_2$, that is,
+\[
+\left\lVert \frac{x}{\lVert x \rVert_0} \right\rVert \ge c_2 \Rightarrow 
+\lVert x \rVert \ge c_2 \lVert x \rVert_0.
+\]
+\end{proof}
+
+\begin{prop}\label{s2p9}
+If $V$ is finite-dimensional then any norm is equivalent to the coordinate
+norm.
+\end{prop}
+\begin{proof}
+Follows from propositions \ref{s2p4} and \ref{s2p8}.
+\end{proof}
+
 \begin{thm}\label{s2t1}
 If $V$ is finite-dimensional then all norms are equivalent.
 \end{thm}
+\begin{proof}
+Let $\lVert\cdot\rVert_1$ and $\lVert\cdot\rVert_2$ be two norms on a finite
+dimensional vector space $V$. By propostion \ref{s2p9}, there are positive
+constants $c_1, c_2$ such that for any vector $v \in V$,
+\begin{equation}\label{s2e2}
+c_1\lVert v \rVert_0 \le \lVert v \rVert_1 \le c_2 \lVert v \rVert_0.
+\end{equation}
+Similarly, there are positive constants $d_1, d_2$ such that for any $v \in V$,
+\begin{equation}\label{s2e3}
+d_1\lVert v \rVert_0 \le \lVert v \rVert_2 \le d_2 \lVert v \rVert_0.
+\end{equation}
+From \eqref{s2e3}, $c_2d_1\lVert v \rVert_0 \le c_2\lVert v \rVert_2$. From
+equation \eqref{s2e2}, 
+\begin{equation}\label{s2e4}
+d_1\lVert v \rVert_1 \le c_2\lVert v \rVert_2.
+\end{equation}
+Once again, from \eqref{s2e3}, we have 
+\begin{equation}\label{s2e5}
+c_1\lVert v \rVert_2 \le c_1d_2\lVert v \rVert_0 \le d_2\lVert v \rVert_1,
+\end{equation}
+where we used \eqref{s2e2} to get the last
+inequality. From \eqref{s2e4} and \eqref{s2e4} we get
+\[
+\frac{d_1}{c_2}\lVert v \rVert_1 \le \lVert v \rVert_2 \le \frac{d_2}{c_1}
+\lVert v \rVert_1.
+\]
+These manipulations are possible because $c_1, c_2 > 0$.
+\end{proof}
+
+The equivalence of all norms in finite dimensional spaces implies that the
+topology is independent of how we measure distances. The behaviour of open sets
+and convergence of seqeuences is the same for all norms. This is not so in
+infinite dimensional spaces. This is why the analysis of partial differential
+equations is more difficult and delicate.
 \end{document}
 
