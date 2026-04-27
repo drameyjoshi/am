@@ -634,6 +634,22 @@ Since $K_R \rightarrow 0$ as $R \rightarrow \infty$ and $k > 0$, the integral
 vanishes.
 \end{proof}
 
+\begin{defn}\label{c4d1}
+An integral $\int_a^\infty f(x)dx$ is absolutely convergent if $\int_a^\infty
+|f(x)|dx < \infty$. If $\int_a^\infty f(x)dx < a$ but $\int_a^\infty |f(x)|dx$
+does not exist then the integral is conditionally convergent.
+\end{defn}
+
+For example, $\int_0^\infty e^{-x^2}dx$ converges absolutely. The integrand is
+positive in the range of the integral. Therefore, absolute converge is 
+identical to convergence. A similar integral $\int_0^\infty e^{-ix^2}dx$ is
+conditionally convergent. The absolute integral in this case is $\int_0^\infty
+|e^{-ix^2}|dx = \int_0^\infty dx$, which obviously diverges.
+
+From the definition itself it is clear that if an integral converges absolutely
+then it converges. The proof is very similar to the analogous statement about
+a series.
+
 \section{Singularities}\label{s5}
 A complex-valued function can fail to be analytic at a point for several reasons.
 In this section, we will examine a few of them. Each one reslts in a different
