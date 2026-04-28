@@ -19,7 +19,6 @@
 
 \numberwithin{equation}{section}
 
-\newcommand{\op}{\prime}
 \begin{document}
 \title{Linear Analysis}
 \author{Amey Joshi}
@@ -96,8 +95,8 @@ Let $U$ and $W$ be finite subsets of a vector space $V$. If $U$ is a set of
 linearly independent vectors and $W$ spans $V$ then:
 \begin{enumerate}
 \item $|U| \le |W|$ and
-\item There is a set $W^\op \subseteq W$ such that $|W^\op| = |W| - |U|$ such
-that $U \cup W^\op$ spans $V$.
+\item There is a set $W^\prime \subseteq W$ such that $|W^\prime| = |W| - |U|$ 
+such that $U \cup W^\prime$ spans $V$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -105,7 +104,7 @@ Let $U = \{u_1, \ldots, u_m\}$ and $W = \{w_1, \ldots, w_n\}$. We will show
 that $m \le n$ and that after rearranging $w_i$'s if needed, the set $\{u_1,
 \ldots, u_m, w_{m+1}, \ldots w_n\}$ spans $V$. The proof is by induction on $m$.
 
-If $m = 0$, $U$ is empty and $W$ spans $V$. Furthermore, $W^\op = W$. This
+If $m = 0$, $U$ is empty and $W$ spans $V$. Furthermore, $W^\prime = W$. This
 proves the base case. Let the claim be true for $m = k-1$. Then $\{u_1, \ldots,
 u_{k-1}, w_k, \ldots, w_n\}$ spans $V$. Therefore,
 \[
@@ -123,7 +122,7 @@ that is the set $\{u_1, \ldots, u_k, w_{k+1}, \ldots, w_n\}$ spans $V$. Thus,
 by induction, we can show that $\{u_1, \ldots, u_m, w_{m+1}, \ldots, w_n\}$ 
 spans $V$. Furthermore, since the induction step involves building a basis of
 size $n$ by replacing one of $w_i$'s with a $u_k$, $U$ cannot have more elements
-than $W$. That is $m \le n$. Also the set $W^\op = \{w_{m+1}, \ldots, w_n\}$.
+than $W$. That is $m \le n$. Also the set $W^\prime = \{w_{m+1}, \ldots, w_n\}$.
 \end{proof}
 \begin{rem}
 Since the finite set $W$ spans the vector space $V$, this theorem is applicable
@@ -440,5 +439,254 @@ topology is independent of how we measure distances. The behaviour of open sets
 and convergence of seqeuences is the same for all norms. This is not so in
 infinite dimensional spaces. This is why the analysis of partial differential
 equations is more difficult and delicate.
+
+\begin{rem}
+Why does Heine-Borel theorem fail in infinite dimensions? Consider the space
+$\ell_2$ of all sequences. They can be built from a basis 
+\begin{eqnarray*}
+e_1 &=& (1, 0, 0, \ldots) \\
+e_2 &=& (0, 1, 0, \ldots) \\
+e_3 &=& (0, 0, 1, \ldots) \\
+\vdots
+\end{eqnarray*}
+The norm of each sequence is $1$. They all live on a unit sphere in infinite 
+dimensions. However, the distance between any two of them is $\sqrt{2}$. Thus, 
+the sequence $\{e_1, e_2, e_3, \ldots\}$ is bounded but not convergent. There 
+is no open subset of the infinite-dimensional sphere that can accommodate all 
+of them.  Therefore, the sphere is not compact.
+\end{rem}
+
+\section{Hilbert spaces}\label{s3}
+\begin{defn}\label{s3d1}
+The inner product on a vector space is a mapping $\langle\cdot,\cdot\rangle:
+V \times V \mapsto \mathbb{C}$ with the following properties:
+\begin{enumerate}
+\item $\langle u, v\rangle = \overline{\langle v, u\rangle}$,
+\item $\langle \alpha u + \beta v, w\rangle = \alpha\langle u, w\rangle +
+\beta\langle v, w\rangle$,
+\item $\langle v, v\rangle \ge 0$ and $\langle v, v\rangle \Leftrightarrow v=0$,
+\end{enumerate}
+for all $u, v, w \in V$ and $\alpha, \beta \in \mathbb{C}$.
+\end{defn}
+
+\begin{thm}[Parallelogram law]\label{s3t1}
+If $u, v \in V$, an inner product space then
+\[
+\lVert u + v \rVert^2 + \lVert u - v\rVert^2 = 2(\lVert u \rVert^2 + \lVert v
+\rVert^2).
+\]
+\end{thm}
+\begin{proof}
+\begin{eqnarray*}
+\lVert u \pm v \rVert^2 &=& \langle u \pm v, u \pm v\rangle \\
+ &=& \langle u, u \pm v \rangle \pm \langle v, u \pm v\rangle \\
+ &=& \lVert u \rVert^2 \pm \langle u, v\rangle \pm \langle v, u\rangle +
+     \lVert v \rVert^2
+\end{eqnarray*}     
+The theorem follows immediately.
+\end{proof}
+
+The parallelogram law is expressed in terms of norm alone. Let us check if it
+is true for a norm that is not induced by an inner product. For example,
+\begin{defn}\label{s3d2}
+The supremum norm or sup-norm is defined as 
+\[
+\lVert f \rVert_\infty = \sup(|f(x)|).
+\]
+for infinite dimensional vectors. If $v = (\alpha_1, \ldots, \alpha_n)$ then
+$\lVert v \rVert_\infty = \max_{i=1}^n|\alpha_i|$.
+\end{defn}
+For $f$ defined on $[0, 1]$, if $f(x) = x$ then $\lVert f \rVert_\infty = 1$.
+For $g$ defined on $[0, 1]$, if $g(x) = 1-x$ then $\lVert g \rVert_\infty = 1$.
+In this case, $f + g = 1, f - g = -2x$ so that $\lVert f + g\lVert_\infty = 1$
+and $\lVert f - g\rVert_\infty = 0$ so that the left hand side of the 
+parallelogram law is $1$ while the right hand side is $4$. Thus, not every norm
+satisfied the parallelogram law, only the one induced by an inner product does.
+Norms not induced by an inner-product cannot be used to define angles between
+vectors.
+
+\begin{defn}[Hilbert space]\label{s3d3}
+A Hilbert space is a complete, normed, inner-product space with the norm induced
+by the inner product.
+\end{defn}
+
+\begin{defn}[Orthogonal vectors]\label{s3d4}
+Vectors $u$ and $v$ in an inner-product space are said to be orthogonal if 
+$\langle u, v \rangle = 0$.
+\end{defn}
+
+It is easy to prove
+\begin{thm}[Pythagoras theorem]\label{s3t2}
+If $v_1, \ldots, v_n$ are mutually orthogonal vectors in an inner-product space
+then
+\[
+\left\lVert\sum_{i=1}^n v_i\right\rVert^2 = \sum_{i=1}^n\lVert v_i\rVert^2.
+\]
+\end{thm}
+\begin{proof}
+\[
+\left\lVert\sum_{i=1}^n v_i\right\rVert^2 = \langle \sum_{i=1}^n v_i,
+\sum_{i=1}^n v_i\rangle = \sum_{i=1}^n\sum_{j=1}^n\langle v_i, v_j\rangle
+= \sum_{i=1}^n\lVert v_i\rVert^2.
+\]
+\end{proof}
+
+\begin{thm}[Bessel inequality]\label{s3t3}
+If $x$ is a member of an infinite dimensional  Hilbert space and $\{e_n\}$ is 
+a sequence of orthonormal vectors then 
+\[
+\sum_{n \ge 1}|\langle x, e_n\rangle|^2 \le \lVert x \rVert^2.
+\]
+\end{thm}
+\begin{proof}
+Consider the vector $y = x - \sum_{n=1}^k\langle x, e_n\rangle e_n$.
+Then 
+\begin{eqnarray*}
+\langle y, e_i\rangle &=& 
+\langle x, e_i\rangle-\sum_{n=1}^k\langle x, e_n\rangle\langle e_n, e_i\rangle\\
+&=& \langle x, e_i\rangle-\sum_{n=1}^k\langle x, e_n\rangle\delta_{ni} \\
+&=& \langle x, e_i\rangle - \langle x, e_i\rangle \\
+&=& 0
+\end{eqnarray*}
+Thus, $y$ is orthogonal to every $e_i$, $i = 1, \ldots, k$. From the definition
+of $y$, it is clear that $x - y$ is a linear combination of $e_1, \ldots, e_k$.
+Since $y$ is orthogonal to every $e_1, \ldots, e_k$, it is orthogonal to their
+linear combination and therefore orthogonal to $x - y$. Therefore,
+$\lVert x \rVert^2 = \lVert x - y + y\rVert^2 = \lVert x - y\rVert^2 + \lVert
+y \rVert^2$. Since $\lVert y \rVert^2 \ge 0$, we have $\lVert x \rVert^2 \ge
+\lVert x - y\rVert^2$. The right hand side of this inequality is the left hand
+side of Bessel inequality.
+\end{proof}
+
+\begin{rem}
+If Bessel inequality becomes an equality then it is called Parseval's theorem.
+This happens when the basis $\{e_n\}$ is complete. 
+\end{rem}
+
+\begin{rem}
+The term $\langle x, e_n\rangle$ is the coefficient of expansion of $x$ in
+terms of $e_n$. Bessel inequality guarantees that the sum of "energy" of the
+coefficients is bounded by the "energy" of the vector.
+\end{rem}
+
+\begin{rem}
+In finite dimensions, every orthonormal set of vectors can be extended to be a
+basis. In infinite dimensions it can happen only if the basis is complete.
+\end{rem}
+
+We next prove a few more properties of infinite dimensional Hilbert-spaces.
+\begin{prop}\label{s3p1}
+If $\{e_n\}$ is a sequence of orthogonal vectors in an infinite-dimensional
+Hilbert space $H$ then for $x \in H$ if $\lVert x \rVert^2 = 
+\sum_{n \ge 0}|\langle x, e_n\rangle|^2$ then $\langle x, e_n\rangle=0 
+\;\forall\; n \in \mathbb{N} \Rightarrow x = 0$.
+\end{prop}
+\begin{proof}
+Assume $\lVert x \rVert^2 = \sum_{n \ge 0} |\langle x, e_n\rangle|^2$. If 
+$\langle x, e_n\rangle = 0$ for all $n$ then $\lVert x \rVert^2 = 0$, which
+can happen iff $x = 0$.
+\end{proof}
+
+\begin{prop}\label{s3p2}
+If $\{e_n\}$ is a sequence of orthogonal vectors in an infinite-dimensional
+Hilbert space $H$ and if for any $x \in H$, $\langle x, e_n\rangle = 0 \;
+\forall\; n \in \mathbb{N} \Leftrightarrow x = 0$ then $\lVert x \rVert^2 = 
+\sum_{n \ge 0}|\langle x, e_n\rangle|^2$.
+\end{prop}
+\begin{proof}
+Let the vector $s_n = \sum_{k=1}^n\langle x, e_k\rangle e_k$ so that, by 
+orthogonality of $\{e_k\}$, we get
+\[
+\lVert s_n\rVert^2 = \sum_{k=1}^n|\langle x, e_k\rangle|^2.
+\]
+The sequence $\{\lVert s_n\rVert^2\}$ of positive real numbers is monotone 
+increasing and by Bessel inequality, bounded from above by $\lVert x \rVert^2$.
+Therefore, it converges. This also implies that for a given $\epsilon > 0$,
+we can find $N \in \mathbb{N}$ such that $|\lVert s_n \rVert^2 - \lVert s_m
+\rVert^2| < \epsilon \Rightarrow \lVert s_n - s_m \rVert^2 < \epsilon$ or that
+the sequence $\{s_n\}$ of vectors is Cauchy. Since $H$ is a Hilbert space, it
+converges to a point $x^\prime$ in $H$. That is,
+\[
+x^\prime = \lim_{n \rightarrow \infty} s_n = 
+\sum_{k=1}^\infty \langle x, e_k\rangle e_k.
+\]
+Then $\langle x - x^\prime, e_m\rangle = \langle x, e_m \rangle - 
+\sum_{k=1}^\infty \langle x, e_k\rangle \delta_{km} = 0$. By hypothesis, this
+is true iff $x - x^\prime = 0$, that is $x = x^\prime$.
+\end{proof}
+
+\begin{prop}\label{s3p3}
+If $\{e_n\}$ is a sequence of orthogonal vectors in an infinite-dimensional
+Hilbert space $H$ such that for an $x \in H$, $x = \sum_{n \ge 0}
+\langle x, e_n\rangle e_n \Rightarrow \lVert x \rVert^2 = \sum_{n \ge 0}
+|\langle x, e_n\rangle|^2$.
+\end{prop}
+\begin{proof}
+Assume $x = \sum_{n \ge 0}\langle x, e_n\rangle e_n$. Then the orthogonality
+of the basis imples that $\langle x, x\rangle = \sum_{n \ge 1}|\langle x, e_n
+\rangle|^2$.
+\end{proof}
+
+\begin{thm}[Reisz-Fischer]\label{s3t4}
+In a Hilbert space, a series $\sum \alpha_n e_n$ converges to a point $x$ in it
+iff $\sum_n |\alpha_n|^2$ converges.
+\end{thm}
+\begin{proof}
+Let $\sum \alpha_n e_n \rightarrow x$. Then $\sum \alpha_n e_n$ is Cauchy.
+Therefore, for a fixed $\epsilon > 0$, we can find $N \in \mathbb{N}$ such that
+for all $n > m > N$,
+\[
+\lVert \sum_{k=1}^n \alpha_k e_k - \sum_{k=1}^m \alpha_k e_k\rVert^2 < \epsilon
+\]
+that is, using orthogonality of $\{e_n\}$, $\sum_{k=m+1}^n|\alpha_k|^2<\epsilon$
+or that the sequence or real numbers $\sum_n|\alpha_n|^2$ is Cauchy.
+
+To prove the converse, consider the series $\sum_n \alpha_n e_n$. Let $s_n = 
+\sum_{k=1}^n \alpha_k e_k$ be its partial sum. Consider,
+\[
+\lVert s_n - s_m \rVert^2 = \sum_{k=m+1}^n |\alpha_k|^2,
+\]
+owing to orthogonality of $\{e_n\}$. Since $\sum_n |\alpha_n|^2$ converges, it 
+is Cauchy. So that for a given $\epsilon > 0$, we can find $N \in \mathbb{N}$
+such that the right hand side is less than $\epsilon$. But this also proves 
+that $\sum_n \alpha_n e_n$ converges. Since $H$ is complete, it converges to
+a point $x$ in $H$.
+\end{proof}
+
+\begin{thm}[Cauchy-Schwarz inequality]\label{c3t5}
+Let $u, v \in H$, where $H$ is a Hilbert space. Then $|\langle u, v\rangle| \le
+\lVert u \rVert\lVert v \rVert$.
+\end{thm}
+\begin{proof}
+Consider the vector $x = u - \alpha v$. Then $\lVert x \rVert^2 \ge 0$ for all
+choices of $\alpha$. Choose,
+\[
+\alpha = \frac{\langle u, v \rangle}{\lVert v \rVert^2}
+\]
+so that
+\[
+\lVert x \rVert^2 = \lVert u \rVert^2 + \frac{|\langle u, v\rangle|^2}
+{\lVert v \rVert^2} - \frac{|\langle u, v\rangle|^2}{\lVert v \rVert^2} 
+ - \frac{|\langle u, v\rangle|^2}{\lVert v \rVert^2} \ge 0
+\]
+from which the inequality follows immediately.
+\end{proof}
+
+\begin{thm}[Triangle inequality for norm]\label{s3t6}
+If $u, v$ are vectors in a Hilbert space $H$ then $\lVert u + v\rVert \le 
+\lVert u \rVert + \lVert v \rVert$.
+\end{thm}
+\begin{proof}
+$\lVert u + v\rVert^2 = \lVert u \rVert^2 + \lVert v \rVert^2 + 
+\langle u, v\rangle + \langle v, u\rangle = \lVert u \rVert^2 + 
+\lVert v \rVert^2 + 2\re(\langle u, v\rangle) \le \lVert u \rVert^2 +
+\lVert u \rVert^2 + 2|\langle u, v\rangle|^2.$ Using the Cauchy-Schwarz
+inequality,
+\[
+\lVert u + v\rVert^2 \le \lVert u \rVert^2 +\lVert v \rVert^2 + 2\lVert u\rVert
+\lVert v \rVert = (\lVert u \rVert) + \lVert v \rVert)^2,
+\]
+from which the inequality follows immediately.
+\end{proof}
 \end{document}
 
