@@ -18,6 +18,7 @@
 \newtheorem*{cor}{Corollary}
 
 \numberwithin{equation}{section}
+\DeclareMathOperator{\re}{Re}
 
 \begin{document}
 \title{Linear Analysis}
@@ -688,5 +689,40 @@ inequality,
 \]
 from which the inequality follows immediately.
 \end{proof}
+
+\section{Operators and functionals}\label{s4}
+\begin{defn}\label{s4d1}
+An operator $T$ on a Hilbert space $H$ is a map $T: H \mapsto H$.
+\end{defn}
+
+\begin{defn}\label{s4d2}
+A linear functional on a Hilbert space $H$ on the field $\mathbb{C}$ is a map
+$L: H \mapsto \mathbb{C}$.
+\end{defn}
+
+\begin{defn}\label{s4d3}
+An operator $T: H \mapsto H$ is linear if $T(\alpha x + \beta y) = \alpha T(x)
++ \beta T(y)$ for all $x, y \in H$ and $\alpha, \beta \in \mathbb{C}$.
+\end{defn}
+A linear functional is similarly defined.
+
+\begin{defn}\label{s4d4}
+A linear operator $T$ on a Hilber space $H$ is bounded if for all $x \in H$,
+there exists $M > 0$ such that $\lVert T(x)\rVert \le M\lVert x \rVert$.
+\end{defn}
+Thus, a bounded operator elongates a vector at most by a factor $M$.
+
+\begin{defn}\label{s4d5}
+A linear operator $T$ on a Hilbert space $H$ is continuous if for a given
+$\epsilon > 0$ there exists $\delta > 0$ such that $\lVert x - x_0\rVert <
+\delta \Rightarrow \lVert T(x) - T(x_0)\rVert < \epsilon$.
+\end{defn}
+The continuity of a linear functional is defined similarly.
+
+\begin{thm}[Reisz representation theorem]\label{s4t1}
+Let $L$ be a bounded linear operator on a Hilbert space $H$ then there exists
+a unique vector $y \in H$ such that for all $x \in H$, $L(x) = \langle x, y
+\rangle$.
+\end{thm}
 \end{document}
 
