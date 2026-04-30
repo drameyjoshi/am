@@ -719,10 +719,19 @@ $\epsilon > 0$ there exists $\delta > 0$ such that $\lVert x - x_0\rVert <
 \end{defn}
 The continuity of a linear functional is defined similarly.
 
+\begin{defn}[Operator norm]\label{s4d6}
+The norm of an operator $T$ is defined as 
+\[
+\lVert T \rVert = \sup_{\lVert f \rVert \ne 0}\frac{|T(f)|}{\lVert f \rVert}.
+\]
+It is equivalent to $\lVert T \rVert = \sup_{\lVert f \rVert = 1}|T(f)|.$
+\end{defn}
+
+
 \begin{thm}[Reisz representation theorem]\label{s4t1}
 Let $L$ be a bounded linear operator on a Hilbert space $H$ then there exists
 a unique vector $y \in H$ such that for all $x \in H$, $L(x) = \langle x, y
-\rangle$.
+\rangle$. Furthermore, $\lVert L \rVert = \lVert y \rVert$.
 \end{thm}
 \end{document}
 
