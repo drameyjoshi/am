@@ -727,6 +727,56 @@ The norm of an operator $T$ is defined as
 It is equivalent to $\lVert T \rVert = \sup_{\lVert f \rVert = 1}|T(f)|.$
 \end{defn}
 
+\begin{prop}\label{s4p2}
+Let $T: H \mapsto \mathbb{C}$ be a bounded, linear functional. Then $\ker T$
+is a closed subspace of $H$.
+\end{prop}
+\begin{proof}
+Let $x \in (\ker T)^c$, so that $T(x) \ne 0$. For an $T(x) > \epsilon > 0$,
+we can find $\delta > 0$ so that $\lVert x - x^\prime\rVert \Rightarrow |T(x)
+- T(x^\prime)| < \epsilon \Rightarrow 0 < T(x) - \epsilon < T(x^prime) < T(x) + 
+\epsilon$. Thus, $x^\prime \in (\ker T)^c$ for all $\lVert x - x^\prime\rVert <
+\delta$ and the open ball centred at $x$ and of radius $\delta$ lies outside
+$\ker T$, making it an open set. Therefore, $\ker T$ is a closed set.
+
+If $x, y \in \ker T$ then clearly $\alpha x + \beta y \in \ker T$, making 
+$\ker T$ a subspace of $H$.
+\end{proof}
+\begin{rem}
+The proof of closeness of $\ker T$ does not depend on linearity of $T$ or the
+fact that $H$ is a Hilbert space. It is, in fact, an elementary topological 
+property that the preimage of a closed set under a continuous map is closed and
+the singleton set $\{0\}$ is closed.
+
+The linearity of $T$ is necessary to prove that $\ker T$ is a subspace.
+\end{rem}
+
+\begin{prop}\label{s4p3}
+If $T: H \mapsto \mathbb{C}$ be a bounded linear operator. Then $T$ is 
+continuous.
+\end{prop}
+\begin{proof}
+$T$ is bounded implies that there exists $M > 0$ such that for all $x \in H$,
+$|T(x)| < M\lVert x \rVert$. Therefore, for all $x, y \in H$, $|T(x - y)| < 
+M\lVert x - y \rVert \Rightarrow |T(x) - T(y)| < M\lVert x - y \rVert$. For
+a given $\epsilon$, choose $\delta$ such that 
+\[
+\delta < \frac{\epsilon}{M}
+\]
+so that $\lVert x - y \rVert < \delta \Rightarrow |T(x) - T(y)| < \epsilon$.
+\end{proof}
+
+\begin{defn}\label{s4d7}
+Let $M$ be a subspace of a Hilbert space $H$. Then the subspace $M^\perp$ is
+defined as $\{y \in H: x \in M, \langle y, x\rangle = 0\}$.
+\end{defn}
+
+\begin{prop}[Orthogonal decomposition]\label{s4p4}
+Let $M$ be a closed subset of a Hilbert space $H$. Then for every $x \in H$, 
+there exists a unique $y \in M$ such that $x = y + z$, where $z \in M^\perp$.
+\end{prop}
+\begin{proof}
+\end{proof}
 
 \begin{thm}[Reisz representation theorem]\label{s4t1}
 Let $L$ be a bounded linear operator on a Hilbert space $H$ then there exists
