@@ -774,43 +774,108 @@ defined as $\{y \in H: x \in M, \langle y, x\rangle = 0\}$.
 \begin{prop}\label{s4p4}
 Let $M$ be a closed subspace of a Hilbert space $H$. Then there exists a 
 sequence of points $\{m_n\}$ all of which are in $M$ such that $\lVert m_n - 
-x\rVert \rightarrow d$.
+x\rVert \rightarrow d$. Furthermore, $\{m_n\}$ is Cauchy and its limit $y$
+lies in $M$, making $y$ the closest point to $x$. 
 \end{prop}
 \begin{proof}
-Since $d = \inf_{m \in M}$, there exists a small enough $\epsilon > 0$ for 
-which there is a point $m_1 \in M$ such that $\lVert m_1, x\rVert = d+\epsilon$.
-Choose $m_2 \in M$ such that $\lVert m_2, x\rVert = d + \epsilon/2$ and in 
-general, $m_n$ such that $\lVert m_n, x\rVert = d + \epsilon/2^{n-1}$.
-\end{proof}
+Consider the set $\mathcal{D} = \{\lVert x - m\rVert\;:\; m \in M\}$. Since
+a norm is non-negative, $\mathcal{D}$ is bounded from below. Therefore, $d = 
+\inf_{m \in M}\lVert x - m\rVert$ exists. For a small enough $\epsilon > 0$
+for there will be a point $m_1 \in M$ such that $\lVert m_1 - x \rVert = d + 
+\epsilon$. Choose $m_2 \in M$ such that $\lVert m_2 - x\rVert = d + \epsilon/2$
+and in general, $m_n$ such that $\lVert m_n - x\rVert = d + \epsilon/2^{n-1}$.
 
-\begin{prop}\label{s4p5}
-The sequence $\{m_n\}$ of points constructed in \ref{s4p4} is Cauchy.
-\end{prop}
-\begin{proof}
 Let $m_n, m_k \in M$, $a = x - m_n, b = x - m_k$. Using the parallelogram law
 for an inner product space, $\lVert a - b\rVert^2 + \lVert a + b\rVert^2 =
 2(\lVert a \rVert^2 + \lVert b \rVert)^2 \Rightarrow \lVert m_k - m_n\rVert^2
-+ \lVert x - (1/2)(m_n + m_k)\rVert^2 = 2\lVert x - m_n\rVert^2 + 2\lVert x -
-m_k\rVert^2$.
++ 4\lVert x - (1/2)(m_n + m_k)\rVert^2 = 2\lVert x - m_n\rVert^2 + 2\lVert x -
+m_k\rVert^2$. Since $M$ is a subspace of $H$, $(1/2)(m_n + m_k) \in M$. In the
+limit $n, k \rightarrow \infty$, $\lVert m_n - m_k\rVert^2 \rightarrow 0$. This
+makes $\{m_n\}$ a Cauchy sequence. Since $H$ is complete, the limit of this
+sequence, say $y$ lies in $H$. Since $M$ is closed, $y$ also lies in $M$.
 \end{proof}
 
+\begin{prop}\label{s4p5}
+Let $M$ be a closed subspace of a Hilbert space $H$.By proposition \ref{s4p4}
+there exists a point $y \in M$ that is closest to a fixed point $x \in H$. If
+$z = x - y$ then $z \in M^\perp$.
+\end{prop}
+\begin{proof}
+Let, if possible, $y \notin M^\perp$. Then there is a vector $n \in M$ such
+that $\langle z, n\rangle = \alpha \ne 0$. We can always choose $n$ such that 
+$\lVert n \rVert = 1$. Let $y^\prime = y + \alpha n$ and $z^\prime=x - y^\prime
+= x - y - \alpha n = z - \alpha n$ so that $\lVert z^\prime \rVert = \lVert z
+\rVert^2 - \bar{\alpha}\langle z, n\rangle - \alpha\langle n, z\rangle + 
+|\alpha|^2 = \lVert z \rVert^2 - |\alpha|^2$, making $y^\prime$ more close to 
+$x$ than $y$.
+\end{proof}
+
+From propositions \ref{s4p4} and \ref{s4p5} we immediately get
 \begin{thm}[Orthogonal decomposition theorem]\label{s4t1}
 Let $M$ be a closed subset of a Hilbert space $H$. Then for every $x \in H$, 
 there exists a unique $y \in M$ such that $x = y + z$, where $z \in M^\perp$.
 \end{thm}
-\begin{proof}
-We will first show that for a given $x \in H$, there exists a unique $y \in M$
-such that $\lVert x - y\rVert$ is the least. That is, if $d = \inf_{m \in M}
-\lVert x - m\rVert$ then there exists $y \in M$ such that $\lVert x - y\rVert
-= d$.
-
-\end{proof}
-
 
 \begin{thm}[Reisz representation theorem]\label{s4t2}
 Let $L$ be a bounded linear operator on a Hilbert space $H$ then there exists
-a unique vector $y \in H$ such that for all $x \in H$, $L(x) = \langle x, y
-\rangle$. Furthermore, $\lVert L \rVert = \lVert y \rVert$.
+a unique vector $w \in H$ such that for all $x \in H$, $L(x) = \langle x, w
+\rangle$. Furthermore, $\lVert L \rVert = \lVert w \rVert$.
 \end{thm}
+\begin{proof}
+Let $M = \ker L$. If $M = H$ then $L(x) = 0$ for all $x \in H$, in which case
+$L(x) = \langle x, 0\rangle$.
+
+If $M \ne H$, there exist a point $x \in H$ such that $x \notin M$. Then by
+the orthogonal decomposition theorem \ref{s4t2}, there exists a vector $y \in
+M$ such that $x = y + z$ and $z \in M^\perp$. Thus, when $M \ne H$, the subspace
+$M^\perp$ is non-empty.
+
+Now choose a fixed vector $z \in M^\perp$ and for any non-zero $x \in H$, define
+$v = L(x)z - L(z)x$. Then $L(v) = L(x)L(z) - L(z)L(x) = 0$ so that $v \in
+M$. Since $z \in M^\perp$, we also have $\langle v, z\rangle = 0$. That is,
+$\langle L(x)z - L(z)x, z\rangle = 0 \Rightarrow L(x)\lVert z \rVert^2 - L(z)
+\langle x, z \rangle = 0$. We can rewrite this equation as 
+\begin{equation}\label{s4e1}
+L(x) = \left\langle x, \frac{\overline{L(z)}}{\lVert z \rVert^2}z\right\rangle.
+\end{equation}
+Choose
+\[
+w = \frac{\overline{L(z)}}{\lVert z \rVert^2}z.
+\]
+Note that $w$ depends on $z$, an arbitrary vector in $M^\perp$. It is 
+independent of $x$.
+
+Let, if possible, there be two vectors $w_1$ and $w_2$ with the property
+that $L(x) = \langle x, w_1\rangle = \langle x, w_2\rangle$, then $\langle x,
+w_1 - w_2\rangle = 0$ for all $x \in H$. This is possible only if $w_1 - w_2 =
+0$, that is $w_1 = w_2$.
+
+The norm of this vector is
+\begin{equation}\label{s4e2}
+\lVert w \rVert = \frac{|L(z)|}{\lVert z \rVert^2}\lVert z \rVert
+= \frac{|L(z)|}{\lVert z \rVert}
+\end{equation}
+
+From \eqref{s4e1},
+\[
+L(x) = \frac{L(z)}{\lVert z \rVert^2}\langle x, z\rangle
+\]
+so that
+\[
+|L(x)| = \frac{|L(z)|}{\lVert z \rVert^2}|\langle x, z\rangle \le
+\frac{|L(z)|}{\lVert z \rVert^2}|\lVert x \rVert\lvert z \rVert = 
+\frac{|L(z)|}{\lVert z \rVert}|\lVert x \rVert
+\]
+Since $x$ was chosen to be non-zero,
+\[
+\frac{|L(x)|}{\lVert x \rVert} \le \frac{|L(z)|}{\lVert z \rVert}.
+\]
+Since $z$ is independent of $x$,
+\[
+\sup_{\lVert x \ne \rVert}\frac{|L(x)|}{\lVert x \rVert} = \lVert w \rVert
+\]
+that is $\lVert L \rVert = \lVert w \rVert$.
+
+\end{proof}
 \end{document}
 
