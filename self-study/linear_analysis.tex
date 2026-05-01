@@ -771,14 +771,43 @@ Let $M$ be a subspace of a Hilbert space $H$. Then the subspace $M^\perp$ is
 defined as $\{y \in H: x \in M, \langle y, x\rangle = 0\}$.
 \end{defn}
 
-\begin{prop}[Orthogonal decomposition]\label{s4p4}
-Let $M$ be a closed subset of a Hilbert space $H$. Then for every $x \in H$, 
-there exists a unique $y \in M$ such that $x = y + z$, where $z \in M^\perp$.
+\begin{prop}\label{s4p4}
+Let $M$ be a closed subspace of a Hilbert space $H$. Then there exists a 
+sequence of points $\{m_n\}$ all of which are in $M$ such that $\lVert m_n - 
+x\rVert \rightarrow d$.
 \end{prop}
 \begin{proof}
+Since $d = \inf_{m \in M}$, there exists a small enough $\epsilon > 0$ for 
+which there is a point $m_1 \in M$ such that $\lVert m_1, x\rVert = d+\epsilon$.
+Choose $m_2 \in M$ such that $\lVert m_2, x\rVert = d + \epsilon/2$ and in 
+general, $m_n$ such that $\lVert m_n, x\rVert = d + \epsilon/2^{n-1}$.
 \end{proof}
 
-\begin{thm}[Reisz representation theorem]\label{s4t1}
+\begin{prop}\label{s4p5}
+The sequence $\{m_n\}$ of points constructed in \ref{s4p4} is Cauchy.
+\end{prop}
+\begin{proof}
+Let $m_n, m_k \in M$, $a = x - m_n, b = x - m_k$. Using the parallelogram law
+for an inner product space, $\lVert a - b\rVert^2 + \lVert a + b\rVert^2 =
+2(\lVert a \rVert^2 + \lVert b \rVert)^2 \Rightarrow \lVert m_k - m_n\rVert^2
++ \lVert x - (1/2)(m_n + m_k)\rVert^2 = 2\lVert x - m_n\rVert^2 + 2\lVert x -
+m_k\rVert^2$.
+\end{proof}
+
+\begin{thm}[Orthogonal decomposition theorem]\label{s4t1}
+Let $M$ be a closed subset of a Hilbert space $H$. Then for every $x \in H$, 
+there exists a unique $y \in M$ such that $x = y + z$, where $z \in M^\perp$.
+\end{thm}
+\begin{proof}
+We will first show that for a given $x \in H$, there exists a unique $y \in M$
+such that $\lVert x - y\rVert$ is the least. That is, if $d = \inf_{m \in M}
+\lVert x - m\rVert$ then there exists $y \in M$ such that $\lVert x - y\rVert
+= d$.
+
+\end{proof}
+
+
+\begin{thm}[Reisz representation theorem]\label{s4t2}
 Let $L$ be a bounded linear operator on a Hilbert space $H$ then there exists
 a unique vector $y \in H$ such that for all $x \in H$, $L(x) = \langle x, y
 \rangle$. Furthermore, $\lVert L \rVert = \lVert y \rVert$.
