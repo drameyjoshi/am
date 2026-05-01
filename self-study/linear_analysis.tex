@@ -82,9 +82,7 @@ combinations.
 \end{defn}
 
 \begin{defn}[Basis]\label{s1d5}
-A subset $\{v_1, \ldots, v_n\}$ of $V$ is called a basis of $V$ is its span is
-$V$. That is, any member of $V$ can be written as a linear combination of $v_1,
-\ldots, v_n$.
+A subset $B$ of $V$ is called a basis of $V$ if its span is $V$.
 \end{defn}
 
 \begin{defn}[Dimension]\label{s1d6}
@@ -116,8 +114,8 @@ will be a linear combination of $u_1, \ldots, u_{k-1}$ contradicting our
 hypothesis that $U$ is a set of linearly independent vectors. Without loss of
 generality, assume that $\alpha_k \ne 0$. Then we can write
 \[
-w_k = -\sum_{i=1}^{k-1}\frac{\alpha_i}{\alpha_k} - \frac{1}{\alpha_k}u_k - 
-\sum_{i=k+1}^n\alpha_iw_i,
+w_k = \frac{u_k}{\alpha_k} - \sum_{i=1}^{k-1}\frac{\alpha_i}{\alpha_k}u_i - 
+\sum_{i=k+1}^n\frac{\alpha_i}{\alpha_k}w_i,
 \]
 that is the set $\{u_1, \ldots, u_k, w_{k+1}, \ldots, w_n\}$ spans $V$. Thus,
 by induction, we can show that $\{u_1, \ldots, u_m, w_{m+1}, \ldots, w_n\}$ 
@@ -135,7 +133,7 @@ Every basis of $V$ has the same number of elements.
 \end{prop}
 \begin{proof}
 Let, if possible, $V$ have two bases $B_1$ and $B_2$ such that $|B_1| = m$ and
-$|B_2| = n$. Since $B_1$ is linearly independent ad $B_2$ spans $V$, by Steinitz
+$|B_2| = n$. Since $B_1$ is linearly independent and $B_2$ spans $V$, by Steinitz
 exchange lemma (\ref{s1p2}), $n \le m$. Similarly, since $B_2$ is linearly
 independent and $B_1$ spans $V$, $m \le n$.
 \end{proof}
@@ -182,12 +180,10 @@ the function $\lVert\cdot\rVert_1$ as
 The function defined by \eqref{s2e1} is a norm.
 \end{prop}
 \begin{proof}
-Let $f \in C^0[0, 1]$. Since $f$ is continuous in a bounded interval, it is
-bounded. That is, $\exists\;m, M \in \mathbb{R}$ such that $m \le f(x) \le M$
-for all $x \in [0, 1]$. Choose $M^\ast = \max(M, -m)$ then $|f(x)| \le M^\ast$
-for all $x \in [0, 1]$. Therefore, $\lVert f \rVert|_1 \le M\int_0^1dx = M^\ast
-\ge 0$. If $f = 0$ then $\lVert f \rVert_1 = 0$. If $\lVert f \rVert_1 = 0$
-then $\int_0^1|f|dx = 0$. Since $f$ is continuous, this implies that $|f| = 0$.
+Let $f \in C^0[0, 1]$. Therefore both $f$ and $|f|$ are bounded and continuous
+on $[0, 1]$ so that $\lVert f \rVert$ exists. If $f = 0$ then $\lVert f 
+\rVert_1 = 0$. If $\lVert f \rVert_1 = 0$ then $\int_0^1|f|dx = 0$. Since $f$ 
+is continuous, this implies that $|f| = 0$.
 
 Consider the second property,
 \[
@@ -217,7 +213,7 @@ with the following properties:
 for all $x, y, z \in V$.
 \end{defn}
 
-Every norm introduces a metric $d(x, y) = \lVert x - y\rVert$. Observe that
+Every norm induces a metric $d(x, y) = \lVert x - y\rVert$. Observe that
 the addition in the definition of a norm is an operation on the members of
 a vector space while that in the definition of a metric is the addition of real
 numbers. Thus, a metric is a broader concept than a norm. If a metric is
@@ -248,7 +244,7 @@ is indeed a metric. However, it is not induced by a norm because $d(\alpha x,
 \alpha y) = 1 = d(x, y)$ whenever $x \ne y$.
 
 \begin{defn}[Complete space]\label{s2d3}
-A $V$ be a vector space with a norm $\lVert\cdot\rVert$ and $\{x_n\}$ be a
+Let $V$ be a vector space with a norm $\lVert\cdot\rVert$ and $\{x_n\}$ be a
 Cauchy sequence of vectors in it. $V$ is said to be complete if $\{x_n\}$ 
 converges to a point in $V$.
 \end{defn}
@@ -348,7 +344,7 @@ that $\lVert u \rVert_0 - \epsilon < \lVert w \rVert_0 < \lVert u \rVert_0 +
 1 + \delta$ then we have $\lVert u \rVert_0 - \epsilon = 1 + \delta/2 < \lVert
 w \rVert_0$ so that $w \in S^c$. On the other hand, if $\lVert u \rVert_0 = 1 
 - \delta$ then $\lVert w \rVert_0 < 1 - \delta/2$ so that $w$ is once again
-a member of $S^c$. This makes $S^c$ and $S$ closed.
+a member of $S^c$. This makes $S^c$ open and $S$ closed.
 \end{proof}
 
 \begin{prop}\label{s2p6}
@@ -361,7 +357,7 @@ for only finite dimensional vector spaces is the closed and bounded unit sphere
 compact.
 \end{proof}
 \begin{rem}
-There is a lemma attributed to F. Reisz which states that a normed vector 
+There is a lemma attributed to F. Riesz which states that a normed vector 
 space is finite dimensional if and only if the unit ball in it is compact.
 \end{rem}
 
@@ -502,7 +498,7 @@ For $g$ defined on $[0, 1]$, if $g(x) = 1-x$ then $\lVert g \rVert_\infty = 1$.
 In this case, $f + g = 1, f - g = -2x$ so that $\lVert f + g\lVert_\infty = 1$
 and $\lVert f - g\rVert_\infty = 0$ so that the left hand side of the 
 parallelogram law is $1$ while the right hand side is $4$. Thus, not every norm
-satisfied the parallelogram law, only the one induced by an inner product does.
+satisfies the parallelogram law, only the one induced by an inner product does.
 Norms not induced by an inner-product cannot be used to define angles between
 vectors.
 
@@ -623,12 +619,12 @@ Hilbert space $H$ such that for an $x \in H$, $x = \sum_{n \ge 0}
 |\langle x, e_n\rangle|^2$.
 \end{prop}
 \begin{proof}
-Assume $x = \sum_{n \ge 0}\langle x, e_n\rangle e_n$. Then the orthogonality
+Assume $x = \sum_{n \ge 1}\langle x, e_n\rangle e_n$. Then the orthogonality
 of the basis imples that $\langle x, x\rangle = \sum_{n \ge 1}|\langle x, e_n
 \rangle|^2$.
 \end{proof}
 
-\begin{thm}[Reisz-Fischer]\label{s3t4}
+\begin{thm}[Riesz-Fischer]\label{s3t4}
 In a Hilbert space, a series $\sum \alpha_n e_n$ converges to a point $x$ in it
 iff $\sum_n |\alpha_n|^2$ converges.
 \end{thm}
@@ -637,10 +633,11 @@ Let $\sum \alpha_n e_n \rightarrow x$. Then $\sum \alpha_n e_n$ is Cauchy.
 Therefore, for a fixed $\epsilon > 0$, we can find $N \in \mathbb{N}$ such that
 for all $n > m > N$,
 \[
-\lVert \sum_{k=1}^n \alpha_k e_k - \sum_{k=1}^m \alpha_k e_k\rVert^2 < \epsilon
+\left\lVert \sum_{k=1}^n \alpha_k e_k - \sum_{k=1}^m \alpha_k e_k\right\rVert^2
+< \epsilon
 \]
 that is, using orthogonality of $\{e_n\}$, $\sum_{k=m+1}^n|\alpha_k|^2<\epsilon$
-or that the sequence or real numbers $\sum_n|\alpha_n|^2$ is Cauchy.
+or that the sequence of real numbers $\sum_n|\alpha_n|^2$ is Cauchy.
 
 To prove the converse, consider the series $\sum_n \alpha_n e_n$. Let $s_n = 
 \sum_{k=1}^n \alpha_k e_k$ be its partial sum. Consider,
@@ -692,7 +689,8 @@ from which the inequality follows immediately.
 
 \section{Operators and functionals}\label{s4}
 \begin{defn}\label{s4d1}
-An operator $T$ on a Hilbert space $H$ is a map $T: H \mapsto H$.
+An operator $T$ on a Hilbert space $H$ is a map $T: H \mapsto X$, where $X$ is
+any set.
 \end{defn}
 
 \begin{defn}\label{s4d2}
@@ -707,7 +705,7 @@ An operator $T: H \mapsto H$ is linear if $T(\alpha x + \beta y) = \alpha T(x)
 A linear functional is similarly defined.
 
 \begin{defn}\label{s4d4}
-A linear operator $T$ on a Hilber space $H$ is bounded if for all $x \in H$,
+A linear operator $T$ on a Hilbert space $H$ is bounded if for all $x \in H$,
 there exists $M > 0$ such that $\lVert T(x)\rVert \le M\lVert x \rVert$.
 \end{defn}
 Thus, a bounded operator elongates a vector at most by a factor $M$.
@@ -732,9 +730,9 @@ Let $T: H \mapsto \mathbb{C}$ be a bounded, linear functional. Then $\ker T$
 is a closed subspace of $H$.
 \end{prop}
 \begin{proof}
-Let $x \in (\ker T)^c$, so that $T(x) \ne 0$. For an $T(x) > \epsilon > 0$,
+Let $x \in (\ker T)^c$, so that $T(x) \ne 0$. For a $T(x) > \epsilon > 0$,
 we can find $\delta > 0$ so that $\lVert x - x^\prime\rVert \Rightarrow |T(x)
-- T(x^\prime)| < \epsilon \Rightarrow 0 < T(x) - \epsilon < T(x^prime) < T(x) + 
+- T(x^\prime)| < \epsilon \Rightarrow 0 < T(x) - \epsilon < T(x^\prime) < T(x) + 
 \epsilon$. Thus, $x^\prime \in (\ker T)^c$ for all $\lVert x - x^\prime\rVert <
 \delta$ and the open ball centred at $x$ and of radius $\delta$ lies outside
 $\ker T$, making it an open set. Therefore, $\ker T$ is a closed set.
@@ -752,7 +750,7 @@ The linearity of $T$ is necessary to prove that $\ker T$ is a subspace.
 \end{rem}
 
 \begin{prop}\label{s4p3}
-If $T: H \mapsto \mathbb{C}$ be a bounded linear operator. Then $T$ is 
+If $T: H \mapsto \mathbb{C}$ be a bounded linear functional. Then $T$ is 
 continuous.
 \end{prop}
 \begin{proof}
@@ -784,6 +782,8 @@ a norm is non-negative, $\mathcal{D}$ is bounded from below. Therefore, $d =
 for there will be a point $m_1 \in M$ such that $\lVert m_1 - x \rVert = d + 
 \epsilon$. Choose $m_2 \in M$ such that $\lVert m_2 - x\rVert = d + \epsilon/2$
 and in general, $m_n$ such that $\lVert m_n - x\rVert = d + \epsilon/2^{n-1}$.
+This defines a sequence $\{m_n\}$ of points in $M$ such that $\lVert m_n - x
+\rVert \rightarrow d$.
 
 Let $m_n, m_k \in M$, $a = x - m_n, b = x - m_k$. Using the parallelogram law
 for an inner product space, $\lVert a - b\rVert^2 + \lVert a + b\rVert^2 =
@@ -801,10 +801,10 @@ there exists a point $y \in M$ that is closest to a fixed point $x \in H$. If
 $z = x - y$ then $z \in M^\perp$.
 \end{prop}
 \begin{proof}
-Let, if possible, $y \notin M^\perp$. Then there is a vector $n \in M$ such
+Let, if possible, $z \notin M^\perp$. Then there is a vector $n \in M$ such
 that $\langle z, n\rangle = \alpha \ne 0$. We can always choose $n$ such that 
 $\lVert n \rVert = 1$. Let $y^\prime = y + \alpha n$ and $z^\prime=x - y^\prime
-= x - y - \alpha n = z - \alpha n$ so that $\lVert z^\prime \rVert = \lVert z
+= x - y - \alpha n = z - \alpha n$ so that $\lVert z^\prime \rVert^2 = \lVert z
 \rVert^2 - \bar{\alpha}\langle z, n\rangle - \alpha\langle n, z\rangle + 
 |\alpha|^2 = \lVert z \rVert^2 - |\alpha|^2$, making $y^\prime$ more close to 
 $x$ than $y$.
@@ -816,8 +816,8 @@ Let $M$ be a closed subset of a Hilbert space $H$. Then for every $x \in H$,
 there exists a unique $y \in M$ such that $x = y + z$, where $z \in M^\perp$.
 \end{thm}
 
-\begin{thm}[Reisz representation theorem]\label{s4t2}
-Let $L$ be a bounded linear operator on a Hilbert space $H$ then there exists
+\begin{thm}[Riesz representation theorem]\label{s4t2}
+Let $L$ be a bounded linear functional on a Hilbert space $H$ then there exists
 a unique vector $w \in H$ such that for all $x \in H$, $L(x) = \langle x, w
 \rangle$. Furthermore, $\lVert L \rVert = \lVert w \rVert$.
 \end{thm}
@@ -862,17 +862,17 @@ L(x) = \frac{L(z)}{\lVert z \rVert^2}\langle x, z\rangle
 \]
 so that
 \[
-|L(x)| = \frac{|L(z)|}{\lVert z \rVert^2}|\langle x, z\rangle \le
-\frac{|L(z)|}{\lVert z \rVert^2}|\lVert x \rVert\lvert z \rVert = 
-\frac{|L(z)|}{\lVert z \rVert}|\lVert x \rVert
+|L(x)| = \frac{|L(z)|}{\lVert z \rVert^2}|\langle x, z\rangle| \le
+\frac{|L(z)|}{\lVert z \rVert^2}\lVert x \rVert\lvert z \rVert = 
+\frac{|L(z)|}{\lVert z \rVert}\lVert x \rVert
 \]
 Since $x$ was chosen to be non-zero,
 \[
 \frac{|L(x)|}{\lVert x \rVert} \le \frac{|L(z)|}{\lVert z \rVert}.
 \]
-Since $z$ is independent of $x$,
+Since $z$ is independent of $x$, from equation \eqref{s4e2},
 \[
-\sup_{\lVert x \ne \rVert}\frac{|L(x)|}{\lVert x \rVert} = \lVert w \rVert
+\sup_{\lVert x \rVert \ne 0}\frac{|L(x)|}{\lVert x \rVert} = \lVert w \rVert
 \]
 that is $\lVert L \rVert = \lVert w \rVert$.
 
