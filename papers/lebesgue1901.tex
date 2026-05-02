@@ -1,0 +1,215 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{hyperref}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+
+%\numberwithin{equation}{section}
+\newcommand{\op}{\prime}
+\begin{document}
+\title{On a Generalisation of the Definite Integral}
+\author{Henri Lebesgue}
+\maketitle
+
+An English translation of Lebesgue's 
+\href{https://fermatslibrary.com/s/on-a-generalization-of-the-definite-integral}
+{original paper} was used for this note.
+
+\begin{enumerate}
+\item An integral has two roles in calculus. It tells the area under a curve
+between two points and it is an anti-derivative. If $y = f(x)$ is a curve then
+the area under it between points $x = a$ and $x = b$ is given by
+\[
+\int_a^b f(x)dx.
+\]
+If $f = dg/dx$ then the above expression can be evaluated to $g(b) - g(a)$.
+If we denote the differentiation by $D$ and integration by $I$ then if $Df = g$
+then $f = I(g)$ so that $I = D^{-1}$. That is, integration is inverse of
+differentiation and that is why it is called as an anti-derivative. The
+equation
+\begin{equation}\label{e1}
+\int_a^b \frac{dg}{dx}dx = g(b) - g(a)
+\end{equation}
+was given the name \emph{the fundamental theorem of calculus} to emphasise its
+important role in relating the two most important operations in the subject.
+
+\item It was known since Newton's time that the left hand side of equation 
+\eqref{e1} could be evaluated for an integrand $f$ even if we did not know a
+function $g$ such that $f = Dg$. If $f$ was continuous, one could divide the
+area under the curve $y = f(x)$ in slender enough rectangles and sum their 
+areas. The operation of finding areas in this manner was called 
+\emph{quadrature}. It was possible to find the quadrature even if one cannot
+find the anti-derivative. For example, one could find the area under $y = 
+\exp(-x^2)$ between $x = 0$ and $x = 1$ without knowing its anti-derivative.
+
+\item However, there are functions $f$ and $g$ related as $f = Dg$ for which
+the quadrature between $x=a$ and $x=b$ is not equal to $g(b) - g(a)$. For
+functions like these, the fundamental theorem of calculus seems to fail. Two 
+famous examples of functions for which this happened were Volterra's function
+and Devil's staircase. Both of them have an anti-derivative but a quadrature
+cannot be computed using Riemann's algorithm. Lebesgue sought to find a remedy
+to this situation.
+
+\item Lebesgue started with Riemann's definition of an integral of an 
+increasing continuous function $f$ in the interval $[a, b]$
+\begin{equation}\label{e2}
+\int_a^b f(x)dx = 
+\lim_{N \rightarrow \infty}\sum_{n=1}^N f(\xi_i)(x_{i+1} - x_i)
+\end{equation}
+where $a = \xi_1 < \xi_2 < \ldots \xi_{N+1} = b$ is a division of the domain
+of the function into disjoint sub-intervals. As $f$ is an increasing continuous
+function, if $x \in [x_i, x_{i+1}]$ then $y = f(x) \in [m_i, m_{i+1}]$, where
+$m_i = f(x_i)$. Lebesgue noticed that the converse statement, that is, $y \in
+[m_i, m_{i+1}] \Rightarrow x \in [x_i, x_{i+1}]$ is also true.
+
+\item Continuing with this observation, Lebesgue divided the $y$ axis between
+$y = m = f(a)$ and $y = M = f(b)$ at points $m = m_1 < m_2 \ldots < m_P = M$.
+Define the sets $E_i = \{x \in E_i \Leftarrow y \in [m_i, m_{i+1}]\}$. Let 
+$\lambda_i$ be the measure of $E_i$. For our choice of $f$, $\lambda_i$ is the
+length of the interval $[x_i, x_{i+1}]$. If
+\begin{equation}\label{e3}
+L(a, b) = \lim_{P \rightarrow \infty}\sum_{i=1}^P m_i\lambda_i
+\end{equation}
+then $L(a, b)$ is the integral of the function between $x=a$ and $x=b$. It is
+the same as the one calculated by Riemann's procedure in equation \eqref{e2}.
+Lebesgue called a function $f$ integrable if the limit in \eqref{e3} existed.
+
+\item Measure theory was introduced by 1900. Lebesgue used the following ideas
+from measure theory:
+\begin{enumerate}
+\item The interval $(a, b)$ can be written as a union of intervals in an
+infinite number of ways. Let $D^j = \{I^j_1, I^j_2\, \ldots\}$ be a family of
+intervals covering $(a, b)$, that is $(a, b) \subseteq \cup_{n \ge 1}I^j_n$ so 
+that the measure of $(a, b)$ is $\mu((a, b)) \le \sum_{n\ge 1}\mu(I^j_n)$. He 
+defined,
+\begin{equation}\label{e4}
+\mu((a, b)) = 
+\inf_{j \ge 1}\left\{\sum_{n \ge 1}\mu(I^j_n)\;;\; I^j_n \in D^j\right\}.
+\end{equation}
+\item A subset $E$ of $(a, b)$ is measurable if 
+\begin{equation}\label{e5}
+\mu(E) + \mu(E^c) = \mu((a,b)).
+\end{equation}
+\item If $E_i$ are measurable then so is their union and intersection.
+\item If $E_i$ are pairwise disjoint then the measure of their union is the
+sum of their measures.
+\end{enumerate}
+The unions and intersections were assumed to be countable.
+
+\item In terms of a measure, the integral of equation \eqref{e3} can be 
+written as 
+\begin{equation}\label{e6}
+L(a, b) = \lim_{P \rightarrow \infty}\sum_{i=1}^Pm_i\mu(E_i),
+\end{equation}
+where $E_i = \{x \in (a, b)\;:\; m_i < f(x) \le m_{i+1}\}$. 
+
+\item From equation \eqref{e6} it follows that if a function $f$ lies between
+limits $A$ and $B$ and if we divide the range of $f$ as $A = m_1 < m_2 \ldots
+m_{P+1} = B$ and if $E_i = \{x \in (a, b)\;:\; m_i < f(x) \le m_{i+1}\}$ are
+all measurable then the integral of $f$ exists. Lebesgue called this an
+\emph{integrable} function. Note that there are no restrictions on $f$ except
+that its range is bounded.
+
+\item Instead of vieweing $L(a, b)$ in equation \eqref{e6} as a limit of a sum,
+we can express it as
+\begin{equation}\label{e7}
+m_1\mu(E_1) + \cdots + m_P\mu(E_P) \le L(a, b) \le m_2\mu(E_1) + \cdots +
+m_{P+1}\mu(E_P).
+\end{equation}
+The integral $L(a, b)$ is thus bounded between lower and upper sums in the 
+sense of Darboux. Lebesgue called a function for which \eqref{e7} is true as 
+\emph{summable}. An integral of a summable function lies between the upper and
+lower integrals.
+
+\item Lebesgue then claimed that if an integrable function is summable in the
+sense of Riemann then the integral is the same in both definitions.
+
+Consider a function $y = f(x)$. If $R(a, b)$ is the Riemann integral with 
+$R_l$ and $R_u$ as the lower and upper Riemann sums then 
+\begin{equation}\label{e8}
+R_l \le R(a, b) \le R_u
+\end{equation}
+implies that for a subdivision $m_1, \ldots, m_P$ of the range of $f$ the 
+pre-image of $(m_i, m_{i+1})$ are measurable subsets $E_i$ of the interval 
+$(a, b)$ such that 
+\begin{equation}\label{e9}
+L_l \le L(a, b) \le L_u,
+\end{equation} 
+where $L_l = m_1\mu(E_1) + \cdots + m_P\mu(E_P)$, $L_u = m_2\mu(E_1) + \cdots 
++ m_{P+1}\mu(E_P)$ are the lower and upper Lebesgue sums and $L(a, b)$ is the 
+Lebesgue integral.
+
+\item If a function is summable in Riemann sense, that is if $R(a, b)$ can be
+squeezed between upper and lower Riemann sums then the function has 
+discontinuities at points whose union is a set of measure zero. By omitting
+these points from $(a, b)$, the function is continuous on what remains. Such
+a function is summable in the Lebesgue sense. As an example, let $f$ and $\phi$
+be functions such that $\phi$ is not zero everywhere in $(a, b)$ and $f$ be 
+summable. Let $Z$ be a subset of $(a, b)$ of measure zero. Now define a 
+function $g$ as
+\[
+g(x) = \begin{cases} f(x) + \phi(x) & \;\forall\; x \in Z \\
+f(x) & \;\forall\; x \in (a, b) \setminus Z.
+\end{cases}
+\]
+Lebesgue claims that $g$ is summable but not in the Riemann sense.
+
+For a sub-interval $(x_i, x_{i+1})$ of $(a, b)$ howsoever small, the denseness
+of $Z$ guarantees that the upper Riemann sum is $(f(\xi) + \phi(\xi))(x_{i+1}
+- x_i)$ while the lower Riemann sum is $f(\xi)(x_{i+1} - x_i)$, where $\xi \in
+(x_i, x_{i+1})$, and the two sums will always differ because $\phi$ is not 
+everywhere zero.
+
+An example of this arrangement is $f = 0$ over $(0, 1)$, 
+\[
+\phi(x) = \begin{cases} 1 & x \in \mathbb{Q} \\
+ 0 & x \in (0, 1) \setminus \mathbb{Q}
+\end{cases}
+\]
+and $g = f + \phi$ is the Dirichlet function. $\int_0^1 g = 0$ in the Lebesgue
+sense but the integral does not exist in the Riemann sense.
+
+\item If $f$ and $\phi$ are summable functions, then so is $f + \phi$. 
+Furthermore, the integral of $f + \phi$ is a sum of integrals of $f$ and $\phi$.
+If we show that $x^n$ are summable functions then so are all polynomials.
+
+\item If $\{f_n\}$ is a sequence of summable functions then so is their limit.
+Thus, the limits of polynomials, which are all continuous functions are 
+summable.
+
+\item If a derivative is bounded, then it is summable. Therefore, 
+\[
+\psi(y) = \int_a^y D\phi(x)dx
+\]
+then $\psi(y)$ exists and is the anti-derivative of $\phi$.
+
+\item Lastly, if the derivatives $Df, D\phi, D\psi$ are merely bounded without
+being continuous, the arc length can be calculated as a Lebesgue integral. If
+$\phi$ and $\psi$ are zero, then 
+\[
+\int_a^b |Df(t)|dt
+\]
+is the total variation of the function $f$ between $a$ and $b$. This too can
+be calculated as a Riemann integral as long as it is bounded even though it
+oscillates wildly.
+
+\item Even in situations where $Df$ does not exist and we can only have the 
+Dini derivatives, a Lebesgue integral can be calculated.
+
+\end{enumerate}
+\end{document}
+
