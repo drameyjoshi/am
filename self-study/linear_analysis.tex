@@ -875,7 +875,136 @@ Since $z$ is independent of $x$, from equation \eqref{s4e2},
 \sup_{\lVert x \rVert \ne 0}\frac{|L(x)|}{\lVert x \rVert} = \lVert w \rVert
 \]
 that is $\lVert L \rVert = \lVert w \rVert$.
-
 \end{proof}
+
+\section{Operators}\label{s5}
+Let us begin with a finite dimensional vector space $V$ over the complex field.
+If $x, y \in V$, their inner product is defined as 
+\[
+\langle x, y\rangle = \sum_{i=1}^n x_i\bar{y}_i = x^T \bar{y}.
+\]
+Therefore,
+\[
+\langle Ax, y\rangle = (Ax)^T\bar{y} = x^T A^T\bar{y} = x^T\overline{A^\ast y}=
+\langle x, A^\ast y\rangle.
+\]
+If $A$ is an operator on $V$ then $A^\ast$ is its Hermitian adjoint.
+
+We can carry this over to infinite dimensional Hilbert space. Let $T$ be a 
+bounded, linear operator on a Hilbert space $H$ and $y$ be a fixed vector in 
+$H$. Define a linear functional $L$ on $H$ by
+\[
+L(x) = \langle T(x), y\rangle.
+\]
+\begin{prop}\label{s5p1}
+$L$ is linear and bounded.
+\end{prop}
+\begin{proof}
+$L(\alpha_1 x_1 + \alpha_2 x_2) = \langle T(\alpha_1 x_1 + \alpha_2 x_2, y
+\rangle$. Since $T$ is linear, this expression simplifies to $\langle \alpha_1
+T(x_1) + \alpha_2 T(x_2), y\rangle$. As the inner product is linear, we get 
+$\langle \alpha_1 T(x_1), y\rangle + \langle \alpha_2 T(x_2), y\rangle = 
+\alpha_1 \langle T(x_1), y\rangle + \alpha_2\langle T(x_2), y\rangle = 
+\alpha L(x_1) + \alpha_2 L(x_2)$.
+
+Since $T$ is bounded, there exists $M > 0$ such that $\lVert T(x) \rVert \le
+M\lVert x \rVert$. Using Cauchy-Schwarz inequality, $|\langle T(x), y\rangle \le
+\lVert T(x) \rVert\lVert y \rVert \le M\lVert x \rVert\lVert y \rVert$. Define a
+new positive constant $M^\prime = M\lVert y \rVert$, then we have $|L(x)| \le
+M^\prime\lVert x \rVert$, making $L$ bounded.
+\end{proof}
+
+Since $L$ is a linear and bounded functional, Riesz representation theorem
+\ref{s4t2} guarantees that there exists a vector $l \in H$ such that for all
+$x \in H$, $L(x) = \langle x, l\rangle$. Using the definition of $L$, we have
+$\langle T(x), y\rangle = \langle x, l\rangle$. Recall that $y$ was a fixed
+vector in $H$. The functional $L$ is characterised by $y$ alone. Likewise, the
+vector $l$ guaranteed by the Riesz representation theorem depends on $L$ alone.
+Therefore, $l$ and $y$ are related. If we write $l = T^\ast y$ then we get the
+relation
+\[
+L(x) = \langle T(x), y\rangle = \langle x, T^\ast(y)\rangle.
+\]
+The symbol $T^\ast$ indicates a relationship with $T$. It is justified because
+$L$ was defined in terms of $T$. The operator $T^\ast$ is called the adjoint of 
+$T$.
+
+\begin{prop}\label{s5p2}
+If $\langle x, y\rangle = 0$ for all $x \in H$ then $y = 0$.
+\end{prop}
+\begin{proof}
+Since $\langle x, y\rangle = 0 \;\forall\; x \in H$, it is true for $x = y$ so
+that we have $\lVert y \rVert = 0$, which can happen iff $y = 0$.
+\end{proof}
+
+\begin{prop}\label{s5p3}
+Let $S$ and $T$ be bounded, linear operators in a Hilbert space $H$ and $\alpha$
+be a complex number. Then the following statements are true:
+\begin{enumerate}
+\item $(S + T)^\ast = S^\ast + T^\ast$.
+\item $(\alpha S)^\ast = \bar{\alpha}S^\ast$.
+\item $(ST)^\ast = T^\ast S^\ast$.
+\item $(S^\ast)^\ast = S$.
+\item $\lVert S^\ast\rVert = \lVert S \rVert$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Consider $\langle (S + T)(x), y \rangle = \langle S(x) + T(x), y\rangle$. The
+linearity of inner product allows us to write it as $\langle S(x), y\rangle +
+\langle T(x), y\rangle \Rightarrow \langle x, S^\ast(y)\rangle + \langle x, 
+T^\ast(y) \Rightarrow \langle x, (S^\ast + T^\ast)(y)\rangle$. This shows that
+$(S + T)^\ast = S^\ast + T^\ast$.
+
+Likewise, $\langle \alpha S(x), y\rangle = \alpha\langle S(x), y\rangle =
+\alpha\langle x, S^\ast(y)\rangle = \langle x, \bar{\alpha}S^\ast(y)$ so that
+$(\alpha S)^\ast = \bar{\alpha}S^\ast$.
+
+Since $(ST)(x) = S(T(x))$, we have $\langle (ST)(x), y\rangle = \langle S(T(x)),
+y\rangle = \langle T(x), S^\ast(y)\rangle = \langle x, T^\ast(S^\ast(y))\rangle
+= \langle x, (T^\ast S^\ast)(y)\rangle$. This proves that $(ST)^\ast = T^\ast
+S^\ast$.
+
+To prove the involution, let $\alpha = \langle S^\ast(x), y\rangle = \langle
+x, S^{\ast\ast}(y)$. But we can also write $\alpha = \overline{\langle y, 
+S^\ast(x)\rangle} = \overline{\langle S(y), x\rangle} = \langle x, S(y)\rangle$.
+Comparing the two expressions for $\alpha$ we get
+\[
+\langle x, S^{\ast\ast}(y)\rangle = \langle x, S(y)\rangle \Rightarrow
+\langle x, (S^{\ast\ast} - S)(y)\rangle = 0.
+\]
+This is true for all $x \in H$. Therefore, we have $(S^{\ast\ast} - S)(y) = 0
+\Rightarrow S^{\ast\ast}(y) - S(y) = 0 \Rightarrow S^{\ast\ast}(y) = S(y)$.
+
+We will now show that the norm of an opertor is equal to that of its adjoint.
+Recall the definition of operator norm,
+\[
+\lVert S\rVert = \sup_{\lVert x \rVert \ne 0}\frac{\lVert S(x)\rVert}{\lVert x
+\rVert}
+\]
+so that for all $x$, $\lVert S\rVert\lVert x \rVert \ge \lVert S(x)\rVert$.
+Now, $|\langle T(x), y\rangle| \le \lVert T(x)\rVert\lVert y\rVert \le \lVert
+T\rVert\lVert x \rVert\lVert y \rVert$. Therefore, 
+\[
+|\langle x, T^\ast(y)\rangle| \le \lVert T\rVert\lVert x\rVert\lVert y\rVert.
+\]
+If we choose $x = T^\ast(y)$ in this relation, we get
+\[
+\lVert T^\ast(y)\rVert^2 \le \lVert T\rVert\lVert T^\ast(y)\rVert\lVert y\rVert
+\Rightarrow \frac{\lVert T^\ast(y)\rVert}{\lVert y \rVert} \le \lVert T\rVert.
+\]
+This is true for all $y \in H$. Therefore,
+\[
+\sup_{\lVert y \rVert \ne 0}\frac{\lVert T^\ast(y)\rVert}{\lVert y \rVert} =
+\lVert T^\ast\rVert \le \lVert T\rVert.
+\]
+If in the last inequality, we put $T = T^\ast$, using the previous assertion, we
+get $\lVert T\rVert \le \lVert T^\ast\rVert$ so that $\lVert T \rVert = \lVert
+T^\ast \rVert$.
+\end{proof}
+
+\begin{defn}\label{s5d1}
+An operator $T$ on a Hilbert space $H$ is called self-adjoint if $T = T^\ast$
+or $\langle T(x), y\rangle = \langle x, Ty\rangle$.
+\end{defn}
 \end{document}
 
