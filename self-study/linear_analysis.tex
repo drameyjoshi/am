@@ -1004,7 +1004,76 @@ T^\ast \rVert$.
 
 \begin{defn}\label{s5d1}
 An operator $T$ on a Hilbert space $H$ is called self-adjoint if $T = T^\ast$
-or $\langle T(x), y\rangle = \langle x, Ty\rangle$.
+or $\langle T(x), y\rangle = \langle x, T(y)\rangle$.
 \end{defn}
+
+\begin{defn}[Inverse]\label{s5d2}
+Let $T: H \mapsto H$ be a bounded linear operator on a Hilbert space $H$. We
+say $T$ is invertible if there is another bounded, linear operator $S: H \mapsto
+H$ such that $TS = ST = I$.
+\end{defn}
+
+The bounded inverse theorem, not proved here, assures that if $T$ is a bounded
+operator that is also a bijection on a Banach space, it has a bounded inverse.
+
+\begin{defn}[Resolvent]\label{s5d3}
+Let $T: H \mapsto H$ be a bounded linear operator. Its resolvent set is
+\[
+\rho(T) = \{\lambda \in \mathbb{C} \;:\; (T - \lambda I) \text{ is bijection and
+bounded}\}.
+\]
+\end{defn}
+If $\lambda \in \rho(T)$ then $(T - \lambda I)x = y \Rightarrow x = 
+(T - \lambda I)^{-1}x$. 
+
+\begin{defn}[Spectrum]\label{s5d4}
+The spectrum $\sigma(T)$ of $T: H \mapsto H$, a bounded linear operator, is
+$\sigma(T) = \mathbb{C} \setminus \rho(T)$.
+\end{defn}
+
+If there exists $\lambda \in \mathbb{C}$ for which $T - \lambda I$ fails to be
+injective then there exists $x \in H$ for which $(T - \lambda I)(x) = 0$ or
+$T(x) = \lambda x$. It is an eigenvalue of $T$.
+
+If $T - \lambda I$ is injective but not surjective but its range is dense then
+it is said to have a continuous spectrum.
+
+If $T - \lambda I$ does not have a dense range, it is said to have a residual
+spectrum.
+
+\begin{defn}[Relatively compact]\label{s5d5}
+A subset $S$ of a Hilbert space $H$ is relatively compact if its closure is 
+compact.
+\end{defn}
+
+\begin{defn}[Compact operator]\label{s5d6}
+An operator $K$ on a Hilbert space is said to be compact if it maps a bounded
+subset of its domain to a relatively compact subset of its codomain.
+\end{defn}
+
+A set is compact if any open cover of the set has a finite subcover. For metric
+spaces it can be shown that this definition is equivalent to any sequence in 
+the set having a convergent subsequence. A proof of this statement will be a
+significant digression. I will, therefore, just bear this equivalence in mind
+and move on.
+
+If $K$ is a compact operator then:
+\begin{enumerate}
+\item $\sigma(K)$ is countable.
+\item The only possible limit point of $\sigma(K)$ is $0$.
+\item Every non-zero $\lambda \in \sigma(K)$ is a true eigenvalue with finite
+multiplicity.
+\end{enumerate}
+This part of the subject belongs to the Riesz-Schauder theory and at this stage
+it appears a bit hard to me. So I will not attempt to prove them. Finally, we
+get to
+\begin{thm}[Spectral theorem]
+If $K$ is a compact operator on a Hilbert space then its eigenvectors form a
+basis of $H$. Therefore, for any $x \in H$, we have
+\[
+K(x) = \sum_{n \ge 1} \lambda_n \langle x, e_n\rangle e_n,
+\]
+where $\lambda_n$ are the eigenvalues and $e_n$ are the orthonormal eigenvectors.
+\end{thm}
 \end{document}
 
