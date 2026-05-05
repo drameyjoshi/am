@@ -19,6 +19,7 @@
 
 \numberwithin{equation}{section}
 \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\diag}{diag}
 
 \begin{document}
 \title{Linear Analysis}
@@ -1024,7 +1025,7 @@ bounded}\}.
 \]
 \end{defn}
 If $\lambda \in \rho(T)$ then $(T - \lambda I)x = y \Rightarrow x = 
-(T - \lambda I)^{-1}x$. 
+(T - \lambda I)^{-1}y$. 
 
 \begin{defn}[Spectrum]\label{s5d4}
 The spectrum $\sigma(T)$ of $T: H \mapsto H$, a bounded linear operator, is
@@ -1075,5 +1076,128 @@ K(x) = \sum_{n \ge 1} \lambda_n \langle x, e_n\rangle e_n,
 \]
 where $\lambda_n$ are the eigenvalues and $e_n$ are the orthonormal eigenvectors.
 \end{thm}
+
+We will now examine a few properties of a self-adjoint operator's spectrum.
+\begin{prop}\label{s5p4}
+If $T$ is a self-adjoint operator on a Hilbert space $H$ then its eigenvalues
+are real.
+\end{prop}
+\begin{proof}
+Consider $\langle x, T(x)\rangle = \lambda\langle x, x\rangle$. But we can
+as well write the left hand side as $\langle T^\ast(x), x\rangle = \langle
+T(x), x\rangle$ because $T$ is self-adjoint. Since $x$ is an eigenvector with 
+eigenvalue $\lambda$, we get $\langle x, T(x)\rangle = \bar{\lambda}\langle x,
+x\rangle$. Therefore, $\lambda = \bar{\lambda}$.
+\end{proof}
+
+\begin{prop}\label{s5p5}
+If $T$ is a self-adjoint operator and $x_1, x_2$ are its eigenvectors with
+eigenvalues $\lambda_1 \ne \lambda_2$ then $\langle x_1, x_2\rangle = 0$.
+\end{prop}
+\begin{proof}
+Consider $\langle x_2, T(x_1)\rangle = \bar{\lambda_1}\langle x_2, x_1\rangle
+= \lambda_1\langle x_2, x_1\rangle$, where we used proposition \ref{s5p4}. But
+we also have $\langle x_2, T(x_1)\langle = T^\ast(x_2), x_1\rangle = 
+\langle T(x_2), x_1\rangle = \lambda_2\langle x_2, x_1\rangle$. Thus we have
+$(\lambda_1 - \lambda_2)\langle x_2, x_1\rangle = 0$. If $\lambda_1 \ne 
+\lambda_2$, $x_1$ and $x_2$ are orthogonal.
+\end{proof}
+
+It is not easy to show that the eigenvectors of $T$ form a basis. If $T$ is
+self-adjoint and compact then Hilbert-Schmidt theorem then its eigenvectors
+form a basis of the Hilbert space.
+
+\section{Matrix exponentials}\label{s6}
+\begin{defn}\label{s6d1}
+A Hilbert space $H$ is said to be separable if there exists a countable set
+$\{x_n\}$ whose span is dense in $H$.
+\end{defn}
+In a separable Hilbert space, we can approximate any vector by a linear 
+combination of $\{x_n\}$ as closely as we wish. If $K$ is a compact and 
+self-adjoint operator
+on $H$ then its eigenvectors $\{e_n\}$ form an orthonormal basis of $H$. The
+reason $\{e_n\}$ are called a basis is for any $x \in H$, we can choose $\{
+\alpha_n\}$ such that 
+\[
+\left\lVert x - \sum_{i=1}^n\alpha_i e_i\right\rVert < \epsilon.
+\]Therefore,
+we can as well identify any $x \in H$ with the sequence $\{\alpha_n\}$ where
+$\alpha_n = \langle x, e_n\rangle$. The space of all sequences is called 
+$\ell^2$. The way $\mathbb{R}^n$ is isomorphic to any $n$-dimensional vector
+space, $\ell^2$ is isomorphic to any separable Hilbert space.
+
+The way a vector $x \in H$ is represented by a sequence, an operator $K$ on
+$H$ is represented by an infinite matrix. We will show how to find its elements.
+We start with $x = \sum_{n \ge 1}\langle x, e_n\rangle e_n$ and $y = 
+\sum_{m \ge 1}\langle y, e_m\rangle e_m$ and consider the inner product
+\begin{eqnarray*}
+\langle K(x), y\rangle &=& 
+\left\langle\sum_{n\ge 1}\langle x, e_n\rangle K(e_n),
+\sum_{m\ge 1}\langle y, e_m\rangle e_m\right\rangle \\
+&=& \sum_{m,n\ge 1}\langle e_m, y\rangle\langle K(e_n), e_m\rangle
+\langle x, e_n\rangle 
+\end{eqnarray*}
+If $\langle x, e_n\rangle$ is a sequence, or an ``infinite column vector" and
+$\langle e_m, y\rangle$ is like an ``infinite row vector" then $K_{mn} = \langle 
+K(e_m), e_n\rangle$ are elements of the ``infinite matrix" representing the
+operator $K$. When $K$ is self-adjoint, $\langle K(e_m), e_n\rangle = \langle
+\lambda_m e_m, e_n\rangle = \lambda_m \delta_{mn}$. $K$ is thus represented
+by an ``infinite diagonal matrix".
+
+If $u: \mathbb{R} \mapsto \mathbb{R}$ satisfies the equation $Du = \alpha t$,
+where $t \in \mathbb{R}$ is a real variable then we know that $u = u(0)
+\exp(\alpha t)$. Likewise, if $x \in H$, a separable Hilbert space, and $A$
+is a compact, self-adjoint operator on $H$, the solution of the equation
+\[
+\frac{dx}{dt} = Ax
+\]
+can be formally written as
+\[
+x(t) = x(0)\exp(At),
+\]
+where we define the exponential of the operator $At$ as
+\begin{equation}\label{s6e1}
+\exp(At) = \sum_{k \ge 0}\frac{(At)^k}{k!}.
+\end{equation}
+$A$ being self-adjoint, it can be represented as an ``infinite diagonal matrix".
+If $\lambda_1, \lambda_2, \ldots$ are its eigenvalues then:
+\begin{enumerate}
+\item $x$ stays finite if $\lambda_n < 0$ for all $n \in \mathbb{N}$,
+\item $x$ blows up if at least one $\lambda_n > 0$. These are the ``unstable
+modes" of the function $x$.
+\end{enumerate}
+Being a diagonal matrix, we can easily write
+\begin{equation}\label{s6e2}
+x(t) = \diag(e^{\lambda_1 t}, e^{\lambda_2, t}, \ldots) x(0).
+\end{equation}
+
+\begin{prop}\label{s6p1}
+If $K$ is a compact, self-adjoint operator on a separable Hilbert space $H$
+then $\lVert K \rVert = \sup |\lambda_n|$, where $\lambda_n$ are its eigenvalues.
+\end{prop}
+\begin{proof}
+The norm of an operator is defined as 
+\[
+\lVert K \rVert = \sup_{\lVert x \rVert \ne 0}\frac{\lVert K(x) \rVert}{\lVert
+x \rVert}
+\]
+Since $K$ is compact and self-adjoint, $K(x) = (\lambda_1 \alpha_1 e_1, 
+\lambda_2 \alpha_2 e_2, \ldots)$ and $x = (\alpha_1 e_1, \alpha_2 e_2, \ldots)$.
+Therefore, $\lVert x \rVert = \sqrt{\sum_{n \ge 1}|\alpha_n|^2}$ and 
+$\lVert K(x) \rVert = \sqrt{\sum_{n \ge 1}|\lambda_n \alpha_n|^2} \le 
+\sup_n |\lambda_n|\sqrt{\sum_n |\alpha_n|^2}$. Therefore,
+\[
+\lVert K \rVert \le \sup_n |\lambda_n|.
+\]
+
+If $\lambda_k$ is the eigenvalue corresponding to the eigenvector $e_k$ then,
+as $\lVert e_k \rVert = 1$, $\lVert K(e_n) \rVert = |\lambda_n|$ so that we 
+also have
+\[
+\lVert K \rVert \ge \sup_n |\lambda_n|.
+\]
+
+Therefore, $\lVert K \rVert = \sup_n |\lambda_n|$.
+\end{proof}
 \end{document}
 
