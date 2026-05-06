@@ -1199,5 +1199,66 @@ also have
 
 Therefore, $\lVert K \rVert = \sup_n |\lambda_n|$.
 \end{proof}
+
+\section{Sturm-Liouville theory}\label{s7}
+A boundary value problem of the form
+\begin{equation}\label{s7d1}
+\frac{d}{dx}\left(p(x)\frac{dy}{dx}\right) + q(x)y + \lambda w(x)y = 0
+\end{equation}
+with boundary conditions at $x=a$ and $x=b$ is called a Sturm-Lioville problem.
+It can be written in operator form as
+\begin{equation}\label{s7d2}
+L(y) = -\lambda y,
+\end{equation}
+where the linear operator
+\begin{equation}\label{s7d3}
+L = \frac{1}{w(x)}\left[\frac{d}{dx}\left(p(x)\frac{d}{dx}\right) + q\right]
+\end{equation}
+is called the Sturm-Lioville operator. Differential equations defining many
+importand special functions of mathematical physics can be cast in Sturm-
+Liouville form. We will show that the operator $L$ is self-adjoint. As a result,
+special functions defined by these equations can be used as a basis of the
+function space. The inner product of the eigenfunctions of Sturm-Liouville 
+operator is defined as 
+\begin{equation}\label{s7d4}
+\langle f, g\rangle_w = \int_a^b f(x)\overline{g(x)}w(x)dx.
+\end{equation}
+
+We now prove the important theorem,
+\begin{thm}\label{s7t1}
+The Sturm-Liouville operator is self-adjoint under the inner product defined by
+\eqref{s7d4}.
+\end{thm}
+\begin{proof}
+We will assume the boundary condition $y(a) = y(b) = 0$. Consider
+\begin{eqnarray*}
+\langle f, Lg \rangle_w = &=& \int_a^b f(x)\overline{L(g(x))}w(x) dx \\
+ &=& \int_a^b f(x) L(g(x)) w(x)dx \\
+ &=& \int_a^b f(x)\left(\frac{d}{dx}\left(p(x)\frac{dg}{dx}\right) + q(x)g(x)
+ \right)dx \\
+ &=& f(x)p(x)\frac{dg}{dx}\Big|_a^b - \int_a^b p(x)\frac{df}{dx}\frac{dg}{dx}
+ + \int_a^b f(x)q(x)g(x)dx \\
+ &=& 0 - p(x)g(x)\frac{df}{dx}\Big|_a^b + \int_a^b g(x)\frac{d}{dx}\left(p(x)
+ \frac{df}{dx}\right) dx + \\
+ & & \int_a^b f(x)q(x)g(x)dx \\
+ &=& 0 - 0 + \int_a^b g(x)\left[\frac{d}{dx}\left(p(x)\frac{dg}{dx}\right) + 
+ q(x)f(x)\right]dx \\
+ &=& \int_a^b g(x)L(f(x))w(x)dx \\
+ &=& \langle Lf, g\rangle_w
+\end{eqnarray*}
+\end{proof}
+
+Although $L$ is self-adjoint, being a differential operator, it is unbounded
+and therefore not compact. However, the Sturm-Liouville problem $L(y) = 
+-\lambda y$ can be written as $y = -\lambda L^{-1}(y)$. $L$ is a differential
+operator. Therefore, its inverse, $L^{-1}$ must be an integral operator. It is
+the Green's function of $L$. If, in general, $Ly = f$, then
+\begin{equation}
+y = \int_a^b G(x, \xi)f(\xi)d\xi = (Gf)(x),
+\end{equation}
+is the Green's function. If the Green's function is square-integrable over
+$[a, b] \times [a, b]$ then it is a Hilbert-Schmidt operator and therefore also
+compact. $L$ and its inverse $G$ has the same eigenvectors but eigenvalues that
+are reciprocal of each other.
 \end{document}
 
