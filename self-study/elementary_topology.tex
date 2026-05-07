@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+
+\numberwithin{equation}{section}
+
+\newcommand{\op}{\prime}
+\begin{document}
+\title{Elementary Topology of $\mathbb{R}^n$}
+\author{Amey Joshi}
+\maketitle
+\section{Metric spaces}\label{s1}
+\begin{defn}[Metric space]\label{s1d1}
+Let $X$ be a non-empty set. A mapping $d: X \times X \mapsto \mathbb{R}$ is
+a metric if, for all $x, y, z \in X$:
+\begin{enumerate}
+\item $d(x, y) \ge 0$ and $d(x, y) = 0$ iff $x = y$.
+\item $d(x, y) = d(y, x)$.
+\item $d(x, y) + d(y, z) \ge d(x, z)$.
+\end{enumerate}
+The set $X$ together with the metric $d$ is called a metric space and is
+denoted by $(X, d)$.
+\end{defn}
+
+\begin{defn}[$k$-cell]\label{s1d2}
+If $a_i < b_i$ for $i = 1, \ldots, k$ then a $k$-cell is the set 
+\[
+\{x \in \mathbb{R}^k\;:\; x = (x_1, \ldots, x_k)\;\text{ and } a_i \le x_i \le
+b_i\}
+\]
+\end{defn}
+
+\begin{defn}[Open ball]\label{s1d3}
+Let $(X, d)$ be a metric space. An open ball of radius $r > 0$ centred at 
+point $x \in X$ is the set $B_r(x) = \{y \in Y \;:\; d(y, x) < r\}$.
+\end{defn}
+
+\begin{defn}[Convex set]\label{s1d4}
+A set $E \subseteq \mathbb{R}^k$ is convex if $x, y \in E \Rightarrow \lambda x
++ (1 - \lambda)y \in E$ for all $\lambda \in (0, 1)$.
+\end{defn}
+\begin{rem}
+The operation $\lambda x + (1 - \lambda)y$ is defined only on a vector space.
+Therefore, the idea of convexity is applicable only for metric spaces with a
+vector space structure.
+\end{rem}
+
+\begin{prop}\label{s1p1}
+$k$-cell is convex.
+\end{prop}
+\begin{proof}
+Let $a_i < b_i, i = 1, \ldots, k$ be such that E = $\{x \in \mathbb{R}^k \;:\;
+x = (x_1, \ldots, x_k), a_i \le x_i \le b_i, i = 1, \ldots, k\}$ is a $k$-cell.
+Let $x, y \in E$ and $\lambda \in (0, 1)$. If $z = \lambda x + (1 - \lambda y$
+so that $z_i = \lambda x_i + (1 - \lambda)y_i$.
+
+Consider
+\begin{eqnarray*}
+\lambda a_i &\le \lambda x_i \le& \lambda b_i \\
+(1 - \lambda) a_i &\le (1 - \lambda)y_i \le & (1 - \lambda)b_i.
+\end{eqnarray*}
+Adding them, we get $a_i \le z_i \le b_i$ or that $z \in E$.
+\end{proof}
+
+\begin{prop}\label{s1p2}
+An open ball is convex.
+\end{prop}
+\begin{proof}
+Let $x, y \in B_r(x_0)$. Then $|x - x_0| < r, |y - y_0| < r$ so that if $z =
+\lambda x + (1 - \lambda)y$ then $|z - x_0| = |\lambda x + (1 - \lambda)y -
+\lambda x_0 - (1 - \lambda)x_0| \le \lambda|x - x_0| + (1 - \lambda)|y - x_0|
+< \lambda r + (1 - \lambda)r = r$.
+\end{proof}
+
+The following definitions are for a metric space $(X, d)$ and $E \subseteq X$.
+\begin{defn}\label{s1d5}
+A neighbourhood of $p$ is the set of points in the ball $B_r(p)$ for some $r>0$.
+\end{defn}
+
+\begin{defn}\label{s1d6}
+A point $p$ is a limit point of $E$ if every neighbourhood of $p$ has a point
+$q \ne p$, such that $q \in E$.
+\end{defn}
+
+\begin{defn}\label{s1d7}
+If $p$ is not a limit point of $E$ then it called an isolated point of $E$.
+\end{defn}
+
+\begin{defn}\label{s1d8}
+$E$ is closed if it contains all its limit points.
+\end{defn}
+
+\begin{defn}\label{s1d9}
+A point $p$ is an interior point of $E$ if there exists $r > 0$ such that 
+$B_r(p) \subseteq E$.
+\end{defn}
+
+\begin{defn}\label{s1d10}
+$E$ is open if every point of $E$ is an interior point.
+\end{defn}
+
+\begin{defn}\label{s1d11}
+The complement of $E$ is the set $E^c = \{p \in X \;;\; p \notin E\}$.
+\end{defn}
+
+\begin{defn}\label{s1d12}
+$E$ is perfect if every point of it is a its limit point.
+\end{defn}
+
+\begin{defn}\label{s1d13}
+$E$ is bounded if there exists $M > 0$ such that for all $p, q \in E$, 
+$d(p, q) < M$.
+\end{defn}
+
+\begin{defn}\label{s1d14}
+$E$ is dense in $X$ is every point of $X$ is either a limit point of $E$ or a
+point in $E$.
+\end{defn}
+
+\begin{prop}\label{s1p3}
+A neighbourhood is an open set.
+\end{prop}
+\begin{proof}
+Consider the neighbourhood $B_r(p)$ of a point $p$ and let $q \in B_r(p)$. Then
+$d(p, q) < r$. Let $r^\ast = r - d(p, q)$. Consider a point $s \in 
+B_{r^\ast}(q)$. For such a point,
+\[
+d(p, s) \le d(p, q) + d(q, s) < d(p, q) + r^\ast = r.
+\]
+\end{proof}
+
+\begin{prop}\label{s1p4}
+If $p$ is a limit point of a set $E$ then every neighbourhood of $p$ contains
+infinitely many points of $E$.
+\end{prop}
+\begin{proof}
+$p$ is a limit point of $E$ if every neighbourhood $B_r(p)$ of $p$ has a point
+$q \ne p \in E$. That is, $\forall r > 0$, the set $B_r(p) \cap E$ has a point
+$q \in E \setminus \{p\}$. That is,
+\[
+\forall r > 0, B_r(p) \cap (E \setminus \{p\}) \ne \varnothing.
+\]
+
+Let, if possible, $p$ have a neighbourhood $U$ with only a finite number of
+points. Since $U$ is a neighbourhood, there exists $r > 0$ such that $B_r(p)
+\subset U$. Therefore, $B_r(p) \cap U$ is a finite set. Since $p$ is a limit
+point of $E$, $B_r(p) \cap (U \setminus \{p\}))$ is also non-empty for all $r
+> 0$. Let it have $m$ elements $q_1, \ldots, q_m$ and let $\delta = 
+\min_{1 \le i \le m} d(p, q_i)$. Then the set $B_{\delta/2}(p) \cap 
+(U \setminus \{p\})$ is empty. This is a contradiction. Therefore, no such
+$\delta$ can be found.
+\end{proof}
+
+\end{document}
+
