@@ -1260,5 +1260,44 @@ is the Green's function. If the Green's function is square-integrable over
 $[a, b] \times [a, b]$ then it is a Hilbert-Schmidt operator and therefore also
 compact. $L$ and its inverse $G$ has the same eigenvectors but eigenvalues that
 are reciprocal of each other.
+
+\subsection{Example of a Green's function}
+Consider the equation of the form $y^{\prime\prime} + f(x) = 0$. It can be 
+written as $L(y) = f(x)$, where $L(y) = -y^{\prime\prime}$. We want to solve it
+using the Dirichlet boundary condition $y(0) = 0, y(1) = 0$. The Green's 
+function is a solution to the problem $L(y) = \delta(x - \xi)$. That is, $
+-y^{\prime\prime} = \delta(x - \xi)$. Green's function must satisfy three
+conditions:
+\begin{enumerate}
+\item For $x \ne \xi$, $-G^{\prime\prime} = 0$.
+\item $G$ must be continuous at $x = \xi$ and
+\item Integrating $-G^{\prime\prime} = \delta(x - \xi)$ once over $(\xi - x,
+\xi + x)$ gives,
+\[
+-G^\prime(x, \xi)|_{\xi - x}^{\xi + x} = 1
+\]
+that is, $G^\prime(\xi^+, \xi) - G^{\prime}(\xi^-, \xi) = -1$.
+\end{enumerate}
+For our problem, the first condition gives $-G^{\prime\prime} = 0$ in $[0, \xi)$
+and $(\xi, 1]$. Coupled with the Dirichlet boundary condition, it gives us
+$G^{-1}(x, \xi) = ax \;\forall\; x \in [0, \xi)$ and $G^{+}(x, \xi) = b(1 - x)
+\;\forall\; x \in (\xi, 1]$. Continuity at $x = \xi$ requires that $a\xi = b(1
+- \xi) \Rightarrow a = b(1 - \xi)/\xi$. Note that $\xi$ is a constant in these
+equations. To enforce the third condition, we calculate the derivatives
+\[
+\frac{dG^+}{dx} = -b, \frac{dG^-}{dx} = a = b\frac{(1 - \xi)}{\xi}
+\]
+so that $G^\prime(\xi^+, \xi) - G^{\prime}(\xi^-, \xi) = -1$ gives $b = \xi$.
+Therefore, $a = 1 - \xi$ and the Green's function is
+\[
+G(x, \xi) = \begin{cases} x(1 - \xi) & \;\forall\; x \in [0, \xi) \\
+\xi(1 - x) & \;\forall\; x \in (\xi, 1]
+\end{cases}
+\]
+The solution to $-y^{\prime\prime} = f$ is
+\[
+y(x) = \int_0^1 G(x, \xi)f(\xi)d\xi.
+\]
+\end{cases}
 \end{document}
 
