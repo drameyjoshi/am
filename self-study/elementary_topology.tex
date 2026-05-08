@@ -149,21 +149,18 @@ If $p$ is a limit point of a set $E$ then every neighbourhood of $p$ contains
 infinitely many points of $E$.
 \end{prop}
 \begin{proof}
-$p$ is a limit point of $E$ if every neighbourhood $B_r(p)$ of $p$ has a point
-$q \ne p \in E$. That is, $\forall r > 0$, the set $B_r(p) \cap E$ has a point
-$q \in E \setminus \{p\}$. That is,
-\[
-\forall r > 0, B_r(p) \cap (E \setminus \{p\}) \ne \varnothing.
-\]
+Let $N$ be a neighbourhood of a limit point $p$ of the set $E$. Since $N$ is a
+neighbourhood, so is $B_r(p) \cap N$ for all $r > 0$. Since $p$ is a limit
+point, $(B_r(p) \cap N) \cap (E - \{p\}) \ne \emptyset$.
 
-Let, if possible, $p$ have a neighbourhood $U$ with only a finite number of
-points. Since $U$ is a neighbourhood, there exists $r > 0$ such that $B_r(p)
-\subset U$. Therefore, $B_r(p) \cap U$ is a finite set. Since $p$ is a limit
-point of $E$, $B_r(p) \cap (U \setminus \{p\}))$ is also non-empty for all $r
-> 0$. Let it have $m$ elements $q_1, \ldots, q_m$ and let $\delta = 
-\min_{1 \le i \le m} d(p, q_i)$. Then the set $B_{\delta/2}(p) \cap 
-(U \setminus \{p\})$ is empty. This is a contradiction. Therefore, no such
-$\delta$ can be found.
+Let, if possible, $N$ be a finite set so that $N \cap (E - \{p\}) = \{q_1, 
+\ldots, q_m\}$. Define,
+\[
+\delta = \min_{1 \le i \le m} d(p, q_i).
+\]
+As $N$ is a finite set, $\delta > 0$. If we choose $r = \delta/2$, the set 
+$(B_{\delta/2}(p) \cap N) \cap (E - \{p\})$ is empty, contradicting our 
+hypothesis that $p$ is a limit point.
 \end{proof}
 
 \end{document}
