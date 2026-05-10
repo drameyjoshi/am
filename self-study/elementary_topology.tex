@@ -163,5 +163,246 @@ $(B_{\delta/2}(p) \cap N) \cap (E - \{p\})$ is empty, contradicting our
 hypothesis that $p$ is a limit point.
 \end{proof}
 
-\end{document}
+An immediate consequence of this proposition is:
+\begin{prop}\label{s1p5}
+A finite set has no limit points.
+\end{prop}
+\begin{proof}
+Let $E$ be a finite set. Let, if possible, $p \in E$ be its limit point. Then
+evert neighbourhood of $p$ has infinitely many points of $E$. Since $E$ is
+finite, no such point exists.
+\end{proof}
 
+Recall that the proposition $A \Rightarrow B$ is true if $A$ is false or $B$
+is true. As a result,
+\begin{prop}\label{s1p6}
+A non-empty finite set is closed.
+\end{prop}
+
+\begin{prop}\label{s1p7}
+Any metric space $(X, d)$ viewed as a subset of itself is both open and closed.
+\end{prop}
+\begin{proof}
+For any $r > 0, p \in X$, $B_r(p) = \{x \in X \;:\; d(x, p) < r\}$. By 
+definition $B_r(p) \subset X$. Since $p$ is arbitary, this implies that $X$
+is open.
+
+A set is closed if it contains all its limit points. The limit points are
+members of the ambient space, in this case, $X$ itself. Thus $X$ contains all
+its limit points and therefore it is a closed set.
+\end{proof}
+
+\begin{prop}\label{s1p8}
+Let $E_\alpha$ be an artibrary collection of sets. Then
+\[
+\left(\cup_\alpha E_\alpha\right)^c = \cap_\alpha E_\alpha^c.
+\]
+\end{prop}
+\begin{proof}
+Let
+\[
+x \in \left(\cup_\alpha E_\alpha\right)^c.
+\]
+Then $x \notin E_\alpha, \;\forall\; \alpha$, that is $x \in E_\alpha^c, 
+\;\forall\alpha$ or that $x \in \cap_\alpha E_\alpha^c$. Therefore,
+\[
+\left(\cup_\alpha E_\alpha\right)^c \subseteq \cap_\alpha E_\alpha^c.
+\]
+
+Not suppose, $y \in \cap_\alpha E_\alpha^c$ then $y \in E_\alpha^c$ or $y
+\notin E_\alpha$ for all $\alpha$. Therefore, $y \notin \cup_\alpha E_\alpha$
+so that 
+\[
+y \in \left(\cup_\alpha E_\alpha\right)^c
+\]
+and hence
+\[
+\cap_\alpha E_\alpha^c \subseteq \left(\cup_\alpha E_\alpha\right)^c.
+\]
+\end{proof}
+
+\begin{prop}\label{s1e9}
+Let $E$ be open then $E^c$ is closed.
+\end{prop}
+\begin{proof}
+Let $x$ be a limit point of $E^c$. Therefore, every neighbourhood of $x$ has
+points in $E^c$. That is, no neighbourhood of $x$ will be entirely in $E$.
+That is, $x$ is not an interior point of $E$. Since $E$ is open, all its points
+are interior points. Therefore, $x \notin E$, or that $x \in E^c$.
+
+Since $x$ was an arbitrary limit point of $E^c$, this means that every limit
+point of $E^c$ lies in $E^c$.
+\end{proof}
+
+\begin{prop}\label{s1e10}
+Let $E^c$ be closed then $E$ is open.
+\end{prop}
+\begin{proof}
+Let $x$ be a limit point of $E$. If $x$ is an interior point then $x \in E$.
+otherwise, every neighbourhood of $x$ has points in $E^c$, making $x$ a limit 
+point of $E^c$ as well. But $E^c$ is closed. Therefore, $x \in E^c$. Thus, 
+every limit point of $E$ is either an interior point of $E$ or limit point of
+$E^c$, making $E$ an open set.
+\end{proof}
+
+We can combine the above two propositions into
+\begin{thm}\label{s1t1}
+A set is open iff its complement is closed.
+\end{thm}
+
+Since the complement of the complement of a set is the set itself, this theeorem
+is equivalent to
+\begin{thm}\label{s1t2}
+A set is closed iff its complement is open.
+\end{thm}
+
+The next few theorems are important in justifying the definition of a 
+topological space.
+\begin{thm}\label{s1t3}
+An arbitrary union of open sets is open.
+\end{thm}
+\begin{proof}
+Let $\{E_\alpha\}$ be a collection of open sets. Therefore every point in the
+collection is an interior point. Therefore, every point in $\cup_\alpha 
+E_\alpha$ is an interior point.
+\end{proof}
+
+\begin{thm}\label{s1t4}
+An arbitrary intersection of closed sets is closed.
+\end{thm}
+\begin{proof}
+Let $\{E_\alpha\}$ be a collection of closed sets. Let $p$ be a limit point of
+$F = \cap_\alpha E_\alpha$. Then $B_r(p) \cap (F - \{p\}) \ne \varnothing \;
+\forall r > 0$. Therefore, $B_r(p) \cap (E_\alpha - \{p\}) \ne \varnothing \;
+\forall r > 0, \;\forall \alpha$, or that $p$ is a limit point of every 
+$E_\alpha$. Since $E_\alpha$ are closed, $p \in E_\alpha\;\forall \alpha$ or
+that $p \in F$.
+
+Since $p$ was an arbitrary limit point of $F$, every limit point of $F$ belongs
+to $F$, making it a closed set.
+\end{proof}
+
+An alternate proof is:
+\begin{proof}
+Let $\{E_\alpha\}$ be a collection of closed sets. Then $\{E_\alpha^c\}$ are
+all open so that $\cup_\alpha E_\alpha^c$ is open or
+\[
+\left(\cap_\alpha E_\alpha\right)^c
+\]
+is open, or $\cap_\alpha E_\alpha$ is closed.
+\end{proof}
+
+\begin{thm}\label{s1t5}
+An intersection of a finite collection of open sets is open.
+\end{thm}
+\begin{proof}
+Let $\{E_1, \ldots, E_n\}$ be a finite collection of open sets. Let $x \in 
+E_1 \cap \ldots \cap E_n$. Then $x \in E_1, \ldots, x \in E_n$. As all of them
+are open sets, there are positive numbers $r_1, \ldots, r_n$ such that 
+$B_{r_i} \subset E_i$ for $i = 1, \ldots, n$. Let $r = \min(\{r_1, \ldots, 
+r_n\})$. The minimum of a finite set of positive numbers is positive. Therefore,
+$B_r(x) \subset E_i$ for all $i = 1, \ldots, n$ or that $B_r(x) \subset E_1
+\cap \ldots \cap E_n$. 
+
+Since $x$ was an arbitrary point in $E_1 \cap \ldots \cap E_n$, we showed that
+every point in $E_1 \cap \ldots \cap E_n$ is an interior point, making it an
+open set.
+\end{proof}
+
+\begin{thm}\label{s1t6}
+A union of a finite collection of closed sets is closed.
+\end{thm}
+\begin{proof}
+Let $\{E_1, \ldots, E_n\}$ be a finite collection of closed sets. Therefore,
+$\{E_1^c, \ldots, E_n^c\}$ is a finite collection of open sets. By the previous
+therefore, $E_1^c \cap \ldots E_n^c = (E_1 \cup \ldots \cup E_n)^c$ is open or
+$E_1 \cup \ldots E_n$ is closed.
+\end{proof}
+
+\begin{defn}\label{s1d15}
+Let $(X, d)$ be a metric space and $E \subset X$. Let $E^\op$ be the set of all
+limit points of $E$. Then the closure of $E$ is defined as $\bar{E} = E \cup
+E^\op$.
+\end{defn}
+
+\begin{thm}\label{s1t7}
+Let $(X, d)$ be a metric space and $E \subset X$. Then,
+\begin{enumerate}
+\item $\bar{E}$ is closed.
+\item $E = \bar{E}$ iff $E$ is closed.
+\item $\bar{E} \subset F$ for every closed set $F \subset X$ such that $E 
+\subset F$. 
+\end{enumerate}
+From points (1) and (3), we see that $\bar{E}$ is the smallest closed subset of
+$X$ that contains $E$.
+\end{thm}
+\begin{proof}
+By definition, $\bar{E}$ has all limit points of $E$. Therefore, $\bar{E}$ is 
+closed. If $E$ is closed then $E^\op \subset E$ and hence $\bar{E} = E$. 
+Conversely, if $\bar{E} = E$ then $E^\op \subset E$, that is, all limit points
+of $E$ belong to $E$, making it a closed set.
+
+Let $F \subset X$ be a closed set such that $E \subset F$. Let $p$ be a limit
+point of $E$ so that $p \in \bar{E}$. Since $E \subset F$, and $F$ is closed, 
+$p \in F$. Therefore, $E^\op \subseteq F$. If $q \in E$ is not a limit point of
+$E$ then as as $E \subset F$, $q \in F$. Thus any point in $E \cup E^\op$ is a
+member of $F$ so that $\bar{E} \subseteq F$.
+\end{proof}
+
+A slightly more detailed proof of item (3) is
+\begin{proof}
+Let $F \subset X$ be a closed set such that $E \subset F$. Let $p$ be a limit
+point of $E$. Then every neighbourhood of $p$ has points in $E$ other than $p$.
+Since $E \subset F$, every neighbourhood of $p$ has points in $F$ other than
+$p$, making $p$ a limit point of $F$. Since $F$ is closed, $p \in F$. Thus,
+$E^\op \subset F$. If $q \in E$ is not a limit point of $E$ then since $E 
+\subset F$, $q \in F$. Thus ant point in $E \cup E^\op$ is a member of $F$ so
+that $\bar{E} \subseteq F$.
+\end{proof}
+
+\begin{thm}\label{s1t8}
+Let $E$ be a non-empty set of real numbers which is bounded above. Let $y = 
+\sup{E}$. Then $y \in \bar{E}$. If $y \in E$ then $E$ is closed.
+\end{thm}
+\begin{proof}
+If $y = \sup E$ then for all $x \in E$, $x \le y$ and if $y^\op \ge x$ then
+$y^\op \ge y$. Consider the set $B_\epsilon(y) = \{x \in \mathbb{R}\;:\; |x - y|
+< \epsilon\} = \{x \in \mathbb{R} \;:\; x - \epsilon < y < x + \epsilon\}$. As
+$y = \sup E$, numbers in $[x - \epsilon, y) \subseteq E$. This is true for all
+$\epsilon$. Therefore, $y$ is a limit point of $E$ so that $y \in \bar{E}$. If
+$y \in E$ then $E$ is closed.
+\end{proof}
+
+\begin{defn}
+Let $(X, d)$ be a metric space and $E \subset Y \subset X$. Then $E$ is open 
+relative to $Y$ if for each $p \in E$, there exists $r_p > 0$ such that if
+$d(p, q) < r_p$ and $q \in Y$ then $q \in E$.
+\end{defn}
+
+\begin{thm}\label{s1t9}
+Let $(X, d)$ be a metric space and $Y \subset X$. $E \subset Y$ is open relative
+to $Y$ iff $E = Y \cap G$ for some open subset $G$ of $X$.
+\end{thm}
+\begin{proof}
+Let $p \in E$. Since $p$ is also a member of $G$, there exists $\epsilon_p > 0$
+such that $B_{\epsilon_p}(p) \subset G$. Choose $\epsilon_p$ so that 
+$B_{\epsilon_p} \subset Y$. Then, for a $q \in Y$ such that $q \in 
+B_{\epsilon_p}$, $q$ belongs to both $Y$ and $G$ so that it belongs to $E = Y
+\cap G$, making $E$ open relative to $Y$.
+
+Now suppose $E$ is open relative to $Y$. Therefore, for a $p \in E$, if we can
+find $\epsilon_p > 0$ such that if $d(p, q) < \epsilon_p$ for a point $q \in Y$,
+then $q \in E$. We have enclosed a point $p$ of $E$ in an open ball of radius
+$\epsilon_p$ such that all $q \in Y$ lying in the ball, also belong to $E$. 
+Define
+\[
+G = \cup_p B_{\epsilon_p}(p).
+\]
+Then $G$ is open. Since $p \in B_{\epsilon_p}$ this also means that $E \subseteq
+G \cap Y$. Now conside a point $x \in G \cap Y$. Since $x \in G$, it belongs to
+at least one open ball centred at a point in $E$. Since $x$ also belongs to $Y$,
+and $E$ is open relative to $Y$, $x \in E$. Thus $x \in G \cap Y \Rightarrow
+x \in E$ so that $G \cap Y \subseteq E$.
+\end{proof}
+
+\end{document}
