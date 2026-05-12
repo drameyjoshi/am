@@ -409,4 +409,67 @@ and $E$ is open relative to $Y$, $x \in E$. Thus $x \in G \cap Y \Rightarrow
 x \in E$ so that $G \cap Y \subseteq E$.
 \end{proof}
 
+\section{Compact sets}\label{s2}
+\begin{defn}\label{s2d1}
+An open cover of a set $E$ is a collection of open sets $\{G_\alpha\}$ such that
+$E \subseteq \cup_\alpha G_\alpha$.
+\end{defn}
+
+\begin{defn}\label{s2d2}
+A set is compact if every open cover of it has a finite sub-cover.
+\end{defn}
+
+\begin{thm}\label{s2t1}
+Let $E \subset Y \subset X$ then $E$ is compact relative to $X$ iff it is 
+compact relative to $Y$.
+\end{thm}
+\begin{proof}
+Let $E$ be compact relative to $Y$. Suppose $\{G_\alpha\}$ is a family of
+open subsets of $X$ that cover $E$. Then, since $E \subset Y \subset X$, the
+family $\{F_\alpha = Y \cap G_\alpha\}$ has open subsets of $Y$ that cover $E$.
+Let $F_{\alpha_1}, \ldots, F_{\alpha_n}$ be a finite subcover of this family.
+Then $G_{\alpha_1}, \ldots, G_{\alpha_n}$ is the finte subcover of open subsets
+of $X$.
+
+Now suppose $E$ is compact relative to $X$. That is, $G_{\alpha_1} \cup \ldots
+\cup G_{\alpha_m}$ is a finite open cover of $E$. Then choose $F_{\alpha_i} = 
+Y \cap G_{\alpha_i}$. By theorem \ref{s1t9}, $F_{\alpha_i}$ are open relative 
+to $Y$. Since $E \subset Y$, $F_{\alpha_1} \cap \ldots \cap
+F_{\alpha_m}$ is a finite cover of $E$ such that each $F_{\alpha_i} \subset Y$.
+\end{proof}
+
+Thus, unlike openness (or closeness), compactness is not relative to a set's
+environment. It is its intrinsic property.
+
+\begin{thm}\label{s2t2}
+Compact subsets of metric spaces are closed.
+\end{thm}
+\begin{proof}
+Let $E$ be a compact subset of a metric space $(X, d)$ and $q$ be an arbitrary
+point in $E^c = X \setminus E$. For each point $p \in X$, let choose $0 < r_p
+< d(p, q)/2$. Then $\cup_p B_{r_p}(p)$ is an open cover of $E$. Since $E$ is
+compact, there exists a finite sub-cover, say $B_{r_1}(p_1), \ldots, 
+B_{r_n}(p_n)$ of $E$. Each of the sets $B_{r_i}(q)$ are disjoint with $E$. 
+Furthermore, $q$ lies in each one of them and therefore in their intersection.
+An intersection of a finite number of open sets is open. Thus $q$ has a 
+neighbourhood of points in $E^c$ alone. That is, $q$ is an interior point. Since
+$q$ was chosen arbitrarily, this means that every point of $E^c$ is an interior
+point, making it an open set.
+\end{proof}
+
+\begin{thm}\label{s2t3}
+Closed subsets of compact sets are compact.
+\end{thm}
+\begin{proof}
+Let $K$ be a compact set and $E \subset K$ be closed. Let $\{G_\alpha\}$ be
+an open cover of $E$. Define $F_\alpha = G_\alpha \cup E^c$. Since $E$ is 
+closed, $E^c$ is open. Therefore, $F_\alpha$ is open and $\{F_\alpha\}$ is an
+open cover of $K$. Since $K$ is compact, there is a finite sub-cover, say $
+F_1, \ldots, F_n$. Let a point $x \in E$ belong to $F_i = G_i \cup E^c$ then it
+follows that $x \in G_i$. Therefore, $G_1, \ldots, G_n$ is an open cover of $E$,
+making it a compact set.
+\end{proof}
+
+Theorem \ref{s2t3} is true in any topological space. However, theorem \ref{s2t2}
+needs an underlying metric space.
 \end{document}
