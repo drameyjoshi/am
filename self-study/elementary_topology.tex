@@ -472,4 +472,50 @@ making it a compact set.
 
 Theorem \ref{s2t3} is true in any topological space. However, theorem \ref{s2t2}
 needs an underlying metric space.
+
+\begin{prop}\label{s2p1}
+Let $(X, d)$ be a metric space, $K$ be a compact subset of $X$ and $F$ be a 
+closed subset of $X$ then $F \cap K$ is compact.
+\end{prop}
+\begin{proof}
+$K \subset X$ is compact implies that $K$ is closed by virtue of theorem 
+\ref{s2t2}. An intersection of two closed sets is closed. Therefore $F \cap K$
+is closed. Since $F \cap K \subset K$, by theorem \ref{s2t3}, $F \cap K$ is
+also compact.
+\end{proof}
+
+\begin{thm}\label{s2t4}
+Let $(X, d)$ be a metric space and $\{K_\alpha\}$ be a family of compact subsets
+of $X$ such that the intersection of every finite subfamily is not empty. Then
+$\cap K_\alpha$ is not empty.
+\end{thm}
+\begin{proof}
+Let, if possible, $\cap_\alpha K_\alpha$ be empty. Without loss of generality,
+let $K_1$ be such that it has no element in common with the rest of the family.
+As $K_\alpha$ are compact subsets of metric space, they are closed. Therefore,
+$K_\alpha^c$ are open. Furthermore, $K_1$ has elements in common with at least
+a few of them, that is $\cup_{\alpha \ne 1} K_\alpha^c$ are an open cover of
+$K_1$. As $K_1$ is also compact so that there is a finite sub-cover, say 
+$K_{\alpha_1}^c, \ldots, K_{\alpha_m}^c$. But this also means that
+\[
+K_1 \cap K_{\alpha_1} \cap \ldots K_{\alpha_m}
+\]
+is empty contradicting our hypothesis that the intersection of no finite 
+subfamily of $\{K_\alpha\}$ is empty.
+\end{proof}
+\begin{rem}
+If $K_1$ was not compact then the arbitary intersection $\cap K_\alpha$ will
+be empty.
+\end{rem}
+
+\begin{prop}\label{s2p2}
+If $\{K_n\}$ is a nested family of non-empty compact sets, that is $K_1 \supset 
+K_2 \supset \ldots$ then $\cap_{n \ge 1} K_n$ is non-empty.
+\end{prop}
+\begin{proof}
+By the nested nature of the sets, if $\{K_{i_1}, \ldots, K_{i_m}\}$ is any
+finite sub-family and if $j = \max\{i_1, \ldots, i_m\}$ then $K_{i_1} \cap
+\ldots \cap K_{i_m} = K_j \ne \varnothing$. Therefore, by theorem \ref{s2t4},
+$\cap_{n \ge 1}K_n \ne \varnothing$.
+\end{proof}
 \end{document}
