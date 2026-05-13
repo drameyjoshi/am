@@ -518,4 +518,80 @@ finite sub-family and if $j = \max\{i_1, \ldots, i_m\}$ then $K_{i_1} \cap
 \ldots \cap K_{i_m} = K_j \ne \varnothing$. Therefore, by theorem \ref{s2t4},
 $\cap_{n \ge 1}K_n \ne \varnothing$.
 \end{proof}
+
+\begin{thm}\label{s2t5}
+If $E$ is an infinite subset of a compact set $K$ then $E$ has a limit point
+in $K$.
+\end{thm}
+\begin{proof}
+A point $p \in K$ is a limit point of $E$ if for all $\epsilon_p > 0$,
+$B_{\epsilon_p}(p) \cap (E - \{p\}) \ne \varnothing$. If no point of $K$ is
+a limit point of $E$ then there exists $\epsilon_p > 0$ for which 
+$B_{\epsilon_p}(p)$ has at most one point of $E$. The collection of open balls
+$B_{\epsilon_p}(p)$ for all $p \in K$ is an open cover of $K$. Since $K$ is 
+compact, there exists a finite subset of these balls covering $K$. But each one
+of them will have at most one point of $E$, which means $K$ has only a finite
+number of points of $E$. This contradicts the hypothesis that $E$ is an infinite
+subset of $E$.
+\end{proof}
+
+\begin{thm}\label{s2t6}
+If $\{I_n\}$ is a sequence of closed intervals $[a_n, b_n]$ of real numbers such
+that $I_n \supset I_{n+1}$. Then $\cap_{n \ge 1}I_n \ne \varnothing$.
+\end{thm}
+\begin{proof}
+Since the intervals are nested, we have $a_1 \le a_2 \le \ldots \le b_2 \le b_1$
+so that the sequence of real numbers $\{a_n\}$ is monotone increasing and 
+bounded from above. Let $x$ be its supremum so that $a_n \le x$ for all $n$. 
+Since $[a_1, b_1]$ is closed, the limit of $\{a_n\}$ lies in it. In fact, it
+lies in all closed intervals $[a_m, b_m]$ for the same reason. Therefore, their
+intersection is not empty.
+\end{proof}
+
+\begin{rem}
+Consider the sequence of intervals $(0, 1/n)$. Here all $a_n$ are zero and hence
+$\sup\{a_n\} = 0$ but $0$ is not a member of any interval. Therefore, their
+intersection is empty.
+
+On the other hand the intersection of intervals $[0, 1/n)$ is $\{0\}$.
+\end{rem}
+
+We will extend the previous theorem to $k$-cells in $\mathbb{R}^k$.
+\begin{thm}\label{s2t7}
+Let $k$ be a positive integer. If $\{I_n\}$ is a sequence of $k$-cells such
+that $I_n \supset I_{n+1}$ got all $n \in \mathbb{N}$ then $\cap_{n \ge 1}I_n
+\ne \varnothing$.
+\end{thm}
+\begin{proof}
+The cell $I_n$ is defined as the set of points $x \in \mathbb{R}^k$ such that
+$a^n_i \le x_i \le b^n_i$, for $i = 1, \ldots, k$. We thus have $k$-sequences
+$\{a^n_i\}$ for $i = 1, \ldots, k$, each one of which is monotone increasing.
+Since all of them are bounded from above, their suprema $x^\ast_i$ exist. Since
+every $k$ cell is closed, the limit points of these sequences lie in every cell.
+As a result, their intersection is non-empty.
+\end{proof}
+
+\begin{thm}\label{s2t8}
+The interval $[a, b]$ is compact.
+\end{thm}
+\begin{proof}
+Let $\{G_\alpha\}$ be an open cover of $[a, b]$. Define the set
+\[
+E = \{x \in [a, b]\;:\; [a, x]\text{ is covered by finitely many} G_\alpha.\}.
+\]
+Since $G_\alpha$ is an open cover of $[a, b]$, there is an open set, say $G_1$
+that has has $a$ in it. Thus $a \in E$. We also note that $E$ is bounded. A
+non-empty bounded set of real numbers has a supremum, say $x$. Let, if possible,
+$x < b$. Since $x \in [a, b]$, there is an open set, say $G_m$ that covers the
+point $x$. If $G_m$ is of the form $(x - \delta, x + \delta)$ then the point
+$x + \delta/2$ is also covered by $G_m$ and hence lies in $E$. But it is greater
+than $\sup E$. So no such point exists and $x = b$.
+\end{proof}
+
+Its obvious generalisation is
+\begin{thm}\label{s2t9}
+A $k$-cell is compact.
+\end{thm}
+\begin{proof}
+
 \end{document}
