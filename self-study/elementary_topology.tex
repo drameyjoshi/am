@@ -725,7 +725,7 @@ Consider the set of sequences $e_1 = (1, 0, 0, \ldots), e_2 = (0, 1, 0, \ldots),
 e_3 = (0, 0, 1, \ldots), \ldots$. It is a metric space with the distance 
 function 
 \[
-d(x, y) = \sqrt{\sum_{i \ge 1}(x_i - y-i)^2}.
+d(x, y) = \sqrt{\sum_{i \ge 1}(x_i - y_i)^2}.
 \]
 The set is bounded because $d(e_n, e_m) = \sqrt{2}$ for all $m, n$. But it is
 not totally bounded because no finite set of balls of radii less than $\sqrt{2}$
@@ -785,5 +785,135 @@ bounded.
 
 Now assume that $E$ is closed and totally bounded. By theorem \ref{s2t17} it is 
 compact.
+\end{proof}
+
+\section{Cantor set}\label{s3}
+\begin{defn}\label{s3d1}
+Cantor set $P$ is defined as $P = \cap_{n \ge 1} E_n$ where the sequence of
+sets $E_n$ is defined as:
+\begin{enumerate}
+\item $E_0 = [0, 1]$,
+\item $E_1 = [0, 1/3] \cup [2/3, 1]$,
+\item $E_2 = [0, 1/9] \cup [2/9, 1/3] \cup [2/3, 7/9] \cup [8/9, 1]$ 
+\end{enumerate}
+and so on.
+\end{defn}
+
+\begin{prop}\label{s3p1}
+Cantor set is non-empty.
+\end{prop}
+\begin{proof}
+The intervals $E_n$ are all compact and an intersection of any finitely many
+of them is the finest of them all, which is non-empty. Therefore, by theorem
+\ref{s2t4}, it is non-empty.
+\end{proof}
+
+\begin{prop}\label{s3t2}
+Cantor set is closed.
+\end{prop}
+\begin{proof}
+Each $E_n$ is a finite union of closed sets and is therefore closed. Cantor set
+is an infinite intersection of closed sets and by theorem \ref{s1t4}, is closed.
+\end{proof}
+
+\begin{prop}\label{s3p3}
+Cantor set is compact.
+\end{prop}
+\begin{proof}
+In the previous proposition we showed that Cantor set is closed. It is also 
+bounded. Therefore, by Heine-Borel theorem, it is compact.
+\end{proof}
+
+\begin{prop}\label{s3p4}
+Cantor set is perfect.
+\end{prop}
+\begin{proof}
+Proposition \ref{s3t2} assured that Cantor set is closed. To show that it is
+perfect, we should show that every point of it is a limit point. Let $p$ be an
+arbitrary point in Cantor set. Let $(a, b)$ be any open interval containing 
+$p$ and let $I_n$ be the interval of an $E_n$ that has $p$ in it such that 
+$I_n \subset (a, b)$. Let $x_n$ be an end point of $I_n$ such that $x_n \ne p$. 
+Clearly, $x_n$ belongs to Cantor set and it is also inside an open neighbourhood 
+of $p$. Since $n$ is arbitrary, we can find an $x_n$ in every open neighbourhood 
+of $p$, making it a limit point.
+\end{proof}
+
+We next prove a property of perfect sets.
+\begin{thm}\label{s3t1}
+If $P$ is a perfect subset of $\mathbb{R}^k$ then $P$ is uncountable.
+\end{thm}
+\begin{proof}
+If $P$ is perfect then by definition it is closed and every point of it is a
+limit point. We showed in proposition \ref{s1p5} that a finite set cannot have
+limit points. Therefore $P$ is infinite.
+
+Let, if possible, $P$ be countably infinite. Since $x_1$ is a limit point of 
+$P$, for all $r_1 > 0$, $B_{r_1}(x_1) \cap ( P \setminus \{x_1\}) \ne 
+\varnothing$. Thus, there is a point from $P$ in $B_{r_1}(x_1)$. Call it $x_2$.
+Since $x_2$ is also a limit point, choose a neighbourhood $B_{r_2}(x_2)$ such
+that $d(x_1, x_2) > r_2$. It too has at least one point of $P$ other than 
+$x_2$. We continue generating such neighbourhoods, all of which that the 
+properties:
+\begin{enumerate}
+\item $x_n \notin \bar{B}_{r_{n+1}}(x_{n+1})$,
+\item $B_{r_n}(x_n) \supset B_{r_{n+1}}(x_{n+1})$,
+\item $K_n = \bar{B}_{r_n}(x_n) \cap P \ne \varnothing$.
+\item $x_n \notin K_{n+1}$.
+\end{enumerate}
+As a result of the last property, $\cap_n K_n$ has no point of $P$. Since each 
+$K_n$ is, by definition, a subset of $P$, this means that $\cap_n K_n = 
+\varnothing$. Each $K_n$ is also a closed subset of a compact set and is 
+therefore compact. Furthermore, an intersection of any finitely many $K_n$ is
+not empty. If $N$ is the largest value of $n$ in the intersection, then it will 
+have points in $P$ other than $x_1, \ldots, x_N$. But this leads to a 
+contradiction because theorem \ref{s2t4} assures us that $\cap K_n$ must be
+non-empty.
+
+Therefore, our assumption that $P$ is countably infinite is false.
+\end{proof}
+
+The sequence $\{E_n\}$ used in constructing Cantor set is nested, that is, 
+$E_1 \supset E_2 \supset E_3 \supset \ldots$. Each $E^n$ is a union of $2^n$ 
+closed intervals of length $1/3^n$ so that the total length of the segments is 
+$(2/3)^n$. Clearly, as $n \rightarrow \infty$, the length of $E_n$ vanishes. 
+In spite of that, it follows from proposition \ref{s3p4} and theorem \ref{s3t1}
+that
+\begin{prop}\label{s3p5}
+Cantor set is uncountably infinite.
+\end{prop}
+
+\section{Connected sets}\label{s4}
+\begin{defn}\label{s4d1}
+Sets $A$ and $B$ are said to be separated if $\bar{A} \cap B$ and $A \cap 
+\bar{B}$ are both non-empty.
+\end{defn}
+
+\begin{defn}\label{s4d2}
+Sets $A$ and $B$ are said to be connected if they are not separated.
+\end{defn}
+
+\begin{thm}\label{s4t1}
+Let $E \subset \mathbb{R}$. $E$ is connected iff for $x, y \in E$ and $x < z
+< y$ imples $z \in E$.
+\end{thm}
+\begin{proof}
+Suppose $x, y \in E$ and $z \in (x, y)$ is such that $z \in E$. Then we will 
+show that $E$ is not connected. Let $A_z = E \cap (-\infty, z), B_z = (z, 
+\infty)$. Then $E = A_z \cup B_z$. Since $x \in A_z, y \in B_z$, they are not
+empty. Since $A_z \subset (-\infty, z)$ and $B_z \subset (z, \infty)$ they are
+separated.
+
+Now assume that for all $z \in (x, y)$, $z \in E$. Let, if possible, $E$ not 
+be  connected. Then there are non-empty, separated sets $A$ and $B$ whose union
+is $E$. Choose arbitrary points $x \in A, y \in B$. Without loss of generality,
+assume $x < y$. Let $z = \sup (A \cap [x, y])$. Since $A \cap [x, y]$ is a 
+closed, bounded set it is compact and its supremum lies in the set. Therefore,
+it lies in $\bar{A}$ as well. As $A$ and $B$ are separated, $z \notin B$. 
+Therefore, $x \le z < y$. If $x < z$ then $z \notin A$, that is $z \notin
+A \cup B$. If, on the other hand, $z \in A$ then $z \notin \bar{B}$, for 
+otherwise $A$ and $B$ will not be separated. Therefore, there exists $z_1$ such
+that $z < z_1 < y$ and $z_1 \notin B$. Once again, we have $z_1 \in (x, y)$
+such that $z_1 \notin E$. Thus, the assumption that $E$ is not connected
+inevitably leads to a point $z \in (x, y)$ that is not a member of $E$. 
 \end{proof}
 \end{document}
