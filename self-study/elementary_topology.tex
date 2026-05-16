@@ -593,5 +593,197 @@ Its obvious generalisation is
 A $k$-cell is compact.
 \end{thm}
 \begin{proof}
+Let $a = (a_1, \ldots, a_k)$ and $b = (b_1, \ldots, b_k)$ be the corners of a
+$k$-cell, $I_1$. The length of its diagonal is
+\[
+\delta = \left(\sum_{i=1}^k (b_i - a_i)^2\right)^{1/2} > 0,
+\]
+Let $\{G_\alpha\}$ be an open cover of the cell and it, if possible, there be no
+finite subsover. Divide the cell into $2^k$ cells at the points $(a_i + b_i)/2$.
+At least one of these cells, called $I_2$ will not have a finite subcover of
+$\{G_\alpha\}$. We also note that $I_2 \subset I_1$. We divide $I_2$ is a 
+similar fashion to get a cell with a diagonal $1/2^k$ times that of $I_2$ and
+which does not have a finite subcover of $\{G_\alpha\}$. By theorem \ref{s2t7}, 
+the sequences of these successively smaller, nested $k$-cells is non-empty. Let
+$p \in \cap_{n \ge 1}I_n$. Then there exists a member, say $G_p$, in the open 
+cover for which $B_\epsilon(p) \subset G_p$. 
 
+If $p \in I_n$ and the diagonal of $I_n$ is $\delta_n$ then the maximum distance
+between points of $I_n$ is $\delta_n$. If we choose $n$ such that 
+\[
+\delta_n = \frac{\delta}{2^{n}} < \epsilon
+\]
+the entire cell will be covered by $G_p$ alone, contradicting our choice of
+choosing a sub-cell that can be covered only by an infinite subset of 
+$\{G_\alpha\}$.
+
+Therefore, our assumption that there is no finite subcover of $\{G_\alpha\}$
+is false and the $k$-cell is compact.
+\end{proof}
+
+\begin{rem}
+The proof of theorem \ref{s2t8} will be much simpler if conducted on lines of 
+the previous proof.
+\end{rem}
+
+\begin{thm}\label{s2t10}
+The following properties are equivalent for a set $E \subset \mathbb{R}^k$:
+\begin{itemize}
+\item $E$ is closed and bounded.
+\item $E$ is compact.
+\item Every infinite subset of $E$ has a limit point in $E$.
+\end{itemize}
+\end{thm}
+\begin{proof}
+If $E$ is closed and bounded then it can be enclosed in a $k$-cell. By theorem
+\ref{s2t9} a $k$ cell is compact, making $E$ a closed subset of a compact set.
+By theorem \ref{s2t3}, $E$ is compact.
+
+If $E$ is compact then it is a compact subset of the metric space $\mathbb{R}^k$.
+By theorem \ref{s2t3} it is closed. Therefore it contains all its limit points.
+
+Now assume that every infinite subset of $E$ has a limit point in $E$ but $E$
+is not bounded. Then there is a sequence of points $\{x_n \in E\}$ such that
+for all $n \in \mathbb{N}$, $|x_n| > n$. Let $S$ be subset of $E$ with precisely
+these points. Then $S$ has no limit point in $\mathbb{R}^k$ and therefore in 
+$E$, contradicting our assumption. Therefore $E$ must be bounded.
+
+Under the same assumptions as before, assume that $E$ is not closed. Then
+there exists a limit point $x_0$ of $E$ that is not a member of $E$. Since 
+$x_0$ is a limit point of $E$, for all $r > 0$, $B_r(x_0) \cap (E \setminus \{
+x_0\}) \ne \varnothing$. If $x_0 \notin E$, then for all $r > 0$, $B_r(x_0) \cap
+E \varnothing$. Define a set
+\[
+S = \{x_n \in E : x_n \in B_{1/n}(x_0) \cap E, x_n \ne x_m, \forall\; n, m \in
+\mathbb{N}\}
+\]
+Clearly $x_0 \notin E$ is a limit point of $S \subset E$, a contradiction.
+Therefore, $x_0$ must lie in $E$.
+\end{proof}
+
+Theorem \ref{s2t10} is a combination of
+\begin{thm}[Heine-Borel]\label{s2t11}
+For a set $E \subset \mathbb{R}^k$, $E$ is closed and bounded iff $E$ is compact.
+\end{thm}
+and
+\begin{thm}[Weierstrass]\label{s2t12}
+Every bounded infinite subet of $\mathbb{R}^k$ has a limit point in 
+$\mathbb{R}^k$.
+\end{thm}
+\begin{proof}
+Every bounded subset of $\mathbb{R}^k$ can be enclosed in a $k$-cell which is
+closed.
+\end{proof}
+
+A theorem closely related to \ref{s2t12}
+\begin{thm}[Bolzano-Weierstrass]\label{s2t13}
+Every bounded sequence in $\mathbb{R}^k$ has a convergent subsequence.
+\end{thm}
+\begin{proof}
+Let $S = \{x_n\}$ be a bounded sequence in $\mathbb{R}^k$. If $S$ is finite then
+$x_n = p$ for infinitely many $n$. These elements form a subsequence of $S$ that
+converges to $p$.
+
+Now suppose $S$ is infinite. Then $S$ is a bounded subset of the metric space
+$\mathbb{R}^k$. By Weirstrass theorem \ref{s2t12} it has a limit point, say $p$
+in $\mathbb{R}^k$. Therefore, for all $r > 0$, $B_r(p) \cap (S - \{p\})$ is
+non-empty. Create a sequence
+\[
+S_c = \{x_n \in S : x_n \in B_{1/n}(p) \cap (S - \{p\}), x_n \ne x_m, n, m \in 
+\mathbb{N}\}.
+\]
+Clearly, $p$ is a limit point of $S_c$ and $S_c$ is a subsequence of $S$.
+\end{proof}
+
+The important theorems \ref{s2t11}, \ref{s2t12} and \ref{s2t13} are valid only
+in $\mathbb{R}^k$ and not in general metric spaces. Their proofs depend on the
+closeness and compactness of a $k$-cell. However we can retain a part of them.
+\begin{defn}\label{s2d3}
+A set $E$ is sequentially compact if every sequence in it has a convergent
+subsequence.
+\end{defn}
+We now show that
+\begin{thm}\label{s2t14}
+A compact subset $E$ of a metric space $(X, d)$ is sequentially compact.
+\end{thm}
+\begin{proof}
+Let $S$ be a sequence in a compact subset $E$ of a metric space $(X, d)$. Then
+$S$ is an infinite subset of a compact set. By theorem \ref{s2t5}, $S$ has a 
+limit point, say $p \in E$. Therefore, for all $n \ge 1$, $B_{1/n}(p) \cap (S
+\setminus \{p\} \ne \varnothing$. Choose $x_n \in S$ such that for each $n \in
+\mathbb{N}, x_n \ne x_m$ and $x_n \in B_{1/n}(p) \cap (S \setminus \{p\})$. 
+The set $\{x_n\}$ form a convergent subsequence of $S$.
+\end{proof}
+
+In order to prove the converse, we need a few more definitions.
+\begin{defn}\label{s2d4}
+A set $E$ is totally bounded if for all $\epsilon > 0$, a finite set of open
+balls of radius $\epsilon$ cover $E$.
+\end{defn}
+
+Consider the set of sequences $e_1 = (1, 0, 0, \ldots), e_2 = (0, 1, 0, \ldots),
+e_3 = (0, 0, 1, \ldots), \ldots$. It is a metric space with the distance 
+function 
+\[
+d(x, y) = \sqrt{\sum_{i \ge 1}(x_i - y-i)^2}.
+\]
+The set is bounded because $d(e_n, e_m) = \sqrt{2}$ for all $m, n$. But it is
+not totally bounded because no finite set of balls of radii less than $\sqrt{2}$
+will cover the set.
+
+We now show that
+\begin{thm}\label{s2t15}
+Let $E$ be a subset of a metric space $(X, d)$ and let every sequence in $E$
+have a convergent subsequence. Then $E$ is totally bounded.
+\end{thm}
+\begin{proof}
+Assume that $E$ is not totally bounded. Then there exists $\epsilon > 0$
+such that balls of radii less than or equal to $\epsilon$ do not cover the set.
+Let $\{B_\epsilon(x_n)\}$ be the family of infinitely many balls that cover $E$.
+Then $\{x_n\}$ is a sequence of points in $E$ without a convergent subsequence.
+\end{proof}
+
+It is easy to show that
+\begin{thm}\label{s2t16}
+If $E$ is a sequentially compact subset of a metric space then it is complete.
+\end{thm}
+\begin{proof}
+Let $\{x_n\}$ be a Cauchy sequence in $E$. Then it has a convergent subsequence
+with a limit point $p \in E$. Since $\{x_n\}$ is Cauchy $x_n \rightarrow p \in
+E$, making $E$ complete.
+\end{proof}
+
+\begin{thm}\label{s2t17}
+If $E$ is totally bounded and complete then $E$ is compact.
+\end{thm}
+\begin{proof}
+Since $E$ is totally bounded, it can be covered with a finite number of balls 
+of radius $1$. Let $\{G_\alpha\}$ be an open cover of $E$. Let, if possible, 
+there be no finite sub-cover. Then there is at least one among those balls,
+say $B_1$ that has no finite subcover in $\{G_\alpha\}$. Since $B_1$ is also
+totally bounded, it can be covered with a finite number of balls of radius $1/2$.
+Again, one of them, say $B_2$ will not have a finite subcover in $\{G_\alpha\}$.
+Create a sequence of such balls $B_1 \supset B_2 \supset B_3 \supset \ldots$.
+Build a sequence $S = \{x_n \in E: x_n \in B_n, x_n \ne x_m, \forall n, m \in
+\mathbb{N}\}$. Since the radius of balls keeps shrinking, $S$ is a Cauchy
+sequence. Since $E$ is complete, it converges to a point $p \in E$. Since $p$
+is a limit point, it can be enclosed in a single open ball which can be covered
+by a single member in $\{G_\alpha\}$. This contradicts the assumption that every
+ball in the sequence needs an infinite subcover of $\{G_\alpha\}$. Therefore, 
+we do not need an infinite subcover of $\{G_\alpha\}$ to cover $E$, making $E$
+a compact set.
+\end{proof}
+
+We now have an extension of Heine-Borel theorem for arbitrary metric spaces.
+\begin{thm}\label{s2t18}
+If $E \subset (X, d)$ then $E$ is closed and totally bounded iff $E$ is compact.
+\end{thm}
+\begin{proof}
+Assume that $E$ is compact. By theorem \ref{s2t14}, it is sequentially compact.
+By theorem \ref{s2t16} it is closed and by theorem \ref{s2t15} it is totally 
+bounded.
+
+Now assume that $E$ is closed and totally bounded. By theorem \ref{s2t17} it is 
+compact.
+\end{proof}
 \end{document}
